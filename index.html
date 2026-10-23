@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Commons | The Open Protocol</title>
-  <meta name="description" content="A leaderless, uncapturable philosophical architecture, 9 Foundational Principles, 36 bespoke canonical folios with 36 unique dedicated kinetic physics diagrams.">
+  <meta name="description" content="A leaderless, uncapturable philosophical architecture, 9 Foundational Principles, 9 deep kinetic state engines, and 36 canonical folios.">
 
   <!-- Embedded Scalable Vector Favicon (Mineral Stone Palette) -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><circle cx='32' cy='32' r='30' fill='%230b1017' stroke='%23334155' stroke-width='2'/><circle cx='32' cy='32' r='18' fill='none' stroke='%230284c7' stroke-width='1.5' stroke-dasharray='4 2'/><circle cx='32' cy='32' r='4' fill='%230d9488'/><circle cx='32' cy='14' r='2.5' fill='%2394a3b8'/><circle cx='48' cy='40' r='2.5' fill='%2394a3b8'/><circle cx='16' cy='40' r='2.5' fill='%2394a3b8'/><path d='M32 14 L48 40 L16 40 Z' fill='none' stroke='%23334155' stroke-width='1' opacity='0.7'/></svg>">
@@ -267,9 +267,7 @@
       transition: background 0.15s ease;
     }
 
-    .principle-trigger:hover {
-      background: var(--bg-elevated);
-    }
+    .principle-trigger:hover { background: var(--bg-elevated); }
 
     .principle-content {
       padding: 0 1.35rem 1.35rem;
@@ -281,9 +279,7 @@
       line-height: 1.65;
     }
 
-    .principle-item.open .principle-content {
-      display: block;
-    }
+    .principle-item.open .principle-content { display: block; }
 
     /* Kinetic Diagram Engine Layouts */
     .sim-grid {
@@ -303,14 +299,13 @@
     }
 
     @media (max-width: 880px) {
-      .sim-container {
-        grid-template-columns: 1fr;
-      }
+      .sim-container { grid-template-columns: 1fr; }
     }
 
     .canvas-wrapper {
       position: relative;
       width: 100%;
+      min-height: 340px;
       height: 340px;
       background: var(--bg-primary);
       border-radius: 4px;
@@ -343,9 +338,7 @@
       line-height: 1.55;
     }
 
-    .control-group {
-      margin-bottom: 1.1rem;
-    }
+    .control-group { margin-bottom: 1.1rem; }
 
     .control-label {
       display: flex;
@@ -763,8 +756,8 @@
     <p>A leaderless philosophical architecture grounded in 9 foundational principles, 9 kinetic state simulations, and 36 mechanical folios. Click any folio to explore its unique 500-word teacherless teaching, responsive field physics, and real-time interactive diagrams.</p>
     <div class="btn-row">
       <a href="#principles" class="btn btn-primary">The 9 Principles</a>
-      <a href="#codex" class="btn btn-secondary">Open 36 Folios</a>
       <a href="#diagrams" class="btn btn-secondary">Run 9 Kinetic Engines</a>
+      <a href="#codex" class="btn btn-secondary">Open 36 Folios</a>
     </div>
   </div>
 
@@ -1759,69 +1752,12 @@ COST:
       }
     ];
 
-    /* Principles Accordion Toggle */
-    document.querySelectorAll('.principle-trigger').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const item = btn.parentElement;
-        item.classList.toggle('open');
-      });
-    });
-
-    /* Render Folios */
-    const foliosContainer = document.getElementById('foliosContainer');
-    const tabBtns = document.querySelectorAll('.tab-btn');
-    const presetSelect = document.getElementById('folioPresetSelect');
-
-    function renderFolios(bookFilter = 'all') {
-      foliosContainer.innerHTML = '';
-      const filtered = bookFilter === 'all' ? folios : folios.filter(f => f.book == bookFilter);
-
-      filtered.forEach(f => {
-        const card = document.createElement('div');
-        card.className = 'folio-card';
-        card.onclick = () => openFolioModal(f.id);
-        card.innerHTML = `
-          <div>
-            <div class="folio-number">Folio ${f.id < 10 ? '0' + f.id : f.id} • Book ${f.book}</div>
-            <div class="folio-title">${f.title}</div>
-            <div class="folio-mechanism">${f.mech}</div>
-            <div class="folio-praxis"><strong>Praxis:</strong> ${f.praxis}</div>
-          </div>
-          <div class="folio-actions">
-            <span style="color: var(--accent-turquoise); font-weight: 600;">Engine ${f.id}: Read Essay &rarr;</span>
-            <button class="btn btn-secondary" style="padding: 0.35rem 0.65rem; font-size: 0.72rem;" onclick="event.stopPropagation(); loadFolioIntoCard(${f.id})">Export Card</button>
-          </div>
-        `;
-        foliosContainer.appendChild(card);
-      });
-    }
-
-    tabBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        tabBtns.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        renderFolios(btn.dataset.book);
-      });
-    });
-
-    folios.forEach(f => {
-      const opt = document.createElement('option');
-      opt.value = f.id;
-      opt.innerText = `Folio ${f.id < 10 ? '0' + f.id : f.id}: ${f.title}`;
-      presetSelect.appendChild(opt);
-    });
-
-    const customOpt = document.createElement('option');
-    customOpt.value = 'custom';
-    customOpt.innerText = 'Custom Inscription...';
-    presetSelect.appendChild(customOpt);
-
-    renderFolios();
-
+    /* Fail-Safe Retina Backing Setter */
     function setRetinaBacking(canvas) {
+      if (!canvas) return;
       const dpr = window.devicePixelRatio || 1;
       const rect = canvas.getBoundingClientRect();
-      const targetW = rect.width > 0 ? rect.width : 780;
+      const targetW = rect.width > 0 ? rect.width : 720;
       const targetH = rect.height > 0 ? rect.height : 340;
       canvas.width = targetW * dpr;
       canvas.height = targetH * dpr;
@@ -1831,7 +1767,7 @@ COST:
       return { ctx, width: targetW, height: targetH };
     }
 
-    /* 9 Kinetic Engines */
+    /* 9 Kinetic Engines Safe Initialization */
     const rCanvas = document.getElementById('simReactionCanvas');
     const rCtx = rCanvas.getContext('2d');
     const gapSlider = document.getElementById('gapSlider');
@@ -1841,9 +1777,10 @@ COST:
     gapSlider.addEventListener('input', (e) => { gapVal.innerText = `${e.target.value}%`; });
     document.getElementById('btnEmitImpulse').addEventListener('click', () => {
       const rect = rCanvas.getBoundingClientRect();
+      const h = rect.height > 0 ? rect.height : 340;
       for (let i = 0; i < 9; i++) {
         rParticles.push({
-          x: 10, y: rect.height / 2 + (Math.random() * 60 - 30),
+          x: 10, y: h / 2 + (Math.random() * 60 - 30),
           vx: 4 + Math.random() * 2.5, vy: (Math.random() - 0.5) * 1.8,
           radius: 3.5, color: '#0284c7', absorbed: false, tail: []
         });
@@ -1853,27 +1790,30 @@ COST:
     let autoSpawnTimer1 = 0;
     function renderReactionSim() {
       const rect = rCanvas.getBoundingClientRect();
+      const w = rect.width > 0 ? rect.width : 720;
+      const h = rect.height > 0 ? rect.height : 340;
+
       rCtx.fillStyle = '#0b1017';
-      rCtx.fillRect(0, 0, rect.width, rect.height);
+      rCtx.fillRect(0, 0, w, h);
 
       autoSpawnTimer1++;
       if (autoSpawnTimer1 % 40 === 0) {
         rParticles.push({
-          x: 10, y: rect.height / 2 + (Math.random() * 50 - 25),
+          x: 10, y: h / 2 + (Math.random() * 50 - 25),
           vx: 3.2 + Math.random() * 1.8, vy: (Math.random() - 0.5) * 1.2,
           radius: 3, color: '#0284c7', absorbed: false, tail: []
         });
       }
 
       const gapRatio = gapSlider.value / 100;
-      const observerWidth = rect.width * 0.42 * gapRatio;
-      const observerX = rect.width * 0.45 - observerWidth / 2;
+      const observerWidth = w * 0.42 * gapRatio;
+      const observerX = w * 0.45 - observerWidth / 2;
       const barrierX = observerX + observerWidth;
 
       rCtx.fillStyle = 'rgba(13, 148, 136, 0.08)';
-      rCtx.fillRect(observerX, 15, observerWidth, rect.height - 30);
+      rCtx.fillRect(observerX, 15, observerWidth, h - 30);
       rCtx.strokeStyle = 'rgba(13, 148, 136, 0.35)';
-      rCtx.strokeRect(observerX, 15, observerWidth, rect.height - 30);
+      rCtx.strokeRect(observerX, 15, observerWidth, h - 30);
 
       rCtx.fillStyle = '#94a3b8';
       rCtx.font = '10px monospace';
@@ -1881,17 +1821,17 @@ COST:
 
       if (gapRatio < 0.35) {
         rCtx.fillStyle = '#9f1239';
-        rCtx.fillRect(barrierX - 3, 15, 6, rect.height - 30);
+        rCtx.fillRect(barrierX - 3, 15, 6, h - 30);
       }
 
-      for (let w = rShockwaves.length - 1; w >= 0; w--) {
-        const sw = rShockwaves[w];
+      for (let w1 = rShockwaves.length - 1; w1 >= 0; w1--) {
+        const sw = rShockwaves[w1];
         sw.r += 2.5; sw.alpha -= 0.035;
         rCtx.beginPath();
         rCtx.arc(sw.x, sw.y, sw.r, 0, Math.PI * 2);
         rCtx.strokeStyle = `rgba(239, 68, 68, ${sw.alpha})`;
         rCtx.stroke();
-        if (sw.alpha <= 0) rShockwaves.splice(w, 1);
+        if (sw.alpha <= 0) rShockwaves.splice(w1, 1);
       }
 
       for (let s = rSparks.length - 1; s >= 0; s--) {
@@ -1937,7 +1877,7 @@ COST:
         rCtx.fillStyle = p.color;
         rCtx.fill();
 
-        if (p.x > rect.width || p.x < 0) rParticles.splice(i, 1);
+        if (p.x > w || p.x < 0) rParticles.splice(i, 1);
       }
       requestAnimationFrame(renderReactionSim);
     }
@@ -1953,11 +1893,14 @@ COST:
 
     function renderEgoSim() {
       const rect = eCanvas.getBoundingClientRect();
+      const w = rect.width > 0 ? rect.width : 720;
+      const h = rect.height > 0 ? rect.height : 340;
+
       eCtx.fillStyle = '#0b1017';
-      eCtx.fillRect(0, 0, rect.width, rect.height);
+      eCtx.fillRect(0, 0, w, h);
       eTime += 0.02;
 
-      const cx = rect.width / 2, cy = rect.height / 2;
+      const cx = w / 2, cy = h / 2;
       const rigidity = rigiditySlider.value / 100;
       const baseRadius = 38 + rigidity * 26;
 
@@ -2027,7 +1970,8 @@ COST:
 
     function renderAttachSim() {
       const rect = aCanvas.getBoundingClientRect();
-      const w = rect.width, h = rect.height;
+      const w = rect.width > 0 ? rect.width : 720;
+      const h = rect.height > 0 ? rect.height : 340;
       if (streamParticles.length === 0) initStreamParticles(w, h);
 
       aCtx.fillStyle = '#0b1017';
@@ -2097,684 +2041,3 @@ COST:
           x: Math.random() * w, y: Math.random() * h,
           vx: (Math.random() - 0.5) * 2, vy: (Math.random() - 0.5) * 2,
           tail: []
-        });
-      }
-    }
-
-    document.getElementById('btnAttractorKick').addEventListener('click', () => {
-      attParticles.forEach(p => {
-        p.vx += (Math.random() - 0.5) * 8;
-        p.vy += (Math.random() - 0.5) * 8;
-      });
-    });
-
-    function renderAttractorSim() {
-      const rect = attCanvas.getBoundingClientRect();
-      const w = rect.width, h = rect.height;
-      if (attParticles.length === 0) initAttractorParticles(w, h);
-
-      attCtx.fillStyle = '#0b1017';
-      attCtx.fillRect(0, 0, w, h);
-
-      const depth = attDepthSlider.value / 100;
-      const b1 = { x: w * 0.35, y: h * 0.5 }, b2 = { x: w * 0.65, y: h * 0.5 };
-
-      [b1, b2].forEach(b => {
-        for (let r = 10; r < 70; r += 15) {
-          attCtx.beginPath();
-          attCtx.arc(b.x, b.y, r, 0, Math.PI * 2);
-          attCtx.strokeStyle = `rgba(13, 148, 136, ${0.05 + depth * 0.15})`;
-          attCtx.stroke();
-        }
-      });
-
-      attParticles.forEach(p => {
-        [b1, b2].forEach(b => {
-          const dx = b.x - p.x, dy = b.y - p.y;
-          const dist = Math.max(20, Math.hypot(dx, dy));
-          const force = (depth * 180) / (dist * dist);
-          p.vx += (dx / dist) * force;
-          p.vy += (dy / dist) * force;
-        });
-
-        p.vx *= 0.98; p.vy *= 0.98;
-        p.x += p.vx; p.y += p.vy;
-
-        p.tail.push({ x: p.x, y: p.y });
-        if (p.tail.length > 8) p.tail.shift();
-
-        if (p.tail.length > 1) {
-          attCtx.beginPath();
-          attCtx.moveTo(p.tail[0].x, p.tail[0].y);
-          for (let t = 1; t < p.tail.length; t++) attCtx.lineTo(p.tail[t].x, p.tail[t].y);
-          attCtx.strokeStyle = 'rgba(2, 132, 199, 0.3)';
-          attCtx.stroke();
-        }
-
-        attCtx.beginPath();
-        attCtx.arc(p.x, p.y, 2.8, 0, Math.PI * 2);
-        attCtx.fillStyle = '#38bdf8';
-        attCtx.fill();
-
-        if (p.x < 0) p.x = w; if (p.x > w) p.x = 0;
-        if (p.y < 0) p.y = h; if (p.y > h) p.y = 0;
-      });
-      requestAnimationFrame(renderAttractorSim);
-    }
-
-    const entCanvas = document.getElementById('simEntropyCanvas');
-    const entCtx = entCanvas.getContext('2d');
-    const entSlider = document.getElementById('entropyForceSlider');
-    const entVal = document.getElementById('entropyForceVal');
-    let entParticles = [];
-
-    entSlider.addEventListener('input', (e) => { entVal.innerText = `${e.target.value}%`; });
-    document.getElementById('btnThermalQuench').addEventListener('click', () => {
-      entParticles.forEach(p => { p.vx *= 0.2; p.vy *= 0.2; });
-    });
-
-    function initEntropyParticles(w, h) {
-      entParticles = [];
-      for (let i = 0; i < 60; i++) {
-        entParticles.push({
-          x: Math.random() * w, y: Math.random() * h,
-          vx: (Math.random() - 0.5) * 3, vy: (Math.random() - 0.5) * 3
-        });
-      }
-    }
-
-    function renderEntropySim() {
-      const rect = entCanvas.getBoundingClientRect();
-      const w = rect.width, h = rect.height;
-      if (entParticles.length === 0) initEntropyParticles(w, h);
-
-      entCtx.fillStyle = '#0b1017';
-      entCtx.fillRect(0, 0, w, h);
-      const enforcement = entSlider.value / 100;
-
-      entParticles.forEach(p => {
-        if (enforcement > 0.1) {
-          p.vx += (2 - p.vx) * enforcement * 0.05;
-          p.vy += (0 - p.vy) * enforcement * 0.05;
-        } else {
-          p.vx += (Math.random() - 0.5) * 0.4;
-          p.vy += (Math.random() - 0.5) * 0.4;
-        }
-
-        p.x += p.vx; p.y += p.vy;
-        const heat = Math.min(1, Math.hypot(p.vx, p.vy) / 4);
-        entCtx.beginPath();
-        entCtx.arc(p.x, p.y, 3, 0, Math.PI * 2);
-        entCtx.fillStyle = heat > 0.6 ? '#9f1239' : '#0d9488';
-        entCtx.fill();
-
-        if (p.x < 0) p.x = w; if (p.x > w) p.x = 0;
-        if (p.y < 0) p.y = h; if (p.y > h) p.y = 0;
-      });
-      requestAnimationFrame(renderEntropySim);
-    }
-
-    const vagCanvas = document.getElementById('simVagalCanvas');
-    const vagCtx = vagCanvas.getContext('2d');
-    const vagSlider = document.getElementById('vagalPeriodSlider');
-    const vagVal = document.getElementById('vagalPeriodVal');
-    let vagTime = 0;
-
-    vagSlider.addEventListener('input', (e) => { vagVal.innerText = `${(e.target.value / 10).toFixed(1)}s`; });
-    document.getElementById('btnPhysioSigh').addEventListener('click', () => { vagTime += 10; });
-
-    function renderVagalSim() {
-      const rect = vagCanvas.getBoundingClientRect();
-      const w = rect.width, h = rect.height;
-      vagCtx.fillStyle = '#0b1017';
-      vagCtx.fillRect(0, 0, w, h);
-      vagTime += 0.03;
-
-      const pacing = vagSlider.value / 10;
-      const freq = (1 / pacing) * 3;
-
-      vagCtx.strokeStyle = 'rgba(5, 150, 105, 0.2)';
-      vagCtx.beginPath();
-      vagCtx.moveTo(0, h / 2); vagCtx.lineTo(w, h / 2);
-      vagCtx.stroke();
-
-      vagCtx.beginPath();
-      vagCtx.lineWidth = 2;
-      vagCtx.strokeStyle = '#059669';
-      for (let x = 0; x < w; x += 3) {
-        const y = h / 2 + Math.sin(x * 0.02 - vagTime * freq) * 40;
-        if (x === 0) vagCtx.moveTo(x, y); else vagCtx.lineTo(x, y);
-      }
-      vagCtx.stroke();
-
-      vagCtx.beginPath();
-      vagCtx.lineWidth = 1.2;
-      vagCtx.strokeStyle = '#0284c7';
-      for (let x = 0; x < w; x += 6) {
-        const jitter = (Math.random() - 0.5) * 8 * (pacing < 4 ? 2 : 0.5);
-        const y = h / 2 + Math.sin(x * 0.04 - vagTime * 4) * 20 + jitter;
-        if (x === 0) vagCtx.moveTo(x, y); else vagCtx.lineTo(x, y);
-      }
-      vagCtx.stroke();
-      vagCtx.lineWidth = 1;
-
-      requestAnimationFrame(renderVagalSim);
-    }
-
-    const vecCanvas = document.getElementById('simVectorCanvas');
-    const vecCtx = vecCanvas.getContext('2d');
-    const vecSlider = document.getElementById('vectorAngleSlider');
-    const vecVal = document.getElementById('vectorAngleVal');
-    let incomingVectors = [];
-
-    vecSlider.addEventListener('input', (e) => { vecVal.innerText = `${e.target.value}°`; });
-    document.getElementById('btnFireVector').addEventListener('click', () => {
-      const rect = vecCanvas.getBoundingClientRect();
-      incomingVectors.push({ x: 20, y: rect.height / 2, vx: 5, vy: 0, life: 1 });
-    });
-
-    function renderVectorSim() {
-      const rect = vecCanvas.getBoundingClientRect();
-      const w = rect.width, h = rect.height;
-      vecCtx.fillStyle = '#0b1017';
-      vecCtx.fillRect(0, 0, w, h);
-
-      const angleRad = (vecSlider.value * Math.PI) / 180;
-      const targetX = w / 2, targetY = h / 2;
-
-      vecCtx.beginPath();
-      vecCtx.arc(targetX, targetY, 12, 0, Math.PI * 2);
-      vecCtx.fillStyle = '#0d9488';
-      vecCtx.fill();
-
-      vecCtx.strokeStyle = '#334155';
-      vecCtx.beginPath();
-      vecCtx.moveTo(targetX - Math.cos(angleRad) * 40, targetY - Math.sin(angleRad) * 40);
-      vecCtx.lineTo(targetX + Math.cos(angleRad) * 40, targetY + Math.sin(angleRad) * 40);
-      vecCtx.stroke();
-
-      for (let i = incomingVectors.length - 1; i >= 0; i--) {
-        const v = incomingVectors[i];
-        v.x += v.vx; v.y += v.vy;
-
-        const d = Math.hypot(v.x - targetX, v.y - targetY);
-        if (d < 30) {
-          v.vx = Math.cos(angleRad) * 4;
-          v.vy = Math.sin(angleRad) * 4;
-        }
-
-        vecCtx.beginPath();
-        vecCtx.arc(v.x, v.y, 4, 0, Math.PI * 2);
-        vecCtx.fillStyle = '#ef4444';
-        vecCtx.fill();
-
-        if (v.x > w || v.y < 0 || v.y > h) incomingVectors.splice(i, 1);
-      }
-      requestAnimationFrame(renderVectorSim);
-    }
-
-    const gosCanvas = document.getElementById('simGossipCanvas');
-    const gosCtx = gosCanvas.getContext('2d');
-    const gosSlider = document.getElementById('gossipDensitySlider');
-    const gosVal = document.getElementById('gossipDensityVal');
-    let gosNodes = [], gosPackets = [];
-
-    gosSlider.addEventListener('input', (e) => { gosVal.innerText = `${e.target.value}%`; });
-
-    function initGossipNodes(w, h) {
-      gosNodes = [];
-      for (let i = 0; i < 22; i++) {
-        gosNodes.push({ x: 40 + Math.random() * (w - 80), y: 40 + Math.random() * (h - 80), alive: true });
-      }
-    }
-
-    document.getElementById('btnSeverNode').addEventListener('click', () => {
-      const aliveOnes = gosNodes.filter(n => n.alive);
-      if (aliveOnes.length > 5) {
-        aliveOnes[Math.floor(Math.random() * aliveOnes.length)].alive = false;
-      }
-    });
-
-    let packetTimer = 0;
-    function renderGossipSim() {
-      const rect = gosCanvas.getBoundingClientRect();
-      const w = rect.width, h = rect.height;
-      if (gosNodes.length === 0) initGossipNodes(w, h);
-
-      gosCtx.fillStyle = '#0b1017';
-      gosCtx.fillRect(0, 0, w, h);
-      const maxDist = (gosSlider.value / 100) * 120 + 40;
-
-      for (let i = 0; i < gosNodes.length; i++) {
-        for (let j = i + 1; j < gosNodes.length; j++) {
-          const n1 = gosNodes[i], n2 = gosNodes[j];
-          if (!n1.alive || !n2.alive) continue;
-          const d = Math.hypot(n1.x - n2.x, n1.y - n2.y);
-          if (d < maxDist) {
-            gosCtx.strokeStyle = `rgba(2, 132, 199, ${(maxDist - d) / maxDist * 0.3})`;
-            gosCtx.beginPath();
-            gosCtx.moveTo(n1.x, n1.y); gosCtx.lineTo(n2.x, n2.y);
-            gosCtx.stroke();
-          }
-        }
-      }
-
-      gosNodes.forEach(n => {
-        gosCtx.beginPath();
-        gosCtx.arc(n.x, n.y, 4.5, 0, Math.PI * 2);
-        gosCtx.fillStyle = n.alive ? '#0d9488' : '#9f1239';
-        gosCtx.fill();
-      });
-
-      packetTimer++;
-      if (packetTimer % 45 === 0 && gosNodes.filter(n => n.alive).length > 2) {
-        const live = gosNodes.filter(n => n.alive);
-        const start = live[Math.floor(Math.random() * live.length)];
-        gosPackets.push({ x: start.x, y: start.y, target: live[Math.floor(Math.random() * live.length)], p: 0 });
-      }
-
-      for (let k = gosPackets.length - 1; k >= 0; k--) {
-        const pkt = gosPackets[k];
-        pkt.p += 0.04;
-        const curX = pkt.x + (pkt.target.x - pkt.x) * pkt.p;
-        const curY = pkt.y + (pkt.target.y - pkt.y) * pkt.p;
-
-        gosCtx.beginPath();
-        gosCtx.arc(curX, curY, 2.5, 0, Math.PI * 2);
-        gosCtx.fillStyle = '#f1f5f9';
-        gosCtx.fill();
-
-        if (pkt.p >= 1) gosPackets.splice(k, 1);
-      }
-      requestAnimationFrame(renderGossipSim);
-    }
-
-    const disCanvas = document.getElementById('simDissolutionCanvas');
-    const disCtx = disCanvas.getContext('2d');
-    const disSlider = document.getElementById('dissolutionRateSlider');
-    const disVal = document.getElementById('dissolutionRateVal');
-    let disParticles = [], disTime = 0;
-
-    disSlider.addEventListener('input', (e) => { disVal.innerText = `${e.target.value}%`; });
-
-    function initDissolutionParticles(w, h) {
-      disParticles = [];
-      for (let i = 0; i < 70; i++) {
-        disParticles.push({
-          angle: Math.random() * Math.PI * 2,
-          radius: Math.random() * (w * 0.4),
-          speed: 0.01 + Math.random() * 0.02
-        });
-      }
-    }
-
-    document.getElementById('btnSpawnCoalescence').addEventListener('click', () => {
-      disParticles.forEach(p => { p.radius = 15 + Math.random() * 25; });
-    });
-
-    function renderDissolutionSim() {
-      const rect = disCanvas.getBoundingClientRect();
-      const w = rect.width, h = rect.height;
-      if (disParticles.length === 0) initDissolutionParticles(w, h);
-
-      disCtx.fillStyle = '#0b1017';
-      disCtx.fillRect(0, 0, w, h);
-      disTime += 0.02;
-
-      const rate = disSlider.value / 100;
-      const cx = w / 2, cy = h / 2;
-
-      disParticles.forEach(p => {
-        p.angle += p.speed;
-        p.radius += rate * 0.6;
-        if (p.radius > w * 0.48) p.radius = 10;
-
-        const x = cx + Math.cos(p.angle) * p.radius;
-        const y = cy + Math.sin(p.angle) * p.radius;
-
-        disCtx.beginPath();
-        disCtx.arc(x, y, 2.2, 0, Math.PI * 2);
-        disCtx.fillStyle = p.radius < 45 ? '#0d9488' : 'rgba(2, 132, 199, 0.4)';
-        disCtx.fill();
-      });
-
-      disCtx.beginPath();
-      disCtx.arc(cx, cy, 8, 0, Math.PI * 2);
-      disCtx.fillStyle = '#f1f5f9';
-      disCtx.fill();
-
-      requestAnimationFrame(renderDissolutionSim);
-    }
-
-    function initAllCanvases() {
-      setRetinaBacking(rCanvas);
-      setRetinaBacking(eCanvas);
-      setRetinaBacking(aCanvas);
-      setRetinaBacking(attCanvas);
-      setRetinaBacking(entCanvas);
-      setRetinaBacking(vagCanvas);
-      setRetinaBacking(vecCanvas);
-      setRetinaBacking(gosCanvas);
-      setRetinaBacking(disCanvas);
-    }
-    window.addEventListener('resize', initAllCanvases);
-    initAllCanvases();
-
-    renderReactionSim();
-    renderEgoSim();
-    renderAttachSim();
-    renderAttractorSim();
-    renderEntropySim();
-    renderVagalSim();
-    renderVectorSim();
-    renderGossipSim();
-    renderDissolutionSim();
-
-    /* --- Folio Modal & Dedicated Mini Diagram Engine --- */
-    const folioModal = document.getElementById('folioModal');
-    const modalCloseBtn = document.getElementById('modalCloseBtn');
-    const modalFolioTag = document.getElementById('modalFolioTag');
-    const modalFolioTitle = document.getElementById('modalFolioTitle');
-    const modalFolioBody = document.getElementById('modalFolioBody');
-    const modalDiagramName = document.getElementById('modalDiagramName');
-    const modalDiagramThesis = document.getElementById('modalDiagramThesis');
-    const modalPrevBtn = document.getElementById('modalPrevBtn');
-    const modalNextBtn = document.getElementById('modalNextBtn');
-    const modalCopyFolioBtn = document.getElementById('modalCopyFolioBtn');
-    const modalExportCardBtn = document.getElementById('modalExportCardBtn');
-    const modalDiagramCanvas = document.getElementById('modalDiagramCanvas');
-    const modalParamSlider = document.getElementById('modalParamSlider');
-    const modalSliderVal = document.getElementById('modalSliderVal');
-    const mCtx = modalDiagramCanvas.getContext('2d');
-    
-    let currentModalFolioId = 1;
-    let modalAnimFrame;
-    let modalTime = 0;
-    let modalParticles = [];
-    let modalMouse = { x: -999, y: -999, active: false };
-
-    modalDiagramCanvas.addEventListener('mousemove', (e) => {
-      const rect = modalDiagramCanvas.getBoundingClientRect();
-      modalMouse.x = e.clientX - rect.left;
-      modalMouse.y = e.clientY - rect.top;
-      modalMouse.active = true;
-    });
-    modalDiagramCanvas.addEventListener('mouseleave', () => { modalMouse.active = false; });
-    modalParamSlider.addEventListener('input', (e) => { modalSliderVal.innerText = `${e.target.value}%`; });
-
-    function openFolioModal(id) {
-      const f = folios.find(item => item.id == id);
-      if (!f) return;
-      currentModalFolioId = id;
-
-      modalFolioTag.innerText = `Book ${f.book} • Folio ${f.id < 10 ? '0' + f.id : f.id}`;
-      modalFolioTitle.innerText = f.title;
-      modalDiagramName.innerText = `Bespoke Simulation Engine ${f.id}`;
-      modalDiagramThesis.innerText = f.thesis;
-
-      modalFolioBody.innerHTML = `
-        ${f.essay}
-        <div class="modal-praxis-box">
-          <h5>Somatic Daily Praxis</h5>
-          <p style="margin: 0; color: #f1f5f9; font-size: 0.95rem;">${f.praxis}</p>
-        </div>
-      `;
-
-      folioModal.style.display = 'block';
-      document.body.style.overflow = 'hidden';
-
-      const dpr = window.devicePixelRatio || 1;
-      const rect = modalDiagramCanvas.getBoundingClientRect();
-      const targetWidth = rect.width > 0 ? rect.width : 780;
-      const targetHeight = rect.height > 0 ? rect.height : 280;
-
-      modalDiagramCanvas.width = targetWidth * dpr;
-      modalDiagramCanvas.height = targetHeight * dpr;
-      mCtx.resetTransform();
-      mCtx.scale(dpr, dpr);
-
-      modalParticles = [];
-      for (let i = 0; i < 45; i++) {
-        modalParticles.push({
-          x: Math.random() * targetWidth, y: Math.random() * targetHeight,
-          vx: (Math.random() - 0.5) * 2.2, vy: (Math.random() - 0.5) * 2.2,
-          radius: 2 + Math.random() * 2.5, phase: Math.random() * Math.PI * 2,
-          tail: []
-        });
-      }
-
-      if (modalAnimFrame) cancelAnimationFrame(modalAnimFrame);
-      renderModalSimulation(f.id, targetWidth, targetHeight);
-    }
-
-    function closeModal() {
-      folioModal.style.display = 'none';
-      document.body.style.overflow = '';
-      if (modalAnimFrame) cancelAnimationFrame(modalAnimFrame);
-    }
-
-    modalCloseBtn.addEventListener('click', closeModal);
-    folioModal.addEventListener('click', (e) => { if (e.target === folioModal) closeModal(); });
-    modalPrevBtn.addEventListener('click', () => { if (currentModalFolioId > 1) openFolioModal(currentModalFolioId - 1); });
-    modalNextBtn.addEventListener('click', () => { if (currentModalFolioId < 36) openFolioModal(currentModalFolioId + 1); });
-
-    modalCopyFolioBtn.addEventListener('click', () => {
-      const f = folios.find(item => item.id == currentModalFolioId);
-      if (f) {
-        const text = `FOLIO ${f.id < 10 ? '0' + f.id : f.id}: ${f.title}\nBook ${f.book}\n\n${f.mech}\n\nPRAXIS:\n${f.praxis}\n\n${f.essay.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim()}`;
-        navigator.clipboard.writeText(text).then(() => alert("Folio essay copied to clipboard."));
-      }
-    });
-
-    modalExportCardBtn.addEventListener('click', () => {
-      closeModal();
-      loadFolioIntoCard(currentModalFolioId);
-    });
-
-    /* =======================================================
-       36-ENGINE REAL-TIME MATHEMATICAL SIMULATION MATRIX
-       ======================================================= */
-    function renderModalSimulation(folioId, w, h) {
-      mCtx.fillStyle = '#06090e';
-      mCtx.fillRect(0, 0, w, h);
-      modalTime += 0.025;
-      const param = modalParamSlider.value / 100;
-      const cx = w / 2, cy = h / 2;
-
-      switch(folioId) {
-        case 1:
-          mCtx.beginPath();
-          mCtx.arc(cx, cy, 22 * (1 - param * 0.4), 0, Math.PI * 2);
-          mCtx.fillStyle = `rgba(159, 18, 57, ${1 - param * 0.8})`;
-          mCtx.strokeStyle = '#334155';
-          mCtx.fill(); mCtx.stroke();
-          for(let i=0; i<8; i++) {
-            const a = (i/8)*Math.PI*2 + modalTime*0.4;
-            const r = 60 + Math.sin(modalTime*2 + i)*12;
-            const px = cx + Math.cos(a)*r, py = cy + Math.sin(a)*r;
-            mCtx.beginPath(); mCtx.arc(px, py, 4, 0, Math.PI*2);
-            mCtx.fillStyle = '#0d9488'; mCtx.fill();
-            mCtx.beginPath(); mCtx.moveTo(w*0.1, cy); mCtx.lineTo(px, py); mCtx.lineTo(w*0.9, cy);
-            mCtx.strokeStyle = 'rgba(13, 148, 136, 0.2)'; mCtx.stroke();
-          }
-          break;
-
-        case 2:
-          mCtx.strokeStyle = '#334155';
-          mCtx.strokeRect(cx - 10, 20, 20, h - 40);
-          mCtx.fillStyle = 'rgba(13, 148, 136, 0.15)';
-          mCtx.fillRect(cx - 10, 20, 20, h - 40);
-          for(let i=0; i<modalParticles.length; i++) {
-            const p = modalParticles[i];
-            p.x += (1.5 + param);
-            const inFilter = p.x >= cx - 10 && p.x <= cx + 10;
-            p.color = inFilter ? '#059669' : (p.x < cx ? '#0284c7' : '#f1f5f9');
-            mCtx.beginPath(); mCtx.arc(p.x, p.y, p.radius, 0, Math.PI*2);
-            mCtx.fillStyle = p.color; mCtx.fill();
-            if(p.x > w) p.x = 0;
-          }
-          break;
-
-        case 3:
-          const cols = 8, rows = 5;
-          const gx = w / (cols + 1), gy = h / (rows + 1);
-          for(let r=1; r<=rows; r++) {
-            for(let c=1; c<=cols; c++) {
-              const jitter = param > 0.4 ? (Math.random() - 0.5) * (param * 14) : 0;
-              const px = c * gx + jitter, py = r * gy + jitter;
-              mCtx.beginPath(); mCtx.arc(px, py, 3, 0, Math.PI*2);
-              mCtx.fillStyle = param > 0.4 ? '#9f1239' : '#0d9488';
-              mCtx.fill();
-            }
-          }
-          break;
-
-        case 4:
-          for(let i=0; i<10; i++) {
-            const a = (i/10)*Math.PI*2 + modalTime*0.2;
-            const r = 70;
-            const px = cx + Math.cos(a)*r, py = cy + Math.sin(a)*r;
-            mCtx.beginPath(); mCtx.arc(px, py, 4, 0, Math.PI*2);
-            mCtx.fillStyle = '#38bdf8'; mCtx.fill();
-            for(let j=i+1; j<10; j++) {
-              const a2 = (j/10)*Math.PI*2 + modalTime*0.2;
-              mCtx.beginPath(); mCtx.moveTo(px, py);
-              mCtx.lineTo(cx + Math.cos(a2)*r, cy + Math.sin(a2)*r);
-              mCtx.strokeStyle = `rgba(2, 132, 199, ${0.1 + param*0.4})`;
-              mCtx.stroke();
-            }
-          }
-          break;
-
-        case 5:
-          mCtx.beginPath();
-          mCtx.lineWidth = 2;
-          for(let x=0; x<w; x+=3) {
-            const damp = x > cx ? (1 - param * 0.9) : 1;
-            const y = cy + Math.sin(x*0.05 - modalTime*3) * (35 * damp);
-            mCtx.strokeStyle = x > cx ? '#0d9488' : '#ef4444';
-            if(x===0) mCtx.moveTo(x, y); else mCtx.lineTo(x, y);
-          }
-          mCtx.stroke(); mCtx.lineWidth = 1;
-          break;
-
-        case 6:
-          mCtx.strokeStyle = `rgba(13, 148, 136, ${0.2 + param*0.5})`;
-          mCtx.setLineDash([8, 8]);
-          mCtx.strokeRect(cx - 60, 30, 120, h - 60);
-          mCtx.setLineDash([]);
-          modalParticles.forEach(p => {
-            p.x += p.vx; p.y += p.vy;
-            if(p.x < 0 || p.x > w) p.vx *= -1;
-            if(p.y < 0 || p.y > h) p.vy *= -1;
-            mCtx.beginPath(); mCtx.arc(p.x, p.y, p.radius, 0, Math.PI*2);
-            mCtx.fillStyle = '#0284c7'; mCtx.fill();
-          });
-          break;
-
-        case 7:
-          mCtx.beginPath();
-          mCtx.arc(cx, cy, 25, 0, Math.PI*2);
-          mCtx.fillStyle = param > 0.4 ? '#9f1239' : '#131a24';
-          mCtx.fill();
-          modalParticles.forEach(p => {
-            p.x += 3 * (1 - param * 0.5);
-            const d = Math.hypot(p.x - cx, p.y - cy);
-            if(d < 45 && param > 0.3) {
-              p.y += (Math.random() - 0.5) * 8 * param;
-            }
-            mCtx.beginPath(); mCtx.arc(p.x, p.y, 2, 0, Math.PI*2);
-            mCtx.fillStyle = d < 45 && param > 0.3 ? '#ef4444' : '#0284c7';
-            mCtx.fill();
-            if(p.x > w) p.x = 0;
-          });
-          break;
-
-        case 8:
-          const gapW = w * 0.4 * (0.1 + param * 0.8);
-          mCtx.fillStyle = 'rgba(13, 148, 136, 0.1)';
-          mCtx.fillRect(cx - gapW/2, 20, gapW, h - 40);
-          mCtx.strokeStyle = '#334155';
-          mCtx.strokeRect(cx - gapW/2, 20, gapW, h - 40);
-          mCtx.beginPath(); mCtx.arc(cx, cy, 6, 0, Math.PI*2);
-          mCtx.fillStyle = '#059669'; mCtx.fill();
-          break;
-
-        case 9:
-          for(let i=0; i<30; i++) {
-            const a = (i/30)*Math.PI*2 + modalTime*(0.5 + param);
-            const r = 20 + i*3;
-            mCtx.beginPath(); mCtx.arc(cx + Math.cos(a)*r, cy + Math.sin(a)*r, 2, 0, Math.PI*2);
-            mCtx.fillStyle = '#0d9488'; mCtx.fill();
-          }
-          break;
-
-        case 10:
-          mCtx.beginPath();
-          mCtx.arc(cx, cy, 50, 0, Math.PI*2);
-          mCtx.strokeStyle = param > 0.5 ? '#9f1239' : '#0284c7';
-          mCtx.stroke();
-          const lp = (modalTime * 2) % (Math.PI*2);
-          mCtx.beginPath();
-          mCtx.arc(cx + Math.cos(lp)*50, cy + Math.sin(lp)*50, 5, 0, Math.PI*2);
-          mCtx.fillStyle = '#ef4444'; mCtx.fill();
-          break;
-
-        case 11:
-          mCtx.fillStyle = param > 0.6 ? (Math.sin(modalTime*12) > 0 ? '#1a2332' : '#06090e') : '#06090e';
-          mCtx.fillRect(0, 0, w, h);
-          mCtx.beginPath(); mCtx.arc(cx, cy, 14, 0, Math.PI*2);
-          mCtx.fillStyle = '#0d9488'; mCtx.fill();
-          break;
-
-        case 12:
-          modalParticles.forEach((p, idx) => {
-            if(idx > modalParticles.length * (1 - param)) return;
-            p.x += p.vx; p.y += p.vy;
-            mCtx.beginPath(); mCtx.arc(p.x, p.y, 2, 0, Math.PI*2);
-            mCtx.fillStyle = '#64748b'; mCtx.fill();
-          });
-          mCtx.beginPath(); mCtx.arc(cx, cy, 10, 0, Math.PI*2);
-          mCtx.fillStyle = '#f1f5f9'; mCtx.fill();
-          break;
-
-        case 13:
-          for(let i=0; i<8; i++) {
-            const a = (i/8)*Math.PI*2 + modalTime*0.3;
-            const r = 60 + (param > 0.5 ? Math.sin(modalTime + i)*25 : 0);
-            mCtx.beginPath(); mCtx.arc(cx + Math.cos(a)*r, cy + Math.sin(a)*r, 4, 0, Math.PI*2);
-            mCtx.fillStyle = '#0d9488'; mCtx.fill();
-          }
-          break;
-
-        case 14:
-          const ang = (param * 60) * Math.PI / 180;
-          mCtx.beginPath(); mCtx.moveTo(20, cy); mCtx.lineTo(cx, cy);
-          mCtx.lineTo(w - 20, cy - Math.sin(ang)*100);
-          mCtx.strokeStyle = '#059669'; mCtx.lineWidth = 2; mCtx.stroke(); mCtx.lineWidth = 1;
-          break;
-
-        case 15:
-          mCtx.strokeStyle = '#334155';
-          mCtx.beginPath(); mCtx.moveTo(0, cy); mCtx.lineTo(w, cy); mCtx.stroke();
-          for(let i=0; i<12; i++) {
-            const px = (i/12)*w;
-            const py = cy + 20 + Math.sin(modalTime*2 + i)*15;
-            mCtx.beginPath(); mCtx.arc(px, py, 2.5, 0, Math.PI*2);
-            mCtx.fillStyle = '#0284c7'; mCtx.fill();
-          }
-          break;
-
-        case 16:
-          mCtx.beginPath();
-          mCtx.arc(cx + 40, cy, 60, Math.PI*0.7, Math.PI*1.3);
-          mCtx.strokeStyle = '#0d9488'; mCtx.lineWidth = 3; mCtx.stroke(); mCtx.lineWidth = 1;
-          mCtx.beginPath(); mCtx.moveTo(cx - 60, cy); mCtx.lineTo(cx - 20, cy);
-          mCtx.strokeStyle = '#ef4444'; mCtx.stroke();
-          break;
-
-        case 17:
-          for(let i=0; i<4; i++) {
-            const gx2 = w*0.2 + i*(w*0.2);
-            mCtx.beginPath();
-            mCtx.ellipse(gx2, cy, 14, 25, modalTime*(1 + param), 0, Math.

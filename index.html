@@ -1,30 +1,35 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>THE COMMONS — Leaderless Philosophical Protocol</title>
-  <meta name="description" content="A leaderless, uncapturable philosophical protocol and phenomenological kinetic diagram engine. Zero hierarchy, zero tithes, verified in direct conduct.">
-
-  <!-- Embedded SVG Favicon -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b0d10'/%3E%3Ccircle cx='32' cy='32' r='22' fill='none' stroke='%23252b36' stroke-width='2'/%3E%3Ccircle cx='32' cy='32' r='14' fill='none' stroke='%23d4af37' stroke-width='1.5' stroke-dasharray='4 3'/%3E%3Ccircle cx='32' cy='32' r='4' fill='%2338bdf8'/%3E%3Ccircle cx='32' cy='12' r='2.5' fill='%23d4af37'/%3E%3Ccircle cx='49' cy='42' r='2.5' fill='%23d4af37'/%3E%3Ccircle cx='15' cy='42' r='2.5' fill='%23d4af37'/%3E%3Cpath d='M32 12 L49 42 L15 42 Z' fill='none' stroke='%23d4af37' stroke-width='1' opacity='0.55'/%3E%3C/svg%3E">
+  <title>The Commons | The Open Protocol</title>
+  <meta name="description" content="A leaderless, uncapturable philosophical architecture and phenomenological diagram engine.">
+  
+  <!-- Embedded High-Resolution Scalable Vector Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><circle cx='32' cy='32' r='30' fill='%230b1017' stroke='%23334155' stroke-width='2'/><circle cx='32' cy='32' r='18' fill='none' stroke='%230284c7' stroke-width='1.5' stroke-dasharray='4 2'/><circle cx='32' cy='32' r='4' fill='%230d9488'/><circle cx='32' cy='14' r='2.5' fill='%2394a3b8'/><circle cx='48' cy='40' r='2.5' fill='%2394a3b8'/><circle cx='16' cy='40' r='2.5' fill='%2394a3b8'/><path d='M32 14 L48 40 L16 40 Z' fill='none' stroke='%23334155' stroke-width='1' opacity='0.7'/></svg>">
 
   <style>
     :root {
-      --bg: #0b0d10;
-      --bg-surface: #11151c;
-      --bg-elevated: #181d26;
-      --border: #232a36;
-      --border-accent: #374254;
-      --text: #e2e8f0;
-      --text-muted: #94a3b8;
-      --gold: #d4af37;
-      --gold-glow: rgba(212, 175, 55, 0.22);
-      --cyan: #38bdf8;
-      --cyan-glow: rgba(56, 189, 248, 0.22);
-      --crimson: #f43f5e;
-      --crimson-glow: rgba(244, 63, 94, 0.25);
-      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      /* Mineral & Geological Pigments */
+      --bg-primary: #0b1017;       /* Deep Sodalite Charcoal */
+      --bg-surface: #131a24;       /* Weathered Basalt */
+      --bg-elevated: #1a2332;      /* Slate Blue */
+      --border: #232d3d;           /* Polished Ironstone */
+      --border-accent: #334155;    /* Banded Flint */
+      
+      --text-main: #f1f5f9;        /* Polished Milk Quartz */
+      --text-muted: #94a3b8;       /* Weathered River-Chalk */
+      --text-dim: #64748b;         /* Wet Slate */
+      
+      --accent-mineral: #0284c7;   /* Deep Sea Mineral Blue */
+      --accent-mineral-soft: rgba(2, 132, 199, 0.12);
+      --accent-turquoise: #0d9488; /* Matte Polished Turquoise */
+      --accent-jade: #059669;      /* Riverstone Jade */
+      --accent-hematite: #9f1239;  /* Raw Hematite / Crushed Iron */
+      --accent-ochre: #7c2d12;     /* Dry Mineral Ochre */
+
+      --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
       --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
     }
 
@@ -35,39 +40,35 @@
     }
 
     body {
-      background-color: var(--bg);
-      color: var(--text);
-      font-family: var(--font-sans);
+      background-color: var(--bg-primary);
+      color: var(--text-main);
+      font-family: var(--font-body);
       line-height: 1.65;
       overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
     }
-
-    /* Custom Scrollbar */
-    ::-webkit-scrollbar { width: 7px; }
-    ::-webkit-scrollbar-track { background: var(--bg); }
-    ::-webkit-scrollbar-thumb { background: #1f2735; border-radius: 4px; }
-    ::-webkit-scrollbar-thumb:hover { background: var(--gold); }
 
     a {
-      color: var(--cyan);
+      color: var(--accent-turquoise);
       text-decoration: none;
-      transition: color 0.2s ease;
+      transition: color 0.15s ease;
     }
-    a:hover { color: var(--gold); }
 
-    /* Navigation */
+    a:hover {
+      color: var(--accent-mineral);
+    }
+
+    /* Layout & Header */
     header {
       position: sticky;
       top: 0;
       z-index: 100;
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      background-color: rgba(11, 13, 16, 0.88);
+      backdrop-filter: blur(12px);
+      background-color: rgba(11, 16, 23, 0.88);
       border-bottom: 1px solid var(--border);
     }
-    .nav-wrap {
+
+    .nav-container {
       max-width: 1200px;
       margin: 0 auto;
       padding: 0.85rem 1.5rem;
@@ -75,541 +76,424 @@
       justify-content: space-between;
       align-items: center;
     }
+
     .brand {
       display: flex;
       align-items: center;
       gap: 0.75rem;
       font-weight: 700;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.06em;
       color: #fff;
-      font-size: 1.05rem;
+      font-size: 1rem;
     }
-    .brand-symbol {
-      width: 24px;
-      height: 24px;
-      border: 1.5px solid var(--gold);
-      border-radius: 50%;
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+
+    .brand-glyph {
+      width: 20px;
+      height: 20px;
+      fill: none;
+      stroke: var(--accent-turquoise);
+      stroke-width: 2;
     }
-    .brand-symbol::after {
-      content: '';
-      width: 6px;
-      height: 6px;
-      background: var(--cyan);
-      border-radius: 50%;
-      box-shadow: 0 0 8px var(--cyan);
-    }
+
     .nav-links {
       display: flex;
-      gap: 1.35rem;
-      font-size: 0.82rem;
+      gap: 1.4rem;
+      font-size: 0.85rem;
       font-family: var(--font-mono);
       list-style: none;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-    .nav-links a { color: var(--text-muted); }
-    .nav-links a:hover { color: var(--gold); }
-
-    @media (max-width: 768px) {
-      .nav-links { display: none; }
     }
 
-    /* Common Layout */
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 1.5rem;
-    }
-    section {
-      padding: 5rem 0;
-      border-top: 1px solid var(--border);
-    }
-    .section-header {
-      text-align: center;
-      max-width: 780px;
-      margin: 0 auto 3.25rem;
-    }
-    .tagline {
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      color: var(--gold);
-      margin-bottom: 0.75rem;
-      display: inline-block;
-    }
-    .section-title {
-      font-size: clamp(1.8rem, 3.5vw, 2.5rem);
-      font-weight: 800;
-      color: #fff;
-      letter-spacing: -0.02em;
-      line-height: 1.2;
-      margin-bottom: 0.85rem;
-    }
-    .section-subtitle {
+    .nav-links a {
       color: var(--text-muted);
-      font-size: 0.98rem;
     }
 
-    /* Buttons */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      padding: 0.75rem 1.4rem;
-      font-size: 0.82rem;
-      font-family: var(--font-mono);
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      border-radius: 6px;
-      border: 1px solid transparent;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      text-decoration: none;
-    }
-    .btn-gold {
-      background: var(--gold);
-      color: #0b0d10;
-      box-shadow: 0 0 20px var(--gold-glow);
-    }
-    .btn-gold:hover {
-      background: #dfbc4c;
-      transform: translateY(-1px);
-    }
-    .btn-outline {
-      background: rgba(255, 255, 255, 0.03);
-      color: var(--text);
-      border-color: var(--border);
-    }
-    .btn-outline:hover {
-      background: var(--bg-elevated);
-      border-color: var(--cyan);
-      color: #fff;
+    .nav-links a:hover {
+      color: var(--accent-mineral);
     }
 
-    /* Hero Section */
+    /* Hero */
     .hero {
-      padding: 6.5rem 0 5rem;
-      text-align: center;
       position: relative;
+      padding: 6rem 1.5rem 4.5rem;
+      text-align: center;
+      max-width: 920px;
+      margin: 0 auto;
     }
-    .hero-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.4rem 0.95rem;
-      background: rgba(212, 175, 55, 0.08);
-      border: 1px solid rgba(212, 175, 55, 0.25);
-      border-radius: 9999px;
+
+    .badge {
+      display: inline-block;
       font-family: var(--font-mono);
       font-size: 0.75rem;
-      color: var(--gold);
-      margin-bottom: 1.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      padding: 0.35rem 0.85rem;
+      border-radius: 4px;
+      background: var(--bg-surface);
+      color: var(--accent-turquoise);
+      border: 1px solid var(--border-accent);
+      margin-bottom: 1.5rem;
     }
-    .pulse-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: var(--cyan);
-      box-shadow: 0 0 8px var(--cyan);
-      animation: pulse 2s infinite;
-    }
-    @keyframes pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.4; transform: scale(0.85); }
-    }
-    .hero h1 {
-      font-size: clamp(2.3rem, 5.5vw, 4rem);
+
+    h1 {
+      font-size: clamp(2.2rem, 5vw, 3.4rem);
       font-weight: 800;
+      letter-spacing: -0.025em;
+      line-height: 1.15;
+      margin-bottom: 1.25rem;
       color: #fff;
-      line-height: 1.12;
-      letter-spacing: -0.03em;
-      margin-bottom: 1.4rem;
     }
-    .hero h1 span {
-      background: linear-gradient(135deg, #fff 40%, var(--gold) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
+
     .hero p {
-      font-size: clamp(1.05rem, 2vw, 1.2rem);
+      font-size: 1.12rem;
       color: var(--text-muted);
-      max-width: 740px;
-      margin: 0 auto 2.5rem;
-      font-weight: 400;
+      margin-bottom: 2rem;
+      max-width: 720px;
+      margin-left: auto;
+      margin-right: auto;
     }
-    .hero-actions {
+
+    .btn-row {
       display: flex;
       justify-content: center;
       gap: 1rem;
       flex-wrap: wrap;
     }
 
-    /* Manifesto Cards */
-    .manifesto-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 1.5rem;
-      margin-top: 1rem;
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.875rem;
+      font-family: var(--font-mono);
+      font-weight: 600;
+      padding: 0.75rem 1.4rem;
+      border-radius: 4px;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: all 0.2s ease;
     }
-    .panel {
+
+    .btn-primary {
+      background: var(--text-main);
+      color: var(--bg-primary);
+    }
+
+    .btn-primary:hover {
+      background: #fff;
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
       background: var(--bg-surface);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 1.75rem;
-      position: relative;
-      transition: border-color 0.25s ease;
-    }
-    .panel:hover {
+      color: var(--text-main);
       border-color: var(--border-accent);
     }
-    .panel-num {
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
-      color: var(--gold);
-      margin-bottom: 0.5rem;
+
+    .btn-secondary:hover {
+      background: var(--bg-elevated);
+      border-color: var(--accent-turquoise);
     }
-    .panel h3 {
-      font-size: 1.25rem;
+
+    /* Global Sections */
+    section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 4.5rem 1.5rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .section-header {
+      margin-bottom: 2.5rem;
+      text-align: center;
+    }
+
+    .section-title {
+      font-size: 1.85rem;
       font-weight: 700;
       color: #fff;
-      margin-bottom: 0.75rem;
+      margin-bottom: 0.5rem;
     }
-    .panel p {
+
+    .section-subtitle {
+      color: var(--text-muted);
+      max-width: 650px;
+      margin: 0 auto;
+      font-size: 0.95rem;
+    }
+
+    /* Philosophy Matrix */
+    .philosophy-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1.75rem;
+      position: relative;
+    }
+
+    .card h3 {
+      font-size: 1.15rem;
+      color: #fff;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .card p {
       color: var(--text-muted);
       font-size: 0.92rem;
       line-height: 1.6;
     }
 
-    /* Epistemic Matrix Table */
-    .table-container {
+    .matrix-table-wrap {
       overflow-x: auto;
+      margin-top: 1.5rem;
       background: var(--bg-surface);
       border: 1px solid var(--border);
-      border-radius: 8px;
-      margin-top: 2rem;
+      border-radius: 6px;
     }
-    table {
+
+    table.matrix-table {
       width: 100%;
       border-collapse: collapse;
       text-align: left;
       font-size: 0.88rem;
     }
-    th, td {
+
+    table.matrix-table th, table.matrix-table td {
       padding: 1rem 1.25rem;
       border-bottom: 1px solid var(--border);
     }
-    th {
+
+    table.matrix-table th {
       background: var(--bg-elevated);
       color: var(--text-muted);
       font-family: var(--font-mono);
-      font-size: 0.75rem;
+      font-weight: 500;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
-    }
-    tr:last-child td { border-bottom: none; }
-    .col-protocol {
-      color: var(--gold);
-      background: rgba(212, 175, 55, 0.03);
-      font-weight: 600;
-      border-left: 1px solid rgba(212, 175, 55, 0.2);
+      font-size: 0.75rem;
+      letter-spacing: 0.05em;
     }
 
-    /* Kinetic Diagram Engines Layout */
-    .sim-card {
+    table.matrix-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .col-highlight {
+      color: var(--accent-turquoise);
+      font-weight: 600;
+      background: rgba(13, 148, 136, 0.04);
+    }
+
+    /* Kinetic Diagram Engines */
+    .sim-container {
       display: grid;
       grid-template-columns: 1fr 340px;
-      gap: 1.75rem;
+      gap: 1.5rem;
       background: var(--bg-surface);
       border: 1px solid var(--border);
-      border-radius: 10px;
+      border-radius: 6px;
       padding: 1.5rem;
-      margin-bottom: 2.5rem;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      margin-bottom: 2rem;
     }
-    @media (max-width: 960px) {
-      .sim-card { grid-template-columns: 1fr; }
+
+    @media (max-width: 860px) {
+      .sim-container {
+        grid-template-columns: 1fr;
+      }
     }
-    .canvas-box {
+
+    .canvas-wrapper {
       position: relative;
       width: 100%;
-      height: 400px;
-      background: #080a0d;
-      border-radius: 6px;
+      height: 380px;
+      background: var(--bg-primary);
+      border-radius: 4px;
       overflow: hidden;
       border: 1px solid var(--border);
     }
-    canvas.gl-canvas {
+
+    canvas.sim-canvas {
       width: 100%;
       height: 100%;
       display: block;
     }
-    .sim-sidebar {
+
+    .sim-panel {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      gap: 1.25rem;
     }
-    .sim-info h3 {
-      font-size: 1.2rem;
+
+    .sim-panel h4 {
+      font-size: 1.1rem;
       color: #fff;
       margin-bottom: 0.5rem;
     }
-    .sim-info p {
-      font-size: 0.875rem;
+
+    .sim-panel p {
+      font-size: 0.85rem;
       color: var(--text-muted);
-      line-height: 1.55;
+      margin-bottom: 1.25rem;
     }
-    .sim-controls {
-      display: flex;
-      flex-direction: column;
-      gap: 1.25rem;
-      background: var(--bg-elevated);
-      padding: 1.2rem;
-      border-radius: 6px;
-      border: 1px solid rgba(255, 255, 255, 0.04);
+
+    .control-group {
+      margin-bottom: 1.2rem;
     }
-    .control-row {
-      display: flex;
-      flex-direction: column;
-      gap: 0.4rem;
-    }
+
     .control-label {
       display: flex;
       justify-content: space-between;
-      font-family: var(--font-mono);
       font-size: 0.78rem;
+      font-family: var(--font-mono);
       color: var(--text-muted);
-    }
-    .control-label span:last-child {
-      color: var(--gold);
-      font-weight: 600;
-    }
-    input[type="range"] {
-      -webkit-appearance: none;
-      width: 100%;
-      height: 5px;
-      border-radius: 4px;
-      background: #252d3a;
-      outline: none;
-    }
-    input[type="range"]::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      width: 16px;
-      height: 16px;
-      border-radius: 50%;
-      background: var(--gold);
-      cursor: pointer;
-      box-shadow: 0 0 10px var(--gold-glow);
+      margin-bottom: 0.4rem;
     }
 
-    /* The 7 Protocols Accordion */
-    .protocol-accordion {
+    input[type="range"] {
+      width: 100%;
+      accent-color: var(--accent-turquoise);
+    }
+
+    /* Axiom Accordion */
+    .axiom-list {
       display: flex;
       flex-direction: column;
-      gap: 1rem;
+      gap: 0.85rem;
     }
-    .protocol-node {
+
+    .axiom-item {
       background: var(--bg-surface);
       border: 1px solid var(--border);
-      border-radius: 8px;
+      border-radius: 4px;
       overflow: hidden;
-      transition: border-color 0.2s ease;
     }
-    .protocol-node.active {
-      border-color: var(--gold);
-      box-shadow: 0 0 25px rgba(212, 175, 55, 0.08);
-    }
-    .protocol-header {
+
+    .axiom-trigger {
       width: 100%;
-      padding: 1.25rem 1.5rem;
+      padding: 1rem 1.25rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
       background: transparent;
       border: none;
       color: #fff;
-      font-size: 1.05rem;
-      font-weight: 700;
-      cursor: pointer;
+      font-size: 0.95rem;
+      font-weight: 600;
       text-align: left;
-    }
-    .protocol-header:hover {
-      background: var(--bg-elevated);
-    }
-    .protocol-badge {
-      display: inline-block;
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      color: var(--gold);
-      background: rgba(212, 175, 55, 0.1);
-      padding: 0.2rem 0.5rem;
-      border-radius: 4px;
-      margin-right: 0.75rem;
-    }
-    .protocol-symbol {
-      font-family: var(--font-mono);
-      font-size: 1.2rem;
-      color: var(--text-muted);
-      transition: transform 0.2s ease;
-    }
-    .protocol-node.active .protocol-symbol {
-      transform: rotate(45deg);
-      color: var(--gold);
-    }
-    .protocol-body {
-      padding: 0 1.5rem 1.5rem;
-      display: none;
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
-      margin-top: 0.5rem;
-      font-size: 0.92rem;
-      color: var(--text-muted);
-    }
-    .protocol-node.active .protocol-body {
-      display: block;
-    }
-    .protocol-deep {
-      margin-top: 0.85rem;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1rem;
-    }
-    .deep-block {
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: 1rem;
-    }
-    .deep-block h4 {
-      font-size: 0.78rem;
-      font-family: var(--font-mono);
-      text-transform: uppercase;
-      color: var(--cyan);
-      margin-bottom: 0.35rem;
-    }
-    .deep-block p {
-      font-size: 0.86rem;
-      color: #cbd5e1;
-      line-height: 1.5;
+      cursor: pointer;
     }
 
-    /* Card Generator Layout */
-    .generator-grid {
+    .axiom-trigger:hover {
+      background: var(--bg-elevated);
+    }
+
+    .axiom-content {
+      padding: 0 1.25rem 1.25rem;
+      display: none;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border);
+      margin-top: 0.5rem;
+    }
+
+    .axiom-item.open .axiom-content {
+      display: block;
+    }
+
+    /* Card Generator Engine */
+    .card-gen-layout {
       display: grid;
-      grid-template-columns: 380px 1fr;
+      grid-template-columns: 360px 1fr;
       gap: 2rem;
       background: var(--bg-surface);
       border: 1px solid var(--border);
-      border-radius: 10px;
+      border-radius: 6px;
       padding: 1.75rem;
     }
+
     @media (max-width: 900px) {
-      .generator-grid { grid-template-columns: 1fr; }
+      .card-gen-layout {
+        grid-template-columns: 1fr;
+      }
     }
+
     .form-group {
-      margin-bottom: 1.25rem;
+      margin-bottom: 1.2rem;
     }
+
     .form-group label {
       display: block;
+      font-size: 0.78rem;
       font-family: var(--font-mono);
-      font-size: 0.75rem;
       color: var(--text-muted);
-      text-transform: uppercase;
       margin-bottom: 0.4rem;
     }
+
     select, textarea {
       width: 100%;
-      padding: 0.7rem 0.85rem;
-      background: var(--bg);
+      padding: 0.65rem;
+      background: var(--bg-primary);
       border: 1px solid var(--border);
-      border-radius: 6px;
+      border-radius: 4px;
       color: #fff;
       font-family: inherit;
-      font-size: 0.88rem;
-      outline: none;
-      transition: border-color 0.2s ease;
+      font-size: 0.875rem;
     }
-    select:focus, textarea:focus {
-      border-color: var(--gold);
-    }
+
     textarea {
       resize: vertical;
-      min-height: 90px;
-      line-height: 1.5;
+      min-height: 80px;
     }
-    .preview-box {
+
+    .card-preview-area {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      background: #080a0d;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 1.5rem;
-      min-height: 480px;
-    }
-    #exportCanvas {
-      max-width: 100%;
-      max-height: 520px;
+      background: var(--bg-primary);
       border-radius: 4px;
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7);
-    }
-    .fit-report {
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
-      color: var(--cyan);
-      margin-top: 1rem;
+      border: 1px solid var(--border);
+      padding: 1.5rem;
+      min-height: 420px;
     }
 
-    /* Toast Notification */
-    #toast {
-      position: fixed;
-      bottom: 1.5rem;
-      right: 1.5rem;
-      background: var(--bg-elevated);
-      color: #fff;
-      border: 1px solid var(--gold);
-      padding: 0.75rem 1.25rem;
-      border-radius: 6px;
-      font-family: var(--font-mono);
-      font-size: 0.8rem;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-      opacity: 0;
-      transform: translateY(15px);
-      pointer-events: none;
-      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-      z-index: 1000;
+    #cardCanvas {
+      max-width: 100%;
+      max-height: 480px;
+      border-radius: 4px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
     }
-    #toast.show {
-      opacity: 1;
-      transform: translateY(0);
+
+    .badge-metric {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--accent-turquoise);
+      margin-top: 0.75rem;
     }
 
     /* Footer */
     footer {
       border-top: 1px solid var(--border);
-      padding: 4rem 0 3rem;
+      padding: 3rem 1.5rem;
       text-align: center;
-      background: var(--bg-surface);
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
     }
-    .footer-btns {
+
+    .footer-actions {
       display: flex;
       justify-content: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-      margin-bottom: 2rem;
-    }
-    .footer-meta {
-      font-family: var(--font-mono);
-      font-size: 0.78rem;
-      color: var(--text-muted);
-      line-height: 1.8;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
     }
   </style>
 </head>
@@ -617,1261 +501,748 @@
 
   <!-- Navigation -->
   <header>
-    <div class="nav-wrap">
+    <div class="nav-container">
       <div class="brand">
-        <div class="brand-symbol"></div>
+        <svg class="brand-glyph" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><path d="M12 2 L12 22"/></svg>
         THE COMMONS
       </div>
       <ul class="nav-links">
         <li><a href="#philosophy">Philosophy</a></li>
-        <li><a href="#diagrams">Kinetic Proofs</a></li>
-        <li><a href="#protocols">7 Protocols</a></li>
-        <li><a href="#generator">Card Engine</a></li>
+        <li><a href="#diagrams">Kinetic Diagrams</a></li>
+        <li><a href="#axioms">Axioms</a></li>
+        <li><a href="#share">Distribute</a></li>
       </ul>
-      <a href="#protocols" class="btn btn-outline" style="padding: 0.4rem 0.85rem; font-size: 0.75rem;">Access Codex</a>
     </div>
   </header>
 
   <!-- Hero Section -->
-  <div class="hero container">
-    <div class="hero-pill">
-      <div class="pulse-dot"></div>
-      Leaderless • Autonomous • Phenomenological
-    </div>
-    <h1>No Vicar. No Hierarch. No Tithe.<br><span>Only Direct Mechanics of Awareness.</span></h1>
-    <p>Humanity does not suffer from a lack of gods, but from the institutional capture of direct perception. The Commons is an unownable, web-native philosophical framework built upon kinetic state diagrams and verifiable behavioral mechanics.</p>
-    <div class="hero-actions">
-      <a href="#diagrams" class="btn btn-gold">Inspect Kinetic Proofs</a>
-      <a href="#philosophy" class="btn btn-outline">Epistemic Matrix</a>
+  <div class="hero">
+    <span class="badge">Uncentralized • Autonomous • Open Access</span>
+    <h1>A Protocol Beyond Masters.</h1>
+    <p>A leaderless philosophical architecture expressed through kinetic diagrams and verifiable behavioral mechanics. No tithes, no clergy, no central authority. Run the experiment in your direct experience.</p>
+    <div class="btn-row">
+      <a href="#philosophy" class="btn btn-primary">Examine Foundations</a>
+      <a href="#diagrams" class="btn btn-secondary">Run Kinetic Diagrams</a>
     </div>
   </div>
 
-  <!-- Philosophical Manifesto -->
+  <!-- Philosophy Section -->
   <section id="philosophy">
-    <div class="container">
-      <div class="section-header">
-        <span class="tagline">Epistemic Foundations</span>
-        <h2 class="section-title">Why Systems Decay & How The Protocol Endures</h2>
-        <p class="section-subtitle">Traditional religions fail through mortal charismatic bottlenecks, dogmatic drift, and clerical rent-seeking. We eliminate all three.</p>
-      </div>
+    <div class="section-header">
+      <h2 class="section-title">Epistemic & Ontological Foundations</h2>
+      <p class="section-subtitle">Why traditional religious and moral systems decay, and how a stateless, verifiable protocol endures without dogmatic capture.</p>
+    </div>
 
-      <div class="manifesto-grid">
-        <div class="panel">
-          <div class="panel-num">01 / EPISTEMIC PURITY</div>
-          <h3>Empirical Phenomenology</h3>
-          <p>No requirement of faith, metaphysical promise, or ancient revelation. Truth is evaluated solely through reproducible inner observation: how causal loops, emotional reactivity, and ethical conduct function in real time.</p>
-        </div>
-        <div class="panel">
-          <div class="panel-num">02 / ONTOLOGICAL REALISM</div>
-          <h3>The Relational Continuum</h3>
-          <p>The defensive, isolated ego is an energetic illusion produced by friction. Consciousness is an emergent node within an indivisible causal substrate; harming another node vibrates directly back into the origin.</p>
-        </div>
-        <div class="panel">
-          <div class="panel-num">03 / STRUCTURAL IMMUNITY</div>
-          <h3>The Zero-Capture Mandate</h3>
-          <p>Every hierarchy decays under Michels's Iron Law of Oligarchy. The Commons owns zero real estate, accepts no monetary dues, enforces no membership rosters, and maintains zero central servers.</p>
-        </div>
+    <div class="philosophy-grid">
+      <div class="card">
+        <h3>01 / Empirical Phenomenology</h3>
+        <p>No requirement of faith or adherence to unprovable mythology. Truth is evaluated solely through reproducible inner observation: causes, emotional feedback loops, and conduct outcomes verified directly in lived experience.</p>
       </div>
+      <div class="card">
+        <h3>02 / The Relational Field</h3>
+        <p>Consciousness is not an isolated fortress defending territory. It is an interdependent causal node embedded in a dynamic field. Defensive contraction inevitably generates cognitive friction; systemic alignment dissolves it.</p>
+      </div>
+      <div class="card">
+        <h3>03 / Zero Human Extraction</h3>
+        <p>All institutional corruption begins when truth becomes a commodity sold by intermediaries. This protocol owns no real estate, collects no dues, requires no sign-ups, and holds no centralized membership rolls.</p>
+      </div>
+    </div>
 
-      <!-- Comparative Matrix -->
-      <div class="table-container">
-        <table>
-          <thead>
-            <tr>
-              <th>Dimension</th>
-              <th>Traditional Faiths</th>
-              <th>Dogmatic Materialism</th>
-              <th class="col-protocol">The Commons Protocol</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>Locus of Authority</strong></td>
-              <td>Priests, Prophets, Scriptures</td>
-              <td>Institutional Consensus</td>
-              <td class="col-protocol">Direct First-Person Verification</td>
-            </tr>
-            <tr>
-              <td><strong>Primary Cause of Suffering</strong></td>
-              <td>Sin, Divine Test, Cosmic Karma</td>
-              <td>Random Neurochemistry / Bad Luck</td>
-              <td class="col-protocol">Thermodynamic Friction of Clinging</td>
-            </tr>
-            <tr>
-              <td><strong>Failure Mode</strong></td>
-              <td>Clerical Abuse, Holy War, Schisms</td>
-              <td>Nihilism, Atomization, Meaning Crisis</td>
-              <td class="col-protocol">Self-Canceling (Dismisses into Real Life)</td>
-            </tr>
-            <tr>
-              <td><strong>Transmission Vector</strong></td>
-              <td>Evangelism, Hereditary Coercion</td>
-              <td>Academic & Corporate Guilds</td>
-              <td class="col-protocol">Kinetic Diagrams & Peer-to-Peer Utility</td>
-            </tr>
-            <tr>
-              <td><strong>Economic Extraction</strong></td>
-              <td>Tithing, Indulgences, Land Holdings</td>
-              <td>Tuition, Subscriptions, Monopolies</td>
-              <td class="col-protocol">Zero Currency • Pure Public Domain (CC0)</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+    <!-- Comparative Matrix -->
+    <div class="section-header" style="margin-top: 3rem; margin-bottom: 1.5rem;">
+      <h3 style="font-size: 1.35rem; color: #fff;">Structural Comparative Matrix</h3>
+    </div>
+    <div class="matrix-table-wrap">
+      <table class="matrix-table">
+        <thead>
+          <tr>
+            <th>Dimension</th>
+            <th>Traditional Faiths</th>
+            <th>Dogmatic Materialism</th>
+            <th class="col-highlight">The Open Protocol</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Locus of Authority</strong></td>
+            <td>Priests, Prophets, Scriptures</td>
+            <td>Institutional Consensus</td>
+            <td class="col-highlight">Direct Phenomenological Testing</td>
+          </tr>
+          <tr>
+            <td><strong>Failure Mode</strong></td>
+            <td>Corruption, Abuse, Schism</td>
+            <td>Nihilism, Atomization, Ennui</td>
+            <td class="col-highlight">None (Stateless, Unownable)</td>
+          </tr>
+          <tr>
+            <td><strong>Transmission</strong></td>
+            <td>Evangelism, Coercion, Heritage</td>
+            <td>Academic Gatekeeping</td>
+            <td class="col-highlight">Kinetic Diagrams & Peer Utility</td>
+          </tr>
+          <tr>
+            <td><strong>Economic Engine</strong></td>
+            <td>Tithing, Donations, Endowments</td>
+            <td>Grant Funding, Commercialization</td>
+            <td class="col-highlight">Zero-Cost Static Mirroring</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </section>
 
-  <!-- Kinetic State Diagrams -->
+  <!-- Kinetic Diagrams Section -->
   <section id="diagrams">
-    <div class="container">
-      <div class="section-header">
-        <span class="tagline">Interactive Phenomenological Engines</span>
-        <h2 class="section-title">Kinetic State Diagrams</h2>
-        <p class="section-subtitle">Real-time dynamic physics models illustrating psychological friction, ego armoring, and the thermodynamics of non-attachment.</p>
-      </div>
-
-      <!-- Animation 1: The Observer Interval -->
-      <div class="sim-card">
-        <div class="canvas-box">
-          <canvas id="canvasInterval" class="gl-canvas"></canvas>
-        </div>
-        <div class="sim-sidebar">
-          <div class="sim-info">
-            <span class="tagline" style="color: var(--cyan);">Simulation 01</span>
-            <h3>The Observer Interval (Reaction vs. Response)</h3>
-            <p>External impulses hit the mind continuously. When the interval is zero, impulses smash directly into a reactive barrier, exploding in fiery friction. When expanded, impulses glide through a luminous damping field, diffusing into calm standing waves.</p>
-          </div>
-          <div class="sim-controls">
-            <div class="control-row">
-              <div class="control-label">
-                <span>Observer Space Gap</span>
-                <span id="labelIntervalGap">45%</span>
-              </div>
-              <input type="range" id="sliderIntervalGap" min="5" max="95" value="45">
-            </div>
-            <button class="btn btn-gold" id="btnFireImpulse">Inject High-Spike Impulses</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Animation 2: The Contraction Gradient -->
-      <div class="sim-card">
-        <div class="canvas-box">
-          <canvas id="canvasEgo" class="gl-canvas"></canvas>
-        </div>
-        <div class="sim-sidebar">
-          <div class="sim-info">
-            <span class="tagline" style="color: var(--cyan);">Simulation 02</span>
-            <h3>The Contraction Gradient (Ego vs. Field)</h3>
-            <p>Central consciousness exists in an organic elastic web of peer nodes. As defensive boundary rigidity rises, the node armors up with jagged kinetic spikes, snapping web tethers with static discharges and isolating itself in high-frequency turbulence.</p>
-          </div>
-          <div class="sim-controls">
-            <div class="control-row">
-              <div class="control-label">
-                <span>Boundary Rigidity (Armoring)</span>
-                <span id="labelEgoRigidity">25%</span>
-              </div>
-              <input type="range" id="sliderEgoRigidity" min="0" max="100" value="25">
-            </div>
-            <button class="btn btn-outline" id="btnPulseWeb">Broadcast Resonance Pulse</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Animation 3: Thermodynamics of Attachment -->
-      <div class="sim-card">
-        <div class="canvas-box">
-          <canvas id="canvasAttachment" class="gl-canvas"></canvas>
-        </div>
-        <div class="sim-sidebar">
-          <div class="sim-info">
-            <span class="tagline" style="color: var(--cyan);">Simulation 03</span>
-            <h3>Thermodynamics of Attachment</h3>
-            <p>Worldly phenomena stream past in perpetual entropic flow. Clamping onto a transient form generates violent drag vortices, heat particles, and kinetic shear. Yielding to zero grasp returns the field to laminar, frictionless grace.</p>
-          </div>
-          <div class="sim-controls">
-            <div class="control-row">
-              <div class="control-label">
-                <span>Grasp Coefficient (Clinging)</span>
-                <span id="labelGraspCoeff">20%</span>
-              </div>
-              <input type="range" id="sliderGraspCoeff" min="0" max="100" value="20">
-            </div>
-            <button class="btn btn-gold" id="btnZeroGrasp">Release All Grasp (Let Go)</button>
-          </div>
-        </div>
-      </div>
-
+    <div class="section-header">
+      <h2 class="section-title">Kinetic State Diagrams</h2>
+      <p class="section-subtitle">Visualizing the inner thermodynamic mechanics of human friction and liberation in real time.</p>
     </div>
-  </section>
 
-  <!-- The Seven Foundational Protocols -->
-  <section id="protocols">
-    <div class="container">
-      <div class="section-header">
-        <span class="tagline">The Complete Codex</span>
-        <h2 class="section-title">The Seven Open Protocols</h2>
-        <p class="section-subtitle">A decentralized architecture of sovereign conduct. No commandments from skies; only mechanical principles verified in daily somatic life.</p>
+    <!-- Simulation 1: Reaction vs Response -->
+    <div class="sim-container">
+      <div class="canvas-wrapper">
+        <canvas id="simReactionCanvas" class="sim-canvas"></canvas>
       </div>
-
-      <div class="protocol-accordion">
-        
-        <!-- Protocol 1 -->
-        <div class="protocol-node active">
-          <button class="protocol-header">
-            <div>
-              <span class="protocol-badge">PROTOCOL 01</span>
-              The Axiom of Non-Ownership (Anatta / Entropic Flow)
+      <div class="sim-panel">
+        <div>
+          <h4>I. Reaction vs. Response</h4>
+          <p>Illustrates how incoming stimuli create destructive kinetic feedback when met with automatic rigidity versus calm harmonic wave dissipation when met with spacious awareness.</p>
+          <div class="control-group">
+            <div class="control-label">
+              <span>Observer Gap (Awareness)</span>
+              <span id="gapVal">50%</span>
             </div>
-            <span class="protocol-symbol">+</span>
-          </button>
-          <div class="protocol-body">
-            <p>Consciousness is an open clearing through which phenomena flow, not an owner who possesses them. Thoughts, emotions, physical bodies, and worldly titles are transient energetic ripples. Suffering is the thermodynamic friction generated when awareness attempts to freeze or claim title over that which is in perpetual transition.</p>
-            <div class="protocol-deep">
-              <div class="deep-block">
-                <h4>Mechanical Grounding</h4>
-                <p>Equilibrium is the lowest-entropy state. Grasping requires muscular, neural, and psychic metabolic exertion. Releasing possessiveness instantly lowers metabolic stress.</p>
-              </div>
-              <div class="deep-block">
-                <h4>Physical Praxis</h4>
-                <p>When grief or anxiety surfaces, open both palms flat. Say internally: <em>"This sensation has entered the room; it does not belong to me; it will leave on its own accord."</em></p>
-              </div>
-            </div>
+            <input type="range" id="gapSlider" min="5" max="100" value="50">
           </div>
         </div>
+        <button class="btn btn-secondary" id="btnEmitImpulse">Inject Stimulus Wave</button>
+      </div>
+    </div>
 
-        <!-- Protocol 2 -->
-        <div class="protocol-node">
-          <button class="protocol-header">
-            <div>
-              <span class="protocol-badge">PROTOCOL 02</span>
-              The Stimulus-Response Interval (Sovereign Threshold)
+    <!-- Simulation 2: Ego Contraction -->
+    <div class="sim-container">
+      <div class="canvas-wrapper">
+        <canvas id="simEgoCanvas" class="sim-canvas"></canvas>
+      </div>
+      <div class="sim-panel">
+        <div>
+          <h4>II. The Contraction Gradient</h4>
+          <p>Examines how tightening defensive ego boundaries shears connections with the broader field, producing localized turbulence and isolation.</p>
+          <div class="control-group">
+            <div class="control-label">
+              <span>Boundary Rigidity</span>
+              <span id="rigidityVal">40%</span>
             </div>
-            <span class="protocol-symbol">+</span>
-          </button>
-          <div class="protocol-body">
-            <p>Between any external stimulus and the resulting biological reaction lies an infinitesimal temporal gap. The unconscious mind operates as a mechanical deterministic automaton. Human sovereignty and free will exist strictly in the conscious widening of this micro-interval.</p>
-            <div class="protocol-deep">
-              <div class="deep-block">
-                <h4>Mechanical Grounding</h4>
-                <p>The amygdala reflex triggers in ~80 milliseconds. Prefrontal deliberate veto requires ~250 milliseconds. Cultivating space gives neocortical discernment precedence over primeval panic.</p>
-              </div>
-              <div class="deep-block">
-                <h4>Physical Praxis</h4>
-                <p>When insulted, threatened, or provoked online or in person, mandate two full tidal respiratory cycles before voluntary vocal or muscular engagement.</p>
-              </div>
-            </div>
+            <input type="range" id="rigiditySlider" min="0" max="100" value="40">
           </div>
         </div>
+        <button class="btn btn-secondary" id="btnPulseField">Pulse Field Resonators</button>
+      </div>
+    </div>
 
-        <!-- Protocol 3 -->
-        <div class="protocol-node">
-          <button class="protocol-header">
-            <div>
-              <span class="protocol-badge">PROTOCOL 03</span>
-              The Dissolution of the Mediator (Anti-Clerical Direct Access)
+    <!-- Simulation 3: Thermodynamics of Attachment -->
+    <div class="sim-container">
+      <div class="canvas-wrapper">
+        <canvas id="simAttachCanvas" class="sim-canvas"></canvas>
+      </div>
+      <div class="sim-panel">
+        <div>
+          <h4>III. Thermodynamics of Attachment</h4>
+          <p>Visualizes the fluid flow of transient moments. High grasping creates localized drag and friction; releasing restores effortless laminar streamflow.</p>
+          <div class="control-group">
+            <div class="control-label">
+              <span>Grasping Coefficient</span>
+              <span id="graspVal">30%</span>
             </div>
-            <span class="protocol-symbol">+</span>
-          </button>
-          <div class="protocol-body">
-            <p>No human teacher, prophet, guru, or algorithmic intermediary possesses privileged or proprietary bandwidth to reality. Any institution that charges monetary fees, demands personal submission, or claims exclusive keys to liberation is an extractive bottleneck.</p>
-            <div class="protocol-deep">
-              <div class="deep-block">
-                <h4>Mechanical Grounding</h4>
-                <p>Spiritual monopolies thrive by manufacturing artificial scarcity over common human consciousness. Direct phenomenological inspection exposes the redundancy of the priest.</p>
-              </div>
-              <div class="deep-block">
-                <h4>Physical Praxis</h4>
-                <p>Never donate money to spiritual institutions. Give food, tools, or physical shelter directly to unhoused or struggling neighbors within your line of sight.</p>
-              </div>
-            </div>
+            <input type="range" id="graspSlider" min="0" max="100" value="30">
           </div>
         </div>
-
-        <!-- Protocol 4 -->
-        <div class="protocol-node">
-          <button class="protocol-header">
-            <div>
-              <span class="protocol-badge">PROTOCOL 04</span>
-              The Kinetic Hygiene of Goodwill (Metta as Nervous Regulation)
-            </div>
-            <span class="protocol-symbol">+</span>
-          </button>
-          <div class="protocol-body">
-            <p>Compassion and goodwill are not moralistic favors granted to others; they are baseline physiological hygiene. Malice, resentment, and envy flood the circulatory system with inflammatory cortisol. Active goodwill downregulates autonomic hyperarousal.</p>
-            <div class="protocol-deep">
-              <div class="deep-block">
-                <h4>Mechanical Grounding</h4>
-                <p>Resentment is drinking poison and expecting the opponent to perish. Coherence in heart rate variability directly mirrors non-adversarial somatic posture.</p>
-              </div>
-              <div class="deep-block">
-                <h4>Physical Praxis</h4>
-                <p>Silently project unconditional ease toward three people who irritated you today. Observe the immediate drop in jaw tension and diaphragmatic compression.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Protocol 5 -->
-        <div class="protocol-node">
-          <button class="protocol-header">
-            <div>
-              <span class="protocol-badge">PROTOCOL 05</span>
-              The Law of Radical Transparency (Zero Esoteric Secrecy)
-            </div>
-            <span class="protocol-symbol">+</span>
-          </button>
-          <div class="protocol-body">
-            <p>Cults and corrupt mystery schools operate on progressive initiation, hidden inner circles, and classified doctrines. The Commons mandates absolute transparency: every principle, formula, diagram, and critique is laid bare on page one for immediate testing.</p>
-            <div class="protocol-deep">
-              <div class="deep-block">
-                <h4>Mechanical Grounding</h4>
-                <p>Secrecy breeds asymmetrical information, which enables predation and abuse. Plaintext diagrams and open source mechanics prevent clerical manipulation.</p>
-              </div>
-              <div class="deep-block">
-                <h4>Physical Praxis</h4>
-                <p>If anyone offers spiritual elevation under conditions of confidentiality or paid tiers, immediately refuse and warn your peer group.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Protocol 6 -->
-        <div class="protocol-node">
-          <button class="protocol-header">
-            <div>
-              <span class="protocol-badge">PROTOCOL 06</span>
-              The Screen-to-Dirt Mandate (Digital as Mere Index)
-            </div>
-            <span class="protocol-symbol">+</span>
-          </button>
-          <div class="protocol-body">
-            <p>This web application is a finger pointing at the moon, not the moon itself. Photons emitted by screen diodes cannot embrace a grieving child, weed a community garden, or breathe forest air. Once the kinetic principles are grasped, the user must shut down the device.</p>
-            <div class="protocol-deep">
-              <div class="deep-block">
-                <h4>Mechanical Grounding</h4>
-                <p>Digital networks simulate social communion while maximizing nervous exhaustion. True non-dual awakening occurs in biological embodiment and local ecology.</p>
-              </div>
-              <div class="deep-block">
-                <h4>Physical Praxis</h4>
-                <p>Close your browser after reading. Step onto bare earth or concrete. Touch plant matter, greet an elder, and drink cold water with full somatic awareness.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Protocol 7 -->
-        <div class="protocol-node">
-          <button class="protocol-header">
-            <div>
-              <span class="protocol-badge">PROTOCOL 07</span>
-              The Forking Imperative (Decentralized Resilience)
-            </div>
-            <span class="protocol-symbol">+</span>
-          </button>
-          <div class="protocol-body">
-            <p>A philosophy that cannot be copied or modified without permission is a brand, not a universal truth. The Commons carries no intellectual property, trademark, or canonical central repository. If this node is seized or goes dark, ten thousand mirrors continue unobstructed.</p>
-            <div class="protocol-deep">
-              <div class="deep-block">
-                <h4>Mechanical Grounding</h4>
-                <p>Centralized servers create single points of failure and censorship targets. Universal replication renders the movement uncapturable and immortal.</p>
-              </div>
-              <div class="deep-block">
-                <h4>Physical Praxis</h4>
-                <p>Use the export button below. Save this single file locally. Host it on your personal server, print it out, or share it peer-to-peer on USB drives.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
+        <button class="btn btn-secondary" id="btnReleaseGrasp">Let Go (Reset to 0%)</button>
       </div>
     </div>
   </section>
 
-  <!-- Dynamic Social Card Generator -->
-  <section id="generator">
-    <div class="container">
-      <div class="section-header">
-        <span class="tagline">Dispersal Engine</span>
-        <h2 class="section-title">Contemplative Card Engine</h2>
-        <p class="section-subtitle">Generate high-resolution social reflection cards. Dynamic typographic auto-scaling guarantees your inscription never overflows, regardless of platform aspect ratio.</p>
-      </div>
+  <!-- Axioms Accordion Section (All 7 Protocols) -->
+  <section id="axioms">
+    <div class="section-header">
+      <h2 class="section-title">The Seven Open Axioms</h2>
+      <p class="section-subtitle">Grounded mechanical principles paired with immediate daily somatic practices.</p>
+    </div>
 
-      <div class="generator-grid">
-        <div class="gen-controls">
-          <div class="form-group">
-            <label for="selectPlatform">Social Media Aspect Ratio</label>
-            <select id="selectPlatform">
-              <option value="story">Instagram Story / TikTok (9:16 • 1080×1920)</option>
-              <option value="square" selected>Square Post / Feed (1:1 • 1080×1080)</option>
-              <option value="portrait">Portrait Post (4:5 • 1080×1350)</option>
-              <option value="landscape">Twitter/X / Landscape (16:9 • 1920×1080)</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label for="selectProtocol">Protocol Preset Inscription</label>
-            <select id="selectProtocol">
-              <option value="0">Protocol 01: Non-Ownership & Flow</option>
-              <option value="1">Protocol 02: The Sovereign Interval</option>
-              <option value="2">Protocol 03: The Dissolved Intermediary</option>
-              <option value="3">Protocol 04: Goodwill as Hygiene</option>
-              <option value="4">Protocol 05: Radical Transparency</option>
-              <option value="5">Protocol 06: The Screen-to-Dirt Mandate</option>
-              <option value="6">Protocol 07: The Forking Imperative</option>
-              <option value="custom">-- Custom Inscription --</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label for="inputCardText">Inscription Text</label>
-            <textarea id="inputCardText">Suffering is the thermodynamic friction of grasping that which is flowing. Let the visitor pass through without claiming ownership.</textarea>
-          </div>
-
-          <div class="form-group">
-            <label for="selectPalette">Aesthetic Palette</label>
-            <select id="selectPalette">
-              <option value="obsidian">Obsidian & Aureolin Gold</option>
-              <option value="cyan">Deep Slate & Electric Cyan</option>
-              <option value="parchment">Contemplative Monochrome</option>
-            </select>
-          </div>
-
-          <button class="btn btn-gold" id="btnDownloadCard" style="width: 100%;">Export High-Res PNG</button>
+    <div class="axiom-list">
+      <div class="axiom-item open">
+        <button class="axiom-trigger">01. The Principle of Non-Ownership <span>+</span></button>
+        <div class="axiom-content">
+          <p>Nothing passing through conscious awareness belongs to the observer: thoughts, bodily sensations, achievements, or material artifacts are transient visitors. Suffering is the thermodynamic friction of holding onto that which is naturally flowing.</p>
+          <p style="margin-top: 0.5rem; color: var(--accent-turquoise);"><strong>Practice:</strong> When experiencing physical or mental friction, mentally open your hands and whisper: "This too is passing through."</p>
         </div>
-
-        <div class="preview-box">
-          <canvas id="exportCanvas"></canvas>
-          <div class="fit-report" id="labelCardMetrics">Canvas initialized • Adaptive scale active</div>
+      </div>
+      <div class="axiom-item">
+        <button class="axiom-trigger">02. The Stimulus-Response Interval <span>+</span></button>
+        <div class="axiom-content">
+          <p>Between impulse and action lies an infinitesimal threshold. Whoever masters this micro-interval escapes deterministic programming and enters sovereign moral choice.</p>
+          <p style="margin-top: 0.5rem; color: var(--accent-turquoise);"><strong>Practice:</strong> Count two full respiratory cycles before responding to any communication that triggers defensive arousal.</p>
+        </div>
+      </div>
+      <div class="axiom-item">
+        <button class="axiom-trigger">03. The Dissolution of the Mediator <span>+</span></button>
+        <div class="axiom-content">
+          <p>No intermediary possesses private access to reality. Any entity, teacher, or hierarchy demanding submission or money to mediate truth is an extractive bottleneck.</p>
+          <p style="margin-top: 0.5rem; color: var(--accent-turquoise);"><strong>Practice:</strong> Consult direct natural observation and repeatable experiments over revered human authorities.</p>
+        </div>
+      </div>
+      <div class="axiom-item">
+        <button class="axiom-trigger">04. The Kinetic Conservation of Goodwill <span>+</span></button>
+        <div class="axiom-content">
+          <p>Cruelty contracts the nervous system; generosity expands it. Ethical integrity is not an ancient obligation but an immediate physiological hygiene.</p>
+          <p style="margin-top: 0.5rem; color: var(--accent-turquoise);"><strong>Practice:</strong> Perform one unannounced, uncredited act of physical assistance within your immediate neighborhood today.</p>
+        </div>
+      </div>
+      <div class="axiom-item">
+        <button class="axiom-trigger">05. The Impermanence of Rigid Identity <span>+</span></button>
+        <div class="axiom-content">
+          <p>The ego is a process, not a solid monument. Treating opinions and self-narratives as immutable structures produces fragility when circumstances inevitably evolve.</p>
+          <p style="margin-top: 0.5rem; color: var(--accent-turquoise);"><strong>Practice:</strong> Identify one cherished conviction each week and write down two valid counter-arguments with sincere intellectual respect.</p>
+        </div>
+      </div>
+      <div class="axiom-item">
+        <button class="axiom-trigger">06. Grounded Presence Over Screen Abstraction <span>+</span></button>
+        <div class="axiom-content">
+          <p>A diagram points to water; it cannot quench thirst. This web protocol succeeds only when it prompts the participant to close the screen and engage tangible reality.</p>
+          <p style="margin-top: 0.5rem; color: var(--accent-turquoise);"><strong>Practice:</strong> Step outside for twenty minutes daily with empty hands, observing sensory details without digital capture.</p>
+        </div>
+      </div>
+      <div class="axiom-item">
+        <button class="axiom-trigger">07. Decentralized Stewardship <span>+</span></button>
+        <div class="axiom-content">
+          <p>Truth cannot be held in a private vault. Every node that receives insight is obligated to mirror and distribute it freely, without modifying core principles for personal vanity.</p>
+          <p style="margin-top: 0.5rem; color: var(--accent-turquoise);"><strong>Practice:</strong> Share tools, knowledge, and quiet assistance anonymously with those building local resilience.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Footer & Archive -->
+  <!-- Distribution Card Generator Section -->
+  <section id="share">
+    <div class="section-header">
+      <h2 class="section-title">Peer-to-Peer Contemplative Card Engine</h2>
+      <p class="section-subtitle">Generate high-resolution social reflection cards. Automatic proportional typography guarantees text never overflows bounds regardless of format.</p>
+    </div>
+
+    <div class="card-gen-layout">
+      <div class="card-gen-form">
+        <div class="form-group">
+          <label for="platformSelect">Target Platform & Aspect Ratio</label>
+          <select id="platformSelect">
+            <option value="story">Story / Reel (9:16 Vertical • 1080x1920)</option>
+            <option value="square" selected>Square Post (1:1 • 1080x1080)</option>
+            <option value="portrait">Portrait Post (4:5 • 1080x1350)</option>
+            <option value="landscape">Landscape / Header (16:9 • 1920x1080)</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="axiomSelect">Preset Contemplation</label>
+          <select id="axiomSelect">
+            <option value="0">Axiom 1: Friction of Holding</option>
+            <option value="1">Axiom 2: The Interval of Sovereignty</option>
+            <option value="2">Axiom 3: The Dissolved Intermediary</option>
+            <option value="3">Axiom 4: Conservation of Goodwill</option>
+            <option value="4">Axiom 5: Impermanence of Identity</option>
+            <option value="5">Axiom 6: Grounded Presence</option>
+            <option value="6">Axiom 7: Decentralized Stewardship</option>
+            <option value="custom">Custom Inscription...</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="cardTextInput">Inscription Body</label>
+          <textarea id="cardTextInput">Suffering is the thermodynamic friction of grasping that which is flowing. Let the visitor pass through without claiming ownership.</textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="paletteSelect">Aesthetic Palette</label>
+          <select id="paletteSelect">
+            <option value="sodalite">Sodalite Charcoal & Polished Quartz</option>
+            <option value="turquoise">Deep Flint & Sea Turquoise</option>
+            <option value="basalt">Basalt & Riverstone Jade</option>
+          </select>
+        </div>
+
+        <button class="btn btn-primary" style="width: 100%; justify-content: center;" id="btnDownloadCard">Export High-Res PNG</button>
+      </div>
+
+      <div class="card-preview-area">
+        <canvas id="cardCanvas"></canvas>
+        <div class="badge-metric" id="overflowCheckBadge">Constraint Check: Optimal bounds (0% overflow risk)</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer & Mirroring -->
   <footer>
-    <div class="container">
-      <div class="footer-btns">
-        <button class="btn btn-gold" id="btnDownloadArchive">Save Offline Single-File (.html)</button>
-        <button class="btn btn-outline" id="btnCopyCodex">Copy Plaintext Codex</button>
-      </div>
-      <div class="footer-meta">
-        THE COMMONS PHILOSOPHICAL PROTOCOL • DEDICATED TO THE PUBLIC DOMAIN (CC0-1.0)<br>
-        ZERO TRACKERS • ZERO ANALYTICS • ZERO CENTRAL SERVERS • COPY WITHOUT ATTRIBUTION
-      </div>
+    <div class="footer-actions">
+      <button class="btn btn-secondary" id="btnExportCode">Save Offline Archive (.html)</button>
+      <button class="btn btn-secondary" id="btnCopyCodex">Copy Plaintext Codex</button>
     </div>
+    <p>THE COMMONS PROTOCOL • PUBLIC DOMAIN (CC0-1.0) • ZERO WATERMARK • DISTRIBUTE FREELY</p>
   </footer>
 
-  <!-- Toast Notification -->
-  <div id="toast">Notification</div>
-
-  <!-- SCRIPT ENGINE -->
+  <!-- Script Architecture -->
   <script>
-    /* ==========================================================
-       0. UTILITIES & TOAST
-    ========================================================== */
-    function showToast(msg) {
-      const toast = document.getElementById('toast');
-      toast.innerText = msg;
-      toast.classList.add('show');
-      setTimeout(() => toast.classList.remove('show'), 2600);
-    }
-
-    /* Retina / High-DPI Canvas Resizing Helper */
+    /* Helper for Retina High-DPI Canvas Scaling */
     function setupRetinaCanvas(canvas) {
       const dpr = window.devicePixelRatio || 1;
       const rect = canvas.getBoundingClientRect();
-      const displayWidth = Math.floor(rect.width);
-      const displayHeight = Math.floor(rect.height);
-
-      if (canvas.width !== displayWidth * dpr || canvas.height !== displayHeight * dpr) {
-        canvas.width = displayWidth * dpr;
-        canvas.height = displayHeight * dpr;
-      }
+      canvas.width = rect.width * dpr;
+      canvas.height = rect.height * dpr;
       const ctx = canvas.getContext('2d');
-      ctx.resetTransform ? ctx.resetTransform() : ctx.setTransform(1, 0, 0, 1, 0, 0);
+      ctx.resetTransform();
       ctx.scale(dpr, dpr);
-      return { ctx, width: displayWidth, height: displayHeight, dpr };
+      return { ctx, width: rect.width, height: rect.height };
     }
 
-    /* Accordion Toggle */
-    document.querySelectorAll('.protocol-header').forEach(header => {
-      header.addEventListener('click', () => {
-        const node = header.parentElement;
-        const wasActive = node.classList.contains('active');
-        document.querySelectorAll('.protocol-node').forEach(n => n.classList.remove('active'));
-        if (!wasActive) node.classList.add('active');
+    /* --- Accordion Toggle --- */
+    document.querySelectorAll('.axiom-trigger').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.parentElement;
+        item.classList.toggle('open');
       });
     });
 
-    /* ==========================================================
-       1. ANIMATION 1: THE OBSERVER INTERVAL
-       - Sharp impulse spikes from the left
-       - Narrow gap = crashes into rigid wall, fiery crimson sparks, shockwaves
-       - Expanded gap = glides into luminous golden damping field, standing cyan waves
-    ========================================================== */
-    (function initIntervalSim() {
-      const canvas = document.getElementById('canvasInterval');
-      const slider = document.getElementById('sliderIntervalGap');
-      const label = document.getElementById('labelIntervalGap');
-      const btn = document.getElementById('btnFireImpulse');
+    /* --- Simulation 1: Reaction vs Response --- */
+    const rCanvas = document.getElementById('simReactionCanvas');
+    const gapSlider = document.getElementById('gapSlider');
+    const gapVal = document.getElementById('gapVal');
+    let rParticles = [];
+    let rSparks = [];
 
-      let gapRatio = slider.value / 100;
-      let impulses = [];
-      let sparks = [];
-      let shockwaves = [];
-      let sineOffset = 0;
-      let screenShake = 0;
+    gapSlider.addEventListener('input', (e) => {
+      gapVal.innerText = `${e.target.value}%`;
+    });
 
-      slider.addEventListener('input', (e) => {
-        gapRatio = e.target.value / 100;
-        label.innerText = `${e.target.value}%`;
-      });
-
-      function createImpulse() {
-        impulses.push({
+    document.getElementById('btnEmitImpulse').addEventListener('click', () => {
+      const rect = rCanvas.getBoundingClientRect();
+      for (let i = 0; i < 6; i++) {
+        rParticles.push({
           x: 10,
-          y: canvas.clientHeight / 2,
-          vx: 5 + Math.random() * 2,
-          radius: 6,
-          sharpness: 14,
-          power: 1.0,
-          traversedGap: false,
-          diffused: false
+          y: rect.height / 2 + (Math.random() * 50 - 25),
+          vx: 3.5 + Math.random() * 2,
+          vy: (Math.random() - 0.5) * 1.5,
+          radius: 3,
+          color: '#0284c7',
+          absorbed: false
         });
       }
+    });
 
-      btn.addEventListener('click', () => {
-        for (let i = 0; i < 4; i++) {
-          setTimeout(createImpulse, i * 140);
-        }
-      });
-
-      // Ambient stream
-      setInterval(() => {
-        if (impulses.length < 5 && Math.random() < 0.7) {
-          createImpulse();
-        }
-      }, 1600);
-
-      function loop() {
-        const { ctx, width, height } = setupRetinaCanvas(canvas);
-        sineOffset += 0.05;
-
-        // Clean Canvas Clearing with subtle radial backdrop
-        ctx.fillStyle = '#080a0d';
-        ctx.fillRect(0, 0, width, height);
-
-        const radial = ctx.createRadialGradient(width * 0.45, height / 2, 20, width * 0.45, height / 2, width * 0.6);
-        radial.addColorStop(0, 'rgba(17, 23, 33, 0.45)');
-        radial.addColorStop(1, 'rgba(8, 10, 13, 0.95)');
-        ctx.fillStyle = radial;
-        ctx.fillRect(0, 0, width, height);
-
-        // Screen shake decay
-        let ox = 0, oy = 0;
-        if (screenShake > 0.01) {
-          ox = (Math.random() - 0.5) * screenShake * 8;
-          oy = (Math.random() - 0.5) * screenShake * 8;
-          screenShake *= 0.9;
-        }
-
-        ctx.save();
-        ctx.translate(ox, oy);
-
-        const fieldStartX = width * 0.28;
-        const maxFieldWidth = width * 0.48;
-        const currentFieldWidth = maxFieldWidth * gapRatio;
-        const barrierX = fieldStartX + currentFieldWidth;
-        const centerY = height / 2;
-
-        // 1. Draw Damping Field Region
-        const fieldGrad = ctx.createLinearGradient(fieldStartX, 0, barrierX, 0);
-        fieldGrad.addColorStop(0, 'rgba(212, 175, 55, 0.03)');
-        fieldGrad.addColorStop(1, 'rgba(212, 175, 55, 0.16)');
-        ctx.fillStyle = fieldGrad;
-        ctx.fillRect(fieldStartX, 40, currentFieldWidth, height - 80);
-
-        ctx.strokeStyle = 'rgba(212, 175, 55, 0.35)';
-        ctx.lineWidth = 1;
-        ctx.setLineDash([4, 4]);
-        ctx.strokeRect(fieldStartX, 40, currentFieldWidth, height - 80);
-        ctx.setLineDash([]);
-
-        // Label Field
-        ctx.font = '10px monospace';
-        ctx.fillStyle = 'rgba(212, 175, 55, 0.85)';
-        ctx.fillText('SOVEREIGN INTERVAL THRESHOLD', fieldStartX + 10, 58);
-
-        // 2. Draw Reactive Barrier or Receptive Gateway
-        const isReactive = gapRatio < 0.38;
-        ctx.beginPath();
-        ctx.moveTo(barrierX, 30);
-        ctx.lineTo(barrierX, height - 30);
-        ctx.lineWidth = isReactive ? 4 : 2;
-        ctx.strokeStyle = isReactive ? '#f43f5e' : 'rgba(56, 189, 248, 0.6)';
-        if (isReactive) {
-          ctx.shadowColor = '#f43f5e';
-          ctx.shadowBlur = 12;
-        }
-        ctx.stroke();
-        ctx.shadowBlur = 0;
-
-        // Label Barrier
-        ctx.font = '10px monospace';
-        ctx.fillStyle = isReactive ? '#f43f5e' : '#38bdf8';
-        ctx.fillText(isReactive ? 'REACTIVE CRITICAL IMPACT' : 'HARMONIC DISPERSAL', barrierX + 12, height - 42);
-
-        // 3. Shockwaves Render
-        for (let i = shockwaves.length - 1; i >= 0; i--) {
-          const sw = shockwaves[i];
-          sw.r += 3.5;
-          sw.alpha *= 0.94;
-          if (sw.alpha < 0.01) {
-            shockwaves.splice(i, 1);
-            continue;
-          }
-          ctx.beginPath();
-          ctx.arc(sw.x, sw.y, sw.r, 0, Math.PI * 2);
-          ctx.strokeStyle = `rgba(244, 63, 94, ${sw.alpha})`;
-          ctx.lineWidth = 2;
-          ctx.stroke();
-        }
-
-        // 4. Sparks Render
-        for (let i = sparks.length - 1; i >= 0; i--) {
-          const s = sparks[i];
-          s.x += s.vx;
-          s.y += s.vy;
-          s.life -= 0.035;
-          if (s.life <= 0) {
-            sparks.splice(i, 1);
-            continue;
-          }
-          ctx.beginPath();
-          ctx.arc(s.x, s.y, s.size * s.life, 0, Math.PI * 2);
-          ctx.fillStyle = s.color;
-          ctx.fill();
-        }
-
-        // 5. Impulses Processing
-        for (let i = impulses.length - 1; i >= 0; i--) {
-          const p = impulses[i];
-          p.x += p.vx;
-
-          // Inside the damping interval
-          if (p.x >= fieldStartX && p.x < barrierX) {
-            p.traversedGap = true;
-            // Damping velocity and power if space is large
-            if (!isReactive) {
-              p.vx *= 0.985;
-              p.power *= 0.97;
-            }
-          }
-
-          // Reach the barrier
-          if (p.x >= barrierX) {
-            if (isReactive) {
-              // Violent Crash & Ricochet
-              screenShake = Math.max(screenShake, 0.8);
-              shockwaves.push({ x: barrierX, y: centerY, r: 10, alpha: 0.9 });
-              for (let k = 0; k < 18; k++) {
-                sparks.push({
-                  x: barrierX,
-                  y: centerY,
-                  vx: (Math.random() - 0.95) * 7,
-                  vy: (Math.random() - 0.5) * 8,
-                  size: Math.random() * 3 + 1.5,
-                  life: 1.0,
-                  color: Math.random() > 0.4 ? '#f43f5e' : '#d4af37'
-                });
-              }
-              impulses.splice(i, 1);
-              continue;
-            } else {
-              // Smooth Harmonic Transition
-              p.diffused = true;
-            }
-          }
-
-          // Draw Impulse Projectile or Diffused Wavelet
-          if (!p.diffused) {
-            ctx.beginPath();
-            ctx.moveTo(p.x, p.y);
-            ctx.lineTo(p.x - p.sharpness, p.y - 5);
-            ctx.lineTo(p.x - p.sharpness * 0.7, p.y);
-            ctx.lineTo(p.x - p.sharpness, p.y + 5);
-            ctx.closePath();
-            ctx.fillStyle = isReactive ? '#f43f5e' : '#d4af37';
-            ctx.shadowColor = ctx.fillStyle;
-            ctx.shadowBlur = 8;
-            ctx.fill();
-            ctx.shadowBlur = 0;
-          } else {
-            // Standing sine dispersal beyond threshold
-            if (p.x > width + 20) {
-              impulses.splice(i, 1);
-              continue;
-            }
-          }
-        }
-
-        // 6. Draw Standing Sine Waves beyond barrier when in Awareness mode
-        if (!isReactive) {
-          ctx.beginPath();
-          const waveStartX = barrierX;
-          for (let x = waveStartX; x < width - 20; x += 3) {
-            const progress = (x - waveStartX) / (width - waveStartX);
-            const y = centerY + Math.sin(progress * 14 - sineOffset) * 16 * (1 - progress * 0.3);
-            if (x === waveStartX) ctx.moveTo(x, y);
-            else ctx.lineTo(x, y);
-          }
-          ctx.strokeStyle = 'rgba(56, 189, 248, 0.75)';
-          ctx.lineWidth = 2.5;
-          ctx.shadowColor = 'rgba(56, 189, 248, 0.6)';
-          ctx.shadowBlur = 10;
-          ctx.stroke();
-          ctx.shadowBlur = 0;
-        }
-
-        ctx.restore();
-        requestAnimationFrame(loop);
+    function renderReactionSim() {
+      const dpr = window.devicePixelRatio || 1;
+      const rect = rCanvas.getBoundingClientRect();
+      if (rCanvas.width !== rect.width * dpr || rCanvas.height !== rect.height * dpr) {
+        setupRetinaCanvas(rCanvas);
       }
-      requestAnimationFrame(loop);
-    })();
+      const ctx = rCanvas.getContext('2d');
+      ctx.fillStyle = '#0b1017';
+      ctx.fillRect(0, 0, rect.width, rect.height);
 
+      const gapRatio = gapSlider.value / 100;
+      const observerWidth = rect.width * 0.35 * gapRatio;
+      const observerX = rect.width * 0.45 - observerWidth / 2;
+      const barrierX = observerX + observerWidth;
 
-    /* ==========================================================
-       2. ANIMATION 2: THE CONTRACTION GRADIENT
-       - Central consciousness node in an elastic organic web
-       - High rigidity = jagged spike shield, severed connections, sparks, nervous shake
-       - Low rigidity = rhythmic, fluid unified harmonic resonance
-    ========================================================== */
-    (function initEgoSim() {
-      const canvas = document.getElementById('canvasEgo');
-      const slider = document.getElementById('sliderEgoRigidity');
-      const label = document.getElementById('labelEgoRigidity');
-      const btn = document.getElementById('btnPulseWeb');
+      // Draw Observer Interval Area
+      ctx.fillStyle = 'rgba(13, 148, 136, 0.08)';
+      ctx.fillRect(observerX, 20, observerWidth, rect.height - 40);
+      ctx.strokeStyle = '#334155';
+      ctx.strokeRect(observerX, 20, observerWidth, rect.height - 40);
 
-      let rigidity = slider.value / 100;
-      let time = 0;
-      let staticSparks = [];
-      let pulseRing = 0;
+      ctx.fillStyle = '#94a3b8';
+      ctx.font = '10px monospace';
+      ctx.fillText('INTERVAL GAP', observerX + 6, 36);
 
-      slider.addEventListener('input', (e) => {
-        rigidity = e.target.value / 100;
-        label.innerText = `${e.target.value}%`;
-      });
+      // Draw Rigid Barrier if Gap is Small
+      if (gapRatio < 0.35) {
+        ctx.fillStyle = '#9f1239';
+        ctx.fillRect(barrierX - 2, 20, 4, rect.height - 40);
+      }
 
-      btn.addEventListener('click', () => {
-        pulseRing = 1;
-      });
+      // Update Sparks
+      for (let s = rSparks.length - 1; s >= 0; s--) {
+        const sp = rSparks[s];
+        sp.x += sp.vx;
+        sp.y += sp.vy;
+        sp.alpha -= 0.03;
+        ctx.fillStyle = `rgba(159, 18, 57, ${sp.alpha})`;
+        ctx.beginPath();
+        ctx.arc(sp.x, sp.y, 2, 0, Math.PI * 2);
+        ctx.fill();
+        if (sp.alpha <= 0) rSparks.splice(s, 1);
+      }
 
-      // Field Nodes setup
+      // Update Particles
+      for (let i = rParticles.length - 1; i >= 0; i--) {
+        const p = rParticles[i];
+        p.x += p.vx;
+        p.y += p.vy;
+
+        // Collision with rigid barrier (reactive)
+        if (gapRatio < 0.35 && p.x >= barrierX - 4 && !p.absorbed) {
+          p.vx = -p.vx * 0.7;
+          p.color = '#9f1239';
+          for (let k = 0; k < 5; k++) {
+            rSparks.push({
+              x: barrierX,
+              y: p.y,
+              vx: (Math.random() - 0.7) * 4,
+              vy: (Math.random() - 0.5) * 4,
+              alpha: 1
+            });
+          }
+        }
+
+        // Spacious absorption (responsive)
+        if (p.x >= observerX && p.x <= barrierX && gapRatio >= 0.35) {
+          p.vx *= 0.96;
+          p.color = '#0d9488';
+        }
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        ctx.fillStyle = p.color;
+        ctx.fill();
+
+        if (p.x > rect.width || p.x < 0) {
+          rParticles.splice(i, 1);
+        }
+      }
+
+      requestAnimationFrame(renderReactionSim);
+    }
+    renderReactionSim();
+
+    /* --- Simulation 2: Contraction Gradient --- */
+    const eCanvas = document.getElementById('simEgoCanvas');
+    const rigiditySlider = document.getElementById('rigiditySlider');
+    const rigidityVal = document.getElementById('rigidityVal');
+    let eTime = 0;
+
+    rigiditySlider.addEventListener('input', (e) => {
+      rigidityVal.innerText = `${e.target.value}%`;
+    });
+
+    document.getElementById('btnPulseField').addEventListener('click', () => {
+      eTime += 3;
+    });
+
+    function renderEgoSim() {
+      const dpr = window.devicePixelRatio || 1;
+      const rect = eCanvas.getBoundingClientRect();
+      if (eCanvas.width !== rect.width * dpr || eCanvas.height !== rect.height * dpr) {
+        setupRetinaCanvas(eCanvas);
+      }
+      const ctx = eCanvas.getContext('2d');
+      ctx.fillStyle = '#0b1017';
+      ctx.fillRect(0, 0, rect.width, rect.height);
+
+      eTime += 0.02;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      const rigidity = rigiditySlider.value / 100;
+      const baseRadius = 40 + rigidity * 22;
+
+      // Outer Web Nodes
       const nodeCount = 14;
-      const nodes = [];
       for (let i = 0; i < nodeCount; i++) {
-        const ang = (i / nodeCount) * Math.PI * 2;
-        nodes.push({
-          angle: ang,
-          dist: 120 + Math.random() * 20,
-          speed: 0.006 + Math.random() * 0.006,
-          radius: 3.5 + Math.random() * 2
-        });
-      }
+        const angle = (i / nodeCount) * Math.PI * 2 + eTime * (1 - rigidity * 0.75);
+        const dist = 110 + Math.sin(eTime * 2 + i) * 12 * (1 - rigidity);
+        const nx = centerX + Math.cos(angle) * dist;
+        const ny = centerY + Math.sin(angle) * dist;
 
-      function loop() {
-        const { ctx, width, height } = setupRetinaCanvas(canvas);
-        time += 0.02;
-
-        ctx.fillStyle = '#080a0d';
-        ctx.fillRect(0, 0, width, height);
-
-        const cx = width / 2;
-        const cy = height / 2;
-
-        // Erratic tremor when rigidity is elevated
-        let tremorX = 0, tremorY = 0;
-        if (rigidity > 0.4) {
-          tremorX = (Math.random() - 0.5) * rigidity * 4;
-          tremorY = (Math.random() - 0.5) * rigidity * 4;
-        }
-
-        // 1. Draw Organic Connecting Web Lines
-        for (let i = 0; i < nodes.length; i++) {
-          const n = nodes[i];
-          n.angle += n.speed * (1 - rigidity * 0.8);
-          const currentDist = n.dist + Math.sin(time * 3 + i) * (14 * (1 - rigidity));
-          const nx = cx + Math.cos(n.angle) * currentDist;
-          const ny = cy + Math.sin(n.angle) * currentDist;
-
-          // Connection Line
-          const isSevered = rigidity > 0.65 && i % 2 === 0;
-
-          if (!isSevered) {
-            ctx.beginPath();
-            ctx.moveTo(cx + tremorX, cy + tremorY);
-            ctx.lineTo(nx, ny);
-            const lineAlpha = (1 - rigidity) * 0.4 + 0.08;
-            ctx.strokeStyle = `rgba(56, 189, 248, ${lineAlpha})`;
-            ctx.lineWidth = 1;
-            ctx.stroke();
-          } else {
-            // Severed static spark
-            if (Math.random() < 0.2) {
-              staticSparks.push({
-                x: cx + (nx - cx) * 0.35 + (Math.random() - 0.5) * 10,
-                y: cy + (ny - cy) * 0.35 + (Math.random() - 0.5) * 10,
-                vx: (Math.random() - 0.5) * 3,
-                vy: (Math.random() - 0.5) * 3,
-                life: 0.8
-              });
-            }
-          }
-
-          // Draw Peripheral Nodes
-          ctx.beginPath();
-          ctx.arc(nx, ny, n.radius, 0, Math.PI * 2);
-          ctx.fillStyle = isSevered ? '#64748b' : '#38bdf8';
-          ctx.fill();
-        }
-
-        // 2. Static Sparks
-        for (let i = staticSparks.length - 1; i >= 0; i--) {
-          const sp = staticSparks[i];
-          sp.x += sp.vx;
-          sp.y += sp.vy;
-          sp.life -= 0.04;
-          if (sp.life <= 0) {
-            staticSparks.splice(i, 1);
-            continue;
-          }
-          ctx.beginPath();
-          ctx.arc(sp.x, sp.y, 1.5, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(244, 63, 94, ${sp.life})`;
-          ctx.fill();
-        }
-
-        // 3. Pulse Ring Expansion
-        if (pulseRing > 0) {
-          pulseRing += 3.5;
-          const ringAlpha = Math.max(0, 1 - pulseRing / 180);
-          ctx.beginPath();
-          ctx.arc(cx, cy, pulseRing, 0, Math.PI * 2);
-          ctx.strokeStyle = `rgba(212, 175, 55, ${ringAlpha})`;
-          ctx.lineWidth = 2;
-          ctx.stroke();
-          if (pulseRing > 180) pulseRing = 0;
-        }
-
-        // 4. Central Node: Breathing Harmonizer vs Spiked Armor Shield
-        const coreRadius = 22 + (1 - rigidity) * 10 + Math.sin(time * 2) * (1 - rigidity) * 3;
-
-        if (rigidity > 0.45) {
-          // Jagged Spike Armor Shield
-          const spikeCount = 16;
-          ctx.beginPath();
-          for (let s = 0; s < spikeCount; s++) {
-            const rot = (s / spikeCount) * Math.PI * 2 + time;
-            const outerR = coreRadius + 14 * rigidity + ((s % 2 === 0) ? 10 * rigidity : 0);
-            const innerR = coreRadius - 3;
-
-            const px = cx + tremorX + Math.cos(rot) * outerR;
-            const py = cy + tremorY + Math.sin(rot) * outerR;
-            const qx = cx + tremorX + Math.cos(rot + 0.1) * innerR;
-            const qy = cy + tremorY + Math.sin(rot + 0.1) * innerR;
-
-            if (s === 0) ctx.moveTo(px, py);
-            else {
-              ctx.lineTo(px, py);
-              ctx.lineTo(qx, qy);
-            }
-          }
-          ctx.closePath();
-          ctx.fillStyle = 'rgba(244, 63, 94, 0.2)';
-          ctx.fill();
-          ctx.strokeStyle = '#f43f5e';
-          ctx.lineWidth = 2;
-          ctx.stroke();
-        }
-
-        // Inner Core Node
         ctx.beginPath();
-        ctx.arc(cx + tremorX, cy + tremorY, coreRadius, 0, Math.PI * 2);
-        const coreGrad = ctx.createRadialGradient(cx + tremorX, cy + tremorY, 2, cx + tremorX, cy + tremorY, coreRadius);
-        if (rigidity < 0.45) {
-          coreGrad.addColorStop(0, '#fff');
-          coreGrad.addColorStop(0.5, '#d4af37');
-          coreGrad.addColorStop(1, 'rgba(212, 175, 55, 0.3)');
-        } else {
-          coreGrad.addColorStop(0, '#fca5a5');
-          coreGrad.addColorStop(0.6, '#ef4444');
-          coreGrad.addColorStop(1, 'rgba(239, 68, 68, 0.4)');
-        }
-        ctx.fillStyle = coreGrad;
-        ctx.shadowColor = rigidity < 0.45 ? 'rgba(212, 175, 55, 0.6)' : 'rgba(244, 63, 94, 0.8)';
-        ctx.shadowBlur = 18;
+        ctx.arc(nx, ny, 3.5, 0, Math.PI * 2);
+        ctx.fillStyle = '#0d9488';
         ctx.fill();
-        ctx.shadowBlur = 0;
 
-        requestAnimationFrame(loop);
-      }
-      requestAnimationFrame(loop);
-    })();
-
-
-    /* ==========================================================
-       3. ANIMATION 3: THERMODYNAMICS OF ATTACHMENT
-       - Transient flowing forms drifting across field
-       - Focal point with Grasp Coefficient
-       - High grasp = thermal friction, drag vortices, intense boiling heat particles
-       - Zero grasp = laminar, cool, zero-loss streaming
-    ========================================================== */
-    (function initAttachmentSim() {
-      const canvas = document.getElementById('canvasAttachment');
-      const slider = document.getElementById('sliderGraspCoeff');
-      const label = document.getElementById('labelGraspCoeff');
-      const btn = document.getElementById('btnZeroGrasp');
-
-      let grasp = slider.value / 100;
-      let forms = [];
-      let thermalParticles = [];
-
-      slider.addEventListener('input', (e) => {
-        grasp = e.target.value / 100;
-        label.innerText = `${e.target.value}%`;
-      });
-
-      btn.addEventListener('click', () => {
-        grasp = 0;
-        slider.value = 0;
-        label.innerText = '0%';
-        showToast('Attachment released. Zero thermodynamic friction.');
-      });
-
-      function createForm() {
-        return {
-          x: -20,
-          y: Math.random() * (canvas.clientHeight || 300),
-          vx: 2.2 + Math.random() * 1.5,
-          vy: (Math.random() - 0.5) * 0.4,
-          radius: 3 + Math.random() * 3,
-          hue: Math.random() > 0.5 ? 42 : 198,
-          clutched: false
-        };
-      }
-
-      // Initialize initial cohort
-      for (let i = 0; i < 40; i++) {
-        const f = createForm();
-        f.x = Math.random() * (canvas.clientWidth || 500);
-        forms.push(f);
-      }
-
-      function loop() {
-        const { ctx, width, height } = setupRetinaCanvas(canvas);
-
-        ctx.fillStyle = '#080a0d';
-        ctx.fillRect(0, 0, width, height);
-
-        const focalX = width * 0.5;
-        const focalY = height * 0.5;
-        const focalRadius = 36 + grasp * 50;
-
-        // 1. Draw Thermal / Drag Vortex Area if Grasp is High
-        if (grasp > 0.05) {
+        // Elastic Filaments
+        if (rigidity < 0.7) {
           ctx.beginPath();
-          ctx.arc(focalX, focalY, focalRadius, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(244, 63, 94, ${grasp * 0.12})`;
-          ctx.fill();
-          ctx.strokeStyle = `rgba(244, 63, 94, ${grasp * 0.4})`;
-          ctx.lineWidth = 1.5;
-          ctx.setLineDash([3, 5]);
+          ctx.moveTo(centerX, centerY);
+          ctx.lineTo(nx, ny);
+          ctx.strokeStyle = `rgba(13, 148, 136, ${(1 - rigidity) * 0.3})`;
           ctx.stroke();
-          ctx.setLineDash([]);
         }
-
-        // 2. Draw Focal Mind Node
-        ctx.beginPath();
-        ctx.arc(focalX, focalY, 12, 0, Math.PI * 2);
-        ctx.fillStyle = grasp > 0.4 ? '#f43f5e' : '#38bdf8';
-        ctx.shadowColor = ctx.fillStyle;
-        ctx.shadowBlur = 14;
-        ctx.fill();
-        ctx.shadowBlur = 0;
-
-        // Label Center
-        ctx.font = '10px monospace';
-        ctx.fillStyle = '#94a3b8';
-        ctx.textAlign = 'center';
-        ctx.fillText(grasp > 0.4 ? 'GRASPING FOCAL' : 'RECEPTIVE PRESENCE', focalX, focalY - 20);
-
-        // 3. Process Transient Flowing Forms
-        while (forms.length < 50) {
-          forms.push(createForm());
-        }
-
-        for (let i = forms.length - 1; i >= 0; i--) {
-          const f = forms[i];
-
-          // Gravity/Drift calculation
-          const dx = focalX - f.x;
-          const dy = focalY - f.y;
-          const dist = Math.hypot(dx, dy);
-
-          if (dist < focalRadius && grasp > 0.08) {
-            // Drag and Friction pulling
-            f.vx += (dx / dist) * grasp * 0.45;
-            f.vy += (dy / dist) * grasp * 0.45;
-            f.vx *= 0.94; // Severe kinetic drag
-            f.vy *= 0.94;
-
-            // Generate Heat / Boiling Particles
-            if (Math.random() < grasp * 0.6) {
-              thermalParticles.push({
-                x: f.x + (Math.random() - 0.5) * 6,
-                y: f.y + (Math.random() - 0.5) * 6,
-                vx: (Math.random() - 0.5) * 3,
-                vy: (Math.random() - 0.5) * 3 - 1,
-                life: 1.0,
-                color: Math.random() > 0.5 ? '#f43f5e' : '#fb923c'
-              });
-            }
-          } else {
-            // Normal laminar forward stream
-            f.vx += 0.05;
-            f.vx = Math.min(f.vx, 3.5);
-          }
-
-          f.x += f.vx;
-          f.y += f.vy;
-
-          // Render laminar stream line
-          ctx.beginPath();
-          ctx.arc(f.x, f.y, f.radius, 0, Math.PI * 2);
-          ctx.fillStyle = f.hue === 42 ? 'rgba(212, 175, 55, 0.75)' : 'rgba(56, 189, 248, 0.75)';
-          ctx.fill();
-
-          if (f.x > width + 25) {
-            forms.splice(i, 1);
-          }
-        }
-
-        // 4. Render Thermal Particles
-        for (let i = thermalParticles.length - 1; i >= 0; i--) {
-          const tp = thermalParticles[i];
-          tp.x += tp.vx;
-          tp.y += tp.vy;
-          tp.life -= 0.04;
-          if (tp.life <= 0) {
-            thermalParticles.splice(i, 1);
-            continue;
-          }
-          ctx.beginPath();
-          ctx.arc(tp.x, tp.y, 2 * tp.life, 0, Math.PI * 2);
-          ctx.fillStyle = tp.color;
-          ctx.fill();
-        }
-
-        ctx.textAlign = 'left';
-        requestAnimationFrame(loop);
       }
-      requestAnimationFrame(loop);
-    })();
 
+      // Center Node Perimeter
+      ctx.beginPath();
+      ctx.arc(centerX, centerY, baseRadius, 0, Math.PI * 2);
+      ctx.strokeStyle = rigidity > 0.6 ? '#9f1239' : '#334155';
+      ctx.lineWidth = 1 + rigidity * 3;
+      ctx.stroke();
+      ctx.lineWidth = 1;
 
-    /* ==========================================================
-       4. SOCIAL CARD GENERATOR ENGINE
-       - Aspect Ratios: Story 9:16 (1080x1920), Square 1:1 (1080x1080),
-         Portrait 4:5 (1080x1350), Landscape 16:9 (1920x1080)
-       - Dynamic anti-spill text fitting engine
-    ========================================================== */
-    const cardCanvas = document.getElementById('exportCanvas');
+      // Center Pebble
+      ctx.beginPath();
+      ctx.arc(centerX, centerY, 8, 0, Math.PI * 2);
+      ctx.fillStyle = '#f1f5f9';
+      ctx.fill();
+
+      requestAnimationFrame(renderEgoSim);
+    }
+    renderEgoSim();
+
+    /* --- Simulation 3: Thermodynamics of Attachment --- */
+    const aCanvas = document.getElementById('simAttachCanvas');
+    const graspSlider = document.getElementById('graspSlider');
+    const graspVal = document.getElementById('graspVal');
+    let streamLines = [];
+
+    graspSlider.addEventListener('input', (e) => {
+      graspVal.innerText = `${e.target.value}%`;
+    });
+
+    document.getElementById('btnReleaseGrasp').addEventListener('click', () => {
+      graspSlider.value = 0;
+      graspVal.innerText = '0%';
+    });
+
+    // Populate Streamlines
+    for (let i = 0; i < 40; i++) {
+      streamLines.push({
+        x: Math.random() * 400,
+        y: Math.random() * 300,
+        baseY: Math.random() * 300,
+        speed: 1.5 + Math.random() * 1.5
+      });
+    }
+
+    function renderAttachSim() {
+      const dpr = window.devicePixelRatio || 1;
+      const rect = aCanvas.getBoundingClientRect();
+      if (aCanvas.width !== rect.width * dpr || aCanvas.height !== rect.height * dpr) {
+        setupRetinaCanvas(aCanvas);
+      }
+      const ctx = aCanvas.getContext('2d');
+      ctx.fillStyle = '#0b1017';
+      ctx.fillRect(0, 0, rect.width, rect.height);
+
+      const grasp = graspSlider.value / 100;
+      const focalX = rect.width / 2;
+      const focalY = rect.height / 2;
+
+      // Draw Focal Stone
+      ctx.beginPath();
+      ctx.arc(focalX, focalY, 14, 0, Math.PI * 2);
+      ctx.fillStyle = grasp > 0.5 ? '#7c2d12' : '#131a24';
+      ctx.strokeStyle = '#334155';
+      ctx.stroke();
+      ctx.fill();
+
+      // Update & Render Flow Lines
+      for (let i = 0; i < streamLines.length; i++) {
+        const p = streamLines[i];
+        p.x += p.speed;
+
+        // Hydrodynamic deflection around focal stone
+        const dx = p.x - focalX;
+        const dy = p.y - focalY;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+
+        if (dist < 80) {
+          const force = (80 - dist) / 80;
+          if (grasp > 0.3) {
+            // High Grasp = Drag Turbulence
+            p.y += (Math.random() - 0.5) * 4 * grasp;
+            p.x -= force * 1.5 * grasp;
+          } else {
+            // Laminar Smooth Flow
+            p.y += (dy > 0 ? 1 : -1) * force * 1.5;
+          }
+        }
+
+        ctx.fillStyle = grasp > 0.5 && dist < 70 ? '#9f1239' : '#0284c7';
+        ctx.fillRect(p.x, p.y, 4, 1.5);
+
+        if (p.x > rect.width) {
+          p.x = 0;
+          p.y = Math.random() * rect.height;
+        }
+      }
+
+      requestAnimationFrame(renderAttachSim);
+    }
+    renderAttachSim();
+
+    /* --- Card Generator Layout Engine --- */
+    const cardCanvas = document.getElementById('cardCanvas');
     const cCtx = cardCanvas.getContext('2d');
-    const selPlatform = document.getElementById('selectPlatform');
-    const selProtocol = document.getElementById('selectProtocol');
-    const textInput = document.getElementById('inputCardText');
-    const selPalette = document.getElementById('selectPalette');
-    const btnDownload = document.getElementById('btnDownloadCard');
-    const fitLabel = document.getElementById('labelCardMetrics');
+    const platformSelect = document.getElementById('platformSelect');
+    const axiomSelect = document.getElementById('axiomSelect');
+    const cardTextInput = document.getElementById('cardTextInput');
+    const paletteSelect = document.getElementById('paletteSelect');
+    const overflowCheckBadge = document.getElementById('overflowCheckBadge');
 
-    const protocolQuotes = [
+    const presets = [
       "Suffering is the thermodynamic friction of grasping that which is flowing. Let the visitor pass through without claiming ownership.",
-      "Between stimulus and response exists an infinitesimal gap. In that silence rests sovereign human freedom.",
-      "No teacher or algorithm stands between awareness and reality. Discard the mediator; observe direct natural mechanics.",
-      "Compassion and goodwill are physiological hygiene. Cruelty contracts the vessel; radical kindness releases autonomic strain.",
-      "Truth requires no esoteric inner rings or paid clearances. Everything is laid bare on page one for immediate testing.",
-      "This medium is a signpost, not a home. Close the machine. Step onto bare earth and serve your immediate local kin.",
-      "A truth that cannot be freely copied without permission is a product, not reality. Fork this protocol without restriction."
+      "Between impulse and action lies an infinitesimal threshold. In that silence rests sovereign moral freedom.",
+      "No teacher stands between awareness and truth. Discard the mediator; observe direct natural mechanics.",
+      "Cruelty contracts the nervous system; generosity expands it. Ethical integrity is immediate physiological hygiene.",
+      "The ego is a process, not a solid monument. Rigid convictions produce structural fragility when reality evolves.",
+      "A diagram points to water; it cannot quench thirst. Step away from the screen and serve local physical life.",
+      "Decentralized stewardship: truth belongs to no central treasury. Mirror and distribute tools freely."
     ];
 
-    selProtocol.addEventListener('change', () => {
-      if (selProtocol.value !== 'custom') {
-        textInput.value = protocolQuotes[parseInt(selProtocol.value)];
+    axiomSelect.addEventListener('change', () => {
+      if (axiomSelect.value !== 'custom') {
+        cardTextInput.value = presets[parseInt(axiomSelect.value)];
       }
-      renderSocialCard();
+      drawCard();
     });
 
-    textInput.addEventListener('input', renderSocialCard);
-    selPlatform.addEventListener('change', renderSocialCard);
-    selPalette.addEventListener('change', renderSocialCard);
+    cardTextInput.addEventListener('input', drawCard);
+    platformSelect.addEventListener('change', drawCard);
+    paletteSelect.addEventListener('change', drawCard);
 
-    function getPlatformResolution(p) {
-      switch (p) {
-        case 'story': return { w: 1080, h: 1920, title: 'Story / Reel' };
-        case 'portrait': return { w: 1080, h: 1350, title: 'Portrait Post' };
-        case 'landscape': return { w: 1920, h: 1080, title: 'Landscape / Header' };
+    function getPlatformDims(platform) {
+      switch (platform) {
+        case 'story': return { w: 1080, h: 1920 };
+        case 'portrait': return { w: 1080, h: 1350 };
+        case 'landscape': return { w: 1920, h: 1080 };
         case 'square':
-        default: return { w: 1080, h: 1080, title: 'Feed Square' };
+        default: return { w: 1080, h: 1080 };
       }
     }
 
-    function wrapCanvasText(ctx, text, maxWidth) {
-      const words = text.split(/\s+/);
+    function wrapText(ctx, text, maxWidth) {
+      const words = text.split(' ');
       const lines = [];
-      let line = '';
-      for (let i = 0; i < words.length; i++) {
-        const test = line ? line + ' ' + words[i] : words[i];
-        if (ctx.measureText(test).width > maxWidth && line) {
-          lines.push(line);
-          line = words[i];
+      let currentLine = words[0];
+
+      for (let i = 1; i < words.length; i++) {
+        const word = words[i];
+        const width = ctx.measureText(currentLine + " " + word).width;
+        if (width < maxWidth) {
+          currentLine += " " + word;
         } else {
-          line = test;
+          lines.push(currentLine);
+          currentLine = word;
         }
       }
-      if (line) lines.push(line);
+      lines.push(currentLine);
       return lines;
     }
 
-    function renderSocialCard() {
-      const { w, h, title } = getPlatformResolution(selPlatform.value);
+    function drawCard() {
+      const { w, h } = getPlatformDims(platformSelect.value);
       cardCanvas.width = w;
       cardCanvas.height = h;
 
-      const palette = selPalette.value;
-      let bg = '#0b0d10';
-      let border = '#232a36';
-      let accent = '#d4af37';
-      let textCol = '#f8fafc';
-      let subCol = '#94a3b8';
+      const palette = paletteSelect.value;
+      let bg = '#0b1017';
+      let borderCol = '#232d3d';
+      let accent = '#0d9488';
+      let textCol = '#f1f5f9';
 
-      if (palette === 'cyan') {
-        accent = '#38bdf8';
-        border = '#1e293b';
-      } else if (palette === 'parchment') {
-        bg = '#14171e';
-        accent = '#e2e8f0';
-        border = '#334155';
-        subCol = '#cbd5e1';
+      if (palette === 'turquoise') {
+        bg = '#0e1726';
+        borderCol = '#1e293b';
+        accent = '#0284c7';
+      } else if (palette === 'basalt') {
+        bg = '#111827';
+        borderCol = '#374151';
+        accent = '#059669';
       }
 
       // Background
       cCtx.fillStyle = bg;
       cCtx.fillRect(0, 0, w, h);
 
-      // Frame Margin
-      const margin = w * 0.085;
-      cCtx.strokeStyle = border;
-      cCtx.lineWidth = Math.max(2, Math.round(w * 0.0025));
+      // Frame Border
+      const margin = w * 0.08;
+      cCtx.strokeStyle = borderCol;
+      cCtx.lineWidth = 2;
       cCtx.strokeRect(margin, margin, w - margin * 2, h - margin * 2);
 
-      // Header Brand
-      cCtx.font = `600 ${Math.round(w * 0.022)}px monospace`;
+      // Header Tag
       cCtx.fillStyle = accent;
+      cCtx.font = `600 ${Math.round(w * 0.022)}px monospace`;
       cCtx.textAlign = 'center';
-      cCtx.fillText('THE COMMONS PROTOCOL • STATE CODEX', w / 2, margin + w * 0.065);
+      cCtx.fillText('THE COMMONS PROTOCOL • CONTEMPLATION', w / 2, margin + w * 0.06);
 
-      // Adaptive Dynamic Font Sizing to ensure 0% overflow risk
-      const maxTextW = w - margin * 3.2;
-      const maxTextH = h - margin * 3.8;
-      let fontSize = Math.round(w * 0.048);
+      // Dynamic Font Scaling Engine
+      const maxTextWidth = w - margin * 3;
+      const maxTextHeight = h - margin * 3.5;
+      let fontSize = Math.round(w * 0.046);
       let lines = [];
-      let totalH = 0;
+      let totalTextHeight = 0;
 
-      while (fontSize > 18) {
+      while (fontSize > 16) {
         cCtx.font = `400 ${fontSize}px sans-serif`;
-        lines = wrapCanvasText(cCtx, `"${textInput.value}"`, maxTextW);
-        totalH = lines.length * (fontSize * 1.55);
-        if (totalH <= maxTextH) break;
+        const lineHeight = fontSize * 1.5;
+        lines = wrapText(cCtx, cardTextInput.value, maxTextWidth);
+        totalTextHeight = lines.length * lineHeight;
+
+        if (totalTextHeight < maxTextHeight) {
+          break;
+        }
         fontSize -= 2;
       }
 
-      // Draw Main Inscription
+      // Render Text Lines
       cCtx.fillStyle = textCol;
       cCtx.textAlign = 'center';
-      let startY = (h - totalH) / 2 + fontSize * 0.8;
+      const startY = (h - totalTextHeight) / 2 + fontSize * 0.5;
+      const finalLineHeight = fontSize * 1.5;
+
       for (let i = 0; i < lines.length; i++) {
-        cCtx.fillText(lines[i], w / 2, startY + i * (fontSize * 1.55));
+        cCtx.fillText(lines[i], w / 2, startY + i * finalLineHeight);
       }
 
-      // Footer
+      // Footer Notation
+      cCtx.fillStyle = '#64748b';
       cCtx.font = `400 ${Math.round(w * 0.018)}px monospace`;
-      cCtx.fillStyle = subCol;
-      cCtx.fillText('NO LEADER • NO TITHE • VERIFY IN DIRECT EXPERIENCE', w / 2, h - margin - w * 0.045);
+      cCtx.fillText('NO LEADER • NO TITHE • VERIFY IN CONDUCT', w / 2, h - margin - w * 0.04);
 
-      fitLabel.innerText = `Rendered: ${w}×${h}px (${title}) • Adaptive Font: ${fontSize}px • Zero Overflow`;
+      overflowCheckBadge.innerText = `Layout Safe: ${w}x${h}px rendered with ${fontSize}px adaptive typography.`;
     }
 
-    btnDownload.addEventListener('click', () => {
+    // Export Card as PNG
+    document.getElementById('btnDownloadCard').addEventListener('click', () => {
       const link = document.createElement('a');
-      link.download = `commons-protocol-${selPlatform.value}.png`;
+      link.download = `commons-axiom-${platformSelect.value}.png`;
       link.href = cardCanvas.toDataURL('image/png');
       link.click();
-      showToast('High-resolution social card exported.');
     });
 
-    // Initial Card Render
-    renderSocialCard();
-
-
-    /* ==========================================================
-       5. OFFLINE ARCHIVE DOWNLOAD & MIRRORING
-    ========================================================== */
-    document.getElementById('btnDownloadArchive').addEventListener('click', () => {
-      const fullSource = "<!DOCTYPE html>\n" + document.documentElement.outerHTML;
-      const blob = new Blob([fullSource], { type: 'text/html;charset=utf-8' });
+    // Offline Preservation Utilities
+    document.getElementById('btnExportCode').addEventListener('click', () => {
+      const blob = new Blob([document.documentElement.outerHTML], { type: 'text/html' });
       const a = document.createElement('a');
       a.href = URL.createObjectURL(blob);
-      a.download = 'the-commons-open-protocol.html';
+      a.download = 'the-commons-protocol.html';
       a.click();
-      URL.revokeObjectURL(a.href);
-      showToast('Complete standalone application saved for offline hosting.');
     });
 
     document.getElementById('btnCopyCodex').addEventListener('click', () => {
-      const codex = `THE COMMONS PHILOSOPHICAL PROTOCOL
-An autonomous, leaderless framework verified in direct conduct.
-Dedicated to Public Domain (CC0 1.0)
+      const codexText = `THE COMMONS PROTOCOL (Leaderless Phenomenological System)
+Public Domain Dedicated (CC0 1.0)
 
-PROTOCOL 01: The Axiom of Non-Ownership
-Consciousness is an open clearing, not an owner. Suffering is thermodynamic friction from claiming transient ripples.
-
-PROTOCOL 02: The Stimulus-Response Interval
-Between stimulus and reaction lies human sovereignty. Expand the micro-interval to dismantle deterministic reflexes.
-
-PROTOCOL 03: The Dissolution of the Mediator
-Truth has no brokers. Any guru or church charging dues or claiming keys to awareness is an extractive bottleneck.
-
-PROTOCOL 04: The Kinetic Hygiene of Goodwill
-Compassion is neurobiological regulation. Resentment is self-administered poison; active kindness downregulates hyperarousal.
-
-PROTOCOL 05: The Law of Radical Transparency
-No esoteric secrets, no progression tiers. All principles and diagrams are public on page one.
-
-PROTOCOL 06: The Screen-to-Dirt Mandate
-This medium is a signpost. Turn off the screen. Walk onto the soil and serve immediate local kin.
-
-PROTOCOL 07: The Forking Imperative
-Truth cannot be copyrighted. Mirror, fork, translate, and self-host this protocol without permission or restriction.`;
-
-      const tArea = document.createElement('textarea');
-      tArea.value = codex;
-      document.body.appendChild(tArea);
-      tArea.select();
-      document.execCommand('copy');
-      document.body.removeChild(tArea);
-      showToast('Full plaintext codex copied to clipboard.');
+I. The Principle of Non-Ownership: Thoughts, feelings, and objects are flowing transients.
+II. The Stimulus-Response Interval: Sovereignty exists in the gap before reaction.
+III. The Dissolution of the Mediator: Truth requires no paid human intermediary.
+IV. The Conservation of Goodwill: Generosity expands the nervous system; cruelty contracts it.
+V. Impermanence of Rigid Identity: Opinions are processes, not static monuments.
+VI. Grounded Presence: Close the screen and engage direct physical reality.
+VII. Decentralized Stewardship: Truth is uncapturable; mirror and share freely.`;
+      navigator.clipboard.writeText(codexText).then(() => {
+        alert("Codex copied to clipboard.");
+      });
     });
+
+    // Initialize Card Preview on load
+    drawCard();
   </script>
 </body>
 </html>

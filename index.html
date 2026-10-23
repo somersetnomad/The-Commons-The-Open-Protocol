@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Commons | The Open Protocol</title>
-  <meta name="description" content="A leaderless, uncapturable philosophical architecture, 9 Foundational Principles, 9 deep kinetic state engines, and 36 canonical folios.">
+  <meta name="description" content="A leaderless, uncapturable philosophical architecture, 9 Foundational Principles, 9 deep kinetic state engines, 36 canonical folios, and foundational study library.">
 
-  <!-- Embedded Scalable Vector Favicon -->
+  <!-- Embedded Scalable Vector Favicon (Mineral Stone Palette) -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><circle cx='32' cy='32' r='30' fill='%230b1017' stroke='%23334155' stroke-width='2'/><circle cx='32' cy='32' r='18' fill='none' stroke='%230284c7' stroke-width='1.5' stroke-dasharray='4 2'/><circle cx='32' cy='32' r='4' fill='%230d9488'/><circle cx='32' cy='14' r='2.5' fill='%2394a3b8'/><circle cx='48' cy='40' r='2.5' fill='%2394a3b8'/><circle cx='16' cy='40' r='2.5' fill='%2394a3b8'/><path d='M32 14 L48 40 L16 40 Z' fill='none' stroke='%23334155' stroke-width='1' opacity='0.7'/></svg>">
 
   <style>
@@ -606,6 +606,55 @@
       gap: 1rem;
     }
 
+    /* Supporting Library Section */
+    .library-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .book-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .book-card h4 {
+      color: #fff;
+      font-size: 1.05rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .book-author {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--accent-turquoise);
+      margin-bottom: 0.75rem;
+    }
+
+    .book-resonance {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+      margin-bottom: 1rem;
+    }
+
+    .book-tag {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      padding: 0.25rem 0.6rem;
+      background: var(--bg-primary);
+      border: 1px solid var(--border-accent);
+      border-radius: 3px;
+      color: var(--text-dim);
+      align-self: flex-start;
+    }
+
     /* Assembly Guide Styles */
     .assembly-step {
       background: var(--bg-surface);
@@ -747,7 +796,8 @@
         <li><a href="#principles">9 Principles</a></li>
         <li><a href="#diagrams">9 Engines</a></li>
         <li><a href="#codex">36 Folios</a></li>
-        <li><a href="#assemblies">Assembly Protocol</a></li>
+        <li><a href="#library">Library</a></li>
+        <li><a href="#assemblies">Assemblies</a></li>
         <li><a href="#share">Card Generator</a></li>
       </ul>
     </div>
@@ -756,11 +806,12 @@
   <div class="hero">
     <span class="badge">Uncentralized • Autonomous • Open Protocol</span>
     <h1>A Protocol Beyond Masters.</h1>
-    <p>A leaderless philosophical architecture grounded in 9 foundational principles, 9 live kinetic simulations, and 36 mechanical folios. Click any folio to explore its teacherless teaching and dedicated dynamic simulation.</p>
+    <p>A leaderless philosophical architecture grounded in 9 foundational principles, 9 live kinetic simulations, 36 mechanical folios, and an open dialectic library. Click any folio to explore its teacherless teaching and dedicated dynamic simulation.</p>
     <div class="btn-row">
       <a href="#principles" class="btn btn-primary">The 9 Principles</a>
       <a href="#diagrams" class="btn btn-secondary">9 Kinetic Engines</a>
       <a href="#codex" class="btn btn-secondary">Open 36 Folios</a>
+      <a href="#library" class="btn btn-secondary">Foundational Books</a>
     </div>
   </div>
 
@@ -1129,6 +1180,97 @@
     <div class="folio-grid" id="foliosContainer"></div>
   </section>
 
+  <!-- Foundational Literature & Dialectic Library -->
+  <section id="library">
+    <div class="section-header">
+      <h2 class="section-title">Foundational Library & Supporting Texts</h2>
+      <p class="section-subtitle">The external intellectual and phenomenological lineage that directly underpins the mechanical axioms of The Commons.</p>
+    </div>
+
+    <div class="library-grid">
+      <div class="book-card">
+        <div>
+          <h4>Freedom from the Known</h4>
+          <div class="book-author">Jiddu Krishnamurti</div>
+          <p class="book-resonance">Systematically dismantles the psychological crutch of the guru and spiritual toll-booths. Truth is a pathless land that collapses the instant an intermediary demands followership.</p>
+        </div>
+        <span class="book-tag">Aligns: Folio 01 & 05</span>
+      </div>
+
+      <div class="book-card">
+        <div>
+          <h4>Tools for Conviviality</h4>
+          <div class="book-author">Ivan Illich</div>
+          <p class="book-resonance">Exposes how institutional gatekeepers monopolize human faculties into commodities. Formulates the standard for convivial, decentralized tools that guarantee autonomous peer utility.</p>
+        </div>
+        <span class="book-tag">Aligns: Folio 04 & 06</span>
+      </div>
+
+      <div class="book-card">
+        <div>
+          <h4>The Open Society and Its Enemies</h4>
+          <div class="book-author">Karl Popper</div>
+          <p class="book-resonance">The epistemic foundation of fallibilism: systems claiming absolute certainty inevitably turn inquisitorial. Resilient frameworks survive purely through falsifiability and open critique.</p>
+        </div>
+        <span class="book-tag">Aligns: Folio 02 & 03</span>
+      </div>
+
+      <div class="book-card">
+        <div>
+          <h4>The Atthakavagga (Book of Eights)</h4>
+          <div class="book-author">Early Buddhist Sutta Nipata</div>
+          <p class="book-resonance">The earliest stratum of phenomenological inquiry, ruthlessly opposed to philosophical camps, intellectual dogmas, and the grasping of views as permanent territory.</p>
+        </div>
+        <span class="book-tag">Aligns: Principle 03 & Folio 09</span>
+      </div>
+
+      <div class="book-card">
+        <div>
+          <h4>Discourses and Selected Writings</h4>
+          <div class="book-author">Epictetus</div>
+          <p class="book-resonance">The mechanical governor of the observer gap: external impressions arrive with force, but moral autonomy requires withholding automated reaction. Mental hygiene as physical law.</p>
+        </div>
+        <span class="book-tag">Aligns: Principle 01 & Folio 08</span>
+      </div>
+
+      <div class="book-card">
+        <div>
+          <h4>Tao Te Ching</h4>
+          <div class="book-author">Laozi</div>
+          <p class="book-resonance">The mechanics of water, yielding, and non-collision: avoiding rigid defensive perimeters to let aggressive vectors dissipate harmlessly into empty terrain.</p>
+        </div>
+        <span class="book-tag">Aligns: Principle 07 & Folio 14</span>
+      </div>
+
+      <div class="book-card">
+        <div>
+          <h4>The World Beyond Your Head</h4>
+          <div class="book-author">Matthew Crawford</div>
+          <p class="book-resonance">Diagnoses the solipsism of digital screen abstraction. Real psychological agency is recovered only through direct physical dialogue with unyielding matter that resists spin.</p>
+        </div>
+        <span class="book-tag">Aligns: Folio 19 & 22</span>
+      </div>
+
+      <div class="book-card">
+        <div>
+          <h4>The Scent of Time & Non-Things</h4>
+          <div class="book-author">Byung-Chul Han</div>
+          <p class="book-resonance">Identifies digital 'dyschronia'—time atomized into frantic synthetic urgency pings that destroy contemplative duration and hollow out somatic presence.</p>
+        </div>
+        <span class="book-tag">Aligns: Folio 11 & 23</span>
+      </div>
+
+      <div class="book-card">
+        <div>
+          <h4>Antifragile</h4>
+          <div class="book-author">Nassim Nicholas Taleb</div>
+          <p class="book-resonance">The mathematical foundation of Via Negativa and decentralized redundancy: centralized top-down systems fracture under stress, while autonomous peer units gain strength from volatility.</p>
+        </div>
+        <span class="book-tag">Aligns: Folio 12 & 27</span>
+      </div>
+    </div>
+  </section>
+
   <!-- Teacherless In-Depth Folio Modal Reader -->
   <div class="folio-modal" id="folioModal">
     <div class="modal-content">
@@ -1176,10 +1318,11 @@
   <!-- Assemblies & Group Facilitation Protocol -->
   <section id="assemblies">
     <div class="section-header">
-      <h2 class="section-title">Peer Assembly Protocol</h2>
-      <p class="section-subtitle">How to host autonomous, leaderless study circles locally or online without guru dynamics, financial capture, or dogma.</p>
+      <h2 class="section-title">Peer Assembly & Study Circle Protocol</h2>
+      <p class="section-subtitle">How to facilitate autonomous, leaderless circles both offline and online without guru dynamics, financial capture, or ideological gatekeeping.</p>
     </div>
 
+    <!-- Core Ethos -->
     <div class="assembly-step">
       <h3>I. Core Ethos & The Anti-Guru Mandate</h3>
       <p style="color: var(--text-muted); margin-bottom: 0.75rem;">An assembly of this protocol is never a lecture, sermon, or therapy workshop. It is a peer laboratory where individuals review their personal experiments in conduct.</p>
@@ -1191,41 +1334,64 @@
       </ul>
     </div>
 
+    <!-- Dual Formats -->
     <div class="assembly-step">
-      <h3>II. Standard 60-Minute Session Architecture</h3>
+      <h3>II. The Two Canonical Gathering Formats</h3>
+      <p style="color: var(--text-muted); margin-bottom: 1rem;">Assemblies operate under one of two distinct operational templates depending on whether the circle is examining lived somatic conduct or dissecting foundational philosophical literature:</p>
+
+      <h4 style="color: #fff; margin-bottom: 0.5rem; font-size: 1rem;">Format A: The Folio & Somatic Praxis Assembly (60 Minutes)</h4>
       <div class="code-box">00:00 - 00:05 | THE OBSERVER INTERVAL
-Begin with 5 minutes of total silence. Synchronized physical breathing (4s in, 6s out) to decompress from screen/city velocity.
+5 minutes of total silence. Synchronized physical breathing (4s in, 6s out) to decompress from screen/city velocity.
 
-00:05 - 00:15 | FOLIO SELECTION & DIAGRAM STUDY
-Read one of the 36 Folios aloud twice. Open the modal teaching on screen and review the mechanical cause and effect in the animation.
+00:05 - 00:15 | FOLIO & DIAGRAM EXAMINATION
+Read one chosen Folio aloud twice. Open its kinetic simulation on screen or laptop. Trace the mechanical cause, failure mode, and thermodynamic outcome.
 
-00:15 - 00:50 | SOVEREIGN DIALOGUE ROUND
+00:15 - 00:50 | SOVEREIGN CONDUCT ROUND
 Each participant takes up to 4 minutes to answer:
 1. "Where did I observe this friction in my own conduct this week?"
 2. "What was the measurable output when I applied the somatic praxis?"
-(No commentary, debating, or unsolicited counseling from other participants).
+(Strictly zero commentary, debate, or counseling from other participants).
 
-00:50 - 00:60 | SOMATIC SILENT CLOSE
-Review the tangible commitment for the upcoming week. Complete silence for the final 3 minutes. Disperse cleanly into physical reality.</div>
+00:50 - 00:60 | SILENT SOMATIC CLOSE
+Review the tangible physical commitment for the upcoming week. Complete silence for the final 3 minutes. Disperse cleanly into physical reality.</div>
+
+      <h4 style="color: #fff; margin: 1.5rem 0 0.5rem; font-size: 1rem;">Format B: The Dialectic Book Inquiry Assembly (75 Minutes)</h4>
+      <div class="code-box">00:00 - 00:05 | GROUNDING ARRIVAL
+Silent arrival and settling into the circle. Handheld devices silenced and stored completely out of sight.
+
+00:05 - 00:20 | ANCHOR CHAPTER AUDIT
+Read one selected passage or chapter excerpt from the Foundational Library (e.g. Krishnamurti, Illich, Crawford, Popper). Extract the raw proposition: what mechanical claim is the author making about human reality?
+
+00:20 - 00:55 | DIALECTIC PEER CROSS-EXAMINATION
+Participants analyze the passage through two rigorous filters:
+1. "Is this claim empirically falsifiable in direct human conduct?"
+2. "Does this idea empower sovereign autonomy, or does it construct a covert dependency or new orthodoxy?"
+
+00:55 - 00:70 | SYSTEMIC DIAGRAM MAPPING
+Open the site's kinetic engine corresponding to the book's thesis. Map the author's philosophical claim directly to kinetic state variables (e.g., mapping Crawford's 'tactile resistance' to Engine VII, or Illich's 'conviviality' to Engine VIII).
+
+00:70 - 00:75 | DE-ESCALATION & DISPERSAL
+Close with two minutes of collective quiet. No group chat obligations; participants depart freely.</div>
     </div>
 
+    <!-- Digital Circles via Whereby -->
     <div class="assembly-step">
       <h3>III. Digital Circles via Whereby</h3>
-      <p style="color: var(--text-muted); margin-bottom: 0.75rem;">To maintain complete friction-free accessibility without forcing attendees to register corporate accounts or install proprietary heavy software, host digital assemblies using <a href="https://whereby.com" target="_blank" rel="noopener">Whereby</a>:</p>
+      <p style="color: var(--text-muted); margin-bottom: 0.75rem;">To maintain friction-free accessibility without forcing attendees to register corporate accounts or install proprietary heavy software, host digital assemblies using <a href="https://whereby.com" target="_blank" rel="noopener">Whereby</a>:</p>
       <ul style="padding-left: 1.25rem; color: var(--text-muted); font-size: 0.9rem; line-height: 1.7; margin-bottom: 1rem;">
-        <li>Create a room URL (e.g. <code>whereby.com/commons-study-[city]</code>). Attendees join with a single click in any browser.</li>
-        <li>Set Room Mode to <strong>Small Group</strong> (grid view where all webcam boxes are equal size).</li>
-        <li>Share your screen during the first 15 minutes to run the real-time kinetic diagram together.</li>
+        <li>Create a persistent room URL (e.g. <code>whereby.com/commons-study-[city]</code>). Attendees join with a single click in any standard browser.</li>
+        <li>Set Room Mode to <strong>Small Group</strong> (grid view where all participant webcam boxes are equal size).</li>
+        <li>Screen-share during the diagram examination block to calibrate the interactive sliders together in real time.</li>
       </ul>
     </div>
 
+    <!-- Eventbrite Kit 1 -->
     <div class="assembly-step">
-      <h3>IV. Eventbrite & Meetup Listing Kit</h3>
-      <p style="color: var(--text-muted); margin-bottom: 0.75rem;">Use this exact pre-formatted title and description when creating public calendar listings on Eventbrite or Meetup to ensure clear expectations and filter out commercial/cultic interest:</p>
-      
+      <h3>IV. Eventbrite / Meetup Kit: Standard Folio Assembly</h3>
+      <p style="color: var(--text-muted); margin-bottom: 0.75rem;">Use this pre-formatted copy when listing weekly Folio practice circles on Eventbrite or Meetup to set clear non-hierarchical expectations:</p>
       <div class="code-box" style="position: relative;">
-        <button class="copy-snippet-btn" onclick="copyEventListing()">Copy Text</button>
-EVENT TITLE:
+        <button class="copy-snippet-btn" onclick="copySnippet('eventSnippet1')">Copy Text</button>
+<span id="eventSnippet1">EVENT TITLE:
 The Commons: Peer Study Circle & Kinetic Phenomenology (Leaderless)
 
 EVENT DESCRIPTION:
@@ -1244,7 +1410,36 @@ WHAT TO BRING:
 - An open, disciplined mind willing to speak from direct personal experience
 
 COST:
-100% Free. No donations, collection plates, tithing, or commercial offerings will ever take place.
+100% Free. No donations, collection plates, tithing, or commercial offerings will ever take place.</span>
+      </div>
+    </div>
+
+    <!-- Eventbrite Kit 2 -->
+    <div class="assembly-step">
+      <h3>V. Eventbrite / Meetup Kit: Dialectic Book Inquiry</h3>
+      <p style="color: var(--text-muted); margin-bottom: 0.75rem;">Use this pre-formatted copy when hosting deeper seminars exploring foundational texts alongside the site's kinetic physics engines:</p>
+      <div class="code-box" style="position: relative;">
+        <button class="copy-snippet-btn" onclick="copySnippet('eventSnippet2')">Copy Text</button>
+<span id="eventSnippet2">EVENT TITLE:
+The Commons: Dialectic Book Inquiry & Systems Phenomenology (Peer Seminar)
+
+EVENT DESCRIPTION:
+A disciplined, peer-led reading and dialectic seminar investigating the philosophical foundations of autonomy, anti-authoritarian epistemology, and somatic materialism.
+
+We do not treat authors as prophets or scriptures as sacred. We read foundational works (Krishnamurti, Illich, Crawford, Popper, Laozi) as mechanical propositions to be tested against physical reality, cognitive science, and lived experience.
+
+SESSION AGENDA (75 Minutes Strict):
+- 00:00 - 00:05: Silent arrival & device silencing
+- 00:05 - 00:20: Anchor chapter audit & thesis isolation
+- 00:20 - 00:55: Dialectic cross-examination: empirical testing vs. covert dogma
+- 00:55 - 00:70: Mapping concepts to interactive kinetic state diagrams
+- 00:70 - 00:75: Silent closing & clean dispersal
+
+WHO THIS IS FOR:
+Inquirers seeking rigorous philosophical exploration free from spiritual gatekeeping, academic jargon, or commercial workshops.
+
+COST:
+100% Free. No fees, book sales, memberships, or upsells.</span>
       </div>
     </div>
   </section>
@@ -1385,40 +1580,6 @@ COST:
         container.appendChild(card);
       });
     }
-
-    // Populate Tab Listeners
-    document.querySelectorAll('.tab-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        renderFolios(btn.dataset.book);
-      });
-    });
-
-    // Populate Preset Selector
-    const presetSelect = document.getElementById('folioPresetSelect');
-    if (presetSelect) {
-      folios.forEach(f => {
-        const opt = document.createElement('option');
-        opt.value = f.id;
-        opt.innerText = `Folio ${f.id < 10 ? '0' + f.id : f.id}: ${f.title}`;
-        presetSelect.appendChild(opt);
-      });
-      const customOpt = document.createElement('option');
-      customOpt.value = 'custom';
-      customOpt.innerText = 'Custom Inscription...';
-      presetSelect.appendChild(customOpt);
-    }
-
-    // Initialize Principles Accordion
-    document.querySelectorAll('.principle-trigger').forEach(btn => {
-      btn.addEventListener('click', () => {
-        btn.parentElement.classList.toggle('open');
-      });
-    });
-
-    // Render immediately on script load
-    renderFolios('all');
 
     /* Safe Canvas Dimension Setter */
     function setRetinaBacking(canvas) {
@@ -2239,10 +2400,11 @@ COST:
     const paletteSelect = document.getElementById('paletteSelect');
     const overflowCheckBadge = document.getElementById('overflowCheckBadge');
 
-    if (presetSelect) {
-      presetSelect.addEventListener('change', () => {
-        if (presetSelect.value !== 'custom') {
-          const f = folios.find(item => item.id == presetSelect.value);
+    const presetSelectElement = document.getElementById('folioPresetSelect');
+    if (presetSelectElement) {
+      presetSelectElement.addEventListener('change', () => {
+        if (presetSelectElement.value !== 'custom') {
+          const f = folios.find(item => item.id == presetSelectElement.value);
           if (f) cardTextInput.value = `Folio ${f.id < 10 ? '0' + f.id : f.id}: ${f.title}\n\n"${f.mech}"`;
         }
         drawCard();
@@ -2250,7 +2412,7 @@ COST:
     }
 
     window.loadFolioIntoCard = function(id) {
-      if (presetSelect) presetSelect.value = id;
+      if (presetSelectElement) presetSelectElement.value = id;
       const f = folios.find(item => item.id == id);
       if (f) cardTextInput.value = `Folio ${f.id < 10 ? '0' + f.id : f.id}: ${f.title}\n\n"${f.mech}"`;
       drawCard();
@@ -2383,51 +2545,32 @@ COST:
       navigator.clipboard.writeText(md).then(() => { alert("Complete 36-Folio Codex copied to clipboard as Markdown."); });
     });
 
-    window.copyEventListing = function() {
-      const text = `EVENT TITLE:
-The Commons: Peer Study Circle & Kinetic Phenomenology (Leaderless)
-
-EVENT DESCRIPTION:
-This is a peer-facilitated study group for exploring the mechanics of perception, emotional friction, and non-hierarchical community based on The Open Protocol.
-
-This gathering is NOT a lecture, spiritual sermon, therapy session, or networking mixer. There is no guru, teacher, or membership fee. We sit as equals to examine conduct through direct observation and somatic daily practice.
-
-SESSION AGENDA (60 Minutes Strict):
-- 00:00 - 00:05: Grounding silence & breath pacing
-- 00:05 - 00:15: Reading of the weekly Folio & kinetic diagram examination
-- 00:15 - 00:50: Non-judgmental sharing round: empirical results of daily practice
-- 00:50 - 00:60: Silent closing
-
-WHAT TO BRING:
-- A notebook and pen
-- An open, disciplined mind willing to speak from direct personal experience
-
-COST:
-100% Free. No donations, collection plates, tithing, or commercial offerings will ever take place.`;
-      navigator.clipboard.writeText(text).then(() => { alert("Eventbrite/Meetup listing copy copied to clipboard."); });
+    window.copySnippet = function(id) {
+      const el = document.getElementById(id);
+      if (el) {
+        navigator.clipboard.writeText(el.innerText).then(() => {
+          alert("Listing template copied to clipboard.");
+        });
+      }
     };
 
-    /* Complete Safe Boot Lifecycle */
-    function bootSystem() {
+    /* Safe Execution Lifecycle */
+    window.addEventListener('load', () => {
       initAllCanvases();
       drawCard();
-      renderReactionSim();
-      renderEgoSim();
-      renderAttachSim();
-      renderAttractorSim();
-      renderEntropySim();
-      renderVagalSim();
-      renderVectorSim();
-      renderGossipSim();
-      renderDissolutionSim();
-    }
-
-    if (document.readyState === 'complete' || document.readyState === 'interactive') {
-      bootSystem();
-    } else {
-      window.addEventListener('DOMContentLoaded', bootSystem);
-    }
+    });
     window.addEventListener('resize', initAllCanvases);
+
+    // Boot all render loops immediately
+    renderReactionSim();
+    renderEgoSim();
+    renderAttachSim();
+    renderAttractorSim();
+    renderEntropySim();
+    renderVagalSim();
+    renderVectorSim();
+    renderGossipSim();
+    renderDissolutionSim();
   </script>
 </body>
 </html>

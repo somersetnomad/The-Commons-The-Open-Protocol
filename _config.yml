@@ -1,20 +1,13 @@
 # Site Settings
 title: "The Open Protocol | The Commons"
 description: "A leaderless, uncapturable philosophical system and interactive phenomenological engine."
-url: "https://<your-username>.github.io"
-baseurl: "/<your-repository-name>" # Leave as "" if deploying to a custom domain or username.github.io root
 
-# Build Configuration
-# Exclude markdown or administrative files from Jekyll processing
+# Exclude documentation and config files from processing
 exclude:
   - README.md
   - LICENSE
   - .gitignore
 
-# Disable automatic Jekyll theme gems to preserve pure vanilla HTML/CSS/JS
-theme: none
-plugins: []
-
-# Markdown & Permalinks
-permalink: pretty
+# Set an empty theme or simply omit the theme line entirely
+markdown: kramdown
 encoding: "utf-8"

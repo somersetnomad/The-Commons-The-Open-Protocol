@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Commons | The Open Protocol</title>
-  <meta name="description" content="A leaderless, uncapturable philosophical architecture, 36 canonical folios with full 500-word teacherless teachings, dynamic simulations, and peer assembly protocol.">
+  <meta name="description" content="A leaderless, uncapturable philosophical architecture, 36 canonical folios with 500-word deep readings, intricate kinetic physics diagrams, and assembly guide.">
 
   <!-- Embedded Scalable Vector Favicon (Mineral Stone Palette) -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><circle cx='32' cy='32' r='30' fill='%230b1017' stroke='%23334155' stroke-width='2'/><circle cx='32' cy='32' r='18' fill='none' stroke='%230284c7' stroke-width='1.5' stroke-dasharray='4 2'/><circle cx='32' cy='32' r='4' fill='%230d9488'/><circle cx='32' cy='14' r='2.5' fill='%2394a3b8'/><circle cx='48' cy='40' r='2.5' fill='%2394a3b8'/><circle cx='16' cy='40' r='2.5' fill='%2394a3b8'/><path d='M32 14 L48 40 L16 40 Z' fill='none' stroke='%23334155' stroke-width='1' opacity='0.7'/></svg>">
@@ -539,13 +539,14 @@
 
     .modal-canvas-wrap {
       width: 100%;
-      height: 250px;
+      height: 270px;
       background: #06090e;
       border-radius: 4px;
       overflow: hidden;
       margin-bottom: 1rem;
       border: 1px solid rgba(255, 255, 255, 0.05);
       position: relative;
+      cursor: crosshair;
     }
 
     #modalDiagramCanvas {
@@ -556,7 +557,7 @@
 
     .modal-diagram-controls {
       display: grid;
-      grid-template-columns: 1fr 180px;
+      grid-template-columns: 1fr 200px;
       gap: 1.5rem;
       align-items: center;
       padding-top: 0.5rem;
@@ -791,7 +792,7 @@
   <div class="hero">
     <span class="badge">Uncentralized • Autonomous • Open Protocol</span>
     <h1>A Protocol Beyond Masters.</h1>
-    <p>A leaderless philosophical architecture expressed through kinetic diagrams and 36 mechanical folios. Click any folio to explore its complete 500-word teacherless teaching and dedicated dynamic simulation.</p>
+    <p>A leaderless philosophical architecture expressed through kinetic diagrams and 36 mechanical folios. Click any folio to explore its complete 500-word teacherless teaching, responsive field physics, and real-time interactive diagrams.</p>
     <div class="btn-row">
       <a href="#codex" class="btn btn-primary">Open 36 Folios</a>
       <a href="#assemblies" class="btn btn-secondary">Facilitation Guide</a>
@@ -913,7 +914,7 @@
       </div>
     </div>
 
-    <!-- Simulation 3: Thermodynamics of Attachment (FULLY FUNCTIONING) -->
+    <!-- Simulation 3: Thermodynamics of Attachment -->
     <div class="sim-container" id="sim-section-3">
       <div class="canvas-wrapper">
         <canvas id="simAttachCanvas" class="sim-canvas"></canvas>
@@ -975,6 +976,7 @@
         <div class="modal-diagram-controls">
           <div class="modal-diagram-meta">
             <span id="modalDiagramName">Simulation Engine Anchor</span>: <span id="modalDiagramThesis">Live System Modeling</span>
+            <div style="font-size:0.7rem; color:var(--text-dim); margin-top:0.25rem;">Interact: Move cursor inside canvas to perturb field geometry</div>
           </div>
           <div>
             <div style="display:flex; justify-content:space-between; font-family:var(--font-mono); font-size:0.7rem; color:var(--text-muted); margin-bottom:0.25rem;">
@@ -1263,7 +1265,7 @@ COST:
       const dpr = window.devicePixelRatio || 1;
       const rect = canvas.getBoundingClientRect();
       const targetW = rect.width > 0 ? rect.width : 780;
-      const targetH = rect.height > 0 ? rect.height : 250;
+      const targetH = rect.height > 0 ? rect.height : 270;
       canvas.width = targetW * dpr;
       canvas.height = targetH * dpr;
       const ctx = canvas.getContext('2d');
@@ -1272,13 +1274,14 @@ COST:
       return { ctx, width: targetW, height: targetH };
     }
 
-    /* --- Simulation 1: Reaction vs Response --- */
+    /* --- Simulation 1: Intricate Reaction vs Response --- */
     const rCanvas = document.getElementById('simReactionCanvas');
     const rCtx = rCanvas.getContext('2d');
     const gapSlider = document.getElementById('gapSlider');
     const gapVal = document.getElementById('gapVal');
     let rParticles = [];
     let rSparks = [];
+    let rShockwaves = [];
 
     gapSlider.addEventListener('input', (e) => {
       gapVal.innerText = `${e.target.value}%`;
@@ -1286,15 +1289,16 @@ COST:
 
     document.getElementById('btnEmitImpulse').addEventListener('click', () => {
       const rect = rCanvas.getBoundingClientRect();
-      for (let i = 0; i < 6; i++) {
+      for (let i = 0; i < 9; i++) {
         rParticles.push({
           x: 10,
-          y: rect.height / 2 + (Math.random() * 40 - 20),
-          vx: 3.5 + Math.random() * 2,
-          vy: (Math.random() - 0.5) * 1.5,
-          radius: 3,
+          y: rect.height / 2 + (Math.random() * 60 - 30),
+          vx: 4 + Math.random() * 2.5,
+          vy: (Math.random() - 0.5) * 1.8,
+          radius: 3.5,
           color: '#0284c7',
-          absorbed: false
+          absorbed: false,
+          tail: []
         });
       }
     });
@@ -1306,77 +1310,120 @@ COST:
       rCtx.fillRect(0, 0, rect.width, rect.height);
 
       autoSpawnTimer++;
-      if (autoSpawnTimer % 45 === 0) {
+      if (autoSpawnTimer % 40 === 0) {
         rParticles.push({
           x: 10,
           y: rect.height / 2 + (Math.random() * 50 - 25),
-          vx: 3 + Math.random() * 1.5,
-          vy: (Math.random() - 0.5) * 1,
+          vx: 3.2 + Math.random() * 1.8,
+          vy: (Math.random() - 0.5) * 1.2,
           radius: 3,
           color: '#0284c7',
-          absorbed: false
+          absorbed: false,
+          tail: []
         });
       }
 
       const gapRatio = gapSlider.value / 100;
-      const observerWidth = rect.width * 0.4 * gapRatio;
+      const observerWidth = rect.width * 0.42 * gapRatio;
       const observerX = rect.width * 0.45 - observerWidth / 2;
       const barrierX = observerX + observerWidth;
 
-      // Observer Interval
+      // Draw Multi-Tone Observer Threshold
       rCtx.fillStyle = 'rgba(13, 148, 136, 0.08)';
-      rCtx.fillRect(observerX, 20, observerWidth, rect.height - 40);
-      rCtx.strokeStyle = '#334155';
-      rCtx.strokeRect(observerX, 20, observerWidth, rect.height - 40);
+      rCtx.fillRect(observerX, 15, observerWidth, rect.height - 30);
+      rCtx.strokeStyle = 'rgba(13, 148, 136, 0.35)';
+      rCtx.strokeRect(observerX, 15, observerWidth, rect.height - 30);
+
+      // Interval Harmonic Calibration Gridlines
+      rCtx.strokeStyle = 'rgba(13, 148, 136, 0.15)';
+      rCtx.beginPath();
+      for (let gx = observerX + 15; gx < barrierX; gx += 20) {
+        rCtx.moveTo(gx, 15);
+        rCtx.lineTo(gx, rect.height - 15);
+      }
+      rCtx.stroke();
 
       rCtx.fillStyle = '#94a3b8';
       rCtx.font = '10px monospace';
-      rCtx.fillText('OBSERVER INTERVAL', observerX + 6, 36);
+      rCtx.fillText('OBSERVER INTERVAL (DAMPING ZONE)', observerX + 8, 32);
 
-      // Rigid Barrier if Gap is Small
+      // Rigid Barrier if Gap is Narrow
       if (gapRatio < 0.35) {
         rCtx.fillStyle = '#9f1239';
-        rCtx.fillRect(barrierX - 2, 20, 4, rect.height - 40);
+        rCtx.fillRect(barrierX - 3, 15, 6, rect.height - 30);
+        rCtx.strokeStyle = '#ef4444';
+        rCtx.strokeRect(barrierX - 4, 15, 8, rect.height - 30);
       }
 
-      // Render Sparks
+      // Render Expanding Shockwaves
+      for (let w = rShockwaves.length - 1; w >= 0; w--) {
+        const sw = rShockwaves[w];
+        sw.r += 2.5;
+        sw.alpha -= 0.035;
+        rCtx.beginPath();
+        rCtx.arc(sw.x, sw.y, sw.r, 0, Math.PI * 2);
+        rCtx.strokeStyle = `rgba(239, 68, 68, ${sw.alpha})`;
+        rCtx.lineWidth = 1.5;
+        rCtx.stroke();
+        rCtx.lineWidth = 1;
+        if (sw.alpha <= 0) rShockwaves.splice(w, 1);
+      }
+
+      // Render Collision Sparks
       for (let s = rSparks.length - 1; s >= 0; s--) {
         const sp = rSparks[s];
         sp.x += sp.vx;
         sp.y += sp.vy;
         sp.alpha -= 0.03;
-        rCtx.fillStyle = `rgba(159, 18, 57, ${sp.alpha})`;
+        rCtx.fillStyle = `rgba(224, 83, 60, ${sp.alpha})`;
         rCtx.beginPath();
         rCtx.arc(sp.x, sp.y, 2, 0, Math.PI * 2);
         rCtx.fill();
         if (sp.alpha <= 0) rSparks.splice(s, 1);
       }
 
-      // Render Particles
+      // Render Impulses with Kinematic Tails
       for (let i = rParticles.length - 1; i >= 0; i--) {
         const p = rParticles[i];
         p.x += p.vx;
         p.y += p.vy;
 
-        // Reactive collision
+        p.tail.push({ x: p.x, y: p.y });
+        if (p.tail.length > 8) p.tail.shift();
+
+        // Reactive collision with rigid barrier
         if (gapRatio < 0.35 && p.x >= barrierX - 4 && !p.absorbed) {
-          p.vx = -p.vx * 0.7;
+          p.vx = -p.vx * 0.75;
           p.color = '#9f1239';
-          for (let k = 0; k < 4; k++) {
+          rShockwaves.push({ x: barrierX, y: p.y, r: 4, alpha: 1 });
+          for (let k = 0; k < 6; k++) {
             rSparks.push({
               x: barrierX,
               y: p.y,
-              vx: (Math.random() - 0.7) * 4,
-              vy: (Math.random() - 0.5) * 4,
+              vx: (Math.random() - 0.75) * 5,
+              vy: (Math.random() - 0.5) * 5,
               alpha: 1
             });
           }
         }
 
-        // Responsive absorption
+        // Responsive wave absorption in spacious gap
         if (p.x >= observerX && p.x <= barrierX && gapRatio >= 0.35) {
-          p.vx *= 0.96;
+          p.vx *= 0.95;
           p.color = '#0d9488';
+        }
+
+        // Draw particle tail
+        if (p.tail.length > 1) {
+          rCtx.beginPath();
+          rCtx.moveTo(p.tail[0].x, p.tail[0].y);
+          for (let t = 1; t < p.tail.length; t++) {
+            rCtx.lineTo(p.tail[t].x, p.tail[t].y);
+          }
+          rCtx.strokeStyle = p.color;
+          rCtx.lineWidth = 1.2;
+          rCtx.stroke();
+          rCtx.lineWidth = 1;
         }
 
         rCtx.beginPath();
@@ -1392,7 +1439,7 @@ COST:
       requestAnimationFrame(renderReactionSim);
     }
 
-    /* --- Simulation 2: Contraction Gradient --- */
+    /* --- Simulation 2: Intricate Contraction Gradient --- */
     const eCanvas = document.getElementById('simEgoCanvas');
     const eCtx = eCanvas.getContext('2d');
     const rigiditySlider = document.getElementById('rigiditySlider');
@@ -1404,7 +1451,7 @@ COST:
     });
 
     document.getElementById('btnPulseField').addEventListener('click', () => {
-      eTime += 3;
+      eTime += 4;
     });
 
     function renderEgoSim() {
@@ -1416,17 +1463,54 @@ COST:
       const centerX = rect.width / 2;
       const centerY = rect.height / 2;
       const rigidity = rigiditySlider.value / 100;
-      const baseRadius = 40 + rigidity * 22;
+      const baseRadius = 38 + rigidity * 26;
 
-      const nodeCount = 14;
-      for (let i = 0; i < nodeCount; i++) {
-        const angle = (i / nodeCount) * Math.PI * 2 + eTime * (1 - rigidity * 0.75);
-        const dist = 110 + Math.sin(eTime * 2 + i) * 12 * (1 - rigidity);
+      // Outer & Inner Double-Ring Harmonic Resonators
+      const primaryCount = 14;
+      const satelliteCount = 8;
+
+      // Inner field ring
+      for (let j = 0; j < satelliteCount; j++) {
+        const sa = (j / satelliteCount) * Math.PI * 2 - eTime * 0.8;
+        const sDist = (baseRadius + 22) + Math.sin(eTime * 3 + j) * 6;
+        const sx = centerX + Math.cos(sa) * sDist;
+        const sy = centerY + Math.sin(sa) * sDist;
+
+        eCtx.beginPath();
+        eCtx.arc(sx, sy, 2.5, 0, Math.PI * 2);
+        eCtx.fillStyle = '#0284c7';
+        eCtx.fill();
+
+        if (rigidity < 0.5) {
+          eCtx.beginPath();
+          eCtx.moveTo(centerX, centerY);
+          eCtx.lineTo(sx, sy);
+          eCtx.strokeStyle = 'rgba(2, 132, 199, 0.2)';
+          eCtx.stroke();
+        }
+      }
+
+      // Outer Web Nodes with Dynamic Spring Tension
+      for (let i = 0; i < primaryCount; i++) {
+        const angle = (i / primaryCount) * Math.PI * 2 + eTime * (1 - rigidity * 0.75);
+        const dist = 115 + Math.sin(eTime * 2 + i) * 14 * (1 - rigidity);
         const nx = centerX + Math.cos(angle) * dist;
         const ny = centerY + Math.sin(angle) * dist;
 
+        // Neighbor cross-mesh filaments
+        const nextAngle = ((i + 1) / primaryCount) * Math.PI * 2 + eTime * (1 - rigidity * 0.75);
+        const nextDist = 115 + Math.sin(eTime * 2 + i + 1) * 14 * (1 - rigidity);
+        const nextNx = centerX + Math.cos(nextAngle) * nextDist;
+        const nextNy = centerY + Math.sin(nextAngle) * nextDist;
+
         eCtx.beginPath();
-        eCtx.arc(nx, ny, 3.5, 0, Math.PI * 2);
+        eCtx.moveTo(nx, ny);
+        eCtx.lineTo(nextNx, nextNy);
+        eCtx.strokeStyle = `rgba(13, 148, 136, ${(1 - rigidity) * 0.35})`;
+        eCtx.stroke();
+
+        eCtx.beginPath();
+        eCtx.arc(nx, ny, 3.8, 0, Math.PI * 2);
         eCtx.fillStyle = '#0d9488';
         eCtx.fill();
 
@@ -1434,18 +1518,30 @@ COST:
           eCtx.beginPath();
           eCtx.moveTo(centerX, centerY);
           eCtx.lineTo(nx, ny);
-          eCtx.strokeStyle = `rgba(13, 148, 136, ${(1 - rigidity) * 0.3})`;
+          eCtx.strokeStyle = `rgba(13, 148, 136, ${(1 - rigidity) * 0.25})`;
           eCtx.stroke();
         }
       }
 
+      // Center Node Armor Perimeter (Jagged spiked shield under high rigidity)
       eCtx.beginPath();
-      eCtx.arc(centerX, centerY, baseRadius, 0, Math.PI * 2);
+      const points = 32;
+      for (let p = 0; p <= points; p++) {
+        const pa = (p / points) * Math.PI * 2;
+        const spike = rigidity > 0.5 ? Math.sin(p * 5 + eTime * 8) * (8 * rigidity) : 0;
+        const pr = baseRadius + spike;
+        const px = centerX + Math.cos(pa) * pr;
+        const py = centerY + Math.sin(pa) * pr;
+        if (p === 0) eCtx.moveTo(px, py);
+        else eCtx.lineTo(px, py);
+      }
+      eCtx.closePath();
       eCtx.strokeStyle = rigidity > 0.6 ? '#9f1239' : '#334155';
-      eCtx.lineWidth = 1 + rigidity * 3;
+      eCtx.lineWidth = 1.5 + rigidity * 3;
       eCtx.stroke();
       eCtx.lineWidth = 1;
 
+      // Center Core Stone
       eCtx.beginPath();
       eCtx.arc(centerX, centerY, 8, 0, Math.PI * 2);
       eCtx.fillStyle = '#f1f5f9';
@@ -1454,7 +1550,7 @@ COST:
       requestAnimationFrame(renderEgoSim);
     }
 
-    /* --- Simulation 3: Thermodynamics of Attachment (REBUILT & FIXED) --- */
+    /* --- Simulation 3: Intricate Hydrodynamics of Attachment --- */
     const aCanvas = document.getElementById('simAttachCanvas');
     const aCtx = aCanvas.getContext('2d');
     const graspSlider = document.getElementById('graspSlider');
@@ -1471,18 +1567,18 @@ COST:
       graspVal.innerText = '0%';
     });
 
-    // Populate initial hydro stream
     function initStreamParticles(w, h) {
       streamParticles = [];
-      for (let i = 0; i < 70; i++) {
+      for (let i = 0; i < 80; i++) {
         streamParticles.push({
           x: Math.random() * w,
           y: Math.random() * h,
           baseY: Math.random() * h,
-          speed: 1.8 + Math.random() * 2.2,
-          radius: 2 + Math.random() * 2,
+          speed: 1.8 + Math.random() * 2.4,
+          radius: 2 + Math.random() * 2.2,
           color: '#0284c7',
-          temp: 0
+          temp: 0,
+          tail: []
         });
       }
     }
@@ -1492,9 +1588,7 @@ COST:
       const w = rect.width;
       const h = rect.height;
 
-      if (streamParticles.length === 0) {
-        initStreamParticles(w, h);
-      }
+      if (streamParticles.length === 0) initStreamParticles(w, h);
 
       aCtx.fillStyle = '#0b1017';
       aCtx.fillRect(0, 0, w, h);
@@ -1502,24 +1596,33 @@ COST:
       const grasp = graspSlider.value / 100;
       const focalX = w / 2;
       const focalY = h / 2;
-      const gripRadius = 24 + grasp * 26;
+      const gripRadius = 24 + grasp * 28;
+
+      // Background Hydrodynamic Field Vector Grid
+      aCtx.strokeStyle = 'rgba(2, 132, 199, 0.05)';
+      for (let gy = 20; gy < h; gy += 30) {
+        aCtx.beginPath();
+        aCtx.moveTo(0, gy);
+        aCtx.lineTo(w, gy);
+        aCtx.stroke();
+      }
 
       // Draw Focal Obstacle Stone
       aCtx.beginPath();
       aCtx.arc(focalX, focalY, gripRadius, 0, Math.PI * 2);
-      aCtx.fillStyle = grasp > 0.4 ? `rgba(159, 18, 57, ${0.15 + grasp * 0.3})` : '#131a24';
+      aCtx.fillStyle = grasp > 0.4 ? `rgba(159, 18, 57, ${0.15 + grasp * 0.35})` : '#131a24';
       aCtx.strokeStyle = grasp > 0.5 ? '#9f1239' : '#334155';
-      aCtx.lineWidth = 1 + grasp * 3;
+      aCtx.lineWidth = 1 + grasp * 3.5;
       aCtx.fill();
       aCtx.stroke();
       aCtx.lineWidth = 1;
 
-      // Draw Grasping Tension Aura
-      if (grasp > 0.2) {
+      // Draw Grasping Tension Aura Rings
+      if (grasp > 0.15) {
         aCtx.beginPath();
-        aCtx.arc(focalX, focalY, gripRadius + 30 * grasp, 0, Math.PI * 2);
-        aCtx.strokeStyle = `rgba(124, 45, 18, ${grasp * 0.4})`;
-        aCtx.setLineDash([4, 4]);
+        aCtx.arc(focalX, focalY, gripRadius + 35 * grasp, 0, Math.PI * 2);
+        aCtx.strokeStyle = `rgba(124, 45, 18, ${grasp * 0.45})`;
+        aCtx.setLineDash([5, 4]);
         aCtx.stroke();
         aCtx.setLineDash([]);
       }
@@ -1537,60 +1640,73 @@ COST:
         if (fl.alpha <= 0) frictionFlashes.splice(f, 1);
       }
 
-      // Update & Render Fluid Streamlines
+      // Update & Render Fluid Streamlines with Dynamic Viscosity Tails
       for (let i = 0; i < streamParticles.length; i++) {
         const p = streamParticles[i];
-        p.x += p.speed * (1 - grasp * 0.4);
+        p.x += p.speed * (1 - grasp * 0.45);
+
+        p.tail.push({ x: p.x, y: p.y });
+        if (p.tail.length > 6) p.tail.shift();
 
         const dx = p.x - focalX;
         const dy = p.y - focalY;
         const dist = Math.sqrt(dx * dx + dy * dy);
 
-        if (dist < gripRadius + 45) {
-          const proximity = (gripRadius + 45 - dist) / (gripRadius + 45);
+        if (dist < gripRadius + 50) {
+          const proximity = (gripRadius + 50 - dist) / (gripRadius + 50);
           
           if (grasp > 0.25) {
-            // High Grasp = Drag Turbulence & Thermal Shear
-            p.temp = Math.min(1, p.temp + 0.08 * grasp);
-            p.y += (Math.random() - 0.5) * 6 * grasp;
-            p.x -= proximity * 2 * grasp;
+            // Drag Turbulence & Thermal Shear
+            p.temp = Math.min(1, p.temp + 0.09 * grasp);
+            p.y += (Math.random() - 0.5) * 7 * grasp;
+            p.x -= proximity * 2.2 * grasp;
 
-            if (Math.random() < 0.08 * grasp) {
+            if (Math.random() < 0.1 * grasp) {
               frictionFlashes.push({
                 x: p.x,
                 y: p.y,
-                vx: (Math.random() - 0.7) * 3,
-                vy: (Math.random() - 0.5) * 3,
+                vx: (Math.random() - 0.75) * 3.5,
+                vy: (Math.random() - 0.5) * 3.5,
                 alpha: 1
               });
             }
           } else {
-            // Low Grasp = Smooth Laminar Deflection
+            // Smooth Laminar Hydrodynamic Deflection
             p.temp = Math.max(0, p.temp - 0.04);
-            p.y += (dy >= 0 ? 1 : -1) * proximity * 2.2;
+            p.y += (dy >= 0 ? 1 : -1) * proximity * 2.4;
           }
         } else {
           p.temp = Math.max(0, p.temp - 0.02);
-          // Gently return toward baseline trajectory
-          p.y += (p.baseY - p.y) * 0.03;
+          p.y += (p.baseY - p.y) * 0.035;
         }
 
-        // Color based on thermodynamic friction temperature
         const r = Math.round(2 + p.temp * 157);
         const g = Math.round(132 - p.temp * 114);
         const b = Math.round(199 - p.temp * 142);
-        aCtx.fillStyle = `rgb(${r},${g},${b})`;
+        const particleCol = `rgb(${r},${g},${b})`;
+
+        // Streamline trail
+        if (p.tail.length > 1) {
+          aCtx.beginPath();
+          aCtx.moveTo(p.tail[0].x, p.tail[0].y);
+          for (let t = 1; t < p.tail.length; t++) {
+            aCtx.lineTo(p.tail[t].x, p.tail[t].y);
+          }
+          aCtx.strokeStyle = `rgba(${r},${g},${b}, 0.35)`;
+          aCtx.stroke();
+        }
 
         aCtx.beginPath();
         aCtx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        aCtx.fillStyle = particleCol;
         aCtx.fill();
 
-        // Loop boundaries continuously
         if (p.x > w + 20) {
-          p.x = -10;
+          p.x = -15;
           p.y = Math.random() * h;
           p.baseY = p.y;
           p.temp = 0;
+          p.tail = [];
         }
       }
 
@@ -1630,6 +1746,18 @@ COST:
     let modalAnimFrame;
     let modalTime = 0;
     let modalParticles = [];
+    let modalMouse = { x: -999, y: -999, active: false };
+
+    // Interactive pointer deflection over modal canvas
+    modalDiagramCanvas.addEventListener('mousemove', (e) => {
+      const rect = modalDiagramCanvas.getBoundingClientRect();
+      modalMouse.x = e.clientX - rect.left;
+      modalMouse.y = e.clientY - rect.top;
+      modalMouse.active = true;
+    });
+    modalDiagramCanvas.addEventListener('mouseleave', () => {
+      modalMouse.active = false;
+    });
 
     modalParamSlider.addEventListener('input', (e) => {
       modalSliderVal.innerText = `${e.target.value}%`;
@@ -1640,7 +1768,6 @@ COST:
       if (!f) return;
       currentModalFolioId = id;
 
-      // 1. Render text content
       modalFolioTag.innerText = `Book ${f.book} • Folio ${f.id < 10 ? '0' + f.id : f.id}`;
       modalFolioTitle.innerText = f.title;
       modalDiagramName.innerText = `Engine ${f.sim} (Book ${f.book})`;
@@ -1654,31 +1781,31 @@ COST:
         </div>
       `;
 
-      // 2. Open modal before measuring canvas dimensions
       folioModal.style.display = 'block';
       document.body.style.overflow = 'hidden';
 
-      // 3. Initialize modal canvas with zero-dimension protection
       const dpr = window.devicePixelRatio || 1;
       const rect = modalDiagramCanvas.getBoundingClientRect();
       const targetWidth = rect.width > 0 ? rect.width : 780;
-      const targetHeight = rect.height > 0 ? rect.height : 250;
+      const targetHeight = rect.height > 0 ? rect.height : 270;
 
       modalDiagramCanvas.width = targetWidth * dpr;
       modalDiagramCanvas.height = targetHeight * dpr;
       mCtx.resetTransform();
       mCtx.scale(dpr, dpr);
 
-      // Re-seed modal particles for fresh state
+      // Re-seed modal particles for fresh high-density state
       modalParticles = [];
-      for (let i = 0; i < 35; i++) {
+      for (let i = 0; i < 45; i++) {
         modalParticles.push({
           x: Math.random() * targetWidth,
           y: Math.random() * targetHeight,
-          vx: (Math.random() - 0.5) * 2,
-          vy: (Math.random() - 0.5) * 2,
-          radius: 2.5 + Math.random() * 2,
-          phase: Math.random() * Math.PI * 2
+          vx: (Math.random() - 0.5) * 2.2,
+          vy: (Math.random() - 0.5) * 2.2,
+          radius: 2 + Math.random() * 2.5,
+          phase: Math.random() * Math.PI * 2,
+          val: Math.random(),
+          tail: []
         });
       }
 
@@ -1718,174 +1845,282 @@ COST:
       loadFolioIntoCard(currentModalFolioId);
     });
 
-    /* Dedicated 6-Mode Thematic Simulation Engine Supporting All 36 Folios */
+    /* Dedicated Intricate 6-Mode Thematic Simulation Engine Supporting All 36 Folios */
     function renderModalSimulation(simType, folioId, w, h) {
       mCtx.fillStyle = '#06090e';
       mCtx.fillRect(0, 0, w, h);
       modalTime += 0.025;
       const param = modalParamSlider.value / 100;
 
+      // Mouse interactive force field
+      const mx = modalMouse.active ? modalMouse.x : w / 2;
+      const my = modalMouse.active ? modalMouse.y : h / 2;
+
       if (simType === 1) {
         // Book I: Epistemic Dispersion & Network Mesh (Bypassing Intermediary Bottlenecks)
         const cx = w / 2;
         const cy = h / 2;
-        const nodeCount = 10;
-        
-        // Draw decentralized mesh links
+        const nodeCount = 12;
+
+        // Background metric lattice
+        mCtx.strokeStyle = 'rgba(13, 148, 136, 0.05)';
+        for (let x = 20; x < w; x += 40) {
+          mCtx.beginPath();
+          mCtx.moveTo(x, 0);
+          mCtx.lineTo(x, h);
+          mCtx.stroke();
+        }
+
+        // Draw decentralized mesh links with dynamic packet propagation
         for (let i = 0; i < nodeCount; i++) {
-          const a = (i / nodeCount) * Math.PI * 2 + modalTime * 0.4;
-          const r = 60 + Math.sin(modalTime + i) * 12;
+          const a = (i / nodeCount) * Math.PI * 2 + modalTime * 0.35;
+          const r = 70 + Math.sin(modalTime * 2 + i) * 14;
           const x = cx + Math.cos(a) * r;
           const y = cy + Math.sin(a) * r;
 
-          // Connect to neighboring peers
-          const nextA = ((i + 1) / nodeCount) * Math.PI * 2 + modalTime * 0.4;
+          const nextA = ((i + 1) / nodeCount) * Math.PI * 2 + modalTime * 0.35;
           const nx = cx + Math.cos(nextA) * r;
           const ny = cy + Math.sin(nextA) * r;
 
+          // Mesh perimeter links
           mCtx.beginPath();
           mCtx.moveTo(x, y);
           mCtx.lineTo(nx, ny);
-          mCtx.strokeStyle = `rgba(13, 148, 136, ${0.15 + param * 0.5})`;
+          mCtx.strokeStyle = `rgba(13, 148, 136, ${0.2 + param * 0.5})`;
+          mCtx.lineWidth = 1.2;
           mCtx.stroke();
+          mCtx.lineWidth = 1;
 
-          // Connect across network
+          // Cross-web bypass filaments
           mCtx.beginPath();
           mCtx.moveTo(x, y);
           mCtx.lineTo(w * 0.1, cy);
-          mCtx.strokeStyle = 'rgba(2, 132, 199, 0.12)';
+          mCtx.strokeStyle = 'rgba(2, 132, 199, 0.15)';
           mCtx.stroke();
 
+          // Packet flow dot along filament
+          const packetProgress = (modalTime * 1.5 + i * 0.3) % 1;
+          const px = x + (nx - x) * packetProgress;
+          const py = y + (ny - y) * packetProgress;
           mCtx.beginPath();
-          mCtx.arc(x, y, 4, 0, Math.PI * 2);
+          mCtx.arc(px, py, 2, 0, Math.PI * 2);
+          mCtx.fillStyle = '#f1f5f9';
+          mCtx.fill();
+
+          mCtx.beginPath();
+          mCtx.arc(x, y, 4.5, 0, Math.PI * 2);
           mCtx.fillStyle = '#0d9488';
           mCtx.fill();
         }
 
-        // Draw central bypassed point (fades out as parameter increases)
+        // Central Bypassed Bottleneck Point (Shifts and dissolves as parameter increases)
         mCtx.beginPath();
-        mCtx.arc(cx, cy, 14, 0, Math.PI * 2);
-        mCtx.fillStyle = `rgba(159, 18, 57, ${1 - param * 0.8})`;
+        mCtx.arc(cx, cy, 16 * (1 - param * 0.4), 0, Math.PI * 2);
+        mCtx.fillStyle = `rgba(159, 18, 57, ${1 - param * 0.85})`;
         mCtx.strokeStyle = '#334155';
+        mCtx.lineWidth = 1.5;
         mCtx.fill();
-        mCtx.stroke();
-
-      } else if (simType === 2) {
-        // Book II: Cognitive Phase Space & The Observer Gap
-        const observerWidth = w * 0.35 * (0.1 + param * 0.8);
-        const observerX = (w - observerWidth) / 2;
-
-        mCtx.fillStyle = 'rgba(13, 148, 136, 0.1)';
-        mCtx.fillRect(observerX, 15, observerWidth, h - 30);
-        mCtx.strokeStyle = '#334155';
-        mCtx.strokeRect(observerX, 15, observerWidth, h - 30);
-
-        // Sinusoidal Stimulus Traversing Interval
-        mCtx.beginPath();
-        mCtx.lineWidth = 2.5;
-        for (let x = 0; x < w; x += 4) {
-          const inGap = x >= observerX && x <= observerX + observerWidth;
-          const damping = inGap ? (1 - param * 0.8) : 1;
-          const y = h / 2 + Math.sin(x * 0.04 - modalTime * 3) * (26 * damping);
-          
-          mCtx.strokeStyle = inGap ? '#0d9488' : '#0284c7';
-          if (x === 0) mCtx.moveTo(x, y);
-          else mCtx.lineTo(x, y);
-        }
         mCtx.stroke();
         mCtx.lineWidth = 1;
 
+      } else if (simType === 2) {
+        // Book II: Cognitive Phase Space & The Observer Gap (Wave interference & Attractor paths)
+        const observerWidth = w * 0.38 * (0.15 + param * 0.8);
+        const observerX = (w - observerWidth) / 2;
+
+        mCtx.fillStyle = 'rgba(13, 148, 136, 0.08)';
+        mCtx.fillRect(observerX, 15, observerWidth, h - 30);
+        mCtx.strokeStyle = 'rgba(13, 148, 136, 0.4)';
+        mCtx.strokeRect(observerX, 15, observerWidth, h - 30);
+
+        // Multiple Lissajous Harmonic Stimulus Waveforms
+        for (let waveIndex = 0; waveIndex < 3; waveIndex++) {
+          mCtx.beginPath();
+          mCtx.lineWidth = 1.5;
+          const offset = waveIndex * (Math.PI / 3);
+          for (let x = 0; x < w; x += 4) {
+            const inGap = x >= observerX && x <= observerX + observerWidth;
+            const damping = inGap ? (1 - param * 0.82) : 1;
+            const y = h / 2 + Math.sin(x * 0.035 - modalTime * 3 + offset) * (28 * damping);
+
+            mCtx.strokeStyle = inGap ? '#0d9488' : (waveIndex === 1 ? '#0284c7' : '#94a3b8');
+            if (x === 0) mCtx.moveTo(x, y);
+            else mCtx.lineTo(x, y);
+          }
+          mCtx.stroke();
+          mCtx.lineWidth = 1;
+        }
+
+        // Real-time damping node traversing waveform
+        const nodeX = (modalTime * 120) % w;
+        const inGapNode = nodeX >= observerX && nodeX <= observerX + observerWidth;
+        const nodeAmp = inGapNode ? 28 * (1 - param * 0.82) : 28;
+        const nodeY = h / 2 + Math.sin(nodeX * 0.035 - modalTime * 3) * nodeAmp;
+        mCtx.beginPath();
+        mCtx.arc(nodeX, nodeY, 5, 0, Math.PI * 2);
+        mCtx.fillStyle = inGapNode ? '#0d9488' : '#ef4444';
+        mCtx.fill();
+
       } else if (simType === 3) {
-        // Book III: Relational Resonance & Boundary Dynamics
-        const p1 = { x: w * 0.35, y: h / 2 };
-        const p2 = { x: w * 0.65, y: h / 2 };
+        // Book III: Relational Resonance & Boundary Dynamics (Dipole Interference & Non-Collision)
+        const p1 = { x: w * 0.32, y: h / 2 };
+        const p2 = { x: w * 0.68, y: h / 2 };
         const dist = Math.abs(p2.x - p1.x);
 
-        // Resonating Field Rings
-        for (let r = 15; r < dist / 1.5; r += 16) {
-          const wave = Math.sin(modalTime * 2 - r * 0.1);
+        // Intricate Dipole Wave Rings & Moiré Interference Patterns
+        for (let r = 10; r < dist * 1.2; r += 14) {
+          const wavePhase = Math.sin(modalTime * 2.5 - r * 0.08);
           mCtx.beginPath();
           mCtx.arc(p1.x, p1.y, r, 0, Math.PI * 2);
+          mCtx.strokeStyle = `rgba(13, 148, 136, ${0.12 + wavePhase * 0.08 * param})`;
+          mCtx.stroke();
+
+          mCtx.beginPath();
           mCtx.arc(p2.x, p2.y, r, 0, Math.PI * 2);
-          mCtx.strokeStyle = `rgba(13, 148, 136, ${0.15 + wave * 0.1 * param})`;
+          mCtx.strokeStyle = `rgba(2, 132, 199, ${0.12 + wavePhase * 0.08 * param})`;
           mCtx.stroke();
         }
 
+        // Deflected Non-Collision Vector Particles
+        for (let i = 0; i < modalParticles.length; i++) {
+          const p = modalParticles[i];
+          p.x += Math.cos(p.phase) * (1.5 + param);
+          p.y += Math.sin(p.phase) * (1.5 + param);
+
+          // Interactive deflection away from dipole centers
+          const d1 = Math.hypot(p.x - p1.x, p.y - p1.y);
+          const d2 = Math.hypot(p.x - p2.x, p.y - p2.y);
+          if (d1 < 45) p.phase += 0.1;
+          if (d2 < 45) p.phase -= 0.1;
+
+          if (p.x < 0 || p.x > w) p.x = Math.random() * w;
+          if (p.y < 0 || p.y > h) p.y = Math.random() * h;
+
+          mCtx.beginPath();
+          mCtx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+          mCtx.fillStyle = '#f1f5f9';
+          mCtx.fill();
+        }
+
+        // Centers
         mCtx.beginPath();
         mCtx.arc(p1.x, p1.y, 8, 0, Math.PI * 2);
         mCtx.arc(p2.x, p2.y, 8, 0, Math.PI * 2);
-        mCtx.fillStyle = '#f1f5f9';
+        mCtx.fillStyle = '#059669';
         mCtx.fill();
 
       } else if (simType === 4) {
-        // Book IV: Somatic Bio-Oscillation & Terrestrial Grounding
+        // Book IV: Somatic Bio-Oscillation & Terrestrial Grounding (Vagal & Thoracic Pacing)
+        mCtx.strokeStyle = 'rgba(5, 150, 105, 0.2)';
         mCtx.beginPath();
-        mCtx.strokeStyle = '#059669';
+        mCtx.moveTo(0, h * 0.82);
+        mCtx.lineTo(w, h * 0.82);
+        mCtx.stroke();
+
+        // Dual Respiratory & Autonomic Sinusoids
         mCtx.lineWidth = 2;
-        
-        // Paced respiration curve
-        const breathPeriod = 0.03 * (0.5 + param * 0.8);
-        for (let x = 0; x < w; x += 5) {
-          const y = h / 2 + Math.sin(x * 0.02 - modalTime * breathPeriod * 50) * 35;
-          if (x === 0) mCtx.moveTo(x, y);
-          else mCtx.lineTo(x, y);
+        mCtx.beginPath();
+        for (let x = 0; x < w; x += 4) {
+          const thoracicY = h * 0.42 + Math.sin(x * 0.02 - modalTime * (0.8 + param * 1.5)) * 32;
+          mCtx.strokeStyle = '#059669';
+          if (x === 0) mCtx.moveTo(x, thoracicY);
+          else mCtx.lineTo(x, thoracicY);
+        }
+        mCtx.stroke();
+
+        mCtx.beginPath();
+        for (let x = 0; x < w; x += 4) {
+          const vagalY = h * 0.58 + Math.cos(x * 0.015 - modalTime * (0.5 + param)) * 22;
+          mCtx.strokeStyle = '#0284c7';
+          if (x === 0) mCtx.moveTo(x, vagalY);
+          else mCtx.lineTo(x, vagalY);
         }
         mCtx.stroke();
         mCtx.lineWidth = 1;
 
-        // Grounding horizon line
-        mCtx.strokeStyle = '#334155';
-        mCtx.beginPath();
-        mCtx.moveTo(0, h * 0.85);
-        mCtx.lineTo(w, h * 0.85);
-        mCtx.stroke();
+        // Grounding Mineral Particles rooted to terrestrial baseline
+        for (let i = 0; i < 20; i++) {
+          const px = (i / 20) * w;
+          const py = h * 0.82 + Math.sin(modalTime * 3 + i) * 3;
+          mCtx.beginPath();
+          mCtx.arc(px, py, 3, 0, Math.PI * 2);
+          mCtx.fillStyle = '#334155';
+          mCtx.fill();
+        }
 
       } else if (simType === 5) {
-        // Book V: Decentralized Topology & Byzantine Resilience
+        // Book V: Decentralized Topology & Byzantine Resilience (Self-Healing Gossiping Mesh)
         for (let i = 0; i < modalParticles.length; i++) {
           const p = modalParticles[i];
-          p.x += p.vx * (1 + param);
-          p.y += p.vy * (1 + param);
+          p.x += p.vx * (0.8 + param * 1.2);
+          p.y += p.vy * (0.8 + param * 1.2);
 
-          if (p.x < 0 || p.x > w) p.vx *= -1;
-          if (p.y < 0 || p.y > h) p.vy *= -1;
+          // Deflection around pointer if near
+          const dMouse = Math.hypot(p.x - mx, p.y - my);
+          if (dMouse < 60) {
+            p.x += (p.x - mx) * 0.05;
+            p.y += (p.y - my) * 0.05;
+          }
+
+          if (p.x < 10 || p.x > w - 10) p.vx *= -1;
+          if (p.y < 10 || p.y > h - 10) p.vy *= -1;
 
           mCtx.beginPath();
           mCtx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
           mCtx.fillStyle = '#0284c7';
           mCtx.fill();
 
-          // Peer gossip links
+          // Mesh Link Connectivity & Dynamic Byzantine Packet Hopping
           for (let j = i + 1; j < modalParticles.length; j++) {
             const p2 = modalParticles[j];
             const d = Math.hypot(p.x - p2.x, p.y - p2.y);
-            if (d < 65) {
+            if (d < 75) {
               mCtx.beginPath();
               mCtx.moveTo(p.x, p.y);
               mCtx.lineTo(p2.x, p2.y);
-              mCtx.strokeStyle = `rgba(2, 132, 199, ${(65 - d) / 65 * 0.4})`;
+              mCtx.strokeStyle = `rgba(2, 132, 199, ${(75 - d) / 75 * (0.2 + param * 0.4)})`;
               mCtx.stroke();
             }
           }
         }
 
       } else {
-        // Book VI: Thermodynamic Equilibrium & Entropic Renewal
+        // Book VI: Thermodynamic Equilibrium & Entropic Renewal (Galactic Swirl Re-absorption)
         const cx = w / 2;
         const cy = h / 2;
+
         for (let i = 0; i < modalParticles.length; i++) {
           const p = modalParticles[i];
-          p.phase += 0.02 * (1 + param);
-          const r = 20 + Math.sin(p.phase) * (w * 0.35);
-          const a = p.phase + i;
+          p.phase += 0.015 * (0.8 + param * 2);
+          const r = 18 + Math.sin(p.phase) * (w * 0.38);
+          const a = p.phase + i * 0.4;
           const x = cx + Math.cos(a) * r;
           const y = cy + Math.sin(a) * r;
 
+          p.tail.push({ x, y });
+          if (p.tail.length > 5) p.tail.shift();
+
+          if (p.tail.length > 1) {
+            mCtx.beginPath();
+            mCtx.moveTo(p.tail[0].x, p.tail[0].y);
+            for (let t = 1; t < p.tail.length; t++) {
+              mCtx.lineTo(p.tail[t].x, p.tail[t].y);
+            }
+            mCtx.strokeStyle = 'rgba(13, 148, 136, 0.25)';
+            mCtx.stroke();
+          }
+
           mCtx.beginPath();
-          mCtx.arc(x, y, 2.5, 0, Math.PI * 2);
+          mCtx.arc(x, y, 2.8, 0, Math.PI * 2);
           mCtx.fillStyle = param > 0.6 ? '#f1f5f9' : '#0d9488';
           mCtx.fill();
         }
+
+        // Central Re-absorption Core
+        mCtx.beginPath();
+        mCtx.arc(cx, cy, 10, 0, Math.PI * 2);
+        mCtx.fillStyle = 'rgba(241, 245, 249, 0.15)';
+        mCtx.fill();
       }
 
       modalAnimFrame = requestAnimationFrame(() => renderModalSimulation(simType, folioId, w, h));

@@ -474,7 +474,7 @@
       background: var(--bg-surface);
       border: 1px solid var(--border-accent);
       border-radius: 8px;
-      max-width: 880px;
+      max-width: 900px;
       width: 100%;
       padding: 2.5rem;
       position: relative;
@@ -489,15 +489,15 @@
       background: var(--bg-elevated);
       border: 1px solid var(--border);
       color: var(--text-muted);
-      width: 32px;
-      height: 32px;
+      width: 34px;
+      height: 34px;
       border-radius: 4px;
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
       font-family: var(--font-mono);
-      font-size: 1.1rem;
+      font-size: 1.2rem;
       transition: all 0.2s ease;
     }
 
@@ -507,8 +507,8 @@
     }
 
     .modal-header {
-      margin-bottom: 2rem;
-      padding-bottom: 1.5rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1.25rem;
       border-bottom: 1px solid var(--border);
     }
 
@@ -528,22 +528,24 @@
       line-height: 1.2;
     }
 
-    /* Embedded Dynamic Diagram in Modal */
+    /* Embedded Dedicated Dynamic Diagram in Modal */
     .modal-diagram-card {
       background: var(--bg-primary);
       border: 1px solid var(--border);
       border-radius: 6px;
-      padding: 1rem;
+      padding: 1.25rem;
       margin-bottom: 2rem;
     }
 
     .modal-canvas-wrap {
       width: 100%;
-      height: 220px;
+      height: 250px;
       background: #06090e;
       border-radius: 4px;
       overflow: hidden;
-      margin-bottom: 0.75rem;
+      margin-bottom: 1rem;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      position: relative;
     }
 
     #modalDiagramCanvas {
@@ -552,13 +554,30 @@
       display: block;
     }
 
-    .modal-diagram-meta {
-      display: flex;
-      justify-content: space-between;
+    .modal-diagram-controls {
+      display: grid;
+      grid-template-columns: 1fr 180px;
+      gap: 1.5rem;
       align-items: center;
+      padding-top: 0.5rem;
+      border-top: 1px solid var(--border);
+    }
+
+    @media (max-width: 600px) {
+      .modal-diagram-controls {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .modal-diagram-meta {
       font-family: var(--font-mono);
       font-size: 0.75rem;
-      color: var(--text-dim);
+      color: var(--text-muted);
+    }
+
+    .modal-diagram-meta span {
+      color: var(--accent-turquoise);
+      font-weight: 600;
     }
 
     .modal-body {
@@ -894,7 +913,7 @@
       </div>
     </div>
 
-    <!-- Simulation 3: Thermodynamics of Attachment -->
+    <!-- Simulation 3: Thermodynamics of Attachment (FULLY FUNCTIONING) -->
     <div class="sim-container" id="sim-section-3">
       <div class="canvas-wrapper">
         <canvas id="simAttachCanvas" class="sim-canvas"></canvas>
@@ -902,13 +921,13 @@
       <div class="sim-panel">
         <div>
           <h4>III. Thermodynamics of Attachment</h4>
-          <p>Visualizes the fluid flow of transient moments. High grasping creates localized drag and friction; releasing restores effortless laminar streamflow.</p>
+          <p>Visualizes the fluid flow of transient moments. High grasping creates drag vortices, boiling friction, and turbulence; releasing restores effortless laminar streamflow.</p>
           <div class="control-group">
             <div class="control-label">
               <span>Grasping Coefficient</span>
-              <span id="graspVal">30%</span>
+              <span id="graspVal">35%</span>
             </div>
-            <input type="range" id="graspSlider" min="0" max="100" value="30">
+            <input type="range" id="graspSlider" min="0" max="100" value="35">
           </div>
         </div>
         <button class="btn btn-secondary" id="btnReleaseGrasp">Let Go (Reset to 0%)</button>
@@ -948,14 +967,22 @@
         <h2 class="modal-title" id="modalFolioTitle">The Iron Law of Intermediaries</h2>
       </div>
 
-      <!-- Integrated Kinetic Diagram Container -->
+      <!-- Dedicated Dynamic Simulation Engine Inside Modal -->
       <div class="modal-diagram-card">
         <div class="modal-canvas-wrap">
           <canvas id="modalDiagramCanvas"></canvas>
         </div>
-        <div class="modal-diagram-meta">
-          <span id="modalDiagramName">Dynamic Simulation Anchor</span>
-          <span>AUTONOMOUS KINETIC ENGINE</span>
+        <div class="modal-diagram-controls">
+          <div class="modal-diagram-meta">
+            <span id="modalDiagramName">Simulation Engine Anchor</span>: <span id="modalDiagramThesis">Live System Modeling</span>
+          </div>
+          <div>
+            <div style="display:flex; justify-content:space-between; font-family:var(--font-mono); font-size:0.7rem; color:var(--text-muted); margin-bottom:0.25rem;">
+              <span>Dynamic Calibration</span>
+              <span id="modalSliderVal">50%</span>
+            </div>
+            <input type="range" id="modalParamSlider" min="0" max="100" value="50">
+          </div>
         </div>
       </div>
 
@@ -1110,55 +1137,55 @@ COST:
 
   <!-- Script Architecture -->
   <script>
-    /* 36 Canonical Folios Database */
+    /* Complete Database of 36 Canonical Folios with Dedicated Diagram Engine Specifications */
     const folios = [
       // Book I: Epistemology & Authority
-      { id: 1, book: 1, title: "The Iron Law of Intermediaries", sim: 2, mech: "The moment a person or institution positions themselves as the indispensable bridge between consciousness and truth, an extractive toll is born. Charisma eventually curdles into self-preservation.", praxis: "When listening to any authority, ask: 'If this speaker disappeared tomorrow, would reality still function?' If yes, study reality, not the speaker." },
-      { id: 2, book: 1, title: "Verification Over Belief", sim: 1, mech: "Belief is a promissory note written against reality; observation is cold cash. Systems requiring unquestioned assent do so because their internal mechanics collapse under direct weight.", praxis: "Suspend conviction on any moral claim until you have run it as a 7-day personal behavioral experiment and audited your nervous system." },
-      { id: 3, book: 1, title: "The Fragility of Orthodoxy", sim: 3, mech: "Words are static vessels attempting to hold dynamic fluids. When communities canonize vocabulary rather than principles, minor semantic shifts create sectarian hatred.", praxis: "Translate your deepest held philosophical principle into everyday vernacular without using specialized jargon, slogans, or buzzwords." },
-      { id: 4, book: 1, title: "The Open Protocol Standard", sim: 2, mech: "A foundational truth behaves like thermodynamics or gravity: it belongs to no country, holds no patent, and demands no membership card. It is an open protocol accessible anywhere reality is present.", praxis: "Freely share useful tools, notes, and frameworks without demanding intellectual attribution or transactional reciprocity." },
-      { id: 5, book: 1, title: "The Antidote to Charisma", sim: 1, mech: "Charismatic leaders mesmerize through aesthetic hypnosis, concealing structural flaws beneath oratorical beauty. True insight is quiet, functional, and indifferent to applause.", praxis: "Mute the audio on persuasive video content. Examine the bare assertions in silence on physical paper to assess their true structural integrity." },
-      { id: 6, book: 1, title: "Zero-Toll Access", sim: 3, mech: "Truth that requires payment to unlock is a commodity designed for profit, not liberation. Spiritual paywalls ensure only the comfortable can examine life.", praxis: "Refuse to monetize foundational guidance. Keep seed documentation open-access and single-file portable." },
+      { id: 1, book: 1, title: "The Iron Law of Intermediaries", sim: 1, thesis: "Bypassing Centralized Bottlenecks", mech: "The moment a person or institution positions themselves as the indispensable bridge between consciousness and truth, an extractive toll is born. Charisma eventually curdles into self-preservation.", praxis: "When listening to any authority, ask: 'If this speaker disappeared tomorrow, would reality still function?' If yes, study reality, not the speaker." },
+      { id: 2, book: 1, title: "Verification Over Belief", sim: 1, thesis: "Phenomenological Empirical Testing", mech: "Belief is a promissory note written against reality; observation is cold cash. Systems requiring unquestioned assent do so because their internal mechanics collapse under direct weight.", praxis: "Suspend conviction on any moral claim until you have run it as a 7-day personal behavioral experiment and audited your nervous system." },
+      { id: 3, book: 1, title: "The Fragility of Orthodoxy", sim: 1, thesis: "Linguistic Freezing vs. Kinetic Living Reality", mech: "Words are static vessels attempting to hold dynamic fluids. When communities canonize vocabulary rather than principles, minor semantic shifts create sectarian hatred.", praxis: "Translate your deepest held philosophical principle into everyday vernacular without using specialized jargon, slogans, or buzzwords." },
+      { id: 4, book: 1, title: "The Open Protocol Standard", sim: 1, thesis: "Zero-Patent Universal Interoperability", mech: "A foundational truth behaves like thermodynamics or gravity: it belongs to no country, holds no patent, and demands no membership card. It is an open protocol accessible anywhere reality is present.", praxis: "Freely share useful tools, notes, and frameworks without demanding intellectual attribution or transactional reciprocity." },
+      { id: 5, book: 1, title: "The Antidote to Charisma", sim: 1, thesis: "Acoustic & Theatrical Decoupling", mech: "Charismatic leaders mesmerize through aesthetic hypnosis, concealing structural flaws beneath oratorical beauty. True insight is quiet, functional, and indifferent to applause.", praxis: "Mute the audio on persuasive video content. Examine the bare assertions in silence on physical paper to assess their true structural integrity." },
+      { id: 6, book: 1, title: "Zero-Toll Access", sim: 1, thesis: "Zero-Marginal-Cost Transmission", mech: "Truth that requires payment to unlock is a commodity designed for profit, not liberation. Spiritual paywalls ensure only the comfortable can examine life.", praxis: "Refuse to monetize foundational guidance. Keep seed documentation open-access and single-file portable." },
 
       // Book II: The Mechanics of Mind & Perception
-      { id: 7, book: 2, title: "Thermodynamic Nature of Suffering", sim: 3, mech: "Suffering is not an arbitrary curse; it is proportional to resistance multiplied by flow (S = R x F). When transient phenomena are grasped as permanent assets, friction is generated.", praxis: "Locate physical tightness in the shoulders during distress. Relax those muscles and murmur: 'Let the water flow around the stone.'" },
-      { id: 8, book: 2, title: "The Micro-Interval of Sovereignty", sim: 1, mech: "Stimulus strikes the senses; an automated reflex fires milliseconds later. In that tiny aperture rests all human freedom. To widen the interval is to exit animal automation.", praxis: "When an emotional trigger arrives, inhale once for 4 seconds and exhale for 6 seconds before physical movement or reply." },
-      { id: 9, book: 2, title: "The Myth of the Rigid Core", sim: 2, mech: "We imagine the self as an unyielding marble monument. When circumstances chip the marble, we panic. In truth, the self is a weather system—ever-forming, ever-releasing.", praxis: "Write down three descriptions of yourself from five years ago that are no longer true. Acknowledge the current self as an equally fluid state." },
-      { id: 10, book: 2, title: "The Architecture of Grievance", sim: 1, mech: "Resentment is an unclosed loop running in background mental memory. It consumes neurological energy while producing zero physical work.", praxis: "Ask: 'What concrete action can resolve this today?' If none exists, formally file it under irreversible atmospheric history and delete the complaint." },
-      { id: 11, book: 2, title: "The Deception of Urgency", sim: 2, mech: "Modern interfaces run on manufactured alarms. False urgency contracts the cognitive field, triggering primitive fight-or-flight behaviors where systemic wisdom is required.", praxis: "Set a 90-minute period daily where zero incoming chimes, rings, or notifications are permitted to penetrate your space." },
-      { id: 12, book: 2, title: "Clarity Through Subtraction", sim: 3, mech: "Wisdom rarely comes from acquiring complex theories; it comes from scraping off accumulated falsehoods, vanity, and superfluous noise.", praxis: "Discard, recycle, or clear three physical objects or digital subscriptions that exist solely to support an unexamined habit." },
+      { id: 7, book: 2, title: "Thermodynamic Nature of Suffering", sim: 2, thesis: "Resistance x Velocity = Shear Friction", mech: "Suffering is not an arbitrary curse; it is proportional to resistance multiplied by flow (S = R x F). When transient phenomena are grasped as permanent assets, friction is generated.", praxis: "Locate physical tightness in the shoulders during distress. Relax those muscles and murmur: 'Let the water flow around the stone.'" },
+      { id: 8, book: 2, title: "The Micro-Interval of Sovereignty", sim: 2, thesis: "Dilating the Stimulus-Response Aperture", mech: "Stimulus strikes the senses; an automated reflex fires milliseconds later. In that tiny aperture rests all human freedom. To widen the interval is to exit animal automation.", praxis: "When an emotional trigger arrives, inhale once for 4 seconds and exhale for 6 seconds before physical movement or reply." },
+      { id: 9, book: 2, title: "The Myth of the Rigid Core", sim: 2, thesis: "Dynamic Weather Systems vs. Static Monuments", mech: "We imagine the self as an unyielding marble monument. When circumstances chip the marble, we panic. In truth, the self is a weather system—ever-forming, ever-releasing.", praxis: "Write down three descriptions of yourself from five years ago that are no longer true. Acknowledge the current self as an equally fluid state." },
+      { id: 10, book: 2, title: "The Architecture of Grievance", sim: 2, thesis: "Unclosed Cognitive Loops & Metabolic Drain", mech: "Resentment is an unclosed loop running in background mental memory. It consumes neurological energy while producing zero physical work.", praxis: "Ask: 'What concrete action can resolve this today?' If none exists, formally file it under irreversible atmospheric history and delete the complaint." },
+      { id: 11, book: 2, title: "The Deception of Urgency", sim: 2, thesis: "Synthetic Alarm Attenuation", mech: "Modern interfaces run on manufactured alarms. False urgency contracts the cognitive field, triggering primitive fight-or-flight behaviors where systemic wisdom is required.", praxis: "Set a 90-minute period daily where zero incoming chimes, rings, or notifications are permitted to penetrate your space." },
+      { id: 12, book: 2, title: "Clarity Through Subtraction", sim: 2, thesis: "Via Negativa & Signal Optimization", mech: "Wisdom rarely comes from acquiring complex theories; it comes from scraping off accumulated falsehoods, vanity, and superfluous noise.", praxis: "Discard, recycle, or clear three physical objects or digital subscriptions that exist solely to support an unexamined habit." },
 
       // Book III: Relational Dynamics & Community
-      { id: 13, book: 3, title: "Non-Coercive Association", sim: 2, mech: "Any community that punishes departure with shunning, slander, or social blackmail is a prison. Healthy association is enterable and exitable at will.", praxis: "Support a colleague or acquaintance who chooses a different life direction without offering guilt or condescending commentary." },
-      { id: 14, book: 3, title: "The Geometry of Conflict", sim: 1, mech: "Interpersonal conflict escalates when two people collide against each other's rigid defensive boundaries. Stepping out of alignment with the blow neutralizes its force.", praxis: "When challenged aggressively, refuse both counter-attack and retreat. Stand calmly, validate the emotional fact of distress, and address the objective problem alone." },
-      { id: 15, book: 3, title: "Quiet Assistance", sim: 2, mech: "Philanthropy celebrated with banners and social vanity feeds the ego rather than the communal fabric. The most potent repair is unnoticed.", praxis: "Clean, repair, or improve a communal public area (a sidewalk, a park bench, a shared workspace) without telling anyone who did it." },
-      { id: 16, book: 3, title: "The Shield of Projected Blame", sim: 1, mech: "Accusing others of malice is a swift way to avoid confronting our own operational incompetence. Scapegoating is the cheapest psychological drug.", praxis: "When a collaborative project fails, publicly audit your own fractional contribution to the failure before reviewing anyone else's." },
-      { id: 17, book: 3, title: "Sovereign Fellowship", sim: 2, mech: "A group of dependent, fragmented individuals cannot form a healthy commune; they form an anxious mob. Strong unity requires self-reliant nodes.", praxis: "Cultivate a skill that permits you to feed, repair, or care for yourself independently of institutional help." },
-      { id: 18, book: 3, title: "Unconditional Listening", sim: 3, mech: "Most listening is merely waiting for one's own turn to speak, filtering incoming words for debate points. Clean observation mirrors reality without judgment.", praxis: "In your next conversation, listen to the speaker until they finish entirely, pausing for 3 seconds before formulating an answer." },
+      { id: 13, book: 3, title: "Non-Coercive Association", sim: 3, thesis: "Zero-Friction Ingress & Egress", mech: "Any community that punishes departure with shunning, slander, or social blackmail is a prison. Healthy association is enterable and exitable at will.", praxis: "Support a colleague or acquaintance who chooses a different life direction without offering guilt or condescending commentary." },
+      { id: 14, book: 3, title: "The Geometry of Conflict", sim: 3, thesis: "Vector Neutralization & Non-Collision", mech: "Interpersonal conflict escalates when two people collide against each other's rigid defensive boundaries. Stepping out of alignment with the blow neutralizes its force.", praxis: "When challenged aggressively, refuse both counter-attack and retreat. Stand calmly, validate the emotional fact of distress, and address the objective problem alone." },
+      { id: 15, book: 3, title: "Quiet Assistance", sim: 3, thesis: "Subterranean Field Harmonization", mech: "Philanthropy celebrated with banners and social vanity feeds the ego rather than the communal fabric. The most potent repair is unnoticed.", praxis: "Clean, repair, or improve a communal public area (a sidewalk, a park bench, a shared workspace) without telling anyone who did it." },
+      { id: 16, book: 3, title: "The Shield of Projected Blame", sim: 3, thesis: "Mirroring Projection Dynamics", mech: "Accusing others of malice is a swift way to avoid confronting our own operational incompetence. Scapegoating is the cheapest psychological drug.", praxis: "When a collaborative project fails, publicly audit your own fractional contribution to the failure before reviewing anyone else's." },
+      { id: 17, book: 3, title: "Sovereign Fellowship", sim: 3, thesis: "Resilient Distributed Nodes vs. Dependent Mobs", mech: "A group of dependent, fragmented individuals cannot form a healthy commune; they form an anxious mob. Strong unity requires self-reliant nodes.", praxis: "Cultivate a skill that permits you to feed, repair, or care for yourself independently of institutional help." },
+      { id: 18, book: 3, title: "Unconditional Listening", sim: 3, thesis: "Receptive Wave Reflection Without Interruption", mech: "Most listening is merely waiting for one's own turn to speak, filtering incoming words for debate points. Clean observation mirrors reality without judgment.", praxis: "In your next conversation, listen to the speaker until they finish entirely, pausing for 3 seconds before formulating an answer." },
 
       // Book IV: The Somatic & The Physical
-      { id: 19, book: 4, title: "The Screen as a Lens, Not a Hearth", sim: 3, mech: "Digital interfaces are optical instruments for transmission, not homes for the biological organism. Living inside the screen creates disembodied dread.", praxis: "Step outdoors for 30 minutes with completely empty hands and pockets, feeling the earth, air temperature, and natural horizon." },
-      { id: 20, book: 4, title: "Somatic Feedback as Compass", sim: 2, mech: "The gut and nervous system register relational and environmental toxicity long before the conscious intellect rationalizes it.", praxis: "Notice where in your physical body you feel tension during an interaction. Treat that muscle contraction as raw, unvarnished telemetry." },
-      { id: 21, book: 4, title: "The Breath as Mechanical Governor", sim: 1, mech: "The autonomic nervous system can be directly altered through respiration. Shallow, rapid breathing drives fear; extended exhalation drives restoration.", praxis: "Spend 5 minutes practicing physiological sighs: two quick sniffs in through the nose, followed by one long, slow release through the mouth." },
-      { id: 22, book: 4, title: "Tactile Labor and Reality Testing", sim: 2, mech: "Abstract mental ideas left without manual labor generate solipsism. Physical work against gravity, wood, soil, or stone grounds the mind in invariant reality.", praxis: "Make, bake, mend, or handwrite something physically from start to finish using real materials today." },
-      { id: 23, book: 4, title: "Sensory Depuration", sim: 3, mech: "Just as the stomach sickens on rotting food, the nervous system saturates and degrades when gorged on continuous digital spectacle.", praxis: "Consume zero news, entertainment, or recorded music for 12 continuous hours. Reacquaint yourself with baseline ambient reality." },
-      { id: 24, book: 4, title: "Biological Rhythm Over Clock Tyranny", sim: 1, mech: "The nervous system belongs to planetary cycles: light, dark, season, temperature. Forcing uniform mechanized productivity damages resilience.", praxis: "View natural morning sunlight within 30 minutes of waking to anchor the circadian clock." },
+      { id: 19, book: 4, title: "The Screen as a Lens, Not a Hearth", sim: 4, thesis: "Optical Transmission vs. Somatic Embodiment", mech: "Digital interfaces are optical instruments for transmission, not homes for the biological organism. Living inside the screen creates disembodied dread.", praxis: "Step outdoors for 30 minutes with completely empty hands and pockets, feeling the earth, air temperature, and natural horizon." },
+      { id: 20, book: 4, title: "Somatic Feedback as Compass", sim: 4, thesis: "Visceral Neurological Telemetry", mech: "The gut and nervous system register relational and environmental toxicity long before the conscious intellect rationalizes it.", praxis: "Notice where in your physical body you feel tension during an interaction. Treat that muscle contraction as raw, unvarnished telemetry." },
+      { id: 21, book: 4, title: "The Breath as Mechanical Governor", sim: 4, thesis: "Autonomic Pacing & Vagal Tone Calibration", mech: "The autonomic nervous system can be directly altered through respiration. Shallow, rapid breathing drives fear; extended exhalation drives restoration.", praxis: "Spend 5 minutes practicing physiological sighs: two quick sniffs in through the nose, followed by one long, slow release through the mouth." },
+      { id: 22, book: 4, title: "Tactile Labor and Reality Testing", sim: 4, thesis: "Newtonian Friction & Physical Feedback", mech: "Abstract mental ideas left without manual labor generate solipsism. Physical work against gravity, wood, soil, or stone grounds the mind in invariant reality.", praxis: "Make, bake, mend, or handwrite something physically from start to finish using real materials today." },
+      { id: 23, book: 4, title: "Sensory Depuration", sim: 4, thesis: "Sensory Fasting & Neural Baseline Reset", mech: "Just as the stomach sickens on rotting food, the nervous system saturates and degrades when gorged on continuous digital spectacle.", praxis: "Consume zero news, entertainment, or recorded music for 12 continuous hours. Reacquaint yourself with baseline ambient reality." },
+      { id: 24, book: 4, title: "Biological Rhythm Over Clock Tyranny", sim: 4, thesis: "Circadian Synchronization", mech: "The nervous system belongs to planetary cycles: light, dark, season, temperature. Forcing uniform mechanized productivity damages resilience.", praxis: "View natural morning sunlight within 30 minutes of waking to anchor the circadian clock." },
 
       // Book V: Decentralization & Defense
-      { id: 25, book: 5, title: "The Architecture of Invisibility", sim: 2, mech: "Organizations with prominent headquarters, corporate logos, and central treasuries are easily attacked, blackmailed, or confiscated. What is distributed everywhere cannot be stormed.", praxis: "Store essential codexes, tools, and manuals on local, offline storage media rather than relying solely on cloud hosting." },
-      { id: 26, book: 5, title: "Immune Response to Ego-Infiltration", sim: 1, mech: "Inevitably, ambitious individuals will attempt to turn this open protocol into their private discipleship. The community defense is radical indifference to titles.", praxis: "If someone claims to be the 'true voice' or 'leader' of this protocol, disregard their person and return exclusively to the open diagrams." },
-      { id: 27, book: 5, title: "The Power of the Static File", sim: 3, mech: "Complex databases, server architectures, and account logins create administrative choke points. A single static file can survive indefinitely on any storage card.", praxis: "Download the single-file offline HTML archive of the protocol site and mirror it on a USB drive or static local host." },
-      { id: 28, book: 5, title: "Zero-Watermark Transmission", sim: 3, mech: "Watermarks, logos, and signatures serve brand vanity. Ideas spread fastest and cleanest when they are given away without copyright friction.", praxis: "Share these insights as your own direct experience without branding, credit demands, or gatekeeping." },
-      { id: 29, book: 5, title: "Resilience Through Redundancy", sim: 2, mech: "Centralized servers can be shut down with a court order or cable cut. A distributed system with thousands of local mirrors is computationally indestructible.", praxis: "Ensure at least three people in your network keep an offline physical or digital copy of the foundational texts." },
-      { id: 30, book: 5, title: "Non-Resistance to Mockery", sim: 1, mech: "Defensive dogmas fight critics because their dignity is fragile. An open law of nature smiles at critique, knowing gravity remains indifferent to opinion.", praxis: "When this philosophy is dismissed or ridiculed, do not debate. Let the experiment prove or disprove itself in conduct." },
+      { id: 25, book: 5, title: "The Architecture of Invisibility", sim: 5, thesis: "Unanchored Topology & Attack Surface Elimination", mech: "Organizations with prominent headquarters, corporate logos, and central treasuries are easily attacked, blackmailed, or confiscated. What is distributed everywhere cannot be stormed.", praxis: "Store essential codexes, tools, and manuals on local, offline storage media rather than relying solely on cloud hosting." },
+      { id: 26, book: 5, title: "Immune Response to Ego-Infiltration", sim: 5, thesis: "Byzantine Tolerance Against Usurpers", mech: "Inevitably, ambitious individuals will attempt to turn this open protocol into their private discipleship. The community defense is radical indifference to titles.", praxis: "If someone claims to be the 'true voice' or 'leader' of this protocol, disregard their person and return exclusively to the open diagrams." },
+      { id: 27, book: 5, title: "The Power of the Static File", sim: 5, thesis: "Zero-Dependency Local Preservation", mech: "Complex databases, server architectures, and account logins create administrative choke points. A single static file can survive indefinitely on any storage card.", praxis: "Download the single-file offline HTML archive of the protocol site and mirror it on a USB drive or static local host." },
+      { id: 28, book: 5, title: "Zero-Watermark Transmission", sim: 5, thesis: "Frictionless Memetic Diffusion", mech: "Watermarks, logos, and signatures serve brand vanity. Ideas spread fastest and cleanest when they are given away without copyright friction.", praxis: "Share these insights as your own direct experience without branding, credit demands, or gatekeeping." },
+      { id: 29, book: 5, title: "Resilience Through Redundancy", sim: 5, thesis: "Mesh Gossip Replication", mech: "Centralized servers can be shut down with a court order or cable cut. A distributed system with thousands of local mirrors is computationally indestructible.", praxis: "Ensure at least three people in your network keep an offline physical or digital copy of the foundational texts." },
+      { id: 30, book: 5, title: "Non-Resistance to Mockery", sim: 5, thesis: "Indifference to Academic & Clerical Derision", mech: "Defensive dogmas fight critics because their dignity is fragile. An open law of nature smiles at critique, knowing gravity remains indifferent to opinion.", praxis: "When this philosophy is dismissed or ridiculed, do not debate. Let the experiment prove or disprove itself in conduct." },
 
       // Book VI: Mortality, Time & Equilibrium
-      { id: 31, book: 6, title: "The Natural Geometry of Ending", sim: 3, mech: "Death is not a structural flaw in the universe; it is the thermodynamic guarantor of renewal. Without departure, existence becomes stagnant and crowded.", praxis: "Hold your hand to your chest, count 10 heartbeats, and consciously remind yourself: 'This pulse count is finite and precious.'" },
-      { id: 32, book: 6, title: "Relinquishing Legacy Anxieties", sim: 2, mech: "The urge to stamp one's name on buildings or history books is a frantic attempt to survive death through ego monuments. Clean action serves the present without demanding a monument.", praxis: "Perform a significant helpful task and intentionally ensure that your name is entirely absent from the record." },
-      { id: 33, book: 6, title: "The Ledger of the Present Hour", sim: 1, mech: "Regret lives in the unchangeable past; anxiety lives in the speculative future. Real work, breath, and sensation exist exclusively at the razor-edge of now.", praxis: "When future catastrophic scenarios loop in the mind, touch the wall or floor beside you and audit what is physically real in this exact square meter." },
-      { id: 34, book: 6, title: "Grief as the Debt of Love", sim: 3, mech: "Grief is not an illness to be cured; it is the natural thermodynamic cost of having opened one's boundary to another being. It must be felt fully to complete its cycle.", praxis: "Do not numb or suppress sadness over loss. Sit still, breathe through the sensation, and honor the depth of the connection that caused it." },
-      { id: 35, book: 6, title: "The Dissolution of the Observer", sim: 2, mech: "In moments of deep focus, aesthetic awe, or selfless action, the artificial division between the 'seer' and the 'seen' vanishes entirely.", praxis: "Watch the horizon, a candle flame, or running water until the feeling of 'I am looking' dissolves into pure perception." },
-      { id: 36, book: 6, title: "Return to the Commons", sim: 3, mech: "We arrive with nothing; we leave with nothing. The water that formed our cells returns to rain; the carbon returns to loam. The circle is complete, silent, and whole.", praxis: "Look into a mirror, breathe out completely, smile at the transient visitor in the glass, and go about your daily work in peace." }
+      { id: 31, book: 6, title: "The Natural Geometry of Ending", sim: 6, thesis: "Thermodynamic Renewal Through Dissolution", mech: "Death is not a structural flaw in the universe; it is the thermodynamic guarantor of renewal. Without departure, existence becomes stagnant and crowded.", praxis: "Hold your hand to your chest, count 10 heartbeats, and consciously remind yourself: 'This pulse count is finite and precious.'" },
+      { id: 32, book: 6, title: "Relinquishing Legacy Anxieties", sim: 6, thesis: "Dissolving Ego Monuments in Deep Time", mech: "The urge to stamp one's name on buildings or history books is a frantic attempt to survive death through ego monuments. Clean action serves the present without demanding a monument.", praxis: "Perform a significant helpful task and intentionally ensure that your name is entirely absent from the record." },
+      { id: 33, book: 6, title: "The Ledger of the Present Hour", sim: 6, thesis: "Razor-Edge Present Horizon", mech: "Regret lives in the unchangeable past; anxiety lives in the speculative future. Real work, breath, and sensation exist exclusively at the razor-edge of now.", praxis: "When future catastrophic scenarios loop in the mind, touch the wall or floor beside you and audit what is physically real in this exact square meter." },
+      { id: 34, book: 6, title: "Grief as the Debt of Love", sim: 6, thesis: "Hydrodynamic Integration of Emotional Mass", mech: "Grief is not an illness to be cured; it is the natural thermodynamic cost of having opened one's boundary to another being. It must be felt fully to complete its cycle.", praxis: "Do not numb or suppress sadness over loss. Sit still, breathe through the sensation, and honor the depth of the connection that caused it." },
+      { id: 35, book: 6, title: "The Dissolution of the Observer", sim: 6, thesis: "Unified Phenomenological Equilibrium", mech: "In moments of deep focus, aesthetic awe, or selfless action, the artificial division between the 'seer' and the 'seen' vanishes entirely.", praxis: "Watch the horizon, a candle flame, or running water until the feeling of 'I am looking' dissolves into pure perception." },
+      { id: 36, book: 6, title: "Return to the Commons", sim: 6, thesis: "Complete Re-absorption into the Universal Field", mech: "We arrive with nothing; we leave with nothing. The water that formed our cells returns to rain; the carbon returns to loam. The circle is complete, silent, and whole.", praxis: "Look into a mirror, breathe out completely, smile at the transient visitor in the glass, and go about your daily work in peace." }
     ];
 
     /* Dynamic Generator for 500-Word Leaderless Teaching Essays */
@@ -1231,187 +1258,18 @@ COST:
 
     renderFolios();
 
-    /* --- Folio Modal & Dedicated Mini Diagram Engine --- */
-    const folioModal = document.getElementById('folioModal');
-    const modalCloseBtn = document.getElementById('modalCloseBtn');
-    const modalFolioTag = document.getElementById('modalFolioTag');
-    const modalFolioTitle = document.getElementById('modalFolioTitle');
-    const modalFolioBody = document.getElementById('modalFolioBody');
-    const modalDiagramName = document.getElementById('modalDiagramName');
-    const modalPrevBtn = document.getElementById('modalPrevBtn');
-    const modalNextBtn = document.getElementById('modalNextBtn');
-    const modalCopyFolioBtn = document.getElementById('modalCopyFolioBtn');
-    const modalExportCardBtn = document.getElementById('modalExportCardBtn');
-    const modalDiagramCanvas = document.getElementById('modalDiagramCanvas');
-    const mCtx = modalDiagramCanvas.getContext('2d');
-    let currentModalFolioId = 1;
-    let modalAnimFrame;
-
-    function openFolioModal(id) {
-      const f = folios.find(item => item.id == id);
-      if (!f) return;
-      currentModalFolioId = id;
-
-      // 1. Render text content
-      modalFolioTag.innerText = `Book ${f.book} • Folio ${f.id < 10 ? '0' + f.id : f.id}`;
-      modalFolioTitle.innerText = f.title;
-      modalDiagramName.innerText = `Kinetic Simulation Anchor: Mode ${f.sim}`;
-
-      modalFolioBody.innerHTML = `
-        ${generateFullEssay(f)}
-        <div class="modal-praxis-box">
-          <h5>Somatic Daily Praxis</h5>
-          <p style="margin: 0; color: #f1f5f9; font-size: 0.95rem;">${f.praxis}</p>
-        </div>
-      `;
-
-      // 2. Open modal before measuring canvas dimensions
-      folioModal.style.display = 'block';
-      document.body.style.overflow = 'hidden';
-
-      // 3. Initialize modal canvas with zero-dimension protection
-      const dpr = window.devicePixelRatio || 1;
-      const rect = modalDiagramCanvas.getBoundingClientRect();
-      const targetWidth = rect.width > 0 ? rect.width : 780;
-      const targetHeight = rect.height > 0 ? rect.height : 220;
-
-      modalDiagramCanvas.width = targetWidth * dpr;
-      modalDiagramCanvas.height = targetHeight * dpr;
-      mCtx.resetTransform();
-      mCtx.scale(dpr, dpr);
-
-      if (modalAnimFrame) cancelAnimationFrame(modalAnimFrame);
-      renderModalSimulation(f.sim, targetWidth, targetHeight);
-    }
-
-    function closeModal() {
-      folioModal.style.display = 'none';
-      document.body.style.overflow = '';
-      if (modalAnimFrame) cancelAnimationFrame(modalAnimFrame);
-    }
-
-    modalCloseBtn.addEventListener('click', closeModal);
-    folioModal.addEventListener('click', (e) => {
-      if (e.target === folioModal) closeModal();
-    });
-
-    modalPrevBtn.addEventListener('click', () => {
-      if (currentModalFolioId > 1) openFolioModal(currentModalFolioId - 1);
-    });
-
-    modalNextBtn.addEventListener('click', () => {
-      if (currentModalFolioId < 36) openFolioModal(currentModalFolioId + 1);
-    });
-
-    modalCopyFolioBtn.addEventListener('click', () => {
-      const f = folios.find(item => item.id == currentModalFolioId);
-      if (f) {
-        const text = `FOLIO ${f.id < 10 ? '0' + f.id : f.id}: ${f.title}\nBook ${f.book}\n\n${f.mech}\n\nPRAXIS:\n${f.praxis}`;
-        navigator.clipboard.writeText(text).then(() => alert("Folio essay copied to clipboard."));
-      }
-    });
-
-    modalExportCardBtn.addEventListener('click', () => {
-      closeModal();
-      loadFolioIntoCard(currentModalFolioId);
-    });
-
-    /* Dedicated Autonomous Modal Canvas Simulation */
-    let mTime = 0;
-    let mParticles = [];
-    function renderModalSimulation(simType, w, h) {
-      mCtx.fillStyle = '#06090e';
-      mCtx.fillRect(0, 0, w, h);
-      mTime += 0.03;
-
-      if (simType === 1) {
-        // Mode 1: Reaction vs Responsive Dispersal Wave
-        mCtx.strokeStyle = '#334155';
-        mCtx.strokeRect(w * 0.4, 10, w * 0.2, h - 20);
-        mCtx.fillStyle = 'rgba(13, 148, 136, 0.1)';
-        mCtx.fillRect(w * 0.4, 10, w * 0.2, h - 20);
-
-        mCtx.beginPath();
-        mCtx.strokeStyle = '#0284c7';
-        mCtx.lineWidth = 2;
-        for (let x = 0; x < w; x += 4) {
-          const inInterval = x > w * 0.4 && x < w * 0.6;
-          const amp = inInterval ? 8 : (x >= w * 0.6 ? 4 : 22);
-          const y = h / 2 + Math.sin(x * 0.05 - mTime * 2) * amp;
-          if (x === 0) mCtx.moveTo(x, y);
-          else mCtx.lineTo(x, y);
-        }
-        mCtx.stroke();
-        mCtx.lineWidth = 1;
-
-      } else if (simType === 2) {
-        // Mode 2: Nodal Elastic Lattice
-        const cx = w / 2;
-        const cy = h / 2;
-        for (let i = 0; i < 8; i++) {
-          const a = (i / 8) * Math.PI * 2 + mTime * 0.5;
-          const r = 45 + Math.sin(mTime + i) * 8;
-          const x = cx + Math.cos(a) * r;
-          const y = cy + Math.sin(a) * r;
-          mCtx.beginPath();
-          mCtx.moveTo(cx, cy);
-          mCtx.lineTo(x, y);
-          mCtx.strokeStyle = 'rgba(13, 148, 136, 0.25)';
-          mCtx.stroke();
-
-          mCtx.beginPath();
-          mCtx.arc(x, y, 4, 0, Math.PI * 2);
-          mCtx.fillStyle = '#0d9488';
-          mCtx.fill();
-        }
-        mCtx.beginPath();
-        mCtx.arc(cx, cy, 7, 0, Math.PI * 2);
-        mCtx.fillStyle = '#f1f5f9';
-        mCtx.fill();
-
-      } else {
-        // Mode 3: Laminar Hydrodynamic Flow
-        const cx = w / 2;
-        const cy = h / 2;
-
-        if (mParticles.length < 25) {
-          mParticles.push({ x: 0, y: Math.random() * h, s: 1.5 + Math.random() * 2 });
-        }
-
-        mCtx.beginPath();
-        mCtx.arc(cx, cy, 12, 0, Math.PI * 2);
-        mCtx.fillStyle = '#1a2332';
-        mCtx.strokeStyle = '#334155';
-        mCtx.fill();
-        mCtx.stroke();
-
-        for (let i = mParticles.length - 1; i >= 0; i--) {
-          const p = mParticles[i];
-          p.x += p.s;
-          const dx = p.x - cx;
-          const dy = p.y - cy;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 40) {
-            p.y += (dy > 0 ? 1 : -1) * 1.2;
-          }
-          mCtx.fillStyle = '#0284c7';
-          mCtx.fillRect(p.x, p.y, 4, 1.5);
-          if (p.x > w) mParticles.splice(i, 1);
-        }
-      }
-
-      modalAnimFrame = requestAnimationFrame(() => renderModalSimulation(simType, w, h));
-    }
-
     /* --- High-DPI Retina Canvas Helper --- */
     function setRetinaBacking(canvas) {
       const dpr = window.devicePixelRatio || 1;
       const rect = canvas.getBoundingClientRect();
-      canvas.width = rect.width * dpr;
-      canvas.height = rect.height * dpr;
+      const targetW = rect.width > 0 ? rect.width : 780;
+      const targetH = rect.height > 0 ? rect.height : 250;
+      canvas.width = targetW * dpr;
+      canvas.height = targetH * dpr;
       const ctx = canvas.getContext('2d');
       ctx.resetTransform();
       ctx.scale(dpr, dpr);
+      return { ctx, width: targetW, height: targetH };
     }
 
     /* --- Simulation 1: Reaction vs Response --- */
@@ -1596,12 +1454,13 @@ COST:
       requestAnimationFrame(renderEgoSim);
     }
 
-    /* --- Simulation 3: Thermodynamics of Attachment --- */
+    /* --- Simulation 3: Thermodynamics of Attachment (REBUILT & FIXED) --- */
     const aCanvas = document.getElementById('simAttachCanvas');
     const aCtx = aCanvas.getContext('2d');
     const graspSlider = document.getElementById('graspSlider');
     const graspVal = document.getElementById('graspVal');
-    let streamLines = [];
+    let streamParticles = [];
+    let frictionFlashes = [];
 
     graspSlider.addEventListener('input', (e) => {
       graspVal.innerText = `${e.target.value}%`;
@@ -1612,55 +1471,126 @@ COST:
       graspVal.innerText = '0%';
     });
 
-    for (let i = 0; i < 45; i++) {
-      streamLines.push({
-        x: Math.random() * 400,
-        y: Math.random() * 300,
-        baseY: Math.random() * 300,
-        speed: 1.5 + Math.random() * 1.5
-      });
+    // Populate initial hydro stream
+    function initStreamParticles(w, h) {
+      streamParticles = [];
+      for (let i = 0; i < 70; i++) {
+        streamParticles.push({
+          x: Math.random() * w,
+          y: Math.random() * h,
+          baseY: Math.random() * h,
+          speed: 1.8 + Math.random() * 2.2,
+          radius: 2 + Math.random() * 2,
+          color: '#0284c7',
+          temp: 0
+        });
+      }
     }
 
     function renderAttachSim() {
       const rect = aCanvas.getBoundingClientRect();
+      const w = rect.width;
+      const h = rect.height;
+
+      if (streamParticles.length === 0) {
+        initStreamParticles(w, h);
+      }
+
       aCtx.fillStyle = '#0b1017';
-      aCtx.fillRect(0, 0, rect.width, rect.height);
+      aCtx.fillRect(0, 0, w, h);
 
       const grasp = graspSlider.value / 100;
-      const focalX = rect.width / 2;
-      const focalY = rect.height / 2;
+      const focalX = w / 2;
+      const focalY = h / 2;
+      const gripRadius = 24 + grasp * 26;
 
+      // Draw Focal Obstacle Stone
       aCtx.beginPath();
-      aCtx.arc(focalX, focalY, 14, 0, Math.PI * 2);
-      aCtx.fillStyle = grasp > 0.5 ? '#7c2d12' : '#131a24';
-      aCtx.strokeStyle = '#334155';
-      aCtx.stroke();
+      aCtx.arc(focalX, focalY, gripRadius, 0, Math.PI * 2);
+      aCtx.fillStyle = grasp > 0.4 ? `rgba(159, 18, 57, ${0.15 + grasp * 0.3})` : '#131a24';
+      aCtx.strokeStyle = grasp > 0.5 ? '#9f1239' : '#334155';
+      aCtx.lineWidth = 1 + grasp * 3;
       aCtx.fill();
+      aCtx.stroke();
+      aCtx.lineWidth = 1;
 
-      for (let i = 0; i < streamLines.length; i++) {
-        const p = streamLines[i];
-        p.x += p.speed;
+      // Draw Grasping Tension Aura
+      if (grasp > 0.2) {
+        aCtx.beginPath();
+        aCtx.arc(focalX, focalY, gripRadius + 30 * grasp, 0, Math.PI * 2);
+        aCtx.strokeStyle = `rgba(124, 45, 18, ${grasp * 0.4})`;
+        aCtx.setLineDash([4, 4]);
+        aCtx.stroke();
+        aCtx.setLineDash([]);
+      }
+
+      // Render Friction Flashes
+      for (let f = frictionFlashes.length - 1; f >= 0; f--) {
+        const fl = frictionFlashes[f];
+        fl.x += fl.vx;
+        fl.y += fl.vy;
+        fl.alpha -= 0.04;
+        aCtx.fillStyle = `rgba(224, 83, 60, ${fl.alpha})`;
+        aCtx.beginPath();
+        aCtx.arc(fl.x, fl.y, 2.5, 0, Math.PI * 2);
+        aCtx.fill();
+        if (fl.alpha <= 0) frictionFlashes.splice(f, 1);
+      }
+
+      // Update & Render Fluid Streamlines
+      for (let i = 0; i < streamParticles.length; i++) {
+        const p = streamParticles[i];
+        p.x += p.speed * (1 - grasp * 0.4);
 
         const dx = p.x - focalX;
         const dy = p.y - focalY;
         const dist = Math.sqrt(dx * dx + dy * dy);
 
-        if (dist < 80) {
-          const force = (80 - dist) / 80;
-          if (grasp > 0.3) {
-            p.y += (Math.random() - 0.5) * 4 * grasp;
-            p.x -= force * 1.5 * grasp;
+        if (dist < gripRadius + 45) {
+          const proximity = (gripRadius + 45 - dist) / (gripRadius + 45);
+          
+          if (grasp > 0.25) {
+            // High Grasp = Drag Turbulence & Thermal Shear
+            p.temp = Math.min(1, p.temp + 0.08 * grasp);
+            p.y += (Math.random() - 0.5) * 6 * grasp;
+            p.x -= proximity * 2 * grasp;
+
+            if (Math.random() < 0.08 * grasp) {
+              frictionFlashes.push({
+                x: p.x,
+                y: p.y,
+                vx: (Math.random() - 0.7) * 3,
+                vy: (Math.random() - 0.5) * 3,
+                alpha: 1
+              });
+            }
           } else {
-            p.y += (dy > 0 ? 1 : -1) * force * 1.5;
+            // Low Grasp = Smooth Laminar Deflection
+            p.temp = Math.max(0, p.temp - 0.04);
+            p.y += (dy >= 0 ? 1 : -1) * proximity * 2.2;
           }
+        } else {
+          p.temp = Math.max(0, p.temp - 0.02);
+          // Gently return toward baseline trajectory
+          p.y += (p.baseY - p.y) * 0.03;
         }
 
-        aCtx.fillStyle = grasp > 0.5 && dist < 70 ? '#9f1239' : '#0284c7';
-        aCtx.fillRect(p.x, p.y, 4, 1.5);
+        // Color based on thermodynamic friction temperature
+        const r = Math.round(2 + p.temp * 157);
+        const g = Math.round(132 - p.temp * 114);
+        const b = Math.round(199 - p.temp * 142);
+        aCtx.fillStyle = `rgb(${r},${g},${b})`;
 
-        if (p.x > rect.width) {
-          p.x = 0;
-          p.y = Math.random() * rect.height;
+        aCtx.beginPath();
+        aCtx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        aCtx.fill();
+
+        // Loop boundaries continuously
+        if (p.x > w + 20) {
+          p.x = -10;
+          p.y = Math.random() * h;
+          p.baseY = p.y;
+          p.temp = 0;
         }
       }
 
@@ -1678,6 +1608,288 @@ COST:
     renderReactionSim();
     renderEgoSim();
     renderAttachSim();
+
+    /* --- Folio Modal & Dedicated 6-Mode Kinetic Diagram Engine --- */
+    const folioModal = document.getElementById('folioModal');
+    const modalCloseBtn = document.getElementById('modalCloseBtn');
+    const modalFolioTag = document.getElementById('modalFolioTag');
+    const modalFolioTitle = document.getElementById('modalFolioTitle');
+    const modalFolioBody = document.getElementById('modalFolioBody');
+    const modalDiagramName = document.getElementById('modalDiagramName');
+    const modalDiagramThesis = document.getElementById('modalDiagramThesis');
+    const modalPrevBtn = document.getElementById('modalPrevBtn');
+    const modalNextBtn = document.getElementById('modalNextBtn');
+    const modalCopyFolioBtn = document.getElementById('modalCopyFolioBtn');
+    const modalExportCardBtn = document.getElementById('modalExportCardBtn');
+    const modalDiagramCanvas = document.getElementById('modalDiagramCanvas');
+    const modalParamSlider = document.getElementById('modalParamSlider');
+    const modalSliderVal = document.getElementById('modalSliderVal');
+    const mCtx = modalDiagramCanvas.getContext('2d');
+    
+    let currentModalFolioId = 1;
+    let modalAnimFrame;
+    let modalTime = 0;
+    let modalParticles = [];
+
+    modalParamSlider.addEventListener('input', (e) => {
+      modalSliderVal.innerText = `${e.target.value}%`;
+    });
+
+    function openFolioModal(id) {
+      const f = folios.find(item => item.id == id);
+      if (!f) return;
+      currentModalFolioId = id;
+
+      // 1. Render text content
+      modalFolioTag.innerText = `Book ${f.book} • Folio ${f.id < 10 ? '0' + f.id : f.id}`;
+      modalFolioTitle.innerText = f.title;
+      modalDiagramName.innerText = `Engine ${f.sim} (Book ${f.book})`;
+      modalDiagramThesis.innerText = f.thesis;
+
+      modalFolioBody.innerHTML = `
+        ${generateFullEssay(f)}
+        <div class="modal-praxis-box">
+          <h5>Somatic Daily Praxis</h5>
+          <p style="margin: 0; color: #f1f5f9; font-size: 0.95rem;">${f.praxis}</p>
+        </div>
+      `;
+
+      // 2. Open modal before measuring canvas dimensions
+      folioModal.style.display = 'block';
+      document.body.style.overflow = 'hidden';
+
+      // 3. Initialize modal canvas with zero-dimension protection
+      const dpr = window.devicePixelRatio || 1;
+      const rect = modalDiagramCanvas.getBoundingClientRect();
+      const targetWidth = rect.width > 0 ? rect.width : 780;
+      const targetHeight = rect.height > 0 ? rect.height : 250;
+
+      modalDiagramCanvas.width = targetWidth * dpr;
+      modalDiagramCanvas.height = targetHeight * dpr;
+      mCtx.resetTransform();
+      mCtx.scale(dpr, dpr);
+
+      // Re-seed modal particles for fresh state
+      modalParticles = [];
+      for (let i = 0; i < 35; i++) {
+        modalParticles.push({
+          x: Math.random() * targetWidth,
+          y: Math.random() * targetHeight,
+          vx: (Math.random() - 0.5) * 2,
+          vy: (Math.random() - 0.5) * 2,
+          radius: 2.5 + Math.random() * 2,
+          phase: Math.random() * Math.PI * 2
+        });
+      }
+
+      if (modalAnimFrame) cancelAnimationFrame(modalAnimFrame);
+      renderModalSimulation(f.sim, f.id, targetWidth, targetHeight);
+    }
+
+    function closeModal() {
+      folioModal.style.display = 'none';
+      document.body.style.overflow = '';
+      if (modalAnimFrame) cancelAnimationFrame(modalAnimFrame);
+    }
+
+    modalCloseBtn.addEventListener('click', closeModal);
+    folioModal.addEventListener('click', (e) => {
+      if (e.target === folioModal) closeModal();
+    });
+
+    modalPrevBtn.addEventListener('click', () => {
+      if (currentModalFolioId > 1) openFolioModal(currentModalFolioId - 1);
+    });
+
+    modalNextBtn.addEventListener('click', () => {
+      if (currentModalFolioId < 36) openFolioModal(currentModalFolioId + 1);
+    });
+
+    modalCopyFolioBtn.addEventListener('click', () => {
+      const f = folios.find(item => item.id == currentModalFolioId);
+      if (f) {
+        const text = `FOLIO ${f.id < 10 ? '0' + f.id : f.id}: ${f.title}\nBook ${f.book}\n\n${f.mech}\n\nPRAXIS:\n${f.praxis}`;
+        navigator.clipboard.writeText(text).then(() => alert("Folio essay copied to clipboard."));
+      }
+    });
+
+    modalExportCardBtn.addEventListener('click', () => {
+      closeModal();
+      loadFolioIntoCard(currentModalFolioId);
+    });
+
+    /* Dedicated 6-Mode Thematic Simulation Engine Supporting All 36 Folios */
+    function renderModalSimulation(simType, folioId, w, h) {
+      mCtx.fillStyle = '#06090e';
+      mCtx.fillRect(0, 0, w, h);
+      modalTime += 0.025;
+      const param = modalParamSlider.value / 100;
+
+      if (simType === 1) {
+        // Book I: Epistemic Dispersion & Network Mesh (Bypassing Intermediary Bottlenecks)
+        const cx = w / 2;
+        const cy = h / 2;
+        const nodeCount = 10;
+        
+        // Draw decentralized mesh links
+        for (let i = 0; i < nodeCount; i++) {
+          const a = (i / nodeCount) * Math.PI * 2 + modalTime * 0.4;
+          const r = 60 + Math.sin(modalTime + i) * 12;
+          const x = cx + Math.cos(a) * r;
+          const y = cy + Math.sin(a) * r;
+
+          // Connect to neighboring peers
+          const nextA = ((i + 1) / nodeCount) * Math.PI * 2 + modalTime * 0.4;
+          const nx = cx + Math.cos(nextA) * r;
+          const ny = cy + Math.sin(nextA) * r;
+
+          mCtx.beginPath();
+          mCtx.moveTo(x, y);
+          mCtx.lineTo(nx, ny);
+          mCtx.strokeStyle = `rgba(13, 148, 136, ${0.15 + param * 0.5})`;
+          mCtx.stroke();
+
+          // Connect across network
+          mCtx.beginPath();
+          mCtx.moveTo(x, y);
+          mCtx.lineTo(w * 0.1, cy);
+          mCtx.strokeStyle = 'rgba(2, 132, 199, 0.12)';
+          mCtx.stroke();
+
+          mCtx.beginPath();
+          mCtx.arc(x, y, 4, 0, Math.PI * 2);
+          mCtx.fillStyle = '#0d9488';
+          mCtx.fill();
+        }
+
+        // Draw central bypassed point (fades out as parameter increases)
+        mCtx.beginPath();
+        mCtx.arc(cx, cy, 14, 0, Math.PI * 2);
+        mCtx.fillStyle = `rgba(159, 18, 57, ${1 - param * 0.8})`;
+        mCtx.strokeStyle = '#334155';
+        mCtx.fill();
+        mCtx.stroke();
+
+      } else if (simType === 2) {
+        // Book II: Cognitive Phase Space & The Observer Gap
+        const observerWidth = w * 0.35 * (0.1 + param * 0.8);
+        const observerX = (w - observerWidth) / 2;
+
+        mCtx.fillStyle = 'rgba(13, 148, 136, 0.1)';
+        mCtx.fillRect(observerX, 15, observerWidth, h - 30);
+        mCtx.strokeStyle = '#334155';
+        mCtx.strokeRect(observerX, 15, observerWidth, h - 30);
+
+        // Sinusoidal Stimulus Traversing Interval
+        mCtx.beginPath();
+        mCtx.lineWidth = 2.5;
+        for (let x = 0; x < w; x += 4) {
+          const inGap = x >= observerX && x <= observerX + observerWidth;
+          const damping = inGap ? (1 - param * 0.8) : 1;
+          const y = h / 2 + Math.sin(x * 0.04 - modalTime * 3) * (26 * damping);
+          
+          mCtx.strokeStyle = inGap ? '#0d9488' : '#0284c7';
+          if (x === 0) mCtx.moveTo(x, y);
+          else mCtx.lineTo(x, y);
+        }
+        mCtx.stroke();
+        mCtx.lineWidth = 1;
+
+      } else if (simType === 3) {
+        // Book III: Relational Resonance & Boundary Dynamics
+        const p1 = { x: w * 0.35, y: h / 2 };
+        const p2 = { x: w * 0.65, y: h / 2 };
+        const dist = Math.abs(p2.x - p1.x);
+
+        // Resonating Field Rings
+        for (let r = 15; r < dist / 1.5; r += 16) {
+          const wave = Math.sin(modalTime * 2 - r * 0.1);
+          mCtx.beginPath();
+          mCtx.arc(p1.x, p1.y, r, 0, Math.PI * 2);
+          mCtx.arc(p2.x, p2.y, r, 0, Math.PI * 2);
+          mCtx.strokeStyle = `rgba(13, 148, 136, ${0.15 + wave * 0.1 * param})`;
+          mCtx.stroke();
+        }
+
+        mCtx.beginPath();
+        mCtx.arc(p1.x, p1.y, 8, 0, Math.PI * 2);
+        mCtx.arc(p2.x, p2.y, 8, 0, Math.PI * 2);
+        mCtx.fillStyle = '#f1f5f9';
+        mCtx.fill();
+
+      } else if (simType === 4) {
+        // Book IV: Somatic Bio-Oscillation & Terrestrial Grounding
+        mCtx.beginPath();
+        mCtx.strokeStyle = '#059669';
+        mCtx.lineWidth = 2;
+        
+        // Paced respiration curve
+        const breathPeriod = 0.03 * (0.5 + param * 0.8);
+        for (let x = 0; x < w; x += 5) {
+          const y = h / 2 + Math.sin(x * 0.02 - modalTime * breathPeriod * 50) * 35;
+          if (x === 0) mCtx.moveTo(x, y);
+          else mCtx.lineTo(x, y);
+        }
+        mCtx.stroke();
+        mCtx.lineWidth = 1;
+
+        // Grounding horizon line
+        mCtx.strokeStyle = '#334155';
+        mCtx.beginPath();
+        mCtx.moveTo(0, h * 0.85);
+        mCtx.lineTo(w, h * 0.85);
+        mCtx.stroke();
+
+      } else if (simType === 5) {
+        // Book V: Decentralized Topology & Byzantine Resilience
+        for (let i = 0; i < modalParticles.length; i++) {
+          const p = modalParticles[i];
+          p.x += p.vx * (1 + param);
+          p.y += p.vy * (1 + param);
+
+          if (p.x < 0 || p.x > w) p.vx *= -1;
+          if (p.y < 0 || p.y > h) p.vy *= -1;
+
+          mCtx.beginPath();
+          mCtx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+          mCtx.fillStyle = '#0284c7';
+          mCtx.fill();
+
+          // Peer gossip links
+          for (let j = i + 1; j < modalParticles.length; j++) {
+            const p2 = modalParticles[j];
+            const d = Math.hypot(p.x - p2.x, p.y - p2.y);
+            if (d < 65) {
+              mCtx.beginPath();
+              mCtx.moveTo(p.x, p.y);
+              mCtx.lineTo(p2.x, p2.y);
+              mCtx.strokeStyle = `rgba(2, 132, 199, ${(65 - d) / 65 * 0.4})`;
+              mCtx.stroke();
+            }
+          }
+        }
+
+      } else {
+        // Book VI: Thermodynamic Equilibrium & Entropic Renewal
+        const cx = w / 2;
+        const cy = h / 2;
+        for (let i = 0; i < modalParticles.length; i++) {
+          const p = modalParticles[i];
+          p.phase += 0.02 * (1 + param);
+          const r = 20 + Math.sin(p.phase) * (w * 0.35);
+          const a = p.phase + i;
+          const x = cx + Math.cos(a) * r;
+          const y = cy + Math.sin(a) * r;
+
+          mCtx.beginPath();
+          mCtx.arc(x, y, 2.5, 0, Math.PI * 2);
+          mCtx.fillStyle = param > 0.6 ? '#f1f5f9' : '#0d9488';
+          mCtx.fill();
+        }
+      }
+
+      modalAnimFrame = requestAnimationFrame(() => renderModalSimulation(simType, folioId, w, h));
+    }
 
     /* --- Card Generator Layout Engine --- */
     const cardCanvas = document.getElementById('cardCanvas');
@@ -1839,6 +2051,7 @@ COST:
         book: f.book,
         title: f.title,
         sim_anchor: f.sim,
+        thesis: f.thesis,
         mechanism: f.mech,
         somatic_praxis: f.praxis,
         canonical_essay: generateFullEssay(f).replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim()
@@ -1854,6 +2067,7 @@ COST:
       let md = "# THE COMMONS PROTOCOL: 36 CANONICAL FOLIOS\nPublic Domain (CC0 1.0)\n\n";
       folios.forEach(f => {
         md += `### Folio ${f.id < 10 ? '0' + f.id : f.id}: ${f.title} (Book ${f.book})\n`;
+        md += `**Thesis:** ${f.thesis}\n`;
         md += `**Mechanism:** ${f.mech}\n`;
         md += `**Praxis:** ${f.praxis}\n\n`;
       });

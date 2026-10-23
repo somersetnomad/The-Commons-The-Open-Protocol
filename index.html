@@ -1322,7 +1322,6 @@
       <p class="section-subtitle">How to facilitate autonomous, leaderless circles both offline and online without guru dynamics, financial capture, or ideological gatekeeping.</p>
     </div>
 
-    <!-- Core Ethos -->
     <div class="assembly-step">
       <h3>I. Core Ethos & The Anti-Guru Mandate</h3>
       <p style="color: var(--text-muted); margin-bottom: 0.75rem;">An assembly of this protocol is never a lecture, sermon, or therapy workshop. It is a peer laboratory where individuals review their personal experiments in conduct.</p>
@@ -1334,7 +1333,6 @@
       </ul>
     </div>
 
-    <!-- Dual Formats -->
     <div class="assembly-step">
       <h3>II. The Two Canonical Gathering Formats</h3>
       <p style="color: var(--text-muted); margin-bottom: 1rem;">Assemblies operate under one of two distinct operational templates depending on whether the circle is examining lived somatic conduct or dissecting foundational philosophical literature:</p>
@@ -1374,7 +1372,6 @@ Open the site's kinetic engine corresponding to the book's thesis. Map the autho
 Close with two minutes of collective quiet. No group chat obligations; participants depart freely.</div>
     </div>
 
-    <!-- Digital Circles via Whereby -->
     <div class="assembly-step">
       <h3>III. Digital Circles via Whereby</h3>
       <p style="color: var(--text-muted); margin-bottom: 0.75rem;">To maintain friction-free accessibility without forcing attendees to register corporate accounts or install proprietary heavy software, host digital assemblies using <a href="https://whereby.com" target="_blank" rel="noopener">Whereby</a>:</p>
@@ -1385,7 +1382,6 @@ Close with two minutes of collective quiet. No group chat obligations; participa
       </ul>
     </div>
 
-    <!-- Eventbrite Kit 1 -->
     <div class="assembly-step">
       <h3>IV. Eventbrite / Meetup Kit: Standard Folio Assembly</h3>
       <p style="color: var(--text-muted); margin-bottom: 0.75rem;">Use this pre-formatted copy when listing weekly Folio practice circles on Eventbrite or Meetup to set clear non-hierarchical expectations:</p>
@@ -1414,7 +1410,6 @@ COST:
       </div>
     </div>
 
-    <!-- Eventbrite Kit 2 -->
     <div class="assembly-step">
       <h3>V. Eventbrite / Meetup Kit: Dialectic Book Inquiry</h3>
       <p style="color: var(--text-muted); margin-bottom: 0.75rem;">Use this pre-formatted copy when hosting deeper seminars exploring foundational texts alongside the site's kinetic physics engines:</p>
@@ -2392,127 +2387,169 @@ COST:
       modalAnimFrame = requestAnimationFrame(() => renderModalSimulation(folioId, w, h));
     }
 
-    /* Card Generator Engine */
-    const cardCanvas = document.getElementById('cardCanvas');
-    const cCtx = cardCanvas.getContext('2d');
-    const platformSelect = document.getElementById('platformSelect');
-    const cardTextInput = document.getElementById('cardTextInput');
-    const paletteSelect = document.getElementById('paletteSelect');
-    const overflowCheckBadge = document.getElementById('overflowCheckBadge');
+    /* Robust Card Generator Engine */
+    function initCardEngine() {
+      const cardCanvas = document.getElementById('cardCanvas');
+      if (!cardCanvas) return;
+      const cCtx = cardCanvas.getContext('2d');
 
-    const presetSelectElement = document.getElementById('folioPresetSelect');
-    if (presetSelectElement) {
-      presetSelectElement.addEventListener('change', () => {
-        if (presetSelectElement.value !== 'custom') {
-          const f = folios.find(item => item.id == presetSelectElement.value);
-          if (f) cardTextInput.value = `Folio ${f.id < 10 ? '0' + f.id : f.id}: ${f.title}\n\n"${f.mech}"`;
+      const platformSelect = document.getElementById('platformSelect');
+      const presetSelect = document.getElementById('folioPresetSelect');
+      const cardTextInput = document.getElementById('cardTextInput');
+      const paletteSelect = document.getElementById('paletteSelect');
+      const overflowBadge = document.getElementById('overflowCheckBadge');
+
+      if (presetSelect && presetSelect.options.length <= 1) {
+        presetSelect.innerHTML = '';
+        folios.forEach(f => {
+          const opt = document.createElement('option');
+          opt.value = f.id;
+          opt.innerText = `Folio ${f.id < 10 ? '0' + f.id : f.id}: ${f.title}`;
+          presetSelect.appendChild(opt);
+        });
+        const customOpt = document.createElement('option');
+        customOpt.value = 'custom';
+        customOpt.innerText = 'Custom Inscription...';
+        presetSelect.appendChild(customOpt);
+      }
+
+      function getPlatformDims(platform) {
+        switch (platform) {
+          case 'story': return { w: 1080, h: 1920 };
+          case 'portrait': return { w: 1080, h: 1350 };
+          case 'landscape': return { w: 1920, h: 1080 };
+          case 'square': default: return { w: 1080, h: 1080 };
+        }
+      }
+
+      function wrapText(ctx, text, maxWidth) {
+        const paragraphs = text.split('\n');
+        const lines = [];
+        paragraphs.forEach(p => {
+          const cleanPara = p.trim();
+          if (!cleanPara) { lines.push(''); return; }
+          const words = cleanPara.split(/\s+/);
+          let currentLine = words[0];
+          for (let i = 1; i < words.length; i++) {
+            const word = words[i];
+            const width = ctx.measureText(currentLine + " " + word).width;
+            if (width < maxWidth) {
+              currentLine += " " + word;
+            } else {
+              lines.push(currentLine);
+              currentLine = word;
+            }
+          }
+          lines.push(currentLine);
+        });
+        return lines;
+      }
+
+      function drawCard() {
+        const { w, h } = getPlatformDims(platformSelect ? platformSelect.value : 'square');
+        cardCanvas.width = w;
+        cardCanvas.height = h;
+
+        const palette = paletteSelect ? paletteSelect.value : 'sodalite';
+        let bg = '#0b1017', borderCol = '#232d3d', accent = '#0d9488', textCol = '#f1f5f9';
+
+        if (palette === 'turquoise') {
+          bg = '#0e1726'; borderCol = '#1e293b'; accent = '#0284c7';
+        } else if (palette === 'basalt') {
+          bg = '#111827'; borderCol = '#374151'; accent = '#059669';
+        }
+
+        cCtx.fillStyle = bg;
+        cCtx.fillRect(0, 0, w, h);
+
+        const margin = Math.round(w * 0.08);
+        cCtx.strokeStyle = borderCol;
+        cCtx.lineWidth = Math.max(2, Math.round(w * 0.003));
+        cCtx.strokeRect(margin, margin, w - margin * 2, h - margin * 2);
+
+        cCtx.fillStyle = accent;
+        const headerSize = Math.max(14, Math.round(w * 0.024));
+        cCtx.font = `600 ${headerSize}px ui-monospace, monospace`;
+        cCtx.textAlign = 'center';
+        cCtx.fillText('THE COMMONS PROTOCOL • CONTEMPLATION', w / 2, margin + Math.round(w * 0.06));
+
+        const maxTextWidth = w - margin * 2.8;
+        const maxTextHeight = h - margin * 3.4;
+        let fontSize = Math.round(w * 0.045);
+        let lines = [];
+        let totalTextHeight = 0;
+        const text = (cardTextInput && cardTextInput.value.trim().length > 0)
+          ? cardTextInput.value
+          : 'Suffering is the thermodynamic friction of grasping that which is flowing.';
+
+        while (fontSize > 16) {
+          cCtx.font = `400 ${fontSize}px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif`;
+          const lineHeight = Math.round(fontSize * 1.55);
+          lines = wrapText(cCtx, text, maxTextWidth);
+          totalTextHeight = lines.length * lineHeight;
+          if (totalTextHeight < maxTextHeight) break;
+          fontSize -= 2;
+        }
+
+        cCtx.fillStyle = textCol;
+        cCtx.textAlign = 'center';
+        const startY = (h - totalTextHeight) / 2 + Math.round(fontSize * 0.6);
+        const finalLineHeight = Math.round(fontSize * 1.55);
+
+        for (let i = 0; i < lines.length; i++) {
+          cCtx.fillText(lines[i], w / 2, startY + i * finalLineHeight);
+        }
+
+        cCtx.fillStyle = '#64748b';
+        const footerSize = Math.max(12, Math.round(w * 0.018));
+        cCtx.font = `400 ${footerSize}px ui-monospace, monospace`;
+        cCtx.fillText('NO LEADER • NO TITHE • VERIFY IN CONDUCT', w / 2, h - margin - Math.round(w * 0.04));
+
+        if (overflowBadge) {
+          overflowBadge.innerText = `Rendered: ${w}×${h}px • Type: ${fontSize}px adaptive typography`;
+        }
+      }
+
+      if (presetSelect) {
+        presetSelect.addEventListener('change', () => {
+          if (presetSelect.value !== 'custom') {
+            const f = folios.find(item => item.id == presetSelect.value);
+            if (f && cardTextInput) {
+              cardTextInput.value = `Folio ${f.id < 10 ? '0' + f.id : f.id}: ${f.title}\n\n"${f.mech}"`;
+            }
+          }
+          drawCard();
+        });
+      }
+
+      if (cardTextInput) cardTextInput.addEventListener('input', drawCard);
+      if (platformSelect) platformSelect.addEventListener('change', drawCard);
+      if (paletteSelect) paletteSelect.addEventListener('change', drawCard);
+
+      window.loadFolioIntoCard = function(id) {
+        if (presetSelect) presetSelect.value = id;
+        const f = folios.find(item => item.id == id);
+        if (f && cardTextInput) {
+          cardTextInput.value = `Folio ${f.id < 10 ? '0' + f.id : f.id}: ${f.title}\n\n"${f.mech}"`;
         }
         drawCard();
-      });
-    }
+        const shareSec = document.getElementById('share');
+        if (shareSec) shareSec.scrollIntoView({ behavior: 'smooth' });
+      };
 
-    window.loadFolioIntoCard = function(id) {
-      if (presetSelectElement) presetSelectElement.value = id;
-      const f = folios.find(item => item.id == id);
-      if (f) cardTextInput.value = `Folio ${f.id < 10 ? '0' + f.id : f.id}: ${f.title}\n\n"${f.mech}"`;
+      const dlBtn = document.getElementById('btnDownloadCard');
+      if (dlBtn) {
+        dlBtn.onclick = () => {
+          const link = document.createElement('a');
+          const platform = platformSelect ? platformSelect.value : 'square';
+          link.download = `commons-folio-card-${platform}.png`;
+          link.href = cardCanvas.toDataURL('image/png');
+          link.click();
+        };
+      }
+
       drawCard();
-      document.getElementById('share').scrollIntoView({ behavior: 'smooth' });
-    };
-
-    cardTextInput.addEventListener('input', drawCard);
-    platformSelect.addEventListener('change', drawCard);
-    paletteSelect.addEventListener('change', drawCard);
-
-    function getPlatformDims(platform) {
-      switch (platform) {
-        case 'story': return { w: 1080, h: 1920 };
-        case 'portrait': return { w: 1080, h: 1350 };
-        case 'landscape': return { w: 1920, h: 1080 };
-        case 'square': default: return { w: 1080, h: 1080 };
-      }
     }
-
-    function wrapText(ctx, text, maxWidth) {
-      const paragraphs = text.split('\n');
-      const lines = [];
-      paragraphs.forEach(p => {
-        if (!p.trim()) { lines.push(''); return; }
-        const words = p.split(' ');
-        let currentLine = words[0];
-        for (let i = 1; i < words.length; i++) {
-          const word = words[i];
-          const width = ctx.measureText(currentLine + " " + word).width;
-          if (width < maxWidth) { currentLine += " " + word; }
-          else { lines.push(currentLine); currentLine = word; }
-        }
-        lines.push(currentLine);
-      });
-      return lines;
-    }
-
-    function drawCard() {
-      const { w, h } = getPlatformDims(platformSelect.value);
-      cardCanvas.width = w; cardCanvas.height = h;
-
-      const palette = paletteSelect.value;
-      let bg = '#0b1017', borderCol = '#232d3d', accent = '#0d9488', textCol = '#f1f5f9';
-
-      if (palette === 'turquoise') {
-        bg = '#0e1726'; borderCol = '#1e293b'; accent = '#0284c7';
-      } else if (palette === 'basalt') {
-        bg = '#111827'; borderCol = '#374151'; accent = '#059669';
-      }
-
-      cCtx.fillStyle = bg;
-      cCtx.fillRect(0, 0, w, h);
-
-      const margin = w * 0.08;
-      cCtx.strokeStyle = borderCol;
-      cCtx.lineWidth = 2;
-      cCtx.strokeRect(margin, margin, w - margin * 2, h - margin * 2);
-
-      cCtx.fillStyle = accent;
-      cCtx.font = `600 ${Math.round(w * 0.022)}px monospace`;
-      cCtx.textAlign = 'center';
-      cCtx.fillText('THE COMMONS PROTOCOL • CONTEMPLATION', w / 2, margin + w * 0.06);
-
-      const maxTextWidth = w - margin * 2.8;
-      const maxTextHeight = h - margin * 3.2;
-      let fontSize = Math.round(w * 0.042);
-      let lines = [];
-      let totalTextHeight = 0;
-
-      while (fontSize > 16) {
-        cCtx.font = `400 ${fontSize}px sans-serif`;
-        const lineHeight = fontSize * 1.5;
-        lines = wrapText(cCtx, cardTextInput.value, maxTextWidth);
-        totalTextHeight = lines.length * lineHeight;
-        if (totalTextHeight < maxTextHeight) break;
-        fontSize -= 2;
-      }
-
-      cCtx.fillStyle = textCol;
-      cCtx.textAlign = 'center';
-      const startY = (h - totalTextHeight) / 2 + fontSize * 0.5;
-      const finalLineHeight = fontSize * 1.5;
-
-      for (let i = 0; i < lines.length; i++) {
-        cCtx.fillText(lines[i], w / 2, startY + i * finalLineHeight);
-      }
-
-      cCtx.fillStyle = '#64748b';
-      cCtx.font = `400 ${Math.round(w * 0.018)}px monospace`;
-      cCtx.fillText('NO LEADER • NO TITHE • VERIFY IN CONDUCT', w / 2, h - margin - w * 0.04);
-
-      overflowCheckBadge.innerText = `Layout Safe: ${w}x${h}px rendered with ${fontSize}px adaptive typography.`;
-    }
-
-    document.getElementById('btnDownloadCard').addEventListener('click', () => {
-      const link = document.createElement('a');
-      link.download = `commons-card-${platformSelect.value}.png`;
-      link.href = cardCanvas.toDataURL('image/png');
-      link.click();
-    });
 
     document.getElementById('btnExportCode').addEventListener('click', () => {
       const blob = new Blob([document.documentElement.outerHTML], { type: 'text/html' });
@@ -2555,22 +2592,26 @@ COST:
     };
 
     /* Safe Execution Lifecycle */
-    window.addEventListener('load', () => {
+    function bootSystem() {
       initAllCanvases();
-      drawCard();
-    });
-    window.addEventListener('resize', initAllCanvases);
+      initCardEngine();
+      renderReactionSim();
+      renderEgoSim();
+      renderAttachSim();
+      renderAttractorSim();
+      renderEntropySim();
+      renderVagalSim();
+      renderVectorSim();
+      renderGossipSim();
+      renderDissolutionSim();
+    }
 
-    // Boot all render loops immediately
-    renderReactionSim();
-    renderEgoSim();
-    renderAttachSim();
-    renderAttractorSim();
-    renderEntropySim();
-    renderVagalSim();
-    renderVectorSim();
-    renderGossipSim();
-    renderDissolutionSim();
+    if (document.readyState === 'complete' || document.readyState === 'interactive') {
+      bootSystem();
+    } else {
+      window.addEventListener('DOMContentLoaded', bootSystem);
+    }
+    window.addEventListener('resize', initAllCanvases);
   </script>
 </body>
 </html>

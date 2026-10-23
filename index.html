@@ -1,2119 +1,1053 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>THE COMMONS — An Open Protocol of Awareness</title>
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Google Fonts: Cormorant Garamond & Inter & JetBrains Mono -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
-
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            obsidian: '#080a0d',
-            slateDark: '#0f1318',
-            panelBg: 'rgba(18, 23, 31, 0.75)',
-            parchment: '#e2d9cc',
-            gold: '#e6af2e',
-            goldMuted: '#9e7b28',
-            emeraldGlow: '#4ade80',
-            cyanGlow: '#38bdf8',
-            roseGlow: '#f43f5e'
-          },
-          fontFamily: {
-            serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
-            sans: ['Inter', 'sans-serif'],
-            mono: ['"JetBrains Mono"', 'monospace']
-          }
-        }
-      }
-    }
-  </script>
+  <title>The Commons | The Open Protocol</title>
+  <meta name="description" content="A leaderless, open-access philosophical architecture and phenomenological diagram engine.">
+  
+  <!-- Embedded High-Resolution Scalable Vector Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><circle cx='32' cy='32' r='30' fill='%230b0d10' stroke='%23252b36' stroke-width='2'/><circle cx='32' cy='32' r='18' fill='none' stroke='%23d4af37' stroke-width='1.5' stroke-dasharray='4 2'/><circle cx='32' cy='32' r='4' fill='%2338bdf8'/><circle cx='32' cy='14' r='2.5' fill='%23d4af37'/><circle cx='48' cy='40' r='2.5' fill='%23d4af37'/><circle cx='16' cy='40' r='2.5' fill='%23d4af37'/><path d='M32 14 L48 40 L16 40 Z' fill='none' stroke='%23d4af37' stroke-width='1' opacity='0.6'/></svg>">
 
   <style>
-    /* Custom Scrollbars */
-    ::-webkit-scrollbar {
-      width: 6px;
-      height: 6px;
-    }
-    ::-webkit-scrollbar-track {
-      background: #080a0d;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: #1e2633;
-      border-radius: 3px;
-    }
-    ::-webkit-scrollbar-thumb:hover {
-      background: #e6af2e;
-    }
-
-    /* Subtle text glow effects */
-    .glow-gold {
-      text-shadow: 0 0 20px rgba(230, 175, 46, 0.35);
-    }
-    .glow-cyan {
-      text-shadow: 0 0 20px rgba(56, 189, 248, 0.35);
+    :root {
+      --bg-primary: #0b0d10;
+      --bg-surface: #12151b;
+      --bg-elevated: #1a1f27;
+      --border: #252b36;
+      --border-accent: #374151;
+      --text-main: #e2e8f0;
+      --text-muted: #94a3b8;
+      --accent-gold: #d4af37;
+      --accent-gold-soft: rgba(212, 175, 55, 0.12);
+      --accent-cyan: #38bdf8;
+      --accent-cyan-soft: rgba(56, 189, 248, 0.12);
+      --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
     }
 
-    /* Slider style normalization */
-    input[type=range] {
-      -webkit-appearance: none;
-      background: #1e293b;
-      height: 5px;
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-primary);
+      color: var(--text-main);
+      font-family: var(--font-body);
+      line-height: 1.65;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: var(--accent-cyan);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    a:hover {
+      color: var(--accent-gold);
+    }
+
+    /* Layout & Header */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(12px);
+      background-color: rgba(11, 13, 16, 0.85);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0.85rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      color: #fff;
+      font-size: 1.05rem;
+    }
+
+    .brand-glyph {
+      width: 22px;
+      height: 22px;
+      fill: none;
+      stroke: var(--accent-gold);
+      stroke-width: 2;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.25rem;
+      font-size: 0.875rem;
+      font-family: var(--font-mono);
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+    }
+
+    .nav-links a:hover {
+      color: var(--accent-cyan);
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      padding: 6rem 1.5rem 4.5rem;
+      text-align: center;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .badge {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 0.35rem 0.85rem;
       border-radius: 9999px;
-    }
-    input[type=range]::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      height: 16px;
-      width: 16px;
-      border-radius: 50%;
-      background: #e6af2e;
-      cursor: pointer;
-      box-shadow: 0 0 10px rgba(230, 175, 46, 0.6);
-      transition: transform 0.15s ease;
-    }
-    input[type=range]::-webkit-slider-thumb:hover {
-      transform: scale(1.2);
+      background: var(--accent-gold-soft);
+      color: var(--accent-gold);
+      border: 1px solid rgba(212, 175, 55, 0.25);
+      margin-bottom: 1.5rem;
     }
 
-    /* Glass card utility */
-    .glass-card {
-      background: rgba(15, 19, 24, 0.7);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border: 1px solid rgba(255, 255, 255, 0.07);
+    h1 {
+      font-size: clamp(2.2rem, 5vw, 3.4rem);
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      line-height: 1.15;
+      margin-bottom: 1.25rem;
+      color: #fff;
     }
-    .glass-card:hover {
-      border-color: rgba(230, 175, 46, 0.25);
+
+    .hero p {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+      max-width: 720px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .btn-row {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.875rem;
+      font-family: var(--font-mono);
+      font-weight: 600;
+      padding: 0.75rem 1.4rem;
+      border-radius: 6px;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: all 0.2s ease;
+    }
+
+    .btn-primary {
+      background: var(--text-main);
+      color: var(--bg-primary);
+    }
+
+    .btn-primary:hover {
+      background: #fff;
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background: var(--bg-surface);
+      color: var(--text-main);
+      border-color: var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--bg-elevated);
+      border-color: var(--accent-cyan);
+    }
+
+    /* Global Sections */
+    section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 4rem 1.5rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .section-header {
+      margin-bottom: 2.5rem;
+      text-align: center;
+    }
+
+    .section-title {
+      font-size: 1.85rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-subtitle {
+      color: var(--text-muted);
+      max-width: 650px;
+      margin: 0 auto;
+      font-size: 0.95rem;
+    }
+
+    /* Philosophy Matrix */
+    .philosophy-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.75rem;
+      position: relative;
+    }
+
+    .card h3 {
+      font-size: 1.15rem;
+      color: #fff;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .card p {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      line-height: 1.6;
+    }
+
+    .matrix-table-wrap {
+      overflow-x: auto;
+      margin-top: 1.5rem;
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+    }
+
+    table.matrix-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.88rem;
+    }
+
+    table.matrix-table th, table.matrix-table td {
+      padding: 1rem 1.25rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    table.matrix-table th {
+      background: var(--bg-elevated);
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+      font-weight: 500;
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      letter-spacing: 0.05em;
+    }
+
+    table.matrix-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .col-highlight {
+      color: var(--accent-gold);
+      font-weight: 600;
+      background: rgba(212, 175, 55, 0.02);
+    }
+
+    /* Kinetic Diagram Engines */
+    .sim-container {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 1.5rem;
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    @media (max-width: 860px) {
+      .sim-container {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .canvas-wrapper {
+      position: relative;
+      width: 100%;
+      height: 380px;
+      background: var(--bg-primary);
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    canvas.sim-canvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .sim-panel {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .sim-panel h4 {
+      font-size: 1.1rem;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+
+    .sim-panel p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+    }
+
+    .control-group {
+      margin-bottom: 1.2rem;
+    }
+
+    .control-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.78rem;
+      font-family: var(--font-mono);
+      color: var(--text-muted);
+      margin-bottom: 0.4rem;
+    }
+
+    input[type="range"] {
+      width: 100%;
+      accent-color: var(--accent-gold);
+    }
+
+    /* Axiom Accordion */
+    .axiom-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+
+    .axiom-item {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .axiom-trigger {
+      width: 100%;
+      padding: 1rem 1.25rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: transparent;
+      border: none;
+      color: #fff;
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-align: left;
+      cursor: pointer;
+    }
+
+    .axiom-trigger:hover {
+      background: var(--bg-elevated);
+    }
+
+    .axiom-content {
+      padding: 0 1.25rem 1.25rem;
+      display: none;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      margin-top: 0.5rem;
+    }
+
+    .axiom-item.open .axiom-content {
+      display: block;
+    }
+
+    /* Card Generator Engine */
+    .card-gen-layout {
+      display: grid;
+      grid-template-columns: 360px 1fr;
+      gap: 2rem;
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.75rem;
+    }
+
+    @media (max-width: 900px) {
+      .card-gen-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .form-group {
+      margin-bottom: 1.2rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.78rem;
+      font-family: var(--font-mono);
+      color: var(--text-muted);
+      margin-bottom: 0.4rem;
+    }
+
+    select, textarea {
+      width: 100%;
+      padding: 0.65rem;
+      background: var(--bg-primary);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      color: #fff;
+      font-family: inherit;
+      font-size: 0.875rem;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    .card-preview-area {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: var(--bg-primary);
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      padding: 1.5rem;
+      min-height: 420px;
+    }
+
+    #cardCanvas {
+      max-width: 100%;
+      max-height: 480px;
+      border-radius: 4px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+
+    .badge-metric {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--accent-cyan);
+      margin-top: 0.75rem;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 3rem 1.5rem;
+      text-align: center;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+    }
+
+    .footer-actions {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
     }
   </style>
 </head>
+<body>
 
-<body class="bg-obsidian text-slate-300 font-sans selection:bg-gold/30 selection:text-gold overflow-x-hidden antialiased">
-
-  <!-- ================= NOTIFICATION TOAST ================= -->
-  <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none flex items-center gap-3 px-5 py-3 rounded-lg glass-card border border-gold/40 text-sm font-mono text-parchment shadow-2xl">
-    <span class="inline-block w-2 h-2 rounded-full bg-gold animate-ping"></span>
-    <span id="toast-text">Protocol notification</span>
-  </div>
-
-  <!-- ================= TOP NAVIGATION ================= -->
-  <header class="fixed top-0 left-0 right-0 z-40 glass-card border-b border-white/5 px-6 py-4 transition-all duration-200">
-    <div class="max-w-6xl mx-auto flex items-center justify-between">
-      <a href="#hero" class="flex items-center gap-3 group">
-        <div class="w-7 h-7 rounded-full border border-gold/60 flex items-center justify-center group-hover:border-gold transition-colors">
-          <div class="w-2 h-2 rounded-full bg-gold group-hover:scale-125 transition-transform"></div>
-        </div>
-        <div class="flex flex-col">
-          <span class="font-serif tracking-widest text-lg font-semibold text-parchment leading-tight">THE COMMONS</span>
-          <span class="text-[9px] font-mono tracking-widest uppercase text-slate-400">Open Consciousness Protocol</span>
-        </div>
-      </a>
-
-      <!-- Desktop Nav -->
-      <nav class="hidden md:flex items-center gap-8 text-xs font-mono uppercase tracking-wider text-slate-400">
-        <a href="#philosophy" class="hover:text-gold transition-colors">Philosophy</a>
-        <a href="#diagrams" class="hover:text-gold transition-colors">Mechanics (Diagrams)</a>
-        <a href="#axioms" class="hover:text-gold transition-colors">The 7 Axioms</a>
-        <a href="#generator" class="hover:text-gold transition-colors">Card Generator</a>
-        <a href="#mirror" class="hover:text-gold transition-colors">Preserve Archive</a>
-      </nav>
-
-      <div class="flex items-center gap-3">
-        <button id="quick-copy-link" class="text-xs font-mono px-3.5 py-1.5 rounded-md border border-white/10 hover:border-gold/50 text-slate-300 hover:text-gold transition-all flex items-center gap-1.5 bg-white/5">
-          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
-          <span>Share Protocol</span>
-        </button>
+  <!-- Navigation -->
+  <header>
+    <div class="nav-container">
+      <div class="brand">
+        <svg class="brand-glyph" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><path d="M12 2 L12 22"/></svg>
+        THE COMMONS
       </div>
+      <ul class="nav-links">
+        <li><a href="#philosophy">Philosophy</a></li>
+        <li><a href="#diagrams">Kinetic Diagrams</a></li>
+        <li><a href="#axioms">Axioms</a></li>
+        <li><a href="#share">Distribute</a></li>
+      </ul>
     </div>
   </header>
 
-  <!-- ================= HERO SECTION ================= -->
-  <section id="hero" class="relative min-h-screen flex items-center justify-center pt-24 pb-16 px-6 overflow-hidden">
-    <!-- Interactive Background Constellation Canvas -->
-    <canvas id="hero-canvas" class="absolute inset-0 w-full h-full pointer-events-auto cursor-crosshair z-0"></canvas>
-    
-    <!-- Gradient radial veil -->
-    <div class="absolute inset-0 bg-gradient-to-b from-obsidian/40 via-obsidian/85 to-obsidian pointer-events-none z-10"></div>
+  <!-- Hero Section -->
+  <div class="hero">
+    <span class="badge">Uncentralized • Autonomous • Open Access</span>
+    <h1>A Protocol Beyond Masters.</h1>
+    <p>A leaderless philosophical architecture expressed through kinetic diagrams and verifiable behavioral mechanics. No tithes, no clergy, no central authority. Run the experiment in your direct experience.</p>
+    <div class="btn-row">
+      <a href="#philosophy" class="btn btn-primary">Examine Foundations</a>
+      <a href="#diagrams" class="btn btn-secondary">Run Kinetic Diagrams</a>
+    </div>
+  </div>
 
-    <div class="relative z-20 max-w-4xl mx-auto text-center flex flex-col items-center">
-      <!-- Live decentralized node badge -->
-      <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border border-gold/30 bg-gold/5 text-xs font-mono text-gold mb-8 shadow-sm">
-        <span class="w-2 h-2 rounded-full bg-emeraldGlow animate-pulse"></span>
-        <span id="active-nodes-counter">1,489 peers connected across the field</span>
-        <span class="text-white/20">|</span>
-        <span class="text-slate-400">Zero Central Authority</span>
+  <!-- Philosophy Section -->
+  <section id="philosophy">
+    <div class="section-header">
+      <h2 class="section-title">Epistemic & Ontological Foundations</h2>
+      <p class="section-subtitle">Why traditional religious and moral systems decay, and how a stateless, verifiable protocol endures without dogmatic capture.</p>
+    </div>
+
+    <div class="philosophy-grid">
+      <div class="card">
+        <h3>01 / Empirical Phenomenology</h3>
+        <p>No requirement of faith or adherence to unprovable mythology. Truth is evaluated solely through reproducible inner observation: causes, emotional feedback loops, and conduct outcomes verified directly in lived experience.</p>
       </div>
-
-      <h1 class="text-4xl sm:text-6xl md:text-7xl font-serif text-parchment tracking-tight leading-[1.08] mb-6 font-normal">
-        No Prophet. No Hierarchy. No Tithe.<br>
-        <span class="italic font-light text-gold glow-gold">Only the verifiable mechanics of being.</span>
-      </h1>
-
-      <p class="text-base sm:text-lg md:text-xl text-slate-300 font-light max-w-2xl mx-auto mb-10 leading-relaxed">
-        Humanity does not suffer from a lack of gods; it suffers from the capture of direct perception by institutions. The Commons is a teacherless, open-source protocol for emotional sovereignty, ethical action, and lucid presence.
-      </p>
-
-      <div class="flex flex-wrap items-center justify-center gap-4 text-xs font-mono uppercase tracking-wider">
-        <a href="#philosophy" class="px-6 py-3.5 rounded-lg bg-gold hover:bg-gold/90 text-obsidian font-semibold transition-all shadow-lg shadow-gold/20 flex items-center gap-2">
-          <span>Explore Philosophy</span>
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
-        </a>
-        <a href="#diagrams" class="px-6 py-3.5 rounded-lg border border-white/15 hover:border-gold/50 bg-white/5 hover:bg-white/10 text-slate-200 transition-all">
-          Inspect Kinetic Diagrams
-        </a>
+      <div class="card">
+        <h3>02 / The Relational Field</h3>
+        <p>Consciousness is not an isolated fortress defending territory. It is an interdependent causal node embedded in a dynamic field. Selfish contraction inevitably generates cognitive friction; systemic alignment dissolves it.</p>
       </div>
+      <div class="card">
+        <h3>03 / Zero Human Extraction</h3>
+        <p>All institutional corruption begins when truth becomes a commodity sold by intermediaries. This protocol owns no real estate, collects no dues, requires no sign-ups, and holds no centralized membership rolls.</p>
+      </div>
+    </div>
 
-      <!-- Live Interaction Indicator -->
-      <div class="mt-14 text-[11px] font-mono text-slate-400 flex items-center gap-2">
-        <span class="inline-block w-1.5 h-1.5 rounded-full bg-cyanGlow"></span>
-        Move cursor or touch anywhere to disturb and harmonize the field
+    <!-- Comparative Matrix -->
+    <div class="section-header" style="margin-top: 3rem; margin-bottom: 1.5rem;">
+      <h3 style="font-size: 1.35rem; color: #fff;">Structural Comparative Matrix</h3>
+    </div>
+    <div class="matrix-table-wrap">
+      <table class="matrix-table">
+        <thead>
+          <tr>
+            <th>Dimension</th>
+            <th>Traditional Faiths</th>
+            <th>Dogmatic Materialism</th>
+            <th class="col-highlight">The Open Protocol</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Locus of Authority</strong></td>
+            <td>Priests, Prophets, Scriptures</td>
+            <td>Institutional Consensus</td>
+            <td class="col-highlight">Direct Phenomenological Testing</td>
+          </tr>
+          <tr>
+            <td><strong>Failure Mode</strong></td>
+            <td>Corruption, Abuse, Schism</td>
+            <td>Nihilism, Atomization, Ennui</td>
+            <td class="col-highlight">None (Stateless, Unownable)</td>
+          </tr>
+          <tr>
+            <td><strong>Transmission</strong></td>
+            <td>Evangelism, Coercion, Heritage</td>
+            <td>Academic Gatekeeping</td>
+            <td class="col-highlight">Kinetic Diagrams & Peer Utility</td>
+          </tr>
+          <tr>
+            <td><strong>Economic Engine</strong></td>
+            <td>Tithing, Donations, Endowments</td>
+            <td>Grant Funding, Commercialization</td>
+            <td class="col-highlight">Zero-Cost Static Mirroring</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Kinetic Diagrams Section -->
+  <section id="diagrams">
+    <div class="section-header">
+      <h2 class="section-title">Kinetic State Diagrams</h2>
+      <p class="section-subtitle">Visualizing the inner thermodynamic mechanics of human friction and liberation in real time.</p>
+    </div>
+
+    <!-- Simulation 1: Reaction vs Response -->
+    <div class="sim-container">
+      <div class="canvas-wrapper">
+        <canvas id="simReactionCanvas" class="sim-canvas"></canvas>
+      </div>
+      <div class="sim-panel">
+        <div>
+          <h4>I. Reaction vs. Response</h4>
+          <p>Illustrates how incoming stimuli create destructive kinetic feedback when met with automatic rigidity versus calm harmonic wave dissipation when met with spacious awareness.</p>
+          <div class="control-group">
+            <div class="control-label">
+              <span>Observer Gap (Awareness)</span>
+              <span id="gapVal">50%</span>
+            </div>
+            <input type="range" id="gapSlider" min="5" max="100" value="50">
+          </div>
+        </div>
+        <button class="btn btn-secondary" id="btnEmitImpulse">Inject Stimulus Wave</button>
+      </div>
+    </div>
+
+    <!-- Simulation 2: Ego Contraction -->
+    <div class="sim-container">
+      <div class="canvas-wrapper">
+        <canvas id="simEgoCanvas" class="sim-canvas"></canvas>
+      </div>
+      <div class="sim-panel">
+        <div>
+          <h4>II. The Contraction Gradient</h4>
+          <p>Examines how tightening defensive ego boundaries shears connections with the broader field, producing localized turbulence and isolation.</p>
+          <div class="control-group">
+            <div class="control-label">
+              <span>Boundary Rigidity</span>
+              <span id="rigidityVal">40%</span>
+            </div>
+            <input type="range" id="rigiditySlider" min="0" max="100" value="40">
+          </div>
+        </div>
+        <button class="btn btn-secondary" id="btnPulseField">Pulse Field Resonators</button>
       </div>
     </div>
   </section>
 
-  <!-- ================= PHILOSOPHICAL INTENT MANIFESTO ================= -->
-  <section class="py-20 px-6 border-y border-white/5 bg-slateDark/40">
-    <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
-      <div class="glass-card p-6 rounded-xl border border-white/5 flex flex-col justify-between">
-        <div>
-          <span class="text-xs font-mono text-gold uppercase tracking-wider block mb-2">01 / The Charisma Flaw</span>
-          <h3 class="text-xl font-serif text-parchment font-semibold mb-3">Why Prophets Fail</h3>
-          <p class="text-sm text-slate-300 leading-relaxed">
-            When spiritual truth is tied to a human avatar, it inherits mortal fragility: lust for dominance, institutional gatekeeping, succession crises, and inevitable hypocrisy. Truth needs no mortal vicar.
-          </p>
-        </div>
-        <div class="mt-4 pt-4 border-t border-white/5 text-[11px] font-mono text-slate-400">
-          Remedy: Self-verifying state diagrams
+  <!-- Axioms Accordion Section -->
+  <section id="axioms">
+    <div class="section-header">
+      <h2 class="section-title">The Seven Open Axioms</h2>
+      <p class="section-subtitle">Grounded mechanical principles paired with immediate daily somatic practices.</p>
+    </div>
+
+    <div class="axiom-list">
+      <div class="axiom-item open">
+        <button class="axiom-trigger">01. The Principle of Non-Ownership <span>+</span></button>
+        <div class="axiom-content">
+          <p>Nothing passing through conscious awareness belongs to the observer: thoughts, bodily sensations, achievements, or material artifacts are transient visitors. Suffering is the thermodynamic friction of holding onto that which is naturally flowing.</p>
+          <p style="margin-top: 0.5rem; color: var(--accent-gold);"><strong>Practice:</strong> When experiencing physical or mental friction, mentally open your hands and whisper: "This too is passing through."</p>
         </div>
       </div>
-
-      <div class="glass-card p-6 rounded-xl border border-white/5 flex flex-col justify-between">
-        <div>
-          <span class="text-xs font-mono text-cyanGlow uppercase tracking-wider block mb-2">02 / Orthodoxy & Heresy</span>
-          <h3 class="text-xl font-serif text-parchment font-semibold mb-3">Why Dogmas Shatter</h3>
-          <p class="text-sm text-slate-300 leading-relaxed">
-            Ancient metaphors crystallize into rigid dogmatic laws. Deviation becomes heresy; holy wars are fought over translations of dust. A diagram of feedback loops cannot be easily perverted into violent fundamentalism.
-          </p>
-        </div>
-        <div class="mt-4 pt-4 border-t border-white/5 text-[11px] font-mono text-slate-400">
-          Remedy: Open-source phenomenological law
+      <div class="axiom-item">
+        <button class="axiom-trigger">02. The Stimulus-Response Interval <span>+</span></button>
+        <div class="axiom-content">
+          <p>Between impulse and action lies an infinitesimal threshold. Whoever masters this micro-interval escapes deterministic programming and enters sovereign moral choice.</p>
+          <p style="margin-top: 0.5rem; color: var(--accent-gold);"><strong>Practice:</strong> Count two full respiratory cycles before responding to any communication that triggers defensive arousal.</p>
         </div>
       </div>
-
-      <div class="glass-card p-6 rounded-xl border border-white/5 flex flex-col justify-between">
-        <div>
-          <span class="text-xs font-mono text-emeraldGlow uppercase tracking-wider block mb-2">03 / The Tithe Trap</span>
-          <h3 class="text-xl font-serif text-parchment font-semibold mb-3">Why Temples Rot</h3>
-          <p class="text-sm text-slate-300 leading-relaxed">
-            Every spiritual impulse that amasses real estate, bank accounts, and political favors ends up defending its assets rather than liberating its members. The Commons owns zero brick, accepts zero currency, and maintains zero rosters.
-          </p>
+      <div class="axiom-item">
+        <button class="axiom-trigger">03. The Dissolution of the Mediator <span>+</span></button>
+        <div class="axiom-content">
+          <p>No intermediary possesses private access to reality. Any entity, teacher, or hierarchy demanding submission or money to mediate truth is an extractive bottleneck.</p>
+          <p style="margin-top: 0.5rem; color: var(--accent-gold);"><strong>Practice:</strong> Consult direct natural observation and repeatable experiments over revered human authorities.</p>
         </div>
-        <div class="mt-4 pt-4 border-t border-white/5 text-[11px] font-mono text-slate-400">
-          Remedy: Pure static protocol, universally mirrorable
+      </div>
+      <div class="axiom-item">
+        <button class="axiom-trigger">04. The Kinetic Conservation of Goodwill <span>+</span></button>
+        <div class="axiom-content">
+          <p>Cruelty contracts the nervous system; generosity expands it. Ethical integrity is not an ancient obligation but an immediate physiological hygiene.</p>
+          <p style="margin-top: 0.5rem; color: var(--accent-gold);"><strong>Practice:</strong> Perform one unannounced, uncredited act of physical assistance within your immediate neighborhood today.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ================= SECTION: PHILOSOPHY & EPISTEMIC FOUNDATIONS ================= -->
-  <section id="philosophy" class="py-24 px-6 max-w-6xl mx-auto border-b border-white/5">
-    <div class="text-center max-w-3xl mx-auto mb-16">
-      <span class="text-xs font-mono uppercase tracking-widest text-gold mb-3 block">First Principles</span>
-      <h2 class="text-3xl sm:text-5xl font-serif text-parchment font-normal mb-4">
-        Philosophy & Epistemic Foundations
-      </h2>
-      <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
-        Why this protocol exists, how it establishes truth without divine claims or mortal gurus, and why liberation requires dismantling the spiritual middleman.
-      </p>
+  <!-- Distribution Card Generator Section -->
+  <section id="share">
+    <div class="section-header">
+      <h2 class="section-title">Peer-to-Peer Contemplative Card Engine</h2>
+      <p class="section-subtitle">Generate high-resolution social reflection cards. Automatic proportional typography guarantees text never overflows bounds regardless of format.</p>
     </div>
 
-    <!-- 5 Pillar Epistemic Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-20">
-      
-      <!-- Pillar A: Epistemology -->
-      <div class="glass-card p-7 rounded-2xl border border-white/10 hover:border-gold/30 transition-all flex flex-col justify-between">
-        <div>
-          <div class="flex items-center justify-between mb-4">
-            <span class="text-[11px] font-mono uppercase tracking-widest text-gold bg-gold/10 px-2.5 py-1 rounded border border-gold/20">A · Epistemology</span>
-            <span class="w-2 h-2 rounded-full bg-gold"></span>
-          </div>
-          <h3 class="text-xl font-serif text-parchment font-medium mb-3">Empirical Phenomenology</h3>
-          <p class="text-sm text-slate-300 leading-relaxed mb-4">
-            <em>"Do not believe; run the experiment."</em> Knowledge here is not received via revelation or unquestioned antiquity. It is verified through the immediate laboratory of conscious human experience.
-          </p>
-          <p class="text-xs text-slate-400 leading-relaxed">
-            If a proposed principle does not produce clarity, reduce emotional friction, and withstand rigorous direct observation in daily life, it possesses no validity and must be discarded.
-          </p>
-        </div>
-        <div class="mt-6 pt-4 border-t border-white/5 text-[11px] font-mono text-goldMuted">
-          Standard: Experiential repeatability over dogma
-        </div>
-      </div>
-
-      <!-- Pillar B: Ontology -->
-      <div class="glass-card p-7 rounded-2xl border border-white/10 hover:border-cyanGlow/30 transition-all flex flex-col justify-between">
-        <div>
-          <div class="flex items-center justify-between mb-4">
-            <span class="text-[11px] font-mono uppercase tracking-widest text-cyanGlow bg-cyanGlow/10 px-2.5 py-1 rounded border border-cyanGlow/20">B · Ontology</span>
-            <span class="w-2 h-2 rounded-full bg-cyanGlow"></span>
-          </div>
-          <h3 class="text-xl font-serif text-parchment font-medium mb-3">The Relational Field</h3>
-          <p class="text-sm text-slate-300 leading-relaxed mb-4">
-            Separation is a cognitive shortcut, not an ontological fact. Human consciousness is an emergent node within an indivisible physical, thermodynamic, and ecological substrate.
-          </p>
-          <p class="text-xs text-slate-400 leading-relaxed">
-            The illusion of an isolated, fortified "I" produces constant defensive strain. Harm inflicted upon another peer node ripples directly back through the connective tissue of the shared field.
-          </p>
-        </div>
-        <div class="mt-6 pt-4 border-t border-white/5 text-[11px] font-mono text-cyanGlow/70">
-          Standard: Non-dual systems biology & physics
-        </div>
-      </div>
-
-      <!-- Pillar C: Dissolution of the Middleman -->
-      <div class="glass-card p-7 rounded-2xl border border-white/10 hover:border-roseGlow/30 transition-all flex flex-col justify-between">
-        <div>
-          <div class="flex items-center justify-between mb-4">
-            <span class="text-[11px] font-mono uppercase tracking-widest text-roseGlow bg-roseGlow/10 px-2.5 py-1 rounded border border-roseGlow/20">C · Sociology</span>
-            <span class="w-2 h-2 rounded-full bg-roseGlow"></span>
-          </div>
-          <h3 class="text-xl font-serif text-parchment font-medium mb-3">Dissolving the Middleman</h3>
-          <p class="text-sm text-slate-300 leading-relaxed mb-4">
-            Every institutional hierarchy decays under Michels's <em>Iron Law of Oligarchy</em>. Charismatic gurus and priestly classes inevitably leverage sacred access to extract status, wealth, and compliance.
-          </p>
-          <p class="text-xs text-slate-400 leading-relaxed">
-            By eliminating all teachers, dues, and central bodies, we eliminate the leverage points where spiritual authority turns predatory. Natural feedback loops replace mortal judges.
-          </p>
-        </div>
-        <div class="mt-6 pt-4 border-t border-white/5 text-[11px] font-mono text-roseGlow/70">
-          Standard: Immutable protocol over charismatic hierarchy
-        </div>
-      </div>
-
-      <!-- Pillar D: Ethic of Non-Extraction -->
-      <div class="glass-card p-7 rounded-2xl border border-white/10 hover:border-emeraldGlow/30 transition-all flex flex-col justify-between">
-        <div>
-          <div class="flex items-center justify-between mb-4">
-            <span class="text-[11px] font-mono uppercase tracking-widest text-emeraldGlow bg-emeraldGlow/10 px-2.5 py-1 rounded border border-emeraldGlow/20">D · Ethics</span>
-            <span class="w-2 h-2 rounded-full bg-emeraldGlow"></span>
-          </div>
-          <h3 class="text-xl font-serif text-parchment font-medium mb-3">The Zero-Extraction Mandate</h3>
-          <p class="text-sm text-slate-300 leading-relaxed mb-4">
-            The protocol enforces a zero-capture footprint: no collection plates, no intellectual property claims, no subscription tiers, and no registered member rolls.
-          </p>
-          <p class="text-xs text-slate-400 leading-relaxed">
-            Service must be immediate and local. If spiritual energy does not directly nourish one's physical neighborhood, relieve suffering, or repair local soil, it has degraded into hollow spectacle.
-          </p>
-        </div>
-        <div class="mt-6 pt-4 border-t border-white/5 text-[11px] font-mono text-emeraldGlow/70">
-          Standard: Immediate local action without centralized overhead
-        </div>
-      </div>
-
-      <!-- Pillar E: The Digital Paradox -->
-      <div class="glass-card p-7 rounded-2xl border border-white/10 hover:border-gold/30 transition-all flex flex-col justify-between md:col-span-2 lg:col-span-2">
-        <div>
-          <div class="flex items-center justify-between mb-4">
-            <span class="text-[11px] font-mono uppercase tracking-widest text-gold bg-gold/10 px-2.5 py-1 rounded border border-gold/20">E · Praxis</span>
-            <span class="w-2 h-2 rounded-full bg-gold"></span>
-          </div>
-          <h3 class="text-xl font-serif text-parchment font-medium mb-3">The Paradox of the Digital Medium</h3>
-          <p class="text-sm text-slate-300 leading-relaxed mb-4">
-            This website is designed with a deliberate self-negating purpose. It is a navigational index, not a dwelling place. Light glowing from silicon diodes can illuminate a diagram, but it cannot breathe, suffer, or embrace a grieving neighbor.
-          </p>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4 pt-4 border-t border-white/5 text-xs text-slate-400">
-            <div class="p-3 rounded-lg bg-obsidian/60 border border-white/5">
-              <span class="text-parchment font-serif font-medium block mb-1">What the Protocol is:</span>
-              A lean spark to recalibrate perception, dismantle dogmatic conditioning, and illustrate mechanical causality cleanly.
-            </div>
-            <div class="p-3 rounded-lg bg-obsidian/60 border border-white/5">
-              <span class="text-parchment font-serif font-medium block mb-1">The Explicit Command:</span>
-              Once understood, shut the screen. Return to the raw biological world, cultivate grounded community, and live directly.
-            </div>
-          </div>
-        </div>
-        <div class="mt-6 pt-4 border-t border-white/5 text-[11px] font-mono text-goldMuted">
-          Standard: The medium exists to dismiss the practitioner into reality
-        </div>
-      </div>
-
-    </div>
-
-    <!-- Comparative Matrix Component -->
-    <div class="glass-card rounded-2xl p-6 sm:p-10 border border-white/10 shadow-2xl">
-      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
-        <div>
-          <span class="text-xs font-mono uppercase tracking-widest text-cyanGlow block mb-1">Comparative Epistemic Matrix</span>
-          <h3 class="text-2xl sm:text-3xl font-serif text-parchment font-medium">How The Open Protocol Differs</h3>
-        </div>
-        <!-- Filter Tabs -->
-        <div class="inline-flex p-1 rounded-xl bg-obsidian border border-white/10 text-xs font-mono">
-          <button class="matrix-filter-btn px-3 py-1.5 rounded-lg bg-gold/20 text-gold border border-gold/30 transition-colors" data-view="all">All Dimensions</button>
-          <button class="matrix-filter-btn px-3 py-1.5 rounded-lg text-slate-400 hover:text-parchment transition-colors" data-view="authority">Authority & Truth</button>
-          <button class="matrix-filter-btn px-3 py-1.5 rounded-lg text-slate-400 hover:text-parchment transition-colors" data-view="practice">Suffering & Mortality</button>
-        </div>
-      </div>
-
-      <!-- Matrix Table -->
-      <div class="overflow-x-auto">
-        <table class="w-full text-left text-xs font-mono border-collapse" id="matrix-table">
-          <thead>
-            <tr class="border-b border-white/10 text-slate-400 uppercase tracking-wider text-[11px]">
-              <th class="py-4 px-4 w-1/4">Dimension</th>
-              <th class="py-4 px-4 w-1/4 text-slate-300">Traditional Theism</th>
-              <th class="py-4 px-4 w-1/4 text-slate-300">Dogmatic Materialism</th>
-              <th class="py-4 px-4 w-1/4 text-gold bg-gold/5 rounded-t-lg">The Open Protocol</th>
-            </tr>
-          </thead>
-          <tbody class="divide-y divide-white/5 text-slate-300 text-[12px] font-sans">
-            <!-- Row 1 -->
-            <tr class="matrix-row hover:bg-white/[0.02] transition-colors" data-category="authority">
-              <td class="py-4 px-4 font-mono text-slate-400 text-xs">Origin of Authority</td>
-              <td class="py-4 px-4">Divine revelation, ancient scriptural canon, clerical hierarchy.</td>
-              <td class="py-4 px-4">Institutional consensus, credentialed authority, reductionist models.</td>
-              <td class="py-4 px-4 text-parchment bg-gold/5 font-medium border-l border-gold/20">Direct phenomenological verification by the individual in real time.</td>
-            </tr>
-            <!-- Row 2 -->
-            <tr class="matrix-row hover:bg-white/[0.02] transition-colors" data-category="authority">
-              <td class="py-4 px-4 font-mono text-slate-400 text-xs">Source of Truth</td>
-              <td class="py-4 px-4">Supernatural declarations received through chosen prophets.</td>
-              <td class="py-4 px-4">Exclusively third-person quantifiable metrics; interiority often dismissed as epiphenomenon.</td>
-              <td class="py-4 px-4 text-parchment bg-gold/5 font-medium border-l border-gold/20">First-person qualitative awareness integrated with natural systems and feedback laws.</td>
-            </tr>
-            <!-- Row 3 -->
-            <tr class="matrix-row hover:bg-white/[0.02] transition-colors" data-category="practice">
-              <td class="py-4 px-4 font-mono text-slate-400 text-xs">Dealing with Suffering</td>
-              <td class="py-4 px-4">Atonement, divine test, retribution for sin, or promissory afterlife rewards.</td>
-              <td class="py-4 px-4">Chemical modification, utilitarian optimization, or nihilistic resignation.</td>
-              <td class="py-4 px-4 text-parchment bg-gold/5 font-medium border-l border-gold/20">Thermodynamic friction caused by clinging and ego contraction; dissolved by non-resistance and presence.</td>
-            </tr>
-            <!-- Row 4 -->
-            <tr class="matrix-row hover:bg-white/[0.02] transition-colors" data-category="practice">
-              <td class="py-4 px-4 font-mono text-slate-400 text-xs">Death & Mortality</td>
-              <td class="py-4 px-4">Literal resurrection, paradise, reincarnation cycle, or eternal retribution.</td>
-              <td class="py-4 px-4">Total extinction of mind, existential dread, or transhumanist escapism.</td>
-              <td class="py-4 px-4 text-parchment bg-gold/5 font-medium border-l border-gold/20">Natural phase transition; form returns its lent energy to the invariant continuum.</td>
-            </tr>
-            <!-- Row 5 -->
-            <tr class="matrix-row hover:bg-white/[0.02] transition-colors" data-category="authority">
-              <td class="py-4 px-4 font-mono text-slate-400 text-xs">Community Structure</td>
-              <td class="py-4 px-4">Churches, temples, tithing, central doctrines, excommunication of heretics.</td>
-              <td class="py-4 px-4">Bureaucratic states, academic guilds, commercial market networks.</td>
-              <td class="py-4 px-4 text-parchment bg-gold/5 font-medium border-l border-gold/20">Decentralized peer circles, zero treasury, zero membership rolls, voluntary local aid.</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="mt-6 flex items-center justify-between text-[11px] font-mono text-slate-400">
-        <span>Framework calibration: Open-source non-dual empiricism</span>
-        <span class="text-gold">Self-validating · Unownable · Peer-to-Peer</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= SECTION 2: INTERACTIVE ANIMATED DIAGRAMS ================= -->
-  <section id="diagrams" class="py-24 px-6 max-w-6xl mx-auto">
-    <div class="text-center max-w-3xl mx-auto mb-16">
-      <span class="text-xs font-mono uppercase tracking-widest text-gold mb-3 block">Phenomenological Mechanics</span>
-      <h2 class="text-3xl sm:text-5xl font-serif text-parchment font-normal mb-4">
-        Interactive Kinetic Proofs
-      </h2>
-      <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
-        Do not take our words as canon. Adjust the variables, observe the feedback loops, and test if these models match your direct psychological reality in daily life.
-      </p>
-    </div>
-
-    <!-- DIAGRAM 1: Reaction vs Response -->
-    <div class="glass-card rounded-2xl p-6 sm:p-8 mb-16 border border-white/10 shadow-2xl">
-      <div class="flex flex-col lg:flex-row items-start justify-between gap-8 mb-6">
-        <div class="max-w-xl">
-          <div class="flex items-center gap-2 mb-2">
-            <span class="px-2 py-0.5 rounded text-[10px] font-mono uppercase bg-gold/10 text-gold border border-gold/20">Diagram 01</span>
-            <span class="text-xs font-mono text-slate-400">Cognitive Mechanics</span>
-          </div>
-          <h3 class="text-2xl sm:text-3xl font-serif text-parchment font-medium mb-3">
-            The Cycle of Reaction vs. The Sovereign Space
-          </h3>
-          <p class="text-sm text-slate-300 leading-relaxed">
-            When an external stimulus hits the unexamined ego, an instantaneous reactionary echo triggers reciprocal friction. Expanding the <span class="text-gold italic font-serif text-base">Observer Space</span> breaks the reflex arc, absorbing kinetic emotional violence into harmonic dispersion.
-          </p>
-        </div>
-
-        <!-- Controls Toolbar -->
-        <div class="w-full lg:w-80 flex flex-col gap-4 p-4 rounded-xl bg-obsidian/60 border border-white/5 text-xs font-mono">
-          <div class="flex items-center justify-between">
-            <span class="text-slate-300">Mode:</span>
-            <div class="inline-flex p-0.5 rounded-lg bg-slateDark border border-white/10">
-              <button id="btn-d1-react" class="px-3 py-1 rounded text-[11px] transition-colors bg-roseGlow/20 text-roseGlow border border-roseGlow/40">Reactive</button>
-              <button id="btn-d1-observe" class="px-3 py-1 rounded text-[11px] transition-colors text-slate-400 hover:text-white">Awareness</button>
-            </div>
-          </div>
-
-          <div>
-            <div class="flex justify-between mb-1">
-              <span class="text-slate-300">Stimulus Intensity:</span>
-              <span id="label-d1-intensity" class="text-gold">0.6</span>
-            </div>
-            <input type="range" id="slider-d1-intensity" min="0.2" max="1.5" step="0.1" value="0.6" class="w-full">
-          </div>
-
-          <div>
-            <div class="flex justify-between mb-1">
-              <span class="text-slate-300">Observer Gap (Lag time):</span>
-              <span id="label-d1-gap" class="text-cyanGlow">0.1 s</span>
-            </div>
-            <input type="range" id="slider-d1-gap" min="0" max="1" step="0.05" value="0.1" class="w-full">
-          </div>
-
-          <div class="flex gap-2 pt-2">
-            <button id="btn-d1-trigger" class="flex-1 py-2 rounded bg-gold/20 hover:bg-gold/30 border border-gold/40 text-gold text-xs transition-colors flex items-center justify-center gap-1">
-              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-              <span>Inject Stimulus</span>
-            </button>
-            <button id="btn-d1-reset" class="px-3 py-2 rounded bg-white/5 hover:bg-white/10 border border-white/10 text-slate-400 hover:text-white transition-colors">
-              Reset
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Canvas Frame -->
-      <div class="relative w-full h-80 sm:h-96 rounded-xl overflow-hidden bg-obsidian border border-white/10 shadow-inner">
-        <canvas id="canvas-d1" class="w-full h-full block"></canvas>
-        <div id="d1-feedback-badge" class="absolute bottom-4 left-4 text-xs font-mono px-3 py-1.5 rounded-lg bg-obsidian/80 backdrop-blur border border-white/10 text-slate-300">
-          State: <span id="d1-status-text" class="text-roseGlow font-medium">Automatic Ego Ping-Pong (Turbulent)</span>
-        </div>
-      </div>
-      <div class="mt-4 text-xs font-mono text-slate-400 flex flex-wrap justify-between gap-2">
-        <span>Axiomatic Law: <em>Between stimulus and response there is a space. In that space lies freedom.</em></span>
-        <span class="text-slate-400">Kinetic Physics Engine 60 FPS</span>
-      </div>
-    </div>
-
-    <!-- DIAGRAM 2: Ego Contraction & The Field -->
-    <div class="glass-card rounded-2xl p-6 sm:p-8 mb-16 border border-white/10 shadow-2xl">
-      <div class="flex flex-col lg:flex-row items-start justify-between gap-8 mb-6">
-        <div class="max-w-xl">
-          <div class="flex items-center gap-2 mb-2">
-            <span class="px-2 py-0.5 rounded text-[10px] font-mono uppercase bg-cyanGlow/10 text-cyanGlow border border-cyanGlow/20">Diagram 02</span>
-            <span class="text-xs font-mono text-slate-400">Relational Physics</span>
-          </div>
-          <h3 class="text-2xl sm:text-3xl font-serif text-parchment font-medium mb-3">
-            Ego Contraction & The Resonant Field
-          </h3>
-          <p class="text-sm text-slate-300 leading-relaxed">
-            The illusion of absolute personal isolation produces an anxious gravitational tightening (<span class="italic text-roseGlow font-serif">The Grip</span>). As the center pulls inward to defend its borders, it repels the surrounding human collective, causing high frictional entropy. When the grip relaxes, natural resonance flows freely between peer nodes.
-          </p>
-        </div>
-
-        <!-- Controls Toolbar -->
-        <div class="w-full lg:w-80 flex flex-col gap-4 p-4 rounded-xl bg-obsidian/60 border border-white/5 text-xs font-mono">
-          <div>
-            <div class="flex justify-between mb-1">
-              <span class="text-slate-300">Self-Preservation Grip:</span>
-              <span id="label-d2-grip" class="text-roseGlow font-bold">85%</span>
-            </div>
-            <input type="range" id="slider-d2-grip" min="0" max="100" step="1" value="85" class="w-full">
-            <div class="flex justify-between text-[10px] text-slate-400 mt-1">
-              <span>Open Field (0%)</span>
-              <span>Total Siege (100%)</span>
-            </div>
-          </div>
-
-          <div>
-            <div class="flex justify-between mb-1">
-              <span class="text-slate-300">Community Node Density:</span>
-              <span id="label-d2-nodes" class="text-gold">18 Nodes</span>
-            </div>
-            <input type="range" id="slider-d2-nodes" min="6" max="36" step="2" value="18" class="w-full">
-          </div>
-
-          <div class="flex gap-2">
-            <button id="btn-d2-pulse" class="w-full py-2 rounded bg-cyanGlow/20 hover:bg-cyanGlow/30 border border-cyanGlow/40 text-cyanGlow text-xs transition-colors flex items-center justify-center gap-1">
-              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
-              <span>Broadcast Compassion Wave</span>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Canvas Frame -->
-      <div class="relative w-full h-80 sm:h-96 rounded-xl overflow-hidden bg-obsidian border border-white/10 shadow-inner">
-        <canvas id="canvas-d2" class="w-full h-full block"></canvas>
-        <div class="absolute bottom-4 left-4 text-xs font-mono px-3 py-1.5 rounded-lg bg-obsidian/80 backdrop-blur border border-white/10 text-slate-300">
-          Field Status: <span id="d2-field-status" class="text-roseGlow">Rigid Isolation / High Friction</span>
-        </div>
-      </div>
-      <div class="mt-4 text-xs font-mono text-slate-400 flex flex-wrap justify-between gap-2">
-        <span>Axiomatic Law: <em>Separation is an energetic exertion; unity is the ground state when strain ceases.</em></span>
-        <span class="text-slate-400">N-Body Harmonic Topology</span>
-      </div>
-    </div>
-
-    <!-- DIAGRAM 3: Thermodynamics of Attachment -->
-    <div class="glass-card rounded-2xl p-6 sm:p-8 border border-white/10 shadow-2xl">
-      <div class="flex flex-col lg:flex-row items-start justify-between gap-8 mb-6">
-        <div class="max-w-xl">
-          <div class="flex items-center gap-2 mb-2">
-            <span class="px-2 py-0.5 rounded text-[10px] font-mono uppercase bg-emeraldGlow/10 text-emeraldGlow border border-emeraldGlow/20">Diagram 03</span>
-            <span class="text-xs font-mono text-slate-400">Existential Thermodynamics</span>
-          </div>
-          <h3 class="text-2xl sm:text-3xl font-serif text-parchment font-medium mb-3">
-            The Thermodynamics of Attachment vs. Fluid Grace
-          </h3>
-          <p class="text-sm text-slate-300 leading-relaxed">
-            All worldly phenomena (relationships, bodies, wealth, ideas) exist in perpetual entropy. Clinging to an ephemeral object creates a tight tether. As the object obeys natural impermanence, the tension generates boiling suffering (<span class="text-roseGlow font-mono">Heat/Entropy</span>). Yielding the tether restores clarity.
-          </p>
-        </div>
-
-        <!-- Controls Toolbar -->
-        <div class="w-full lg:w-80 flex flex-col gap-4 p-4 rounded-xl bg-obsidian/60 border border-white/5 text-xs font-mono">
-          <div>
-            <div class="flex justify-between mb-1">
-              <span class="text-slate-300">Attachment Cling:</span>
-              <span id="label-d3-cling" class="text-gold font-bold">70%</span>
-            </div>
-            <input type="range" id="slider-d3-cling" min="0" max="100" step="1" value="70" class="w-full">
-            <div class="flex justify-between text-[10px] text-slate-400 mt-1">
-              <span>Non-Clinging (0%)</span>
-              <span>Desperate Hold (100%)</span>
-            </div>
-          </div>
-
-          <div>
-            <div class="flex justify-between mb-1">
-              <span class="text-slate-300">Entropy / Temporal Flux:</span>
-              <span id="label-d3-entropy" class="text-emeraldGlow">1.0x</span>
-            </div>
-            <input type="range" id="slider-d3-entropy" min="0.2" max="2.5" step="0.1" value="1.0" class="w-full">
-          </div>
-
-          <div class="flex gap-2">
-            <button id="btn-d3-sever" class="w-full py-2 rounded bg-emeraldGlow/20 hover:bg-emeraldGlow/30 border border-emeraldGlow/40 text-emeraldGlow text-xs transition-colors">
-              Release Grip Instantly (Let Go)
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Canvas Frame -->
-      <div class="relative w-full h-80 sm:h-96 rounded-xl overflow-hidden bg-obsidian border border-white/10 shadow-inner">
-        <canvas id="canvas-d3" class="w-full h-full block"></canvas>
-        <div class="absolute bottom-4 left-4 text-xs font-mono px-3 py-1.5 rounded-lg bg-obsidian/80 backdrop-blur border border-white/10 text-slate-300">
-          Internal Entropy: <span id="d3-heat-label" class="text-roseGlow font-semibold">Tension Elevated (High Suffering)</span>
-        </div>
-      </div>
-      <div class="mt-4 text-xs font-mono text-slate-400 flex flex-wrap justify-between gap-2">
-        <span>Axiomatic Law: <em>Suffering is directly proportional to the resistance offered against impermanence.</em></span>
-        <span class="text-slate-400">Fluid Dynamic Streamlines</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= SECTION 3: THE 7 OPEN AXIOMS ================= -->
-  <section id="axioms" class="py-24 px-6 border-t border-white/5 bg-slateDark/30">
-    <div class="max-w-4xl mx-auto">
-      <div class="text-center mb-16">
-        <span class="text-xs font-mono uppercase tracking-widest text-gold mb-3 block">Codex of Direct Seeing</span>
-        <h2 class="text-3xl sm:text-5xl font-serif text-parchment font-normal mb-4">
-          The 7 Foundational Axioms
-        </h2>
-        <p class="text-slate-300 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto">
-          These are not divine commandments. They are working hypotheses formulated for the sovereign human mind. Test them; if they fail your inspection, discard them without remorse.
-        </p>
-      </div>
-
-      <!-- Interactive Accordion Container -->
-      <div class="space-y-4" id="axioms-accordion">
-        
-        <!-- Axiom 1 -->
-        <div class="glass-card rounded-xl border border-white/5 overflow-hidden transition-all duration-200" data-axiom="1">
-          <button class="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 axiom-header focus:outline-none">
-            <div class="flex items-center gap-4">
-              <span class="font-mono text-xs text-gold/80 bg-gold/10 px-2.5 py-1 rounded border border-gold/20">01</span>
-              <h3 class="text-lg sm:text-xl font-serif text-parchment font-medium">The Unmediated Real</h3>
-            </div>
-            <svg class="w-5 h-5 text-slate-400 transform transition-transform duration-200 axiom-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-          </button>
-          <div class="axiom-content px-6 pb-6 pt-0 text-sm text-slate-300 leading-relaxed hidden">
-            <p class="mb-3">
-              Direct sensory awareness and direct cognitive honesty precede all scripture. Any book, priest, or algorithm that places itself between your bare awareness and what is actually occurring right now is an extortion of presence.
-            </p>
-            <div class="p-3.5 rounded-lg bg-obsidian/60 border-l-2 border-gold text-xs font-mono text-slate-300">
-              <strong>Practice:</strong> When fear arises, do not repeat a dogma. Strip the conceptual label away and feel the raw physical vibration in your chest without judgment.
-            </div>
-          </div>
-        </div>
-
-        <!-- Axiom 2 -->
-        <div class="glass-card rounded-xl border border-white/5 overflow-hidden transition-all duration-200" data-axiom="2">
-          <button class="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 axiom-header focus:outline-none">
-            <div class="flex items-center gap-4">
-              <span class="font-mono text-xs text-gold/80 bg-gold/10 px-2.5 py-1 rounded border border-gold/20">02</span>
-              <h3 class="text-lg sm:text-xl font-serif text-parchment font-medium">The Organic Feedback Law</h3>
-            </div>
-            <svg class="w-5 h-5 text-slate-400 transform transition-transform duration-200 axiom-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-          </button>
-          <div class="axiom-content px-6 pb-6 pt-0 text-sm text-slate-300 leading-relaxed hidden">
-            <p class="mb-3">
-              Morality is not enforced by an angry sky magistrate with a ledger. Action carries its own immediate metabolic and environmental echo. Greed poisons the nervous system of the hoarder before it deprives the community. Cruelty corrodes the vessel that holds it.
-            </p>
-            <div class="p-3.5 rounded-lg bg-obsidian/60 border-l-2 border-gold text-xs font-mono text-slate-300">
-              <strong>Practice:</strong> Notice the physiological contraction that instantly follows a calculated lie. The punishment is not delayed; it is immediate contraction of being.
-            </div>
-          </div>
-        </div>
-
-        <!-- Axiom 3 -->
-        <div class="glass-card rounded-xl border border-white/5 overflow-hidden transition-all duration-200" data-axiom="3">
-          <button class="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 axiom-header focus:outline-none">
-            <div class="flex items-center gap-4">
-              <span class="font-mono text-xs text-gold/80 bg-gold/10 px-2.5 py-1 rounded border border-gold/20">03</span>
-              <h3 class="text-lg sm:text-xl font-serif text-parchment font-medium">The Dissolution of Spiritual Property</h3>
-            </div>
-            <svg class="w-5 h-5 text-slate-400 transform transition-transform duration-200 axiom-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-          </button>
-          <div class="axiom-content px-6 pb-6 pt-0 text-sm text-slate-300 leading-relaxed hidden">
-            <p class="mb-3">
-              Truth belongs to nobody. It cannot be patented, copyrighted, trademarked, or cordoned off behind esoteric paywalls. Anyone who charges admission for your own fundamental nature is a merchant in a temple that should be cleared.
-            </p>
-            <div class="p-3.5 rounded-lg bg-obsidian/60 border-l-2 border-gold text-xs font-mono text-slate-300">
-              <strong>Practice:</strong> Freely replicate, critique, translate, and distribute wisdom without fear of institutional reprisal.
-            </div>
-          </div>
-        </div>
-
-        <!-- Axiom 4 -->
-        <div class="glass-card rounded-xl border border-white/5 overflow-hidden transition-all duration-200" data-axiom="4">
-          <button class="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 axiom-header focus:outline-none">
-            <div class="flex items-center gap-4">
-              <span class="font-mono text-xs text-gold/80 bg-gold/10 px-2.5 py-1 rounded border border-gold/20">04</span>
-              <h3 class="text-lg sm:text-xl font-serif text-parchment font-medium">Radical Service Without Tithe</h3>
-            </div>
-            <svg class="w-5 h-5 text-slate-400 transform transition-transform duration-200 axiom-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-          </button>
-          <div class="axiom-content px-6 pb-6 pt-0 text-sm text-slate-300 leading-relaxed hidden">
-            <p class="mb-3">
-              Do not send money to a centralized fund. Do not build monuments. If your practice does not translate into feeding the hungry person within walking distance, comforting your neighbor, or caring for the soil beneath your boots, it is mere theatrical vanity.
-            </p>
-            <div class="p-3.5 rounded-lg bg-obsidian/60 border-l-2 border-gold text-xs font-mono text-slate-300">
-              <strong>Practice:</strong> Direct, anonymous assistance given locally with zero receipt and zero public display.
-            </div>
-          </div>
-        </div>
-
-        <!-- Axiom 5 -->
-        <div class="glass-card rounded-xl border border-white/5 overflow-hidden transition-all duration-200" data-axiom="5">
-          <button class="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 axiom-header focus:outline-none">
-            <div class="flex items-center gap-4">
-              <span class="font-mono text-xs text-gold/80 bg-gold/10 px-2.5 py-1 rounded border border-gold/20">05</span>
-              <h3 class="text-lg sm:text-xl font-serif text-parchment font-medium">The Space Between Stimulus and Action</h3>
-            </div>
-            <svg class="w-5 h-5 text-slate-400 transform transition-transform duration-200 axiom-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-          </button>
-          <div class="axiom-content px-6 pb-6 pt-0 text-sm text-slate-300 leading-relaxed hidden">
-            <p class="mb-3">
-              Reactivity is the mechanical trait of an automaton. Human dignity begins in the tiny, pregnant pause between receiving an offense and replying. Cultivate that space like sacred ground. It is the only seat where free will truly exists.
-            </p>
-            <div class="p-3.5 rounded-lg bg-obsidian/60 border-l-2 border-gold text-xs font-mono text-slate-300">
-              <strong>Practice:</strong> Count one steady inhalation before responding to any provocative digital or physical word.
-            </div>
-          </div>
-        </div>
-
-        <!-- Axiom 6 -->
-        <div class="glass-card rounded-xl border border-white/5 overflow-hidden transition-all duration-200" data-axiom="6">
-          <button class="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 axiom-header focus:outline-none">
-            <div class="flex items-center gap-4">
-              <span class="font-mono text-xs text-gold/80 bg-gold/10 px-2.5 py-1 rounded border border-gold/20">06</span>
-              <h3 class="text-lg sm:text-xl font-serif text-parchment font-medium">Impermanence as Sacred Architecture</h3>
-            </div>
-            <svg class="w-5 h-5 text-slate-400 transform transition-transform duration-200 axiom-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-          </button>
-          <div class="axiom-content px-6 pb-6 pt-0 text-sm text-slate-300 leading-relaxed hidden">
-            <p class="mb-3">
-              Stars explode; bodies age; empires turn to chalk. This is not a tragedy inflicted upon existence; it is the engine of its beauty. To demand permanence from what is inherently transient is the single root of all neurosis.
-            </p>
-            <div class="p-3.5 rounded-lg bg-obsidian/60 border-l-2 border-gold text-xs font-mono text-slate-300">
-              <strong>Practice:</strong> Greet every loss not as an injustice, but as the return of a loan to the universal ledger.
-            </div>
-          </div>
-        </div>
-
-        <!-- Axiom 7 -->
-        <div class="glass-card rounded-xl border border-white/5 overflow-hidden transition-all duration-200" data-axiom="7">
-          <button class="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 axiom-header focus:outline-none">
-            <div class="flex items-center gap-4">
-              <span class="font-mono text-xs text-gold/80 bg-gold/10 px-2.5 py-1 rounded border border-gold/20">07</span>
-              <h3 class="text-lg sm:text-xl font-serif text-parchment font-medium">The Protocol of Departure</h3>
-            </div>
-            <svg class="w-5 h-5 text-slate-400 transform transition-transform duration-200 axiom-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-          </button>
-          <div class="axiom-content px-6 pb-6 pt-0 text-sm text-slate-300 leading-relaxed hidden">
-            <p class="mb-3">
-              A healthy raft is abandoned once the opposite shore is reached. This website, these diagrams, and these concepts are mere scaffolds. If you begin worshipping The Commons or quoting it like holy canon, turn off your device and walk outside.
-            </p>
-            <div class="p-3.5 rounded-lg bg-obsidian/60 border-l-2 border-gold text-xs font-mono text-slate-300">
-              <strong>Practice:</strong> Delete your bookmarks once presence becomes second nature. Never declare yourself an 'adherent'.
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= SECTION 4: CARD GENERATOR & SHARE TOOL ================= -->
-  <section id="generator" class="py-24 px-6 max-w-6xl mx-auto">
-    <div class="text-center mb-16">
-      <span class="text-xs font-mono uppercase tracking-widest text-gold mb-3 block">Dispersal Mechanism</span>
-      <h2 class="text-3xl sm:text-5xl font-serif text-parchment font-normal mb-4">
-        Synthesize & Disperse an Axiom
-      </h2>
-      <p class="text-slate-300 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto">
-        Generate high-resolution contemplative cards to share peer-to-peer. No tracking, no branding watermark, no central signature. Pick any target platform and text dynamically reflows and auto-scales to never spill over bounds.
-      </p>
-    </div>
-
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-      <!-- Controls -->
-      <div class="lg:col-span-5 glass-card p-6 rounded-2xl border border-white/10 space-y-5 text-xs font-mono">
-        <!-- Target Social Platform / Dimensions -->
-        <div>
-          <label class="block text-slate-300 mb-2 font-medium">Target Platform / Aspect Ratio:</label>
-          <div class="grid grid-cols-2 gap-2" id="format-selector">
-            <button class="format-btn py-2.5 px-3 rounded-lg border border-gold text-gold bg-gold/10 text-left transition-all flex flex-col" data-format="instagram-story">
-              <span class="font-semibold text-xs">Story / Reel (9:16)</span>
-              <span class="text-[10px] text-slate-400">1080 × 1920 px</span>
-            </button>
-            <button class="format-btn py-2.5 px-3 rounded-lg border border-white/10 text-slate-300 hover:border-white/30 bg-white/5 text-left transition-all flex flex-col" data-format="square-post">
-              <span class="font-semibold text-xs">Feed Square (1:1)</span>
-              <span class="text-[10px] text-slate-400">1080 × 1080 px</span>
-            </button>
-            <button class="format-btn py-2.5 px-3 rounded-lg border border-white/10 text-slate-300 hover:border-white/30 bg-white/5 text-left transition-all flex flex-col" data-format="twitter-x">
-              <span class="font-semibold text-xs">X / Twitter (16:9)</span>
-              <span class="text-[10px] text-slate-400">1200 × 675 px</span>
-            </button>
-            <button class="format-btn py-2.5 px-3 rounded-lg border border-white/10 text-slate-300 hover:border-white/30 bg-white/5 text-left transition-all flex flex-col" data-format="portrait-post">
-              <span class="font-semibold text-xs">Portrait Post (4:5)</span>
-              <span class="text-[10px] text-slate-400">1080 × 1350 px</span>
-            </button>
-          </div>
-        </div>
-
-        <div>
-          <label class="block text-slate-300 mb-2">Select Core Axiom:</label>
-          <select id="card-axiom-select" class="w-full bg-obsidian border border-white/10 rounded-lg p-3 text-slate-200 text-xs focus:border-gold focus:outline-none">
-            <option value="0">Axiom 1: Direct Perception over Dogma</option>
-            <option value="1">Axiom 2: Organic Feedback over Sky Judges</option>
-            <option value="2">Axiom 3: Truth Belongs to No Clergy</option>
-            <option value="3">Axiom 4: Radical Direct Local Service</option>
-            <option value="4" selected>Axiom 5: The Space Between Stimulus and Action</option>
-            <option value="5">Axiom 6: Impermanence as Sacred Architecture</option>
-            <option value="6">Axiom 7: The Protocol of Departure</option>
+    <div class="card-gen-layout">
+      <div class="card-gen-form">
+        <div class="form-group">
+          <label for="platformSelect">Target Platform & Aspect Ratio</label>
+          <select id="platformSelect">
+            <option value="story">Story / Reel (9:16 Vertical • 1080x1920)</option>
+            <option value="square" selected>Square Post (1:1 • 1080x1080)</option>
+            <option value="portrait">Portrait Post (4:5 • 1080x1350)</option>
+            <option value="landscape">Landscape / Header (16:9 • 1920x1080)</option>
           </select>
         </div>
 
-        <div>
-          <label class="block text-slate-300 mb-2">Visual Theme:</label>
-          <div class="grid grid-cols-3 gap-2">
-            <button class="theme-btn py-2 px-3 rounded-lg border border-gold text-gold bg-gold/10 text-center" data-theme="dark-gold">Obsidian Gold</button>
-            <button class="theme-btn py-2 px-3 rounded-lg border border-white/10 text-slate-300 hover:border-white/30 bg-white/5 text-center" data-theme="cyan-slate">Deep Cyan</button>
-            <button class="theme-btn py-2 px-3 rounded-lg border border-white/10 text-slate-300 hover:border-white/30 bg-white/5 text-center" data-theme="parchment-light">Parchment</button>
-          </div>
+        <div class="form-group">
+          <label for="axiomSelect">Preset Contemplation</label>
+          <select id="axiomSelect">
+            <option value="0">Axiom 1: Friction of Holding</option>
+            <option value="1">Axiom 2: The Interval of Sovereignty</option>
+            <option value="2">Axiom 3: The Dissolved Intermediary</option>
+            <option value="custom">Custom Inscription...</option>
+          </select>
         </div>
 
-        <div>
-          <div class="flex items-center justify-between mb-2">
-            <label class="text-slate-300">Custom Subtext / Reflection Note:</label>
-            <span id="char-count" class="text-[10px] text-slate-500">38 chars</span>
-          </div>
-          <input type="text" id="card-custom-subtext" placeholder="e.g. Distributed with love, no copyright." value="No prophet. No tithe. Open protocol." class="w-full bg-obsidian border border-white/10 rounded-lg p-3 text-slate-200 text-xs focus:border-gold focus:outline-none">
+        <div class="form-group">
+          <label for="cardTextInput">Inscription Body</label>
+          <textarea id="cardTextInput">Suffering is the thermodynamic friction of grasping that which is flowing. Let the visitor pass through without claiming ownership.</textarea>
         </div>
 
-        <!-- Real-time overflow safety indicator -->
-        <div class="p-3 rounded-lg bg-obsidian/60 border border-white/10 flex items-center justify-between text-[11px]">
-          <div class="flex items-center gap-2">
-            <span class="w-2 h-2 rounded-full bg-emeraldGlow" id="fit-indicator-dot"></span>
-            <span id="fit-indicator-text" class="text-slate-300">Layout fits safely within platform bounds</span>
-          </div>
-          <span id="scale-factor-text" class="text-gold font-mono">Scale: 100%</span>
+        <div class="form-group">
+          <label for="paletteSelect">Aesthetic Palette</label>
+          <select id="paletteSelect">
+            <option value="gold">Obsidian & Aureolin Gold</option>
+            <option value="cyan">Deep Slate & Electric Cyan</option>
+            <option value="parchment">Contemplative Monochrome</option>
+          </select>
         </div>
 
-        <div class="pt-2 flex flex-col gap-2">
-          <button id="btn-download-card" class="w-full py-3 rounded-lg bg-gold hover:bg-gold/90 text-obsidian font-sans font-semibold text-sm transition-all flex items-center justify-center gap-2 shadow-lg shadow-gold/15">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
-            <span id="download-btn-label">Download High-Res PNG (1080×1920)</span>
-          </button>
-          <button id="btn-copy-card-text" class="w-full py-2.5 rounded-lg border border-white/15 hover:border-white/30 bg-white/5 text-slate-300 text-xs transition-colors flex items-center justify-center gap-2">
-            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/></svg>
-            <span>Copy Text to Clipboard</span>
-          </button>
-        </div>
+        <button class="btn btn-primary" style="width: 100%; justify-content: center;" id="btnDownloadCard">Export High-Res PNG</button>
       </div>
 
-      <!-- Preview Canvas -->
-      <div class="lg:col-span-7 flex flex-col items-center justify-center">
-        <div class="p-3 bg-obsidian/90 rounded-2xl border border-white/10 shadow-2xl max-w-full flex items-center justify-center overflow-hidden min-h-[440px] w-full">
-          <canvas id="card-canvas" width="1080" height="1920" class="max-h-[580px] w-auto max-w-full rounded-xl shadow-2xl border border-white/5 transition-all duration-300"></canvas>
-        </div>
-        <div class="flex items-center justify-between w-full max-w-[540px] text-[11px] font-mono text-slate-400 mt-3 px-1">
-          <span id="canvas-dim-label">1080 × 1920 px (9:16 Story)</span>
-          <span class="text-emeraldGlow">Self-Reflowing Dynamic Typographic Engine</span>
-        </div>
+      <div class="card-preview-area">
+        <canvas id="cardCanvas"></canvas>
+        <div class="badge-metric" id="overflowCheckBadge">Constraint Check: Optimal bounds (0% overflow risk)</div>
       </div>
     </div>
   </section>
 
-  <!-- ================= SECTION 5: OFFLINE PRESERVATION & MIRROR ================= -->
-  <section id="mirror" class="py-20 px-6 border-t border-white/5 bg-slateDark/50">
-    <div class="max-w-4xl mx-auto glass-card rounded-2xl p-8 sm:p-12 border border-gold/20 relative overflow-hidden">
-      <!-- Glow ambient background -->
-      <div class="absolute -right-20 -bottom-20 w-80 h-80 bg-gold/10 rounded-full blur-3xl pointer-events-none"></div>
-
-      <div class="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
-        <div class="max-w-xl">
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded bg-gold/10 text-gold text-xs font-mono mb-3 border border-gold/30">
-            <span>PERPETUAL ARCHIVE</span>
-          </div>
-          <h2 class="text-2xl sm:text-4xl font-serif text-parchment font-normal mb-3">
-            Download and Mirror The Entire Architecture
-          </h2>
-          <p class="text-sm text-slate-300 leading-relaxed mb-4">
-            This entire resource is written in a single zero-dependency file. It carries no database, no server requirements, and no tracking. You are explicitly invited to mirror it to your personal computer, host it anywhere, or print it onto paper.
-          </p>
-          <div class="text-xs font-mono text-slate-400">
-            License: CC0 1.0 Universal (Public Domain Dedication). No rights reserved.
-          </div>
-        </div>
-
-        <div class="flex flex-col sm:flex-row md:flex-col gap-3 w-full md:w-auto shrink-0">
-          <button id="btn-export-html" class="px-6 py-3.5 rounded-lg bg-gold hover:bg-gold/90 text-obsidian font-medium font-sans text-sm transition-all flex items-center justify-center gap-2 shadow-lg shadow-gold/20">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-            <span>Export Static Single-File</span>
-          </button>
-          <button id="btn-export-raw-axioms" class="px-6 py-3 rounded-lg border border-white/20 hover:border-gold/50 bg-white/5 text-slate-200 text-xs font-mono transition-all flex items-center justify-center gap-2">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-            <span>Export Axioms (Markdown)</span>
-          </button>
-        </div>
-      </div>
+  <!-- Footer & Mirroring -->
+  <footer>
+    <div class="footer-actions">
+      <button class="btn btn-secondary" id="btnExportCode">Save Offline Archive (.html)</button>
+      <button class="btn btn-secondary" id="btnCopyCodex">Copy Plaintext Codex</button>
     </div>
-  </section>
-
-  <!-- ================= FOOTER ================= -->
-  <footer class="py-12 px-6 border-t border-white/5 text-center text-xs font-mono text-slate-400">
-    <div class="max-w-4xl mx-auto flex flex-col items-center gap-4">
-      <div class="w-5 h-5 rounded-full border border-gold/40 flex items-center justify-center">
-        <div class="w-1.5 h-1.5 rounded-full bg-gold"></div>
-      </div>
-      <p class="max-w-lg text-slate-400 leading-relaxed">
-        "If you meet a master on the road, slay him. If you meet this website on the web, digest the pattern and return to the living world."
-      </p>
-      <div class="text-[11px] text-slate-500">
-        Initiated in the Commons of human awareness · No copyright · Fork without restriction
-      </div>
-    </div>
+    <p>THE COMMONS PROTOCOL • PUBLIC DOMAIN (CC0-1.0) • ZERO WATERMARK • DISTRIBUTE FREELY</p>
   </footer>
 
-  <!-- ================= JAVASCRIPT LOGIC ================= -->
+  <!-- Script Architecture -->
   <script>
-    /* ==========================================================
-       0. UTILITIES & TOAST SYSTEM
-    ========================================================== */
-    function showToast(message) {
-      const toast = document.getElementById('toast');
-      const text = document.getElementById('toast-text');
-      text.innerText = message;
-      toast.classList.remove('translate-y-24', 'opacity-0', 'pointer-events-none');
-      toast.classList.add('translate-y-0', 'opacity-100');
-      
-      setTimeout(() => {
-        toast.classList.add('translate-y-24', 'opacity-0', 'pointer-events-none');
-        toast.classList.remove('translate-y-0', 'opacity-100');
-      }, 3200);
+    /* --- Accordion Toggle --- */
+    document.querySelectorAll('.axiom-trigger').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.parentElement;
+        item.classList.toggle('open');
+      });
+    });
+
+    /* --- Simulation 1: Reaction vs Response --- */
+    const rCanvas = document.getElementById('simReactionCanvas');
+    const rCtx = rCanvas.getContext('2d');
+    const gapSlider = document.getElementById('gapSlider');
+    const gapVal = document.getElementById('gapVal');
+    let rParticles = [];
+
+    function resizeRCanvas() {
+      rCanvas.width = rCanvas.parentElement.clientWidth;
+      rCanvas.height = rCanvas.parentElement.clientHeight;
+    }
+    window.addEventListener('resize', resizeRCanvas);
+    resizeRCanvas();
+
+    gapSlider.addEventListener('input', (e) => {
+      gapVal.innerText = `${e.target.value}%`;
+    });
+
+    document.getElementById('btnEmitImpulse').addEventListener('click', () => {
+      for (let i = 0; i < 8; i++) {
+        rParticles.push({
+          x: 20,
+          y: rCanvas.height / 2 + (Math.random() * 40 - 20),
+          vx: 3 + Math.random() * 2,
+          vy: (Math.random() - 0.5) * 1.5,
+          radius: 3.5,
+          color: '#38bdf8'
+        });
+      }
+    });
+
+    function renderReactionSim() {
+      rCtx.fillStyle = 'rgba(11, 13, 16, 0.2)';
+      rCtx.fillRect(0, 0, rCanvas.width, rCanvas.height);
+
+      const awarenessGap = (gapSlider.value / 100) * (rCanvas.width * 0.4);
+      const observerX = rCanvas.width * 0.4;
+
+      // Draw Gap Region
+      rCtx.fillStyle = 'rgba(212, 175, 55, 0.05)';
+      rCtx.fillRect(observerX, 0, awarenessGap, rCanvas.height);
+      rCtx.strokeStyle = 'rgba(212, 175, 55, 0.3)';
+      rCtx.strokeRect(observerX, 0, awarenessGap, rCanvas.height);
+
+      // Label Region
+      rCtx.fillStyle = 'rgba(212, 175, 55, 0.7)';
+      rCtx.font = '10px monospace';
+      rCtx.fillText('OBSERVER INTERVAL', observerX + 8, 20);
+
+      // Update & Render Particles
+      for (let i = rParticles.length - 1; i >= 0; i--) {
+        const p = rParticles[i];
+        p.x += p.vx;
+        p.y += p.vy;
+
+        // Dampen particles if crossing gap
+        if (p.x > observerX && p.x < observerX + awarenessGap) {
+          p.vx *= 0.98;
+          p.color = '#d4af37';
+        }
+
+        rCtx.beginPath();
+        rCtx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        rCtx.fillStyle = p.color;
+        rCtx.fill();
+
+        if (p.x > rCanvas.width || p.x < 0) {
+          rParticles.splice(i, 1);
+        }
+      }
+
+      requestAnimationFrame(renderReactionSim);
+    }
+    renderReactionSim();
+
+    /* --- Simulation 2: Contraction Gradient --- */
+    const eCanvas = document.getElementById('simEgoCanvas');
+    const eCtx = eCanvas.getContext('2d');
+    const rigiditySlider = document.getElementById('rigiditySlider');
+    const rigidityVal = document.getElementById('rigidityVal');
+
+    function resizeECanvas() {
+      eCanvas.width = eCanvas.parentElement.clientWidth;
+      eCanvas.height = eCanvas.parentElement.clientHeight;
+    }
+    window.addEventListener('resize', resizeECanvas);
+    resizeECanvas();
+
+    rigiditySlider.addEventListener('input', (e) => {
+      rigidityVal.innerText = `${e.target.value}%`;
+    });
+
+    let eTime = 0;
+    function renderEgoSim() {
+      eCtx.fillStyle = 'rgba(11, 13, 16, 0.15)';
+      eCtx.fillRect(0, 0, eCanvas.width, eCanvas.height);
+      eTime += 0.02;
+
+      const centerX = eCanvas.width / 2;
+      const centerY = eCanvas.height / 2;
+      const rigidity = rigiditySlider.value / 100;
+      const baseRadius = 45 + rigidity * 25;
+
+      // Draw Orbiting Field Nodes
+      const nodeCount = 12;
+      for (let i = 0; i < nodeCount; i++) {
+        const angle = (i / nodeCount) * Math.PI * 2 + eTime * (1 - rigidity * 0.8);
+        const dist = 110 + Math.sin(eTime * 2 + i) * 15 * (1 - rigidity);
+        const nx = centerX + Math.cos(angle) * dist;
+        const ny = centerY + Math.sin(angle) * dist;
+
+        eCtx.beginPath();
+        eCtx.arc(nx, ny, 3, 0, Math.PI * 2);
+        eCtx.fillStyle = '#38bdf8';
+        eCtx.fill();
+
+        // Connective threads
+        if (rigidity < 0.75) {
+          eCtx.beginPath();
+          eCtx.moveTo(centerX, centerY);
+          eCtx.lineTo(nx, ny);
+          eCtx.strokeStyle = `rgba(56, 189, 248, ${(1 - rigidity) * 0.25})`;
+          eCtx.stroke();
+        }
+      }
+
+      // Draw Central Self Boundary
+      eCtx.beginPath();
+      eCtx.arc(centerX, centerY, baseRadius, 0, Math.PI * 2);
+      eCtx.strokeStyle = rigidity > 0.6 ? '#ef4444' : '#d4af37';
+      eCtx.lineWidth = 1 + rigidity * 3;
+      eCtx.stroke();
+      eCtx.lineWidth = 1;
+
+      requestAnimationFrame(renderEgoSim);
+    }
+    renderEgoSim();
+
+    document.getElementById('btnPulseField').addEventListener('click', () => {
+      eTime += 2;
+    });
+
+    /* --- Card Generator Layout Engine (Anti-Spill & Multi-Platform) --- */
+    const cardCanvas = document.getElementById('cardCanvas');
+    const cCtx = cardCanvas.getContext('2d');
+    const platformSelect = document.getElementById('platformSelect');
+    const axiomSelect = document.getElementById('axiomSelect');
+    const cardTextInput = document.getElementById('cardTextInput');
+    const paletteSelect = document.getElementById('paletteSelect');
+    const overflowCheckBadge = document.getElementById('overflowCheckBadge');
+
+    const presets = [
+      "Suffering is the thermodynamic friction of grasping that which is flowing. Let the visitor pass through without claiming ownership.",
+      "Between stimulus and response exists an infinitesimal gap. In that silence rests sovereign moral freedom.",
+      "No teacher stands between awareness and truth. Discard the mediator; observe direct natural mechanics."
+    ];
+
+    axiomSelect.addEventListener('change', () => {
+      if (axiomSelect.value !== 'custom') {
+        cardTextInput.value = presets[parseInt(axiomSelect.value)];
+      }
+      drawCard();
+    });
+
+    cardTextInput.addEventListener('input', drawCard);
+    platformSelect.addEventListener('change', drawCard);
+    paletteSelect.addEventListener('change', drawCard);
+
+    function getPlatformDims(platform) {
+      switch (platform) {
+        case 'story': return { w: 1080, h: 1920 };
+        case 'portrait': return { w: 1080, h: 1350 };
+        case 'landscape': return { w: 1920, h: 1080 };
+        case 'square':
+        default: return { w: 1080, h: 1080 };
+      }
     }
 
-    // Share link button
-    document.getElementById('quick-copy-link').addEventListener('click', () => {
-      const tempInput = document.createElement('input');
-      tempInput.value = window.location.href;
-      document.body.appendChild(tempInput);
-      tempInput.select();
-      document.execCommand('copy');
-      document.body.removeChild(tempInput);
-      showToast('Permanent protocol link copied to clipboard.');
-    });
+    function wrapText(ctx, text, maxWidth) {
+      const words = text.split(' ');
+      const lines = [];
+      let currentLine = words[0];
 
-    // Simulated Decentralized Peer Pulse counter
-    setInterval(() => {
-      const base = 1480;
-      const variation = Math.floor(Math.sin(Date.now() / 3000) * 15) + Math.floor(Math.random() * 5);
-      const el = document.getElementById('active-nodes-counter');
-      if (el) el.innerText = `${(base + variation).toLocaleString()} peers connected across the field`;
-    }, 3000);
-
-
-    /* ==========================================================
-       1. HERO CONSTELLATION CANVAS
-    ========================================================== */
-    (function initHeroCanvas() {
-      const canvas = document.getElementById('hero-canvas');
-      if (!canvas) return;
-      const ctx = canvas.getContext('2d');
-      let width, height;
-      let particles = [];
-      const mouse = { x: -1000, y: -1000, radius: 140 };
-
-      function resize() {
-        width = canvas.width = window.innerWidth;
-        height = canvas.height = canvas.parentElement.offsetHeight;
-        createParticles();
-      }
-
-      function createParticles() {
-        particles = [];
-        const count = Math.min(Math.floor((width * height) / 13000), 120);
-        for (let i = 0; i < count; i++) {
-          particles.push({
-            x: Math.random() * width,
-            y: Math.random() * height,
-            vx: (Math.random() - 0.5) * 0.45,
-            vy: (Math.random() - 0.5) * 0.45,
-            radius: Math.random() * 1.8 + 0.8,
-            baseAlpha: Math.random() * 0.4 + 0.2
-          });
-        }
-      }
-
-      window.addEventListener('resize', resize);
-      window.addEventListener('mousemove', (e) => {
-        const rect = canvas.getBoundingClientRect();
-        mouse.x = e.clientX - rect.left;
-        mouse.y = e.clientY - rect.top;
-      });
-      window.addEventListener('touchmove', (e) => {
-        if (e.touches.length > 0) {
-          const rect = canvas.getBoundingClientRect();
-          mouse.x = e.touches[0].clientX - rect.left;
-          mouse.y = e.touches[0].clientY - rect.top;
-        }
-      }, { passive: true });
-
-      function animate() {
-        ctx.clearRect(0, 0, width, height);
-
-        for (let i = 0; i < particles.length; i++) {
-          const p = particles[i];
-          p.x += p.vx;
-          p.y += p.vy;
-
-          if (p.x < 0) p.x = width;
-          if (p.x > width) p.x = 0;
-          if (p.y < 0) p.y = height;
-          if (p.y > height) p.y = 0;
-
-          const dx = mouse.x - p.x;
-          const dy = mouse.y - p.y;
-          const dist = Math.hypot(dx, dy);
-          if (dist < mouse.radius) {
-            const force = (1 - dist / mouse.radius) * 1.5;
-            p.x -= (dx / dist) * force;
-            p.y -= (dy / dist) * force;
-          }
-
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(230, 175, 46, ${p.baseAlpha})`;
-          ctx.fill();
-
-          for (let j = i + 1; j < particles.length; j++) {
-            const p2 = particles[j];
-            const d = Math.hypot(p.x - p2.x, p.y - p2.y);
-            if (d < 110) {
-              const alpha = (1 - d / 110) * 0.16;
-              ctx.beginPath();
-              ctx.moveTo(p.x, p.y);
-              ctx.lineTo(p2.x, p2.y);
-              ctx.strokeStyle = `rgba(56, 189, 248, ${alpha})`;
-              ctx.lineWidth = 0.8;
-              ctx.stroke();
-            }
-          }
-        }
-
-        requestAnimationFrame(animate);
-      }
-
-      resize();
-      animate();
-    })();
-
-
-    /* ==========================================================
-       2. DIAGRAM 01: REACTION VS RESPONSE
-    ========================================================== */
-    (function initDiagram1() {
-      const canvas = document.getElementById('canvas-d1');
-      if (!canvas) return;
-      const ctx = canvas.getContext('2d');
-      let w, h;
-
-      let mode = 'reactive'; // 'reactive' | 'aware'
-      let stimulusIntensity = 0.6;
-      let observerGap = 0.1;
-      let packets = [];
-      let ripples = [];
-
-      function resize() {
-        w = canvas.width = canvas.parentElement.clientWidth;
-        h = canvas.height = canvas.parentElement.clientHeight;
-      }
-      window.addEventListener('resize', resize);
-      resize();
-
-      const btnReact = document.getElementById('btn-d1-react');
-      const btnObserve = document.getElementById('btn-d1-observe');
-      const sliderIntensity = document.getElementById('slider-d1-intensity');
-      const sliderGap = document.getElementById('slider-d1-gap');
-      const labelIntensity = document.getElementById('label-d1-intensity');
-      const labelGap = document.getElementById('label-d1-gap');
-      const btnTrigger = document.getElementById('btn-d1-trigger');
-      const btnReset = document.getElementById('btn-d1-reset');
-      const statusText = document.getElementById('d1-status-text');
-
-      btnReact.addEventListener('click', () => {
-        mode = 'reactive';
-        btnReact.className = 'px-3 py-1 rounded text-[11px] transition-colors bg-roseGlow/20 text-roseGlow border border-roseGlow/40';
-        btnObserve.className = 'px-3 py-1 rounded text-[11px] transition-colors text-slate-400 hover:text-white';
-        sliderGap.value = 0.05;
-        observerGap = 0.05;
-        labelGap.innerText = '0.05 s';
-        statusText.innerText = 'Automatic Ego Ping-Pong (Escalating Friction)';
-        statusText.className = 'text-roseGlow font-medium';
-      });
-
-      btnObserve.addEventListener('click', () => {
-        mode = 'aware';
-        btnObserve.className = 'px-3 py-1 rounded text-[11px] transition-colors bg-cyanGlow/20 text-cyanGlow border border-cyanGlow/40';
-        btnReact.className = 'px-3 py-1 rounded text-[11px] transition-colors text-slate-400 hover:text-white';
-        sliderGap.value = 0.8;
-        observerGap = 0.8;
-        labelGap.innerText = '0.80 s';
-        statusText.innerText = 'Observer Pause Active (Harmonic Dissipation)';
-        statusText.className = 'text-emeraldGlow font-medium';
-      });
-
-      sliderIntensity.addEventListener('input', (e) => {
-        stimulusIntensity = parseFloat(e.target.value);
-        labelIntensity.innerText = stimulusIntensity.toFixed(1);
-      });
-
-      sliderGap.addEventListener('input', (e) => {
-        observerGap = parseFloat(e.target.value);
-        labelGap.innerText = observerGap.toFixed(2) + ' s';
-        if (observerGap > 0.45 && mode === 'reactive') {
-          btnObserve.click();
-        } else if (observerGap <= 0.2 && mode === 'aware') {
-          btnReact.click();
-        }
-      });
-
-      function spawnStimulus() {
-        packets.push({
-          x: 40,
-          y: h / 2,
-          targetX: w / 2,
-          speed: 4 + stimulusIntensity * 4,
-          power: stimulusIntensity,
-          state: 'incoming',
-          delayTimer: 0,
-          color: '#f43f5e'
-        });
-      }
-
-      btnTrigger.addEventListener('click', spawnStimulus);
-      btnReset.addEventListener('click', () => {
-        packets = [];
-        ripples = [];
-      });
-
-      setInterval(() => {
-        if (packets.length < 4) {
-          spawnStimulus();
-        }
-      }, 2600);
-
-      function loop() {
-        ctx.fillStyle = '#080a0d';
-        ctx.fillRect(0, 0, w, h);
-
-        const centerX = w / 2;
-        const centerY = h / 2;
-        const spaceWidth = Math.max(20, observerGap * 180);
-
-        // Draw Left Node (Stimulus Source)
-        ctx.beginPath();
-        ctx.arc(50, centerY, 14, 0, Math.PI * 2);
-        ctx.fillStyle = '#64748b';
-        ctx.fill();
-        ctx.fillStyle = '#94a3b8';
-        ctx.font = '11px "JetBrains Mono"';
-        ctx.textAlign = 'center';
-        ctx.fillText('STIMULUS', 50, centerY - 24);
-        ctx.fillText('(Insult / Event)', 50, centerY + 28);
-
-        // Draw The Observer Space Zone
-        ctx.fillStyle = mode === 'aware' ? 'rgba(56, 189, 248, 0.08)' : 'rgba(244, 63, 94, 0.04)';
-        ctx.fillRect(centerX - spaceWidth / 2, 40, spaceWidth, h - 80);
-        ctx.strokeStyle = mode === 'aware' ? 'rgba(56, 189, 248, 0.3)' : 'rgba(244, 63, 94, 0.2)';
-        ctx.lineWidth = 1;
-        ctx.setLineDash([4, 4]);
-        ctx.strokeRect(centerX - spaceWidth / 2, 40, spaceWidth, h - 80);
-        ctx.setLineDash([]);
-
-        ctx.fillStyle = mode === 'aware' ? '#38bdf8' : '#64748b';
-        ctx.font = '11px "JetBrains Mono"';
-        ctx.fillText(mode === 'aware' ? 'THE SOVEREIGN SPACE' : 'UNEXAMINED GAP', centerX, 60);
-
-        // Right Core Node
-        ctx.beginPath();
-        ctx.arc(centerX + spaceWidth / 2 + 10, centerY, 18, 0, Math.PI * 2);
-        ctx.fillStyle = mode === 'aware' ? '#e6af2e' : '#f43f5e';
-        ctx.shadowColor = mode === 'aware' ? 'rgba(230, 175, 46, 0.6)' : 'rgba(244, 63, 94, 0.6)';
-        ctx.shadowBlur = 15;
-        ctx.fill();
-        ctx.shadowBlur = 0;
-
-        ctx.fillStyle = '#e2d9cc';
-        ctx.font = '12px "Cormorant Garamond"';
-        ctx.fillText(mode === 'aware' ? 'Presence' : 'Defended Ego', centerX + spaceWidth / 2 + 10, centerY - 28);
-
-        for (let i = ripples.length - 1; i >= 0; i--) {
-          const r = ripples[i];
-          r.radius += r.speed;
-          r.alpha -= 0.015;
-          if (r.alpha <= 0) {
-            ripples.splice(i, 1);
-            continue;
-          }
-          ctx.beginPath();
-          ctx.arc(r.x, r.y, r.radius, 0, Math.PI * 2);
-          ctx.strokeStyle = r.color.replace(')', `, ${r.alpha})`).replace('rgb', 'rgba');
-          ctx.lineWidth = 1.5;
-          ctx.stroke();
-        }
-
-        for (let i = packets.length - 1; i >= 0; i--) {
-          const p = packets[i];
-
-          if (p.state === 'incoming') {
-            p.x += p.speed;
-            const threshold = centerX - spaceWidth / 2;
-            if (p.x >= threshold) {
-              p.state = 'in_space';
-              p.delayTimer = observerGap * 60;
-            }
-          } else if (p.state === 'in_space') {
-            p.delayTimer--;
-            p.x += p.speed * 0.15;
-            if (mode === 'aware') {
-              p.power *= 0.96;
-            }
-            if (p.delayTimer <= 0 || p.x >= centerX + spaceWidth / 2) {
-              if (mode === 'reactive') {
-                p.state = 'rebounding';
-                p.speed = -(p.speed * 1.3);
-                p.color = '#f43f5e';
-                ripples.push({ x: p.x, y: p.y, radius: 5, speed: 2.5, alpha: 0.8, color: 'rgb(244, 63, 94)' });
-              } else {
-                p.state = 'dissolved';
-                for (let k = 0; k < 3; k++) {
-                  ripples.push({ x: p.x, y: p.y, radius: 5 + k * 8, speed: 1.2 + k * 0.4, alpha: 0.7, color: 'rgb(74, 222, 128)' });
-                }
-              }
-            }
-          } else if (p.state === 'rebounding') {
-            p.x += p.speed;
-            ctx.beginPath();
-            ctx.moveTo(p.x, p.y);
-            ctx.lineTo(p.x - p.speed * 3, p.y);
-            ctx.strokeStyle = 'rgba(244, 63, 94, 0.4)';
-            ctx.lineWidth = 3;
-            ctx.stroke();
-
-            if (p.x <= 50) {
-              ripples.push({ x: 50, y: centerY, radius: 10, speed: 3, alpha: 0.9, color: 'rgb(244, 63, 94)' });
-              packets.splice(i, 1);
-              continue;
-            }
-          } else if (p.state === 'dissolved') {
-            packets.splice(i, 1);
-            continue;
-          }
-
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, 5 * p.power, 0, Math.PI * 2);
-          ctx.fillStyle = p.color;
-          ctx.shadowColor = p.color;
-          ctx.shadowBlur = 10;
-          ctx.fill();
-          ctx.shadowBlur = 0;
-        }
-
-        requestAnimationFrame(loop);
-      }
-      loop();
-    })();
-
-
-    /* ==========================================================
-       3. DIAGRAM 02: EGO CONTRACTION & THE FIELD
-    ========================================================== */
-    (function initDiagram2() {
-      const canvas = document.getElementById('canvas-d2');
-      if (!canvas) return;
-      const ctx = canvas.getContext('2d');
-      let w, h;
-
-      let grip = 85;
-      let nodeCount = 18;
-      let nodes = [];
-      let waves = [];
-
-      function resize() {
-        w = canvas.width = canvas.parentElement.clientWidth;
-        h = canvas.height = canvas.parentElement.clientHeight;
-        rebuildNodes();
-      }
-      window.addEventListener('resize', resize);
-
-      const sliderGrip = document.getElementById('slider-d2-grip');
-      const labelGrip = document.getElementById('label-d2-grip');
-      const sliderNodes = document.getElementById('slider-d2-nodes');
-      const labelNodes = document.getElementById('label-d2-nodes');
-      const btnPulse = document.getElementById('btn-d2-pulse');
-      const fieldStatus = document.getElementById('d2-field-status');
-
-      sliderGrip.addEventListener('input', (e) => {
-        grip = parseInt(e.target.value);
-        labelGrip.innerText = `${grip}%`;
-        if (grip > 65) {
-          fieldStatus.innerText = 'Rigid Isolation / High Friction & Turbulence';
-          fieldStatus.className = 'text-roseGlow font-medium';
-        } else if (grip > 30) {
-          fieldStatus.innerText = 'Moderate Guard / Restricted Resonance';
-          fieldStatus.className = 'text-gold font-medium';
+      for (let i = 1; i < words.length; i++) {
+        const word = words[i];
+        const width = ctx.measureText(currentLine + " " + word).width;
+        if (width < maxWidth) {
+          currentLine += " " + word;
         } else {
-          fieldStatus.innerText = 'Harmonic Attunement / Coherent Resonance';
-          fieldStatus.className = 'text-emeraldGlow font-medium';
-        }
-      });
-
-      sliderNodes.addEventListener('input', (e) => {
-        nodeCount = parseInt(e.target.value);
-        labelNodes.innerText = `${nodeCount} Nodes`;
-        rebuildNodes();
-      });
-
-      btnPulse.addEventListener('click', () => {
-        waves.push({
-          x: w / 2,
-          y: h / 2,
-          radius: 10,
-          maxRadius: Math.max(w, h),
-          alpha: 1.0,
-          color: grip < 40 ? 'rgba(74, 222, 128,' : 'rgba(56, 189, 248,'
-        });
-      });
-
-      function rebuildNodes() {
-        nodes = [];
-        const centerX = w / 2;
-        const centerY = h / 2;
-        const radiusRing = Math.min(w, h) * 0.38;
-
-        for (let i = 0; i < nodeCount; i++) {
-          const angle = (i / nodeCount) * Math.PI * 2;
-          nodes.push({
-            x: centerX + Math.cos(angle) * radiusRing + (Math.random() - 0.5) * 30,
-            y: centerY + Math.sin(angle) * radiusRing + (Math.random() - 0.5) * 30,
-            baseAngle: angle,
-            dist: radiusRing,
-            energy: 0,
-            vx: 0,
-            vy: 0
-          });
+          lines.push(currentLine);
+          currentLine = word;
         }
       }
-
-      resize();
-
-      function loop() {
-        ctx.fillStyle = '#080a0d';
-        ctx.fillRect(0, 0, w, h);
-
-        const cx = w / 2;
-        const cy = h / 2;
-        const gripRatio = grip / 100;
-
-        const egoRadius = 16 + (1 - gripRatio) * 12;
-        const egoBoundaryRadius = 40 + gripRatio * 60;
-
-        ctx.beginPath();
-        ctx.arc(cx, cy, egoBoundaryRadius, 0, Math.PI * 2);
-        if (gripRatio > 0.5) {
-          ctx.strokeStyle = `rgba(244, 63, 94, ${gripRatio * 0.6})`;
-          ctx.lineWidth = 2 + gripRatio * 2;
-          ctx.setLineDash([6, 4]);
-        } else {
-          ctx.strokeStyle = `rgba(74, 222, 128, 0.4)`;
-          ctx.lineWidth = 1.5;
-          ctx.setLineDash([2, 4]);
-        }
-        ctx.stroke();
-        ctx.setLineDash([]);
-
-        for (let k = waves.length - 1; k >= 0; k--) {
-          const wave = waves[k];
-          wave.radius += 3.5;
-          wave.alpha -= 0.01;
-          if (wave.alpha <= 0) {
-            waves.splice(k, 1);
-            continue;
-          }
-          ctx.beginPath();
-          ctx.arc(wave.x, wave.y, wave.radius, 0, Math.PI * 2);
-          ctx.strokeStyle = `${wave.color} ${wave.alpha})`;
-          ctx.lineWidth = 2;
-          ctx.stroke();
-        }
-
-        const time = Date.now() * 0.002;
-        for (let i = 0; i < nodes.length; i++) {
-          const n = nodes[i];
-          const idealAngle = n.baseAngle + Math.sin(time + i) * 0.05;
-          
-          const targetDist = Math.min(w, h) * 0.35 + gripRatio * 40;
-          const targetX = cx + Math.cos(idealAngle) * targetDist;
-          const targetY = cy + Math.sin(idealAngle) * targetDist;
-
-          n.x += (targetX - n.x) * 0.08;
-          n.y += (targetY - n.y) * 0.08;
-
-          if (gripRatio > 0.6) {
-            n.x += (Math.random() - 0.5) * (gripRatio * 3);
-            n.y += (Math.random() - 0.5) * (gripRatio * 3);
-          }
-
-          for (let wIdx = 0; wIdx < waves.length; wIdx++) {
-            const wave = waves[wIdx];
-            const d = Math.hypot(n.x - wave.x, n.y - wave.y);
-            if (Math.abs(d - wave.radius) < 15) {
-              n.energy = 1.0;
-            }
-          }
-          n.energy = Math.max(0, n.energy - 0.02);
-
-          ctx.beginPath();
-          ctx.moveTo(cx, cy);
-          ctx.lineTo(n.x, n.y);
-          if (gripRatio > 0.6) {
-            ctx.strokeStyle = `rgba(244, 63, 94, 0.08)`;
-            ctx.lineWidth = 0.5;
-          } else {
-            const flowAlpha = (1 - gripRatio) * 0.35 + n.energy * 0.5;
-            ctx.strokeStyle = `rgba(56, 189, 248, ${flowAlpha})`;
-            ctx.lineWidth = 1 + (1 - gripRatio);
-          }
-          ctx.stroke();
-
-          ctx.beginPath();
-          ctx.arc(n.x, n.y, 5 + n.energy * 4, 0, Math.PI * 2);
-          ctx.fillStyle = n.energy > 0.1 ? '#4ade80' : (gripRatio > 0.6 ? '#64748b' : '#38bdf8');
-          ctx.fill();
-        }
-
-        ctx.beginPath();
-        ctx.arc(cx, cy, egoRadius, 0, Math.PI * 2);
-        ctx.fillStyle = gripRatio > 0.6 ? '#f43f5e' : (gripRatio > 0.3 ? '#e6af2e' : '#4ade80');
-        ctx.shadowColor = ctx.fillStyle;
-        ctx.shadowBlur = 20;
-        ctx.fill();
-        ctx.shadowBlur = 0;
-
-        ctx.fillStyle = '#ffffff';
-        ctx.font = '11px "JetBrains Mono"';
-        ctx.textAlign = 'center';
-        ctx.fillText(gripRatio > 0.6 ? 'DEFENSE' : (gripRatio > 0.3 ? 'GUARDED' : 'UNIFIED'), cx, cy + 4);
-
-        requestAnimationFrame(loop);
-      }
-      loop();
-    })();
-
-
-    /* ==========================================================
-       4. DIAGRAM 03: THERMODYNAMICS OF ATTACHMENT
-    ========================================================== */
-    (function initDiagram3() {
-      const canvas = document.getElementById('canvas-d3');
-      if (!canvas) return;
-      const ctx = canvas.getContext('2d');
-      let w, h;
-
-      let cling = 70;
-      let entropySpeed = 1.0;
-      let angle = 0;
-      let particles = [];
-
-      function resize() {
-        w = canvas.width = canvas.parentElement.clientWidth;
-        h = canvas.height = canvas.parentElement.clientHeight;
-      }
-      window.addEventListener('resize', resize);
-      resize();
-
-      const sliderCling = document.getElementById('slider-d3-cling');
-      const labelCling = document.getElementById('label-d3-cling');
-      const sliderEntropy = document.getElementById('slider-d3-entropy');
-      const labelEntropy = document.getElementById('label-d3-entropy');
-      const btnSever = document.getElementById('btn-d3-sever');
-      const heatLabel = document.getElementById('d3-heat-label');
-
-      sliderCling.addEventListener('input', (e) => {
-        cling = parseInt(e.target.value);
-        labelCling.innerText = `${cling}%`;
-        updateHeatLabel();
-      });
-
-      sliderEntropy.addEventListener('input', (e) => {
-        entropySpeed = parseFloat(e.target.value);
-        labelEntropy.innerText = `${entropySpeed.toFixed(1)}x`;
-      });
-
-      btnSever.addEventListener('click', () => {
-        cling = 0;
-        sliderCling.value = 0;
-        labelCling.innerText = '0%';
-        updateHeatLabel();
-        showToast('Grip released. Thermodynamic equilibrium restored.');
-      });
-
-      function updateHeatLabel() {
-        if (cling > 65) {
-          heatLabel.innerText = 'Severe Boiling & Heat Friction (Deep Suffering)';
-          heatLabel.className = 'text-roseGlow font-semibold';
-        } else if (cling > 25) {
-          heatLabel.innerText = 'Moderate Strain & Resistance to Natural Decay';
-          heatLabel.className = 'text-gold font-semibold';
-        } else {
-          heatLabel.innerText = 'Cool Fluid Flow (Equanimity with Impermanence)';
-          heatLabel.className = 'text-emeraldGlow font-semibold';
-        }
-      }
-
-      function loop() {
-        ctx.fillStyle = '#080a0d';
-        ctx.fillRect(0, 0, w, h);
-
-        const originX = w * 0.3;
-        const originY = h * 0.5;
-
-        angle += 0.02 * entropySpeed;
-        const objectDistance = 140 + Math.sin(angle * 1.5) * 60;
-        const objectX = originX + Math.cos(angle) * objectDistance + 80;
-        const objectY = originY + Math.sin(angle) * (60 + cling * 0.4);
-
-        const clingRatio = cling / 100;
-
-        if (clingRatio > 0.3 && Math.random() < clingRatio) {
-          particles.push({
-            x: (originX + objectX) / 2 + (Math.random() - 0.5) * 30,
-            y: (originY + objectY) / 2 + (Math.random() - 0.5) * 30,
-            vx: (Math.random() - 0.5) * 4,
-            vy: (Math.random() - 0.5) * 4 - 1,
-            life: 1.0,
-            color: clingRatio > 0.7 ? '#f43f5e' : '#e6af2e'
-          });
-        }
-
-        for (let i = particles.length - 1; i >= 0; i--) {
-          const p = particles[i];
-          p.x += p.vx;
-          p.y += p.vy;
-          p.life -= 0.03;
-          if (p.life <= 0) {
-            particles.splice(i, 1);
-            continue;
-          }
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, p.life * 3.5, 0, Math.PI * 2);
-          ctx.fillStyle = p.color;
-          ctx.fill();
-        }
-
-        if (clingRatio > 0.05) {
-          ctx.beginPath();
-          ctx.moveTo(originX, originY);
-          
-          if (clingRatio > 0.6) {
-            const midX = (originX + objectX) / 2;
-            const midY = (originY + objectY) / 2 + (Math.random() - 0.5) * (clingRatio * 18);
-            ctx.lineTo(midX, midY);
-            ctx.lineTo(objectX, objectY);
-            ctx.strokeStyle = `rgba(244, 63, 94, ${clingRatio})`;
-            ctx.lineWidth = 2 + clingRatio * 2;
-          } else {
-            ctx.lineTo(objectX, objectY);
-            ctx.strokeStyle = `rgba(230, 175, 46, ${clingRatio * 0.8})`;
-            ctx.lineWidth = 1.5;
-          }
-          ctx.stroke();
-        }
-
-        ctx.beginPath();
-        ctx.arc(originX, originY, 15, 0, Math.PI * 2);
-        ctx.fillStyle = '#38bdf8';
-        ctx.shadowColor = '#38bdf8';
-        ctx.shadowBlur = 12;
-        ctx.fill();
-        ctx.shadowBlur = 0;
-        ctx.fillStyle = '#cbd5e1';
-        ctx.font = '11px "JetBrains Mono"';
-        ctx.textAlign = 'center';
-        ctx.fillText('Awareness', originX, originY - 24);
-
-        ctx.beginPath();
-        ctx.arc(objectX, objectY, 12, 0, Math.PI * 2);
-        ctx.fillStyle = '#94a3b8';
-        ctx.fill();
-        ctx.fillStyle = '#64748b';
-        ctx.fillText('Passing Form', objectX, objectY + 24);
-
-        ctx.strokeStyle = 'rgba(255, 255, 255, 0.03)';
-        ctx.lineWidth = 1;
-        for (let yLine = 40; yLine < h; yLine += 40) {
-          ctx.beginPath();
-          ctx.moveTo(0, yLine);
-          ctx.lineTo(w, yLine);
-          ctx.stroke();
-        }
-
-        requestAnimationFrame(loop);
-      }
-      loop();
-    })();
-
-
-    /* ==========================================================
-       5. AXIOM ACCORDION INTERACTIVITY
-    ========================================================== */
-    document.querySelectorAll('.axiom-header').forEach(header => {
-      header.addEventListener('click', () => {
-        const parent = header.closest('[data-axiom]');
-        const content = parent.querySelector('.axiom-content');
-        const chevron = parent.querySelector('.axiom-chevron');
-        const isOpen = !content.classList.contains('hidden');
-
-        document.querySelectorAll('.axiom-content').forEach(c => c.classList.add('hidden'));
-        document.querySelectorAll('.axiom-chevron').forEach(ch => ch.classList.remove('rotate-180'));
-
-        if (!isOpen) {
-          content.classList.remove('hidden');
-          chevron.classList.add('rotate-180');
-        }
-      });
-    });
-    const firstContent = document.querySelector('[data-axiom="1"] .axiom-content');
-    const firstChevron = document.querySelector('[data-axiom="1"] .axiom-chevron');
-    if (firstContent) {
-      firstContent.classList.remove('hidden');
-      if (firstChevron) firstChevron.classList.add('rotate-180');
+      lines.push(currentLine);
+      return lines;
     }
 
+    function drawCard() {
+      const { w, h } = getPlatformDims(platformSelect.value);
+      cardCanvas.width = w;
+      cardCanvas.height = h;
 
-    /* ==========================================================
-       6. RE-ENGINEERED MULTI-PLATFORM SOCIAL CARD GENERATOR
-          WITH AUTO DYNAMIC FONT SCALING (NO SPILL-OVER)
-    ========================================================== */
-    (function initCardGenerator() {
-      const canvas = document.getElementById('card-canvas');
-      if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const palette = paletteSelect.value;
+      let bg = '#0b0d10';
+      let borderCol = '#252b36';
+      let accent = '#d4af37';
+      let textCol = '#f8fafc';
 
-      const axiomsData = [
-        {
-          num: "AXIOM 01",
-          title: "The Unmediated Real",
-          body: "Direct sensory awareness and direct cognitive honesty precede all scripture. Any entity that places itself between your bare awareness and what is actually occurring is an extortion of presence."
-        },
-        {
-          num: "AXIOM 02",
-          title: "The Organic Feedback Law",
-          body: "Action carries its own immediate metabolic and existential echo. Cruelty instantly corrodes the vessel that holds it; generosity expands the interior space before any external praise arrives."
-        },
-        {
-          num: "AXIOM 03",
-          title: "The Dissolution of Spiritual Property",
-          body: "Truth belongs to no copyright, priest, or corporation. Anyone who charges admission for your own fundamental nature is selling river water by the bank of a raging stream."
-        },
-        {
-          num: "AXIOM 04",
-          title: "Radical Service Without Tithe",
-          body: "Do not amass treasury or build stone monoliths. If your practice does not feed the hungry within walking distance and comfort your immediate kin, it is theatrical vanity."
-        },
-        {
-          num: "AXIOM 05",
-          title: "The Space Between Stimulus and Action",
-          body: "Reactivity is the mechanical reflex of an automaton. Human dignity begins in the sovereign pause between receiving an offense and replying. In that quiet room, free will is born."
-        },
-        {
-          num: "AXIOM 06",
-          title: "Impermanence as Sacred Architecture",
-          body: "All worldly forms dissolve. This is not an error in reality; it is the vital breath of existence. To demand permanence from what is transient is the root of all human neurosis."
-        },
-        {
-          num: "AXIOM 07",
-          title: "The Protocol of Departure",
-          body: "A raft is discarded once the far shore is attained. If you find yourself revering this protocol as dogma, turn off the machine, step outside, and touch the soil."
-        }
-      ];
-
-      // Social Media Dimension Presets
-      const platformFormats = {
-        'instagram-story': {
-          width: 1080,
-          height: 1920,
-          name: 'Story / Reel (9:16)',
-          dimText: '1080 × 1920 px (9:16 Story)',
-          marginRatio: 0.11,
-          baseTitleSize: 62,
-          baseBodySize: 38,
-          baseLineHeight: 1.62
-        },
-        'square-post': {
-          width: 1080,
-          height: 1080,
-          name: 'Feed Square (1:1)',
-          dimText: '1080 × 1080 px (1:1 Square)',
-          marginRatio: 0.09,
-          baseTitleSize: 52,
-          baseBodySize: 34,
-          baseLineHeight: 1.55
-        },
-        'twitter-x': {
-          width: 1200,
-          height: 675,
-          name: 'X / Twitter Landscape (16:9)',
-          dimText: '1200 × 675 px (16:9 Landscape)',
-          marginRatio: 0.08,
-          baseTitleSize: 42,
-          baseBodySize: 26,
-          baseLineHeight: 1.48
-        },
-        'portrait-post': {
-          width: 1080,
-          height: 1350,
-          name: 'Portrait Post (4:5)',
-          dimText: '1080 × 1350 px (4:5 Portrait)',
-          marginRatio: 0.10,
-          baseTitleSize: 56,
-          baseBodySize: 36,
-          baseLineHeight: 1.58
-        }
-      };
-
-      let currentFormatKey = 'instagram-story';
-      let currentTheme = 'dark-gold';
-      let currentAxiomIndex = 4;
-
-      const selectAxiom = document.getElementById('card-axiom-select');
-      const inputSubtext = document.getElementById('card-custom-subtext');
-      const charCountEl = document.getElementById('char-count');
-      const themeBtns = document.querySelectorAll('.theme-btn');
-      const formatBtns = document.querySelectorAll('.format-btn');
-      const btnDownload = document.getElementById('btn-download-card');
-      const btnCopyText = document.getElementById('btn-copy-card-text');
-      const downloadLabel = document.getElementById('download-btn-label');
-      const canvasDimLabel = document.getElementById('canvas-dim-label');
-      const fitIndicatorDot = document.getElementById('fit-indicator-dot');
-      const fitIndicatorText = document.getElementById('fit-indicator-text');
-      const scaleFactorText = document.getElementById('scale-factor-text');
-
-      // Platform selection handler
-      formatBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-          formatBtns.forEach(b => {
-            b.className = 'format-btn py-2.5 px-3 rounded-lg border border-white/10 text-slate-300 hover:border-white/30 bg-white/5 text-left transition-all flex flex-col';
-          });
-          btn.className = 'format-btn py-2.5 px-3 rounded-lg border border-gold text-gold bg-gold/10 text-left transition-all flex flex-col';
-          currentFormatKey = btn.getAttribute('data-format');
-          
-          const fmt = platformFormats[currentFormatKey];
-          canvas.width = fmt.width;
-          canvas.height = fmt.height;
-          canvasDimLabel.innerText = fmt.dimText;
-          downloadLabel.innerText = `Download High-Res PNG (${fmt.width}×${fmt.height})`;
-          renderCard();
-        });
-      });
-
-      // Helper: Break text into wrapped lines given a max width and font
-      function getWrappedLines(text, maxWidth, font) {
-        ctx.font = font;
-        const words = text.split(/\s+/);
-        const lines = [];
-        let currentLine = '';
-
-        for (let i = 0; i < words.length; i++) {
-          const testLine = currentLine ? currentLine + ' ' + words[i] : words[i];
-          const testWidth = ctx.measureText(testLine).width;
-          if (testWidth > maxWidth && currentLine) {
-            lines.push(currentLine);
-            currentLine = words[i];
-          } else {
-            currentLine = testLine;
-          }
-        }
-        if (currentLine) lines.push(currentLine);
-        return lines;
+      if (palette === 'cyan') {
+        accent = '#38bdf8';
+        borderCol = '#1e293b';
+      } else if (palette === 'parchment') {
+        bg = '#14171d';
+        accent = '#e2e8f0';
+        borderCol = '#334155';
       }
 
-      function renderCard() {
-        const fmt = platformFormats[currentFormatKey];
-        const axiom = axiomsData[currentAxiomIndex];
-        const subtext = inputSubtext.value.trim() || 'The Commons · Open Awareness Protocol';
+      // Background
+      cCtx.fillStyle = bg;
+      cCtx.fillRect(0, 0, w, h);
 
-        // Update character counter
-        charCountEl.innerText = `${inputSubtext.value.length} chars`;
+      // Frame Border
+      const margin = w * 0.08;
+      cCtx.strokeStyle = borderCol;
+      cCtx.lineWidth = 2;
+      cCtx.strokeRect(margin, margin, w - margin * 2, h - margin * 2);
 
-        // Canvas dimensions
-        const W = canvas.width;
-        const H = canvas.height;
+      // Header Tag
+      cCtx.fillStyle = accent;
+      cCtx.font = `600 ${Math.round(w * 0.022)}px monospace`;
+      cCtx.textAlign = 'center';
+      cCtx.fillText('THE COMMONS PROTOCOL • CONTEMPLATION', w / 2, margin + w * 0.06);
 
-        // Theme Palettes
-        let bgColor = '#090c10';
-        let outerBorderColor = 'rgba(230, 175, 46, 0.45)';
-        let innerBorderColor = 'rgba(255, 255, 255, 0.06)';
-        let accentColor = '#e6af2e';
-        let titleColor = '#f3ede2';
-        let bodyColor = '#cbd5e1';
-        let subColor = '#94a3b8';
-        let decorLineColor = 'rgba(230, 175, 46, 0.7)';
+      // Dynamic Font Scaling Engine to prevent text overflow
+      const maxTextWidth = w - margin * 3;
+      const maxTextHeight = h - margin * 3.5;
+      let fontSize = Math.round(w * 0.046);
+      let lines = [];
+      let totalTextHeight = 0;
 
-        if (currentTheme === 'cyan-slate') {
-          bgColor = '#071018';
-          outerBorderColor = 'rgba(56, 189, 248, 0.45)';
-          innerBorderColor = 'rgba(255, 255, 255, 0.06)';
-          accentColor = '#38bdf8';
-          titleColor = '#f0f9ff';
-          bodyColor = '#cbd5e1';
-          subColor = '#94a3b8';
-          decorLineColor = 'rgba(56, 189, 248, 0.7)';
-        } else if (currentTheme === 'parchment-light') {
-          bgColor = '#f7f3ec';
-          outerBorderColor = '#cbbba8';
-          innerBorderColor = 'rgba(0, 0, 0, 0.07)';
-          accentColor = '#9e7b28';
-          titleColor = '#1f1b16';
-          bodyColor = '#4a4036';
-          subColor = '#786c5e';
-          decorLineColor = 'rgba(158, 123, 40, 0.6)';
+      while (fontSize > 16) {
+        cCtx.font = `400 ${fontSize}px sans-serif`;
+        const lineHeight = fontSize * 1.5;
+        lines = wrapText(cCtx, cardTextInput.value, maxTextWidth);
+        totalTextHeight = lines.length * lineHeight;
+
+        if (totalTextHeight < maxTextHeight) {
+          break;
         }
-
-        // Base margins and padding
-        const marginX = Math.round(W * fmt.marginRatio);
-        const marginY = Math.round(H * fmt.marginRatio);
-        const contentWidth = W - (marginX * 2);
-
-        // Header and Footer reserved heights
-        const headerBadgeSize = Math.max(14, Math.round(W * 0.022));
-        const subtextSize = Math.max(12, Math.round(W * 0.020));
-        const reservedHeaderHeight = headerBadgeSize + 40;
-        const reservedFooterHeight = subtextSize + 50;
-
-        // Space available for Title + Divider + Body
-        const availableHeight = H - (marginY * 2) - reservedHeaderHeight - reservedFooterHeight;
-
-        // Dynamic Fitting Engine: iteratively downscale typography if content overflows
-        let scale = 1.0;
-        let titleSize, bodySize, lineHeight, titleLines, bodyLines, totalContentHeight;
-
-        while (scale >= 0.45) {
-          titleSize = Math.round(fmt.baseTitleSize * scale);
-          bodySize = Math.round(fmt.baseBodySize * scale);
-          lineHeight = Math.round(bodySize * fmt.baseLineHeight);
-
-          const titleFont = `600 ${titleSize}px "Cormorant Garamond", Georgia, serif`;
-          const bodyFont = `400 ${bodySize}px "Inter", sans-serif`;
-
-          titleLines = getWrappedLines(axiom.title, contentWidth, titleFont);
-          bodyLines = getWrappedLines(`"${axiom.body}"`, contentWidth, bodyFont);
-
-          const titleBlockHeight = titleLines.length * (titleSize * 1.25);
-          const dividerSpacing = 28 * scale;
-          const bodyBlockHeight = bodyLines.length * lineHeight;
-
-          totalContentHeight = titleBlockHeight + dividerSpacing + bodyBlockHeight;
-
-          if (totalContentHeight <= availableHeight) {
-            break;
-          }
-          scale -= 0.04;
-        }
-
-        // Clamp scale reporting
-        const scalePct = Math.round(scale * 100);
-        scaleFactorText.innerText = `Scale: ${scalePct}%`;
-        if (scale < 0.6) {
-          fitIndicatorDot.className = 'w-2 h-2 rounded-full bg-gold';
-          fitIndicatorText.innerText = 'Text condensed to preserve safe margins';
-        } else {
-          fitIndicatorDot.className = 'w-2 h-2 rounded-full bg-emeraldGlow';
-          fitIndicatorText.innerText = 'Layout perfectly fits target platform bounds';
-        }
-
-        // 1. Draw Background
-        ctx.fillStyle = bgColor;
-        ctx.fillRect(0, 0, W, H);
-
-        // 2. Decorative Outer & Inner Borders
-        const frameOffset = Math.round(Math.min(W, H) * 0.035);
-        ctx.strokeStyle = outerBorderColor;
-        ctx.lineWidth = Math.max(2, Math.round(W * 0.003));
-        ctx.strokeRect(frameOffset, frameOffset, W - frameOffset * 2, H - frameOffset * 2);
-
-        const innerOffset = frameOffset + Math.round(Math.min(W, H) * 0.012);
-        ctx.strokeStyle = innerBorderColor;
-        ctx.lineWidth = 1;
-        ctx.strokeRect(innerOffset, innerOffset, W - innerOffset * 2, H - innerOffset * 2);
-
-        // 3. Draw Header: Axiom Badge & Protocol Callout
-        const headerY = marginY + 10;
-        ctx.fillStyle = accentColor;
-        ctx.font = `500 ${headerBadgeSize}px "JetBrains Mono", monospace`;
-        ctx.textAlign = 'left';
-        ctx.letterSpacing = '3px';
-        ctx.fillText(axiom.num, marginX, headerY);
-
-        ctx.fillStyle = subColor;
-        ctx.font = `400 ${Math.round(headerBadgeSize * 0.85)}px "JetBrains Mono", monospace`;
-        ctx.textAlign = 'right';
-        ctx.letterSpacing = '1px';
-        ctx.fillText('NO LEADER · NO TITHE', W - marginX, headerY);
-        ctx.letterSpacing = '0px';
-
-        // 4. Vertically Centered Content Block
-        const remainingVerticalSlack = Math.max(0, availableHeight - totalContentHeight);
-        let cursorY = marginY + reservedHeaderHeight + (remainingVerticalSlack * 0.45);
-
-        // Draw Title Lines
-        ctx.fillStyle = titleColor;
-        ctx.font = `600 ${titleSize}px "Cormorant Garamond", Georgia, serif`;
-        ctx.textAlign = 'left';
-        const titleLineHeight = titleSize * 1.25;
-
-        for (let i = 0; i < titleLines.length; i++) {
-          cursorY += titleLineHeight;
-          ctx.fillText(titleLines[i], marginX, cursorY);
-        }
-
-        // Draw Divider
-        cursorY += Math.round(20 * scale);
-        ctx.beginPath();
-        ctx.moveTo(marginX, cursorY);
-        ctx.lineTo(marginX + Math.round(contentWidth * 0.22), cursorY);
-        ctx.strokeStyle = decorLineColor;
-        ctx.lineWidth = Math.max(2, Math.round(3 * scale));
-        ctx.stroke();
-
-        cursorY += Math.round(26 * scale);
-
-        // Draw Body Paragraph Lines
-        ctx.fillStyle = bodyColor;
-        ctx.font = `400 ${bodySize}px "Inter", sans-serif`;
-        for (let i = 0; i < bodyLines.length; i++) {
-          cursorY += lineHeight;
-          ctx.fillText(bodyLines[i], marginX, cursorY);
-        }
-
-        // 5. Draw Footer (Subtext & Minimal Node Icon)
-        const footerY = H - marginY - 6;
-        ctx.fillStyle = subColor;
-        ctx.font = `400 ${subtextSize}px "JetBrains Mono", monospace`;
-        ctx.textAlign = 'left';
-
-        // Wrap footer subtext if too wide
-        const maxFooterWidth = contentWidth - 40;
-        const subtextMetrics = ctx.measureText(subtext);
-        let displaySubtext = subtext;
-        if (subtextMetrics.width > maxFooterWidth) {
-          while (ctx.measureText(displaySubtext + '...').width > maxFooterWidth && displaySubtext.length > 5) {
-            displaySubtext = displaySubtext.slice(0, -1);
-          }
-          displaySubtext += '...';
-        }
-        ctx.fillText(displaySubtext, marginX, footerY);
-
-        // Node Geometry Emblem (Watermark-free open geometric symbol)
-        const emblemX = W - marginX - 6;
-        const emblemY = footerY - Math.round(subtextSize * 0.35);
-        const emblemR = Math.max(6, Math.round(W * 0.012));
-
-        ctx.beginPath();
-        ctx.arc(emblemX, emblemY, emblemR, 0, Math.PI * 2);
-        ctx.strokeStyle = accentColor;
-        ctx.lineWidth = Math.max(1.5, Math.round(W * 0.002));
-        ctx.stroke();
-
-        ctx.beginPath();
-        ctx.arc(emblemX, emblemY, Math.max(2, emblemR * 0.35), 0, Math.PI * 2);
-        ctx.fillStyle = accentColor;
-        ctx.fill();
+        fontSize -= 2;
       }
 
-      // Listeners
-      selectAxiom.addEventListener('change', (e) => {
-        currentAxiomIndex = parseInt(e.target.value);
-        renderCard();
-      });
+      // Render Text Lines
+      cCtx.fillStyle = textCol;
+      cCtx.textAlign = 'center';
+      const startY = (h - totalTextHeight) / 2 + fontSize * 0.5;
+      const finalLineHeight = fontSize * 1.5;
 
-      inputSubtext.addEventListener('input', renderCard);
+      for (let i = 0; i < lines.length; i++) {
+        cCtx.fillText(lines[i], w / 2, startY + i * finalLineHeight);
+      }
 
-      themeBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-          themeBtns.forEach(b => {
-            b.className = 'theme-btn py-2 px-3 rounded-lg border border-white/10 text-slate-300 hover:border-white/30 bg-white/5 text-center';
-          });
-          btn.className = 'theme-btn py-2 px-3 rounded-lg border border-gold text-gold bg-gold/10 text-center';
-          currentTheme = btn.getAttribute('data-theme');
-          renderCard();
-        });
-      });
+      // Footer Notation
+      cCtx.fillStyle = 'rgba(255, 255, 255, 0.4)';
+      cCtx.font = `400 ${Math.round(w * 0.018)}px monospace`;
+      cCtx.fillText('NO LEADER • NO TITHE • VERIFY IN CONDUCT', w / 2, h - margin - w * 0.04);
 
-      btnDownload.addEventListener('click', () => {
-        const fmt = platformFormats[currentFormatKey];
-        const link = document.createElement('a');
-        link.download = `The-Commons-${fmt.name.replace(/[^a-zA-Z0-9]/g, '-')}-Axiom-0${currentAxiomIndex + 1}.png`;
-        link.href = canvas.toDataURL('image/png');
-        link.click();
-        showToast(`High-res card for ${fmt.name} exported.`);
-      });
+      overflowCheckBadge.innerText = `Layout Safe: ${w}x${h}px rendered with ${fontSize}px adaptive typography.`;
+    }
 
-      btnCopyText.addEventListener('click', () => {
-        const axiom = axiomsData[currentAxiomIndex];
-        const clipText = `[THE COMMONS // ${axiom.num}]\n${axiom.title}\n\n"${axiom.body}"\n\nNo prophet. No hierarchy. No tithe.\n${window.location.href}`;
-        const temp = document.createElement('textarea');
-        temp.value = clipText;
-        document.body.appendChild(temp);
-        temp.select();
-        document.execCommand('copy');
-        document.body.removeChild(temp);
-        showToast('Axiom quote text copied to clipboard.');
-      });
-
-      // Initialize
-      canvas.width = platformFormats[currentFormatKey].width;
-      canvas.height = platformFormats[currentFormatKey].height;
-      setTimeout(renderCard, 200);
-      document.fonts.ready.then(renderCard);
-    })();
-
-
-    /* ==========================================================
-       6.5 COMPARATIVE MATRIX FILTERING
-    ========================================================== */
-    (function initMatrixFilter() {
-      const filterBtns = document.querySelectorAll('.matrix-filter-btn');
-      const rows = document.querySelectorAll('.matrix-row');
-
-      filterBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-          const view = btn.getAttribute('data-view');
-
-          filterBtns.forEach(b => {
-            b.className = 'matrix-filter-btn px-3 py-1.5 rounded-lg text-slate-400 hover:text-parchment transition-colors';
-          });
-          btn.className = 'matrix-filter-btn px-3 py-1.5 rounded-lg bg-gold/20 text-gold border border-gold/30 transition-colors';
-
-          rows.forEach(row => {
-            const category = row.getAttribute('data-category');
-            if (view === 'all' || category === view) {
-              row.style.display = '';
-            } else {
-              row.style.display = 'none';
-            }
-          });
-        });
-      });
-    })();
-
-
-    /* ==========================================================
-       7. STATIC ARCHIVE EXPORTER (OFFLINE PRESERVATION)
-    ========================================================== */
-    document.getElementById('btn-export-html').addEventListener('click', () => {
-      const htmlContent = "<!DOCTYPE html>\n" + document.documentElement.outerHTML;
-      const blob = new Blob([htmlContent], { type: 'text/html;charset=utf-8' });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = 'The-Commons-Protocol-Archive.html';
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      URL.revokeObjectURL(url);
-      showToast('Complete single-file protocol downloaded for offline hosting.');
+    // Export Card as PNG
+    document.getElementById('btnDownloadCard').addEventListener('click', () => {
+      const link = document.createElement('a');
+      link.download = `commons-axiom-${platformSelect.value}.png`;
+      link.href = cardCanvas.toDataURL('image/png');
+      link.click();
     });
 
-    document.getElementById('btn-export-raw-axioms').addEventListener('click', () => {
-      const markdown = `# THE COMMONS: AN OPEN PROTOCOL FOR LIVING
-*No Prophet. No Hierarchy. No Tithe. Only direct mechanics of awareness.*
-*License: CC0 Public Domain. Free to mirror, fork, or print.*
-
----
-
-### AXIOM 01: The Unmediated Real
-Direct sensory awareness and direct cognitive honesty precede all scripture. Any book, priest, or algorithm that places itself between your bare awareness and what is actually occurring is an extortion of presence.
-
-### AXIOM 02: The Organic Feedback Law
-Morality is not enforced by an angry sky magistrate. Action carries its own immediate metabolic and environmental echo. Cruelty corrodes the vessel that holds it; generosity expands the interior space instantly.
-
-### AXIOM 03: The Dissolution of Spiritual Property
-Truth belongs to no copyright, priest, or corporation. Anyone who charges admission for your own fundamental nature is a merchant selling river water by a clean spring.
-
-### AXIOM 04: Radical Service Without Tithe
-Do not amass central funds. If your practice does not feed the hungry within walking distance and care for the earth beneath your feet, it is theatrical vanity.
-
-### AXIOM 05: The Space Between Stimulus and Action
-Reactivity is the mechanical reflex of an automaton. Human dignity begins in the sovereign pause between receiving an offense and replying. In that quiet room, free will resides.
-
-### AXIOM 06: Impermanence as Sacred Architecture
-All forms dissolve. This is not an error in reality; it is the vital pulse of life. Demanding permanence from the transient is the single root of neurosis.
-
-### AXIOM 07: The Protocol of Departure
-A raft is abandoned once the far shore is reached. If you begin worshipping this website or treating it as holy scripture, shut off your computer, go outside, and touch the earth.
-`;
-
-      const blob = new Blob([markdown], { type: 'text/markdown;charset=utf-8' });
-      const url = URL.createObjectURL(blob);
+    // Offline Preservation Utilities
+    document.getElementById('btnExportCode').addEventListener('click', () => {
+      const blob = new Blob([document.documentElement.outerHTML], { type: 'text/html' });
       const a = document.createElement('a');
-      a.href = url;
-      a.download = 'The-Commons-Axioms.md';
-      document.body.appendChild(a);
+      a.href = URL.createObjectURL(blob);
+      a.download = 'the-commons-protocol.html';
       a.click();
-      document.body.removeChild(a);
-      URL.revokeObjectURL(url);
-      showToast('Plaintext Markdown axioms exported.');
     });
+
+    document.getElementById('btnCopyCodex').addEventListener('click', () => {
+      const codexText = `THE COMMONS PROTOCOL (Leaderless Phenomenological System)
+Public Domain Dedicated (CC0 1.0)
+
+I. The Principle of Non-Ownership: Thoughts, feelings, and objects are flowing transients.
+II. The Stimulus-Response Interval: Sovereignty exists in the gap before reaction.
+III. The Dissolution of the Mediator: Truth requires no paid human intermediary.
+IV. The Conservation of Goodwill: Generosity expands the nervous system; cruelty contracts it.`;
+      navigator.clipboard.writeText(codexText).then(() => {
+        alert("Codex copied to clipboard.");
+      });
+    });
+
+    // Initialize Card Preview on load
+    drawCard();
   </script>
 </body>
 </html>

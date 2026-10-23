@@ -1703,4 +1703,398 @@ COST:
         case 15:
           mCtx.strokeStyle = '#334155';
           mCtx.beginPath(); mCtx.moveTo(0, cy); mCtx.lineTo(w, cy); mCtx.stroke();
-          for(let i=0;
+          for(let i=0; i<12; i++) {
+            const px = (i/12)*w;
+            const py = cy + 20 + Math.sin(modalTime*2 + i)*15;
+            mCtx.beginPath(); mCtx.arc(px, py, 2.5, 0, Math.PI*2);
+            mCtx.fillStyle = '#0284c7'; mCtx.fill();
+          }
+          break;
+
+        // Folio 16: Reflective parabolic mirror
+        case 16:
+          mCtx.beginPath();
+          mCtx.arc(cx + 40, cy, 60, Math.PI*0.7, Math.PI*1.3);
+          mCtx.strokeStyle = '#0d9488'; mCtx.lineWidth = 3; mCtx.stroke(); mCtx.lineWidth = 1;
+          mCtx.beginPath(); mCtx.moveTo(cx - 60, cy); mCtx.lineTo(cx - 20, cy);
+          mCtx.strokeStyle = '#ef4444'; mCtx.stroke();
+          break;
+
+        // Folio 17: Independent resonant gyroscopes
+        case 17:
+          for(let i=0; i<4; i++) {
+            const gx = w*0.2 + i*(w*0.2);
+            mCtx.beginPath();
+            mCtx.ellipse(gx, cy, 14, 25, modalTime*(1 + param), 0, Math.PI*2);
+            mCtx.strokeStyle = '#38bdf8'; mCtx.stroke();
+          }
+          break;
+
+        // Folio 18: Parabolic acoustic receiver
+        case 18:
+          mCtx.beginPath();
+          mCtx.arc(cx - 30, cy, 70, Math.PI*1.6, Math.PI*0.4);
+          mCtx.strokeStyle = '#059669'; mCtx.lineWidth = 2; mCtx.stroke(); mCtx.lineWidth = 1;
+          break;
+
+        // Folio 19: Screen lens to soil focalizer
+        case 19:
+          mCtx.strokeStyle = '#0284c7';
+          mCtx.strokeRect(cx - 40, 30, 80, 50);
+          mCtx.beginPath(); mCtx.moveTo(cx, 80); mCtx.lineTo(cx, h - 30);
+          mCtx.strokeStyle = '#059669'; mCtx.stroke();
+          mCtx.strokeRect(20, h - 30, w - 40, 10);
+          break;
+
+        // Folio 20: Enteric plexus neuromonitor
+        case 20:
+          for(let i=0; i<20; i++) {
+            const a = (i/20)*Math.PI*2;
+            const r = 35 + Math.sin(modalTime*4 + i)*8;
+            mCtx.beginPath(); mCtx.arc(cx + Math.cos(a)*r, cy + Math.sin(a)*r, 3, 0, Math.PI*2);
+            mCtx.fillStyle = param > 0.5 ? '#9f1239' : '#0d9488'; mCtx.fill();
+          }
+          break;
+
+        // Folio 21: Tidal vagal brake actuator
+        case 21:
+          mCtx.beginPath();
+          for(let x=0; x<w; x+=4) {
+            const y = cy + Math.sin(x*0.03 - modalTime*2) * (param > 0.5 ? 12 : 36);
+            if(x===0) mCtx.moveTo(x, y); else mCtx.lineTo(x, y);
+          }
+          mCtx.strokeStyle = '#059669'; mCtx.stroke();
+          break;
+
+        // Folio 22: Newtonian material friction
+        case 22:
+          mCtx.strokeStyle = '#334155';
+          mCtx.strokeRect(cx - 50, cy - 20, 100, 40);
+          mCtx.fillStyle = '#131a24'; mCtx.fillRect(cx - 50, cy - 20, 100, 40);
+          break;
+
+        // Folio 23: Signal noise separation chamber
+        case 23:
+          for(let i=0; i<modalParticles.length; i++) {
+            const p = modalParticles[i];
+            mCtx.fillStyle = p.x > cx ? '#0d9488' : '#64748b';
+            mCtx.fillRect(p.x, p.y, 2, 2);
+            p.x += 1; if(p.x > w) p.x = 0;
+          }
+          break;
+
+        // Folio 24: Circadian orbital curve
+        case 24:
+          mCtx.beginPath();
+          mCtx.arc(cx, cy + 40, 80, Math.PI, 0);
+          mCtx.strokeStyle = '#0284c7'; mCtx.stroke();
+          const sunX = cx + Math.cos(Math.PI - modalTime*0.8)*80;
+          const sunY = (cy + 40) - Math.sin(modalTime*0.8)*80;
+          mCtx.beginPath(); mCtx.arc(sunX, sunY, 6, 0, Math.PI*2);
+          mCtx.fillStyle = '#f1f5f9'; mCtx.fill();
+          break;
+
+        // Folio 25: Unanchored liquid topology
+        case 25:
+          modalParticles.forEach(p => {
+            p.x += Math.sin(modalTime + p.y*0.05);
+            mCtx.beginPath(); mCtx.arc(p.x, p.y, 2, 0, Math.PI*2);
+            mCtx.fillStyle = 'rgba(13, 148, 136, 0.4)'; mCtx.fill();
+          });
+          break;
+
+        // Folio 26: Byzantine usurper bypass
+        case 26:
+          mCtx.beginPath(); mCtx.arc(cx, cy, 14, 0, Math.PI*2);
+          mCtx.fillStyle = '#9f1239'; mCtx.fill();
+          mCtx.beginPath();
+          mCtx.moveTo(w*0.2, cy);
+          mCtx.bezierCurveTo(cx, cy - 60, cx, cy - 60, w*0.8, cy);
+          mCtx.strokeStyle = '#0d9488'; mCtx.stroke();
+          break;
+
+        // Folio 27: Zero-dependency crystal core
+        case 27:
+          mCtx.beginPath();
+          mCtx.moveTo(cx, cy - 40); mCtx.lineTo(cx + 35, cy);
+          mCtx.lineTo(cx, cy + 40); mCtx.lineTo(cx - 35, cy);
+          mCtx.closePath();
+          mCtx.strokeStyle = '#38bdf8'; mCtx.stroke();
+          break;
+
+        // Folio 28: Unbranded memetic diffusion
+        case 28:
+          for(let r=10; r<100; r+=15) {
+            mCtx.beginPath(); mCtx.arc(cx, cy, r + (modalTime*20 % 15), 0, Math.PI*2);
+            mCtx.strokeStyle = `rgba(13, 148, 136, ${(100-r)/100})`; mCtx.stroke();
+          }
+          break;
+
+        // Folio 29: Triad gossip synchronizer
+        case 29:
+          const tri = [
+            { x: cx, y: cy - 45 },
+            { x: cx - 45, y: cy + 35 },
+            { x: cx + 45, y: cy + 35 }
+          ];
+          mCtx.beginPath();
+          mCtx.moveTo(tri[0].x, tri[0].y); mCtx.lineTo(tri[1].x, tri[1].y);
+          mCtx.lineTo(tri[2].x, tri[2].y); mCtx.closePath();
+          mCtx.strokeStyle = '#0284c7'; mCtx.stroke();
+          tri.forEach(t => {
+            mCtx.beginPath(); mCtx.arc(t.x, t.y, 6, 0, Math.PI*2);
+            mCtx.fillStyle = '#0d9488'; mCtx.fill();
+          });
+          break;
+
+        // Folio 30: Inertial gravity non-resistance
+        case 30:
+          mCtx.beginPath(); mCtx.arc(cx, cy, 18, 0, Math.PI*2);
+          mCtx.fillStyle = '#f1f5f9'; mCtx.fill();
+          for(let i=0; i<6; i++) {
+            const myX = (modalTime*100 + i*40) % w;
+            mCtx.beginPath(); mCtx.arc(myX, cy - 10 + i*4, 2, 0, Math.PI*2);
+            mCtx.fillStyle = '#9f1239'; mCtx.fill();
+          }
+          break;
+
+        // Folio 31: Thermodynamic boundary dissolution
+        case 31:
+          mCtx.beginPath();
+          mCtx.arc(cx, cy, 40 * (1 + Math.sin(modalTime)*0.2), 0, Math.PI*2);
+          mCtx.strokeStyle = `rgba(2, 132, 199, ${0.1 + param*0.4})`; mCtx.stroke();
+          break;
+
+        // Folio 32: Deep-time geological strata
+        case 32:
+          for(let i=0; i<6; i++) {
+            const gy = 40 + i*35;
+            mCtx.beginPath(); mCtx.moveTo(0, gy);
+            mCtx.lineTo(w, gy + Math.sin(modalTime + i)*10);
+            mCtx.strokeStyle = '#334155'; mCtx.stroke();
+          }
+          break;
+
+        // Folio 33: Razor-edge present horizon
+        case 33:
+          mCtx.beginPath(); mCtx.moveTo(cx, 20); mCtx.lineTo(cx, h - 20);
+          mCtx.strokeStyle = '#ef4444'; mCtx.lineWidth = 2; mCtx.stroke(); mCtx.lineWidth = 1;
+          break;
+
+        // Folio 34: Hydrodynamic grief absorption
+        case 34:
+          for(let i=0; i<modalParticles.length; i++) {
+            const p = modalParticles[i];
+            p.y += (1 + param);
+            mCtx.beginPath(); mCtx.arc(p.x, p.y, 2, 0, Math.PI*2);
+            mCtx.fillStyle = '#0284c7'; mCtx.fill();
+            if(p.y > h) p.y = 0;
+          }
+          break;
+
+        // Folio 35: Unified continuum wave collapse
+        case 35:
+          mCtx.beginPath();
+          for(let x=0; x<w; x+=5) {
+            const y = cy + Math.sin(x*0.03 - modalTime*2)*20 + Math.cos(x*0.015 + modalTime)*15;
+            if(x===0) mCtx.moveTo(x, y); else mCtx.lineTo(x, y);
+          }
+          mCtx.strokeStyle = '#0d9488'; mCtx.stroke();
+          break;
+
+        // Folio 36: Planetary entropic re-absorption
+        case 36:
+          for(let i=0; i<modalParticles.length; i++) {
+            const p = modalParticles[i];
+            p.phase += 0.02 * (1 + param);
+            const r = 15 + Math.sin(p.phase)*(w*0.35);
+            const a = p.phase + i*0.4;
+            mCtx.beginPath(); mCtx.arc(cx + Math.cos(a)*r, cy + Math.sin(a)*r, 2.5, 0, Math.PI*2);
+            mCtx.fillStyle = param > 0.5 ? '#f1f5f9' : '#0d9488'; mCtx.fill();
+          }
+          mCtx.beginPath(); mCtx.arc(cx, cy, 8, 0, Math.PI*2);
+          mCtx.fillStyle = 'rgba(241, 245, 249, 0.2)'; mCtx.fill();
+          break;
+      }
+
+      modalAnimFrame = requestAnimationFrame(() => renderModalSimulation(folioId, w, h));
+    }
+
+    /* --- Card Generator Layout Engine --- */
+    const cardCanvas = document.getElementById('cardCanvas');
+    const cCtx = cardCanvas.getContext('2d');
+    const platformSelect = document.getElementById('platformSelect');
+    const cardTextInput = document.getElementById('cardTextInput');
+    const paletteSelect = document.getElementById('paletteSelect');
+    const overflowCheckBadge = document.getElementById('overflowCheckBadge');
+
+    presetSelect.addEventListener('change', () => {
+      if (presetSelect.value !== 'custom') {
+        const f = folios.find(item => item.id == presetSelect.value);
+        if (f) cardTextInput.value = `Folio ${f.id < 10 ? '0' + f.id : f.id}: ${f.title}\n\n"${f.mech}"`;
+      }
+      drawCard();
+    });
+
+    window.loadFolioIntoCard = function(id) {
+      presetSelect.value = id;
+      const f = folios.find(item => item.id == id);
+      if (f) cardTextInput.value = `Folio ${f.id < 10 ? '0' + f.id : f.id}: ${f.title}\n\n"${f.mech}"`;
+      drawCard();
+      document.getElementById('share').scrollIntoView({ behavior: 'smooth' });
+    };
+
+    cardTextInput.addEventListener('input', drawCard);
+    platformSelect.addEventListener('change', drawCard);
+    paletteSelect.addEventListener('change', drawCard);
+
+    function getPlatformDims(platform) {
+      switch (platform) {
+        case 'story': return { w: 1080, h: 1920 };
+        case 'portrait': return { w: 1080, h: 1350 };
+        case 'landscape': return { w: 1920, h: 1080 };
+        case 'square': default: return { w: 1080, h: 1080 };
+      }
+    }
+
+    function wrapText(ctx, text, maxWidth) {
+      const paragraphs = text.split('\n');
+      const lines = [];
+      paragraphs.forEach(p => {
+        if (!p.trim()) { lines.push(''); return; }
+        const words = p.split(' ');
+        let currentLine = words[0];
+        for (let i = 1; i < words.length; i++) {
+          const word = words[i];
+          const width = ctx.measureText(currentLine + " " + word).width;
+          if (width < maxWidth) { currentLine += " " + word; }
+          else { lines.push(currentLine); currentLine = word; }
+        }
+        lines.push(currentLine);
+      });
+      return lines;
+    }
+
+    function drawCard() {
+      const { w, h } = getPlatformDims(platformSelect.value);
+      cardCanvas.width = w; cardCanvas.height = h;
+
+      const palette = paletteSelect.value;
+      let bg = '#0b1017', borderCol = '#232d3d', accent = '#0d9488', textCol = '#f1f5f9';
+
+      if (palette === 'turquoise') {
+        bg = '#0e1726'; borderCol = '#1e293b'; accent = '#0284c7';
+      } else if (palette === 'basalt') {
+        bg = '#111827'; borderCol = '#374151'; accent = '#059669';
+      }
+
+      cCtx.fillStyle = bg;
+      cCtx.fillRect(0, 0, w, h);
+
+      const margin = w * 0.08;
+      cCtx.strokeStyle = borderCol;
+      cCtx.lineWidth = 2;
+      cCtx.strokeRect(margin, margin, w - margin * 2, h - margin * 2);
+
+      cCtx.fillStyle = accent;
+      cCtx.font = `600 ${Math.round(w * 0.022)}px monospace`;
+      cCtx.textAlign = 'center';
+      cCtx.fillText('THE COMMONS PROTOCOL • CONTEMPLATION', w / 2, margin + w * 0.06);
+
+      const maxTextWidth = w - margin * 2.8;
+      const maxTextHeight = h - margin * 3.2;
+      let fontSize = Math.round(w * 0.042);
+      let lines = [];
+      let totalTextHeight = 0;
+
+      while (fontSize > 16) {
+        cCtx.font = `400 ${fontSize}px sans-serif`;
+        const lineHeight = fontSize * 1.5;
+        lines = wrapText(cCtx, cardTextInput.value, maxTextWidth);
+        totalTextHeight = lines.length * lineHeight;
+        if (totalTextHeight < maxTextHeight) break;
+        fontSize -= 2;
+      }
+
+      cCtx.fillStyle = textCol;
+      cCtx.textAlign = 'center';
+      const startY = (h - totalTextHeight) / 2 + fontSize * 0.5;
+      const finalLineHeight = fontSize * 1.5;
+
+      for (let i = 0; i < lines.length; i++) {
+        cCtx.fillText(lines[i], w / 2, startY + i * finalLineHeight);
+      }
+
+      cCtx.fillStyle = '#64748b';
+      cCtx.font = `400 ${Math.round(w * 0.018)}px monospace`;
+      cCtx.fillText('NO LEADER • NO TITHE • VERIFY IN CONDUCT', w / 2, h - margin - w * 0.04);
+
+      overflowCheckBadge.innerText = `Layout Safe: ${w}x${h}px rendered with ${fontSize}px adaptive typography.`;
+    }
+
+    document.getElementById('btnDownloadCard').addEventListener('click', () => {
+      const link = document.createElement('a');
+      link.download = `commons-card-${platformSelect.value}.png`;
+      link.href = cardCanvas.toDataURL('image/png');
+      link.click();
+    });
+
+    document.getElementById('btnExportCode').addEventListener('click', () => {
+      const blob = new Blob([document.documentElement.outerHTML], { type: 'text/html' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'the-commons-protocol.html';
+      a.click();
+    });
+
+    document.getElementById('btnExportJSON').addEventListener('click', () => {
+      const exportData = folios.map(f => ({
+        id: f.id, book: f.book, title: f.title, sim_anchor: f.sim, thesis: f.thesis,
+        mechanism: f.mech, somatic_praxis: f.praxis,
+        canonical_essay: f.essay.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim()
+      }));
+      const blob = new Blob([JSON.stringify(exportData, null, 2)], { type: 'application/json' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'commons-36-folios.json';
+      a.click();
+    });
+
+    document.getElementById('btnCopyCodex').addEventListener('click', () => {
+      let md = "# THE COMMONS PROTOCOL: 36 BESPOKE CANONICAL FOLIOS\nPublic Domain (CC0 1.0)\n\n";
+      folios.forEach(f => {
+        md += `### Folio ${f.id < 10 ? '0' + f.id : f.id}: ${f.title} (Book ${f.book})\n`;
+        md += `**Thesis:** ${f.thesis}\n**Mechanism:** ${f.mech}\n**Praxis:** ${f.praxis}\n\n`;
+        md += `${f.essay.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim()}\n\n---\n\n`;
+      });
+      navigator.clipboard.writeText(md).then(() => { alert("Complete 36-Folio Codex copied to clipboard as Markdown."); });
+    });
+
+    window.copyEventListing = function() {
+      const text = `EVENT TITLE:
+The Commons: Peer Study Circle & Kinetic Phenomenology (Leaderless)
+
+EVENT DESCRIPTION:
+This is a peer-facilitated study group for exploring the mechanics of perception, emotional friction, and non-hierarchical community based on The Open Protocol.
+
+This gathering is NOT a lecture, spiritual sermon, therapy session, or networking mixer. There is no guru, teacher, or membership fee. We sit as equals to examine conduct through direct observation and somatic daily practice.
+
+SESSION AGENDA (60 Minutes Strict):
+- 00:00 - 00:05: Grounding silence & breath pacing
+- 00:05 - 00:15: Reading of the weekly Folio & kinetic diagram examination
+- 00:15 - 00:50: Non-judgmental sharing round: empirical results of daily practice
+- 00:50 - 00:60: Silent closing
+
+WHAT TO BRING:
+- A notebook and pen
+- An open, disciplined mind willing to speak from direct personal experience
+
+COST:
+100% Free. No donations, collection plates, tithing, or commercial offerings will ever take place.`;
+      navigator.clipboard.writeText(text).then(() => { alert("Eventbrite/Meetup listing copy copied to clipboard."); });
+    };
+
+    drawCard();
+  </script>
+</body>
+</html>

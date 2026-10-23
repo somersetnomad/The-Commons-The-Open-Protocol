@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Commons | The Open Protocol</title>
-  <meta name="description" content="A leaderless, uncapturable philosophical architecture and phenomenological diagram engine.">
-  
-  <!-- Embedded High-Resolution Scalable Vector Favicon -->
+  <meta name="description" content="A leaderless, uncapturable philosophical architecture and phenomenological kinetic diagram engine. Verified in direct conduct.">
+
+  <!-- Embedded Scalable Vector Favicon (Mineral Stone Ring) -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><circle cx='32' cy='32' r='30' fill='%230b1017' stroke='%23334155' stroke-width='2'/><circle cx='32' cy='32' r='18' fill='none' stroke='%230284c7' stroke-width='1.5' stroke-dasharray='4 2'/><circle cx='32' cy='32' r='4' fill='%230d9488'/><circle cx='32' cy='14' r='2.5' fill='%2394a3b8'/><circle cx='48' cy='40' r='2.5' fill='%2394a3b8'/><circle cx='16' cy='40' r='2.5' fill='%2394a3b8'/><path d='M32 14 L48 40 L16 40 Z' fill='none' stroke='%23334155' stroke-width='1' opacity='0.7'/></svg>">
 
   <style>
@@ -17,11 +17,11 @@
       --bg-elevated: #1a2332;      /* Slate Blue */
       --border: #232d3d;           /* Polished Ironstone */
       --border-accent: #334155;    /* Banded Flint */
-      
+
       --text-main: #f1f5f9;        /* Polished Milk Quartz */
       --text-muted: #94a3b8;       /* Weathered River-Chalk */
       --text-dim: #64748b;         /* Wet Slate */
-      
+
       --accent-mineral: #0284c7;   /* Deep Sea Mineral Blue */
       --accent-mineral-soft: rgba(2, 132, 199, 0.12);
       --accent-turquoise: #0d9488; /* Matte Polished Turquoise */
@@ -64,7 +64,7 @@
       top: 0;
       z-index: 100;
       backdrop-filter: blur(12px);
-      background-color: rgba(11, 16, 23, 0.88);
+      background-color: rgba(11, 16, 23, 0.9);
       border-bottom: 1px solid var(--border);
     }
 
@@ -82,9 +82,10 @@
       align-items: center;
       gap: 0.75rem;
       font-weight: 700;
-      letter-spacing: 0.06em;
-      color: #fff;
-      font-size: 1rem;
+      letter-spacing: 0.08em;
+      color: var(--text-main);
+      font-size: 0.95rem;
+      text-transform: uppercase;
     }
 
     .brand-glyph {
@@ -97,8 +98,8 @@
 
     .nav-links {
       display: flex;
-      gap: 1.4rem;
-      font-size: 0.85rem;
+      gap: 1.5rem;
+      font-size: 0.82rem;
       font-family: var(--font-mono);
       list-style: none;
     }
@@ -108,24 +109,28 @@
     }
 
     .nav-links a:hover {
-      color: var(--accent-mineral);
+      color: var(--accent-turquoise);
+    }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
     }
 
     /* Hero */
     .hero {
       position: relative;
-      padding: 6rem 1.5rem 4.5rem;
+      padding: 5.5rem 1.5rem 4rem;
       text-align: center;
-      max-width: 920px;
+      max-width: 900px;
       margin: 0 auto;
     }
 
     .badge {
       display: inline-block;
       font-family: var(--font-mono);
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       text-transform: uppercase;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.14em;
       padding: 0.35rem 0.85rem;
       border-radius: 4px;
       background: var(--bg-surface);
@@ -135,19 +140,19 @@
     }
 
     h1 {
-      font-size: clamp(2.2rem, 5vw, 3.4rem);
+      font-size: clamp(2.1rem, 4.8vw, 3.4rem);
       font-weight: 800;
       letter-spacing: -0.025em;
-      line-height: 1.15;
+      line-height: 1.18;
       margin-bottom: 1.25rem;
       color: #fff;
     }
 
     .hero p {
-      font-size: 1.12rem;
+      font-size: 1.1rem;
       color: var(--text-muted);
       margin-bottom: 2rem;
-      max-width: 720px;
+      max-width: 740px;
       margin-left: auto;
       margin-right: auto;
     }
@@ -163,7 +168,7 @@
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      font-size: 0.875rem;
+      font-size: 0.85rem;
       font-family: var(--font-mono);
       font-weight: 600;
       padding: 0.75rem 1.4rem;
@@ -171,6 +176,8 @@
       cursor: pointer;
       border: 1px solid transparent;
       transition: all 0.2s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
     }
 
     .btn-primary {
@@ -179,7 +186,7 @@
     }
 
     .btn-primary:hover {
-      background: #fff;
+      background: #ffffff;
       transform: translateY(-1px);
     }
 
@@ -203,7 +210,7 @@
     }
 
     .section-header {
-      margin-bottom: 2.5rem;
+      margin-bottom: 2.75rem;
       text-align: center;
     }
 
@@ -212,11 +219,12 @@
       font-weight: 700;
       color: #fff;
       margin-bottom: 0.5rem;
+      letter-spacing: -0.015em;
     }
 
     .section-subtitle {
       color: var(--text-muted);
-      max-width: 650px;
+      max-width: 680px;
       margin: 0 auto;
       font-size: 0.95rem;
     }
@@ -290,9 +298,10 @@
       color: var(--accent-turquoise);
       font-weight: 600;
       background: rgba(13, 148, 136, 0.04);
+      border-left: 1px solid rgba(13, 148, 136, 0.2);
     }
 
-    /* Kinetic Diagram Engines */
+    /* Kinetic Diagram Containers */
     .sim-container {
       display: grid;
       grid-template-columns: 1fr 340px;
@@ -304,7 +313,7 @@
       margin-bottom: 2rem;
     }
 
-    @media (max-width: 860px) {
+    @media (max-width: 900px) {
       .sim-container {
         grid-template-columns: 1fr;
       }
@@ -333,19 +342,24 @@
     }
 
     .sim-panel h4 {
-      font-size: 1.1rem;
+      font-size: 1.15rem;
       color: #fff;
       margin-bottom: 0.5rem;
     }
 
     .sim-panel p {
-      font-size: 0.85rem;
+      font-size: 0.875rem;
       color: var(--text-muted);
       margin-bottom: 1.25rem;
+      line-height: 1.55;
     }
 
     .control-group {
       margin-bottom: 1.2rem;
+      background: var(--bg-elevated);
+      padding: 0.9rem;
+      border-radius: 4px;
+      border: 1px solid var(--border);
     }
 
     .control-label {
@@ -354,12 +368,18 @@
       font-size: 0.78rem;
       font-family: var(--font-mono);
       color: var(--text-muted);
-      margin-bottom: 0.4rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .control-label span:last-child {
+      color: var(--accent-turquoise);
+      font-weight: 600;
     }
 
     input[type="range"] {
       width: 100%;
       accent-color: var(--accent-turquoise);
+      cursor: pointer;
     }
 
     /* Axiom Accordion */
@@ -374,11 +394,16 @@
       border: 1px solid var(--border);
       border-radius: 4px;
       overflow: hidden;
+      transition: border-color 0.2s ease;
+    }
+
+    .axiom-item.open {
+      border-color: var(--border-accent);
     }
 
     .axiom-trigger {
       width: 100%;
-      padding: 1rem 1.25rem;
+      padding: 1.1rem 1.25rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -395,10 +420,21 @@
       background: var(--bg-elevated);
     }
 
+    .axiom-symbol {
+      font-family: var(--font-mono);
+      color: var(--accent-turquoise);
+      font-size: 1.1rem;
+      transition: transform 0.2s ease;
+    }
+
+    .axiom-item.open .axiom-symbol {
+      transform: rotate(45deg);
+    }
+
     .axiom-content {
       padding: 0 1.25rem 1.25rem;
       display: none;
-      font-size: 0.88rem;
+      font-size: 0.9rem;
       color: var(--text-muted);
       border-top: 1px solid var(--border);
       margin-top: 0.5rem;
@@ -434,23 +470,31 @@
       font-size: 0.78rem;
       font-family: var(--font-mono);
       color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
       margin-bottom: 0.4rem;
     }
 
     select, textarea {
       width: 100%;
-      padding: 0.65rem;
+      padding: 0.65rem 0.75rem;
       background: var(--bg-primary);
-      border: 1px solid var(--border);
+      border: 1px solid var(--border-accent);
       border-radius: 4px;
       color: #fff;
       font-family: inherit;
       font-size: 0.875rem;
+      outline: none;
+    }
+
+    select:focus, textarea:focus {
+      border-color: var(--accent-turquoise);
     }
 
     textarea {
       resize: vertical;
-      min-height: 80px;
+      min-height: 85px;
+      line-height: 1.5;
     }
 
     .card-preview-area {
@@ -469,31 +513,57 @@
       max-width: 100%;
       max-height: 480px;
       border-radius: 4px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
     }
 
     .badge-metric {
       font-family: var(--font-mono);
       font-size: 0.72rem;
       color: var(--accent-turquoise);
-      margin-top: 0.75rem;
+      margin-top: 0.85rem;
     }
 
     /* Footer */
     footer {
       border-top: 1px solid var(--border);
-      padding: 3rem 1.5rem;
+      padding: 3.5rem 1.5rem;
       text-align: center;
       font-size: 0.82rem;
       color: var(--text-muted);
       font-family: var(--font-mono);
+      background: var(--bg-surface);
     }
 
     .footer-actions {
       display: flex;
       justify-content: center;
-      gap: 1.5rem;
+      gap: 1.2rem;
       margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    /* In-App Toast */
+    #toast {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      background: var(--bg-elevated);
+      color: var(--text-main);
+      border: 1px solid var(--accent-turquoise);
+      padding: 0.75rem 1.25rem;
+      border-radius: 4px;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      opacity: 0;
+      transform: translateY(15px);
+      pointer-events: none;
+      transition: all 0.25s ease;
+      z-index: 1000;
+    }
+    #toast.show {
+      opacity: 1;
+      transform: translateY(0);
     }
   </style>
 </head>
@@ -504,25 +574,25 @@
     <div class="nav-container">
       <div class="brand">
         <svg class="brand-glyph" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><path d="M12 2 L12 22"/></svg>
-        THE COMMONS
+        The Commons
       </div>
       <ul class="nav-links">
         <li><a href="#philosophy">Philosophy</a></li>
-        <li><a href="#diagrams">Kinetic Diagrams</a></li>
-        <li><a href="#axioms">Axioms</a></li>
-        <li><a href="#share">Distribute</a></li>
+        <li><a href="#diagrams">Kinetic Proofs</a></li>
+        <li><a href="#axioms">The 7 Axioms</a></li>
+        <li><a href="#share">Card Engine</a></li>
       </ul>
     </div>
   </header>
 
   <!-- Hero Section -->
   <div class="hero">
-    <span class="badge">Uncentralized • Autonomous • Open Access</span>
+    <span class="badge">Uncentralized • Autonomous • Open Protocol</span>
     <h1>A Protocol Beyond Masters.</h1>
-    <p>A leaderless philosophical architecture expressed through kinetic diagrams and verifiable behavioral mechanics. No tithes, no clergy, no central authority. Run the experiment in your direct experience.</p>
+    <p>A leaderless philosophical architecture expressed through kinetic diagrams and verifiable behavioral mechanics. No tithes, no clergy, no central authority. Verify in your direct conduct.</p>
     <div class="btn-row">
       <a href="#philosophy" class="btn btn-primary">Examine Foundations</a>
-      <a href="#diagrams" class="btn btn-secondary">Run Kinetic Diagrams</a>
+      <a href="#diagrams" class="btn btn-secondary">Inspect Kinetic Proofs</a>
     </div>
   </div>
 
@@ -530,13 +600,13 @@
   <section id="philosophy">
     <div class="section-header">
       <h2 class="section-title">Epistemic & Ontological Foundations</h2>
-      <p class="section-subtitle">Why traditional religious and moral systems decay, and how a stateless, verifiable protocol endures without dogmatic capture.</p>
+      <p class="section-subtitle">Why traditional religious systems decay through charisma bottlenecks and rent-seeking, and how a stateless, verifiable protocol endures without dogmatic capture.</p>
     </div>
 
     <div class="philosophy-grid">
       <div class="card">
         <h3>01 / Empirical Phenomenology</h3>
-        <p>No requirement of faith or adherence to unprovable mythology. Truth is evaluated solely through reproducible inner observation: causes, emotional feedback loops, and conduct outcomes verified directly in lived experience.</p>
+        <p>No requirement of faith or adherence to unprovable mythology. Truth is evaluated solely through reproducible inner observation: how causal loops, emotional reactivity, and ethical conduct function in real time.</p>
       </div>
       <div class="card">
         <h3>02 / The Relational Field</h3>
@@ -549,7 +619,7 @@
     </div>
 
     <!-- Comparative Matrix -->
-    <div class="section-header" style="margin-top: 3rem; margin-bottom: 1.5rem;">
+    <div class="section-header" style="margin-top: 3.5rem; margin-bottom: 1.5rem;">
       <h3 style="font-size: 1.35rem; color: #fff;">Structural Comparative Matrix</h3>
     </div>
     <div class="matrix-table-wrap">
@@ -559,7 +629,7 @@
             <th>Dimension</th>
             <th>Traditional Faiths</th>
             <th>Dogmatic Materialism</th>
-            <th class="col-highlight">The Open Protocol</th>
+            <th class="col-highlight">The Commons Protocol</th>
           </tr>
         </thead>
         <tbody>
@@ -571,32 +641,32 @@
           </tr>
           <tr>
             <td><strong>Failure Mode</strong></td>
-            <td>Corruption, Abuse, Schism</td>
-            <td>Nihilism, Atomization, Ennui</td>
-            <td class="col-highlight">None (Stateless, Unownable)</td>
+            <td>Corruption, Abuse, Sectarian Schism</td>
+            <td>Nihilism, Atomization, Meaning Crisis</td>
+            <td class="col-highlight">None (Stateless, Unownable, Public Domain)</td>
           </tr>
           <tr>
             <td><strong>Transmission</strong></td>
-            <td>Evangelism, Coercion, Heritage</td>
-            <td>Academic Gatekeeping</td>
-            <td class="col-highlight">Kinetic Diagrams & Peer Utility</td>
+            <td>Evangelism, Hereditary Coercion</td>
+            <td>Academic & Guild Gatekeeping</td>
+            <td class="col-highlight">Kinetic Diagrams & Peer-to-Peer Utility</td>
           </tr>
           <tr>
             <td><strong>Economic Engine</strong></td>
-            <td>Tithing, Donations, Endowments</td>
-            <td>Grant Funding, Commercialization</td>
-            <td class="col-highlight">Zero-Cost Static Mirroring</td>
+            <td>Tithing, Endowments, Indulgences</td>
+            <td>Grants, Subscriptions, Monopolies</td>
+            <td class="col-highlight">Zero Extraction • CC0 Public Domain</td>
           </tr>
         </tbody>
       </table>
     </div>
   </section>
 
-  <!-- Kinetic Diagrams Section -->
+  <!-- Kinetic Diagrams Section (Autonomous Engines) -->
   <section id="diagrams">
     <div class="section-header">
       <h2 class="section-title">Kinetic State Diagrams</h2>
-      <p class="section-subtitle">Visualizing the inner thermodynamic mechanics of human friction and liberation in real time.</p>
+      <p class="section-subtitle">Real-time dynamic physics models running continuously. Observe the inner thermodynamic mechanics of human friction and spacious liberation.</p>
     </div>
 
     <!-- Simulation 1: Reaction vs Response -->
@@ -606,17 +676,17 @@
       </div>
       <div class="sim-panel">
         <div>
-          <h4>I. Reaction vs. Response</h4>
-          <p>Illustrates how incoming stimuli create destructive kinetic feedback when met with automatic rigidity versus calm harmonic wave dissipation when met with spacious awareness.</p>
+          <h4>I. The Observer Interval (Reaction vs. Response)</h4>
+          <p>Continuous stream of emotional stimuli arriving from the left. When the observer gap is tight, impulses slam into a rigid wall with violent hematite ricochets and sparks. When widened, impulses glide through a luminous interval into calm standing turquoise waves.</p>
           <div class="control-group">
             <div class="control-label">
-              <span>Observer Gap (Awareness)</span>
+              <span>Observer Gap (Awareness Space)</span>
               <span id="gapVal">50%</span>
             </div>
             <input type="range" id="gapSlider" min="5" max="100" value="50">
           </div>
         </div>
-        <button class="btn btn-secondary" id="btnEmitImpulse">Inject Stimulus Wave</button>
+        <button class="btn btn-secondary" id="btnToggleReactionState">Cycle Narrow / Wide Gap</button>
       </div>
     </div>
 
@@ -627,17 +697,17 @@
       </div>
       <div class="sim-panel">
         <div>
-          <h4>II. The Contraction Gradient</h4>
-          <p>Examines how tightening defensive ego boundaries shears connections with the broader field, producing localized turbulence and isolation.</p>
+          <h4>II. The Contraction Gradient (Ego vs. Field)</h4>
+          <p>An autonomous, breathing N-body web of mineral nodes (turquoise, jade, lapis sodalite) orbiting and connected to a central core stone. As defensive armoring increases, connecting filaments shear and high-frequency tremors isolate the central node.</p>
           <div class="control-group">
             <div class="control-label">
-              <span>Boundary Rigidity</span>
-              <span id="rigidityVal">40%</span>
+              <span>Boundary Rigidity (Armoring)</span>
+              <span id="rigidityVal">35%</span>
             </div>
-            <input type="range" id="rigiditySlider" min="0" max="100" value="40">
+            <input type="range" id="rigiditySlider" min="0" max="100" value="35">
           </div>
         </div>
-        <button class="btn btn-secondary" id="btnPulseField">Pulse Field Resonators</button>
+        <button class="btn btn-secondary" id="btnPulseEgoField">Pulse Harmonic Resonance</button>
       </div>
     </div>
 
@@ -649,85 +719,121 @@
       <div class="sim-panel">
         <div>
           <h4>III. Thermodynamics of Attachment</h4>
-          <p>Visualizes the fluid flow of transient moments. High grasping creates localized drag and friction; releasing restores effortless laminar streamflow.</p>
+          <p>A continuous hydrodynamic stream of polished river pebbles flows endlessly past a central basalt node. Increasing grasping triggers drag vortices and raw hematite thermal friction trails; releasing returns the stream to effortless laminar flow.</p>
           <div class="control-group">
             <div class="control-label">
-              <span>Grasping Coefficient</span>
-              <span id="graspVal">30%</span>
+              <span>Grasping Coefficient (Clinging)</span>
+              <span id="graspVal">25%</span>
             </div>
-            <input type="range" id="graspSlider" min="0" max="100" value="30">
+            <input type="range" id="graspSlider" min="0" max="100" value="25">
           </div>
         </div>
-        <button class="btn btn-secondary" id="btnReleaseGrasp">Let Go (Reset to 0%)</button>
+        <button class="btn btn-secondary" id="btnResetGrasp">Let Go (Release to 0%)</button>
       </div>
     </div>
   </section>
 
-  <!-- Axioms Accordion Section (All 7 Protocols) -->
+  <!-- Axioms Accordion Section (All 7 Protocols Complete) -->
   <section id="axioms">
     <div class="section-header">
       <h2 class="section-title">The Seven Open Axioms</h2>
-      <p class="section-subtitle">Grounded mechanical principles paired with immediate daily somatic practices.</p>
+      <p class="section-subtitle">Grounded mechanical principles paired with actionable daily somatic physical practices.</p>
     </div>
 
     <div class="axiom-list">
+      
+      <!-- Axiom 1 -->
       <div class="axiom-item open">
-        <button class="axiom-trigger">01. The Principle of Non-Ownership <span>+</span></button>
+        <button class="axiom-trigger">
+          <span>01. The Principle of Non-Ownership (Anatta / Entropic Flow)</span>
+          <span class="axiom-symbol">+</span>
+        </button>
         <div class="axiom-content">
-          <p>Nothing passing through conscious awareness belongs to the observer: thoughts, bodily sensations, achievements, or material artifacts are transient visitors. Suffering is the thermodynamic friction of holding onto that which is naturally flowing.</p>
-          <p style="margin-top: 0.5rem; color: var(--accent-turquoise);"><strong>Practice:</strong> When experiencing physical or mental friction, mentally open your hands and whisper: "This too is passing through."</p>
+          <p>Consciousness is an open clearing through which phenomena flow, not a proprietor who possesses them. Thoughts, bodily sensations, worldly accomplishments, and material forms are transient travelers. Suffering is the thermodynamic friction of awareness attempting to freeze or claim title over that which is in perpetual transition.</p>
+          <p style="margin-top: 0.6rem; color: var(--accent-turquoise);"><strong>Somatic Practice:</strong> When experiencing sudden mental or physical friction, open both palms flat. Whisper mentally: <em>"This sensation has entered the room; it does not belong to me; it will leave on its own accord."</em></p>
         </div>
       </div>
+
+      <!-- Axiom 2 -->
       <div class="axiom-item">
-        <button class="axiom-trigger">02. The Stimulus-Response Interval <span>+</span></button>
+        <button class="axiom-trigger">
+          <span>02. The Stimulus-Response Interval (The Sovereign Threshold)</span>
+          <span class="axiom-symbol">+</span>
+        </button>
         <div class="axiom-content">
-          <p>Between impulse and action lies an infinitesimal threshold. Whoever masters this micro-interval escapes deterministic programming and enters sovereign moral choice.</p>
-          <p style="margin-top: 0.5rem; color: var(--accent-turquoise);"><strong>Practice:</strong> Count two full respiratory cycles before responding to any communication that triggers defensive arousal.</p>
+          <p>Between any external impulse and the resulting biological reaction lies an infinitesimal temporal gap. The unconscious mind behaves as a deterministic reflex automaton. Human sovereignty and moral freedom exist strictly in the conscious widening of this micro-interval.</p>
+          <p style="margin-top: 0.6rem; color: var(--accent-turquoise);"><strong>Somatic Practice:</strong> When triggered, insulted, or provoked, enforce two full tidal respiratory cycles before voluntary vocal or muscular engagement.</p>
         </div>
       </div>
+
+      <!-- Axiom 3 -->
       <div class="axiom-item">
-        <button class="axiom-trigger">03. The Dissolution of the Mediator <span>+</span></button>
+        <button class="axiom-trigger">
+          <span>03. The Dissolution of the Mediator (Anti-Clerical Direct Access)</span>
+          <span class="axiom-symbol">+</span>
+        </button>
         <div class="axiom-content">
-          <p>No intermediary possesses private access to reality. Any entity, teacher, or hierarchy demanding submission or money to mediate truth is an extractive bottleneck.</p>
-          <p style="margin-top: 0.5rem; color: var(--accent-turquoise);"><strong>Practice:</strong> Consult direct natural observation and repeatable experiments over revered human authorities.</p>
+          <p>No human teacher, priest, prophet, guru, or algorithmic intermediary possesses privileged or proprietary bandwidth to reality. Any institution that charges fees, demands personal submission, or claims exclusive keys to truth is an extractive bottleneck.</p>
+          <p style="margin-top: 0.6rem; color: var(--accent-turquoise);"><strong>Somatic Practice:</strong> Consult direct first-person experimentation over revered authorities. Never tithe to spiritual organizations; provide food, tools, or physical shelter directly to those in need.</p>
         </div>
       </div>
+
+      <!-- Axiom 4 -->
       <div class="axiom-item">
-        <button class="axiom-trigger">04. The Kinetic Conservation of Goodwill <span>+</span></button>
+        <button class="axiom-trigger">
+          <span>04. The Kinetic Hygiene of Goodwill (Compassion as Regulation)</span>
+          <span class="axiom-symbol">+</span>
+        </button>
         <div class="axiom-content">
-          <p>Cruelty contracts the nervous system; generosity expands it. Ethical integrity is not an ancient obligation but an immediate physiological hygiene.</p>
-          <p style="margin-top: 0.5rem; color: var(--accent-turquoise);"><strong>Practice:</strong> Perform one unannounced, uncredited act of physical assistance within your immediate neighborhood today.</p>
+          <p>Compassion and active goodwill are not sentimental favors granted to others; they are baseline neurobiological hygiene. Malice, resentment, and envy flood the cardiovascular system with inflammatory tension; active benevolence immediately downregulates autonomic strain.</p>
+          <p style="margin-top: 0.6rem; color: var(--accent-turquoise);"><strong>Somatic Practice:</strong> Silently extend unconditional ease toward three people who irritated you today. Note the immediate drop in jaw clenching and diaphragmatic compression.</p>
         </div>
       </div>
+
+      <!-- Axiom 5 -->
       <div class="axiom-item">
-        <button class="axiom-trigger">05. The Impermanence of Rigid Identity <span>+</span></button>
+        <button class="axiom-trigger">
+          <span>05. The Impermanence of Rigid Identity (Ego as Process)</span>
+          <span class="axiom-symbol">+</span>
+        </button>
         <div class="axiom-content">
-          <p>The ego is a process, not a solid monument. Treating opinions and self-narratives as immutable structures produces fragility when circumstances inevitably evolve.</p>
-          <p style="margin-top: 0.5rem; color: var(--accent-turquoise);"><strong>Practice:</strong> Identify one cherished conviction each week and write down two valid counter-arguments with sincere intellectual respect.</p>
+          <p>The ego is a continuous metabolic process, not a static stone monument. Treating opinions, political affiliations, and identity labels as immutable structures causes fragility and panic when external conditions shift.</p>
+          <p style="margin-top: 0.6rem; color: var(--accent-turquoise);"><strong>Somatic Practice:</strong> Identify one cherished intellectual conviction each week and articulate two respectful counter-arguments with genuine intellectual honesty.</p>
         </div>
       </div>
+
+      <!-- Axiom 6 -->
       <div class="axiom-item">
-        <button class="axiom-trigger">06. Grounded Presence Over Screen Abstraction <span>+</span></button>
+        <button class="axiom-trigger">
+          <span>06. Grounded Presence Over Screen Abstraction (Screen-to-Dirt)</span>
+          <span class="axiom-symbol">+</span>
+        </button>
         <div class="axiom-content">
-          <p>A diagram points to water; it cannot quench thirst. This web protocol succeeds only when it prompts the participant to close the screen and engage tangible reality.</p>
-          <p style="margin-top: 0.5rem; color: var(--accent-turquoise);"><strong>Practice:</strong> Step outside for twenty minutes daily with empty hands, observing sensory details without digital capture.</p>
+          <p>A diagram points to water; it cannot quench thirst. This web protocol succeeds only when it prompts the participant to close the screen and engage tangible reality. Digital networks simulate community while maximizing nervous exhaustion.</p>
+          <p style="margin-top: 0.6rem; color: var(--accent-turquoise);"><strong>Somatic Practice:</strong> Close the browser after reading. Step onto bare ground or concrete. Touch plant matter, greet an elder, and drink cold water with full somatic awareness.</p>
         </div>
       </div>
+
+      <!-- Axiom 7 -->
       <div class="axiom-item">
-        <button class="axiom-trigger">07. Decentralized Stewardship <span>+</span></button>
+        <button class="axiom-trigger">
+          <span>07. Decentralized Stewardship (The Forking Imperative)</span>
+          <span class="axiom-symbol">+</span>
+        </button>
         <div class="axiom-content">
-          <p>Truth cannot be held in a private vault. Every node that receives insight is obligated to mirror and distribute it freely, without modifying core principles for personal vanity.</p>
-          <p style="margin-top: 0.5rem; color: var(--accent-turquoise);"><strong>Practice:</strong> Share tools, knowledge, and quiet assistance anonymously with those building local resilience.</p>
+          <p>A philosophy that cannot be freely copied or mirrored without permission is a brand, not a universal truth. The Commons carries no copyright, no trademark, and no canonical central server. Universal replication renders the movement uncapturable and immortal.</p>
+          <p style="margin-top: 0.6rem; color: var(--accent-turquoise);"><strong>Somatic Practice:</strong> Save this application locally. Host it on your independent domain, distribute it on USB keys, or print physical folios for your local community.</p>
         </div>
       </div>
+
     </div>
   </section>
 
-  <!-- Distribution Card Generator Section -->
+  <!-- Card Generator Section -->
   <section id="share">
     <div class="section-header">
-      <h2 class="section-title">Peer-to-Peer Contemplative Card Engine</h2>
-      <p class="section-subtitle">Generate high-resolution social reflection cards. Automatic proportional typography guarantees text never overflows bounds regardless of format.</p>
+      <h2 class="section-title">Contemplative Card Engine</h2>
+      <p class="section-subtitle">Generate high-resolution social reflection cards. Proportional typographic auto-scaling guarantees your inscription never overflows bounds across all platform formats.</p>
     </div>
 
     <div class="card-gen-layout">
@@ -735,10 +841,10 @@
         <div class="form-group">
           <label for="platformSelect">Target Platform & Aspect Ratio</label>
           <select id="platformSelect">
-            <option value="story">Story / Reel (9:16 Vertical • 1080x1920)</option>
-            <option value="square" selected>Square Post (1:1 • 1080x1080)</option>
-            <option value="portrait">Portrait Post (4:5 • 1080x1350)</option>
-            <option value="landscape">Landscape / Header (16:9 • 1920x1080)</option>
+            <option value="story">Story / Reel (9:16 Vertical • 1080×1920)</option>
+            <option value="square" selected>Square Post (1:1 • 1080×1080)</option>
+            <option value="portrait">Portrait Post (4:5 • 1080×1350)</option>
+            <option value="landscape">Landscape / Header (16:9 • 1920×1080)</option>
           </select>
         </div>
 
@@ -748,7 +854,7 @@
             <option value="0">Axiom 1: Friction of Holding</option>
             <option value="1">Axiom 2: The Interval of Sovereignty</option>
             <option value="2">Axiom 3: The Dissolved Intermediary</option>
-            <option value="3">Axiom 4: Conservation of Goodwill</option>
+            <option value="3">Axiom 4: Goodwill as Hygiene</option>
             <option value="4">Axiom 5: Impermanence of Identity</option>
             <option value="5">Axiom 6: Grounded Presence</option>
             <option value="6">Axiom 7: Decentralized Stewardship</option>
@@ -764,8 +870,8 @@
         <div class="form-group">
           <label for="paletteSelect">Aesthetic Palette</label>
           <select id="paletteSelect">
-            <option value="sodalite">Sodalite Charcoal & Polished Quartz</option>
-            <option value="turquoise">Deep Flint & Sea Turquoise</option>
+            <option value="sodalite">Sodalite Charcoal & Milk Quartz</option>
+            <option value="turquoise">Deep Flint & Matte Turquoise</option>
             <option value="basalt">Basalt & Riverstone Jade</option>
           </select>
         </div>
@@ -789,21 +895,22 @@
     <p>THE COMMONS PROTOCOL • PUBLIC DOMAIN (CC0-1.0) • ZERO WATERMARK • DISTRIBUTE FREELY</p>
   </footer>
 
-  <!-- Script Architecture -->
+  <!-- Notification Toast -->
+  <div id="toast">Notice</div>
+
+  <!-- Client Script Architecture -->
   <script>
-    /* Helper for Retina High-DPI Canvas Scaling */
-    function setupRetinaCanvas(canvas) {
-      const dpr = window.devicePixelRatio || 1;
-      const rect = canvas.getBoundingClientRect();
-      canvas.width = rect.width * dpr;
-      canvas.height = rect.height * dpr;
-      const ctx = canvas.getContext('2d');
-      ctx.resetTransform();
-      ctx.scale(dpr, dpr);
-      return { ctx, width: rect.width, height: rect.height };
+    /* ==========================================================
+       0. UTILITIES & TOAST
+    ========================================================== */
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      toast.innerText = msg;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2600);
     }
 
-    /* --- Accordion Toggle --- */
+    /* Accordion Toggle */
     document.querySelectorAll('.axiom-trigger').forEach(btn => {
       btn.addEventListener('click', () => {
         const item = btn.parentElement;
@@ -811,61 +918,137 @@
       });
     });
 
-    /* --- Simulation 1: Reaction vs Response --- */
+    /* ==========================================================
+       CANVAS RESIZE ARCHITECTURE (FIX FOR LOST ANIMATIONS)
+       - We measure bounding boxes on load & on window resize ONLY.
+       - NEVER resize canvas width/height inside requestAnimationFrame!
+    ========================================================== */
     const rCanvas = document.getElementById('simReactionCanvas');
+    const eCanvas = document.getElementById('simEgoCanvas');
+    const aCanvas = document.getElementById('simAttachCanvas');
+
+    const rCtx = rCanvas.getContext('2d');
+    const eCtx = eCanvas.getContext('2d');
+    const aCtx = aCanvas.getContext('2d');
+
+    let dims = {
+      r: { w: 600, h: 380 },
+      e: { w: 600, h: 380 },
+      a: { w: 600, h: 380 }
+    };
+
+    function updateAllCanvasDimensions() {
+      const dpr = window.devicePixelRatio || 1;
+      
+      [
+        { canvas: rCanvas, key: 'r' },
+        { canvas: eCanvas, key: 'e' },
+        { canvas: aCanvas, key: 'a' }
+      ].forEach(({ canvas, key }) => {
+        const rect = canvas.getBoundingClientRect();
+        const w = Math.floor(rect.width) || 600;
+        const h = Math.floor(rect.height) || 380;
+        
+        dims[key] = { w, h };
+        canvas.width = Math.floor(w * dpr);
+        canvas.height = Math.floor(h * dpr);
+
+        const ctx = canvas.getContext('2d');
+        ctx.resetTransform();
+        ctx.scale(dpr, dpr);
+      });
+    }
+
+    window.addEventListener('resize', updateAllCanvasDimensions);
+    // Initial measure
+    updateAllCanvasDimensions();
+
+    /* ==========================================================
+       1. SIMULATION 1: REACTION VS RESPONSE (AUTONOMOUS)
+       - Stream of particles continuously injected from left
+       - If gap > 35%: particles glide through golden/turquoise interval,
+         converting into smooth, standing sine waves (response)
+       - If gap < 35%: particles slam into a rigid wall, exploding into
+         raw hematite ricochet sparks and shudder (reaction)
+    ========================================================== */
     const gapSlider = document.getElementById('gapSlider');
     const gapVal = document.getElementById('gapVal');
-    let rParticles = [];
-    let rSparks = [];
+    const btnToggleReaction = document.getElementById('btnToggleReactionState');
 
     gapSlider.addEventListener('input', (e) => {
       gapVal.innerText = `${e.target.value}%`;
     });
 
-    document.getElementById('btnEmitImpulse').addEventListener('click', () => {
-      const rect = rCanvas.getBoundingClientRect();
-      for (let i = 0; i < 6; i++) {
-        rParticles.push({
-          x: 10,
-          y: rect.height / 2 + (Math.random() * 50 - 25),
-          vx: 3.5 + Math.random() * 2,
-          vy: (Math.random() - 0.5) * 1.5,
-          radius: 3,
-          color: '#0284c7',
-          absorbed: false
-        });
-      }
+    btnToggleReaction.addEventListener('click', () => {
+      gapSlider.value = gapSlider.value > 40 ? 15 : 65;
+      gapVal.innerText = `${gapSlider.value}%`;
+      showToast(gapSlider.value < 35 ? 'Observer gap closed: Reactive mode active.' : 'Observer gap widened: Spacious response active.');
     });
 
-    function renderReactionSim() {
-      const dpr = window.devicePixelRatio || 1;
-      const rect = rCanvas.getBoundingClientRect();
-      if (rCanvas.width !== rect.width * dpr || rCanvas.height !== rect.height * dpr) {
-        setupRetinaCanvas(rCanvas);
-      }
-      const ctx = rCanvas.getContext('2d');
-      ctx.fillStyle = '#0b1017';
-      ctx.fillRect(0, 0, rect.width, rect.height);
+    // Populate initial continuous stream
+    let rParticles = [];
+    let rSparks = [];
+    let rSineT = 0;
+
+    for (let i = 0; i < 18; i++) {
+      rParticles.push({
+        x: Math.random() * 200,
+        y: 190 + (Math.random() - 0.5) * 60,
+        vx: 2.4 + Math.random() * 1.5,
+        vy: (Math.random() - 0.5) * 0.4,
+        radius: 3.5,
+        color: '#0284c7'
+      });
+    }
+
+    function renderReactionLoop() {
+      const { w, h } = dims.r;
+      rSineT += 0.04;
+
+      // Background clearing
+      rCtx.fillStyle = '#0b1017';
+      rCtx.fillRect(0, 0, w, h);
 
       const gapRatio = gapSlider.value / 100;
-      const observerWidth = rect.width * 0.35 * gapRatio;
-      const observerX = rect.width * 0.45 - observerWidth / 2;
-      const barrierX = observerX + observerWidth;
+      const isReactive = gapRatio < 0.35;
+      
+      const fieldStartX = w * 0.28;
+      const maxFieldW = w * 0.44;
+      const currentFieldW = maxFieldW * gapRatio;
+      const barrierX = fieldStartX + currentFieldW;
+      const centerY = h / 2;
 
-      // Draw Observer Interval Area
-      ctx.fillStyle = 'rgba(13, 148, 136, 0.08)';
-      ctx.fillRect(observerX, 20, observerWidth, rect.height - 40);
-      ctx.strokeStyle = '#334155';
-      ctx.strokeRect(observerX, 20, observerWidth, rect.height - 40);
+      // Draw Observer Threshold Zone
+      rCtx.fillStyle = isReactive ? 'rgba(159, 18, 57, 0.08)' : 'rgba(13, 148, 136, 0.12)';
+      rCtx.fillRect(fieldStartX, 30, currentFieldW, h - 60);
 
-      ctx.fillStyle = '#94a3b8';
-      ctx.font = '10px monospace';
-      ctx.fillText('INTERVAL GAP', observerX + 6, 36);
+      rCtx.strokeStyle = isReactive ? 'rgba(159, 18, 57, 0.3)' : 'rgba(13, 148, 136, 0.4)';
+      rCtx.setLineDash([4, 4]);
+      rCtx.strokeRect(fieldStartX, 30, currentFieldW, h - 60);
+      rCtx.setLineDash([]);
 
-      // Draw Rigid Barrier if Gap is Small
-      if (gapRatio < 0.35) {
-        ctx.fillStyle = '#9f1239';
-        ctx.fillRect(barrierX - 2, 20, 4, rect.height - 40);
+      rCtx.font = '10px monospace';
+      rCtx.fillStyle = isReactive ? '#9f1239' : '#0d9488';
+      rCtx.fillText(isReactive ? 'COMPRESSED INTERVAL' : 'OBSERVER INTERVAL', fieldStartX + 8, 48);
+
+      // Draw Rigid Barrier if Reactive, or Receptive Gateway if Spacious
+      rCtx.beginPath();
+      rCtx.moveTo(barrierX, 25);
+      rCtx.lineTo(barrierX, h - 25);
+      rCtx.lineWidth = isReactive ? 4 : 2;
+      rCtx.strokeStyle = isReactive ? '#9f1239' : 'rgba(13, 148, 136, 0.6)';
+      rCtx.stroke();
+
+      // Continuous Injection Generator
+      if (rParticles.length < 24 && Math.random() < 0.3) {
+        rParticles.push({
+          x: -10,
+          y: centerY + (Math.random() - 0.5) * 50,
+          vx: 2.2 + Math.random() * 1.6,
+          vy: (Math.random() - 0.5) * 0.4,
+          radius: 3.5,
+          color: '#0284c7'
+        });
       }
 
       // Update Sparks
@@ -873,209 +1056,331 @@
         const sp = rSparks[s];
         sp.x += sp.vx;
         sp.y += sp.vy;
-        sp.alpha -= 0.03;
-        ctx.fillStyle = `rgba(159, 18, 57, ${sp.alpha})`;
-        ctx.beginPath();
-        ctx.arc(sp.x, sp.y, 2, 0, Math.PI * 2);
-        ctx.fill();
+        sp.alpha -= 0.035;
+        rCtx.beginPath();
+        rCtx.arc(sp.x, sp.y, sp.size, 0, Math.PI * 2);
+        rCtx.fillStyle = `rgba(159, 18, 57, ${sp.alpha})`;
+        rCtx.fill();
         if (sp.alpha <= 0) rSparks.splice(s, 1);
       }
 
-      // Update Particles
+      // Process Particles
       for (let i = rParticles.length - 1; i >= 0; i--) {
         const p = rParticles[i];
         p.x += p.vx;
         p.y += p.vy;
 
-        // Collision with rigid barrier (reactive)
-        if (gapRatio < 0.35 && p.x >= barrierX - 4 && !p.absorbed) {
-          p.vx = -p.vx * 0.7;
-          p.color = '#9f1239';
-          for (let k = 0; k < 5; k++) {
-            rSparks.push({
-              x: barrierX,
-              y: p.y,
-              vx: (Math.random() - 0.7) * 4,
-              vy: (Math.random() - 0.5) * 4,
-              alpha: 1
-            });
+        // Inside Interval
+        if (p.x >= fieldStartX && p.x <= barrierX) {
+          if (!isReactive) {
+            p.color = '#0d9488';
+            p.vx *= 0.99;
           }
         }
 
-        // Spacious absorption (responsive)
-        if (p.x >= observerX && p.x <= barrierX && gapRatio >= 0.35) {
-          p.vx *= 0.96;
-          p.color = '#0d9488';
+        // Contact Barrier
+        if (p.x >= barrierX) {
+          if (isReactive) {
+            // Collision & violent ricochet
+            p.vx = -Math.abs(p.vx) * 0.8;
+            p.vy = (Math.random() - 0.5) * 4;
+            p.color = '#9f1239';
+
+            for (let k = 0; k < 6; k++) {
+              rSparks.push({
+                x: barrierX,
+                y: p.y,
+                vx: -(Math.random() * 4 + 1),
+                vy: (Math.random() - 0.5) * 5,
+                size: Math.random() * 2.5 + 1,
+                alpha: 1.0
+              });
+            }
+          } else {
+            // Harmonic wave dissolution
+            p.color = '#0d9488';
+          }
         }
 
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-        ctx.fillStyle = p.color;
-        ctx.fill();
+        // Render Particle
+        rCtx.beginPath();
+        rCtx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        rCtx.fillStyle = p.color;
+        rCtx.fill();
 
-        if (p.x > rect.width || p.x < 0) {
+        // Recycle offscreen
+        if (p.x > w + 20 || p.x < -30) {
           rParticles.splice(i, 1);
         }
       }
 
-      requestAnimationFrame(renderReactionSim);
-    }
-    renderReactionSim();
+      // Draw Standing Waves beyond barrier if in spacious mode
+      if (!isReactive) {
+        rCtx.beginPath();
+        for (let x = barrierX; x < w - 20; x += 4) {
+          const progress = (x - barrierX) / (w - barrierX);
+          const y = centerY + Math.sin(progress * 12 - rSineT) * 18 * (1 - progress * 0.25);
+          if (x === barrierX) rCtx.moveTo(x, y);
+          else rCtx.lineTo(x, y);
+        }
+        rCtx.strokeStyle = 'rgba(13, 148, 136, 0.8)';
+        rCtx.lineWidth = 2;
+        rCtx.stroke();
+      }
 
-    /* --- Simulation 2: Contraction Gradient --- */
-    const eCanvas = document.getElementById('simEgoCanvas');
+      requestAnimationFrame(renderReactionLoop);
+    }
+    requestAnimationFrame(renderReactionLoop);
+
+    /* ==========================================================
+       2. SIMULATION 2: CONTRACTION GRADIENT (AUTONOMOUS)
+       - N-body elastic lattice of mineral pebbles (turquoise, jade, lapis)
+       - Dynamically responds to Boundary Rigidity slider
+       - Organic breathing, elastic tethers, harmonic vibration
+    ========================================================== */
     const rigiditySlider = document.getElementById('rigiditySlider');
     const rigidityVal = document.getElementById('rigidityVal');
-    let eTime = 0;
+    const btnPulseEgo = document.getElementById('btnPulseEgoField');
 
     rigiditySlider.addEventListener('input', (e) => {
       rigidityVal.innerText = `${e.target.value}%`;
     });
 
-    document.getElementById('btnPulseField').addEventListener('click', () => {
-      eTime += 3;
+    let egoTime = 0;
+    let egoPulse = 0;
+
+    btnPulseEgo.addEventListener('click', () => {
+      egoPulse = 1;
+      showToast('Resonance pulse broadcast through mineral lattice.');
     });
 
-    function renderEgoSim() {
-      const dpr = window.devicePixelRatio || 1;
-      const rect = eCanvas.getBoundingClientRect();
-      if (eCanvas.width !== rect.width * dpr || eCanvas.height !== rect.height * dpr) {
-        setupRetinaCanvas(eCanvas);
-      }
-      const ctx = eCanvas.getContext('2d');
-      ctx.fillStyle = '#0b1017';
-      ctx.fillRect(0, 0, rect.width, rect.height);
+    // Populate Mineral Nodes
+    const nodeCount = 16;
+    const egoNodes = [];
+    const stoneHues = ['#0d9488', '#059669', '#0284c7', '#94a3b8'];
 
-      eTime += 0.02;
-      const centerX = rect.width / 2;
-      const centerY = rect.height / 2;
-      const rigidity = rigiditySlider.value / 100;
-      const baseRadius = 40 + rigidity * 22;
-
-      // Outer Web Nodes
-      const nodeCount = 14;
-      for (let i = 0; i < nodeCount; i++) {
-        const angle = (i / nodeCount) * Math.PI * 2 + eTime * (1 - rigidity * 0.75);
-        const dist = 110 + Math.sin(eTime * 2 + i) * 12 * (1 - rigidity);
-        const nx = centerX + Math.cos(angle) * dist;
-        const ny = centerY + Math.sin(angle) * dist;
-
-        ctx.beginPath();
-        ctx.arc(nx, ny, 3.5, 0, Math.PI * 2);
-        ctx.fillStyle = '#0d9488';
-        ctx.fill();
-
-        // Elastic Filaments
-        if (rigidity < 0.7) {
-          ctx.beginPath();
-          ctx.moveTo(centerX, centerY);
-          ctx.lineTo(nx, ny);
-          ctx.strokeStyle = `rgba(13, 148, 136, ${(1 - rigidity) * 0.3})`;
-          ctx.stroke();
-        }
-      }
-
-      // Center Node Perimeter
-      ctx.beginPath();
-      ctx.arc(centerX, centerY, baseRadius, 0, Math.PI * 2);
-      ctx.strokeStyle = rigidity > 0.6 ? '#9f1239' : '#334155';
-      ctx.lineWidth = 1 + rigidity * 3;
-      ctx.stroke();
-      ctx.lineWidth = 1;
-
-      // Center Pebble
-      ctx.beginPath();
-      ctx.arc(centerX, centerY, 8, 0, Math.PI * 2);
-      ctx.fillStyle = '#f1f5f9';
-      ctx.fill();
-
-      requestAnimationFrame(renderEgoSim);
+    for (let i = 0; i < nodeCount; i++) {
+      egoNodes.push({
+        baseAngle: (i / nodeCount) * Math.PI * 2,
+        dist: 110 + (i % 3) * 15,
+        speed: 0.008 + (i % 4) * 0.003,
+        size: 3.5 + (i % 3),
+        color: stoneHues[i % stoneHues.length]
+      });
     }
-    renderEgoSim();
 
-    /* --- Simulation 3: Thermodynamics of Attachment --- */
-    const aCanvas = document.getElementById('simAttachCanvas');
+    function renderEgoLoop() {
+      const { w, h } = dims.e;
+      egoTime += 0.02;
+
+      eCtx.fillStyle = '#0b1017';
+      eCtx.fillRect(0, 0, w, h);
+
+      const cx = w / 2;
+      const cy = h / 2;
+      const rigidity = rigiditySlider.value / 100;
+      const coreRadius = 24 + rigidity * 24 + Math.sin(egoTime * 2) * (1 - rigidity) * 4;
+
+      // Tremor if rigidity is high
+      let tx = 0, ty = 0;
+      if (rigidity > 0.5) {
+        tx = (Math.random() - 0.5) * rigidity * 4;
+        ty = (Math.random() - 0.5) * rigidity * 4;
+      }
+
+      // Draw Orbiting Field Nodes & Elastic Filaments
+      for (let i = 0; i < egoNodes.length; i++) {
+        const n = egoNodes[i];
+        const curAngle = n.baseAngle + egoTime * n.speed * (1 - rigidity * 0.85);
+        const curDist = n.dist + Math.sin(egoTime * 3 + i) * (12 * (1 - rigidity));
+        
+        const nx = cx + Math.cos(curAngle) * curDist;
+        const ny = cy + Math.sin(curAngle) * curDist;
+
+        const isSevered = rigidity > 0.65 && (i % 2 === 0);
+
+        // Filament Tether
+        if (!isSevered) {
+          eCtx.beginPath();
+          eCtx.moveTo(cx + tx, cy + ty);
+          eCtx.lineTo(nx, ny);
+          eCtx.strokeStyle = `rgba(13, 148, 136, ${(1 - rigidity) * 0.35 + 0.05})`;
+          eCtx.lineWidth = 1;
+          eCtx.stroke();
+        }
+
+        // Mineral Node
+        eCtx.beginPath();
+        eCtx.arc(nx, ny, n.size, 0, Math.PI * 2);
+        eCtx.fillStyle = isSevered ? '#475569' : n.color;
+        eCtx.fill();
+      }
+
+      // Expanding Pulse Ring
+      if (egoPulse > 0) {
+        egoPulse += 3;
+        const alpha = Math.max(0, 1 - egoPulse / 180);
+        eCtx.beginPath();
+        eCtx.arc(cx, cy, egoPulse, 0, Math.PI * 2);
+        eCtx.strokeStyle = `rgba(13, 148, 136, ${alpha})`;
+        eCtx.lineWidth = 2;
+        eCtx.stroke();
+        if (egoPulse > 180) egoPulse = 0;
+      }
+
+      // Central Self Boundary Perimeter
+      eCtx.beginPath();
+      eCtx.arc(cx + tx, cy + ty, coreRadius, 0, Math.PI * 2);
+      eCtx.strokeStyle = rigidity > 0.55 ? '#9f1239' : '#334155';
+      eCtx.lineWidth = 1.5 + rigidity * 2.5;
+      eCtx.stroke();
+
+      // Center Basalt Core Stone
+      eCtx.beginPath();
+      eCtx.arc(cx + tx, cy + ty, 10, 0, Math.PI * 2);
+      eCtx.fillStyle = rigidity > 0.55 ? '#7c2d12' : '#f1f5f9';
+      eCtx.fill();
+
+      requestAnimationFrame(renderEgoLoop);
+    }
+    requestAnimationFrame(renderEgoLoop);
+
+    /* ==========================================================
+       3. SIMULATION 3: THERMODYNAMICS OF ATTACHMENT (AUTONOMOUS)
+       - Constant stream of 50 river pebble stream particles
+       - Central basalt anchor stone
+       - Grasping slider generates real-time drag vortices & hematite friction
+    ========================================================== */
     const graspSlider = document.getElementById('graspSlider');
     const graspVal = document.getElementById('graspVal');
-    let streamLines = [];
+    const btnResetGrasp = document.getElementById('btnResetGrasp');
 
     graspSlider.addEventListener('input', (e) => {
       graspVal.innerText = `${e.target.value}%`;
     });
 
-    document.getElementById('btnReleaseGrasp').addEventListener('click', () => {
+    btnResetGrasp.addEventListener('click', () => {
       graspSlider.value = 0;
       graspVal.innerText = '0%';
+      showToast('Grasp released to 0%. Restored to frictionless laminar flow.');
     });
 
-    // Populate Streamlines
-    for (let i = 0; i < 40; i++) {
-      streamLines.push({
-        x: Math.random() * 400,
-        y: Math.random() * 300,
-        baseY: Math.random() * 300,
-        speed: 1.5 + Math.random() * 1.5
+    // Populate River Particles
+    const pebbleCount = 55;
+    const riverPebbles = [];
+    let frictionSparks = [];
+
+    for (let i = 0; i < pebbleCount; i++) {
+      riverPebbles.push({
+        x: Math.random() * 600,
+        y: Math.random() * 380,
+        vx: 1.8 + Math.random() * 1.5,
+        vy: (Math.random() - 0.5) * 0.3,
+        radius: 2.5 + Math.random() * 2,
+        color: Math.random() > 0.5 ? '#0284c7' : '#0d9488'
       });
     }
 
-    function renderAttachSim() {
-      const dpr = window.devicePixelRatio || 1;
-      const rect = aCanvas.getBoundingClientRect();
-      if (aCanvas.width !== rect.width * dpr || aCanvas.height !== rect.height * dpr) {
-        setupRetinaCanvas(aCanvas);
-      }
-      const ctx = aCanvas.getContext('2d');
-      ctx.fillStyle = '#0b1017';
-      ctx.fillRect(0, 0, rect.width, rect.height);
+    function renderAttachmentLoop() {
+      const { w, h } = dims.a;
+      aCtx.fillStyle = '#0b1017';
+      aCtx.fillRect(0, 0, w, h);
 
+      const focalX = w / 2;
+      const focalY = h / 2;
       const grasp = graspSlider.value / 100;
-      const focalX = rect.width / 2;
-      const focalY = rect.height / 2;
+      const graspRadius = 35 + grasp * 55;
 
-      // Draw Focal Stone
-      ctx.beginPath();
-      ctx.arc(focalX, focalY, 14, 0, Math.PI * 2);
-      ctx.fillStyle = grasp > 0.5 ? '#7c2d12' : '#131a24';
-      ctx.strokeStyle = '#334155';
-      ctx.stroke();
-      ctx.fill();
+      // Draw Vortex Drag Influence Field
+      if (grasp > 0.05) {
+        aCtx.beginPath();
+        aCtx.arc(focalX, focalY, graspRadius, 0, Math.PI * 2);
+        aCtx.fillStyle = `rgba(159, 18, 57, ${grasp * 0.12})`;
+        aCtx.fill();
+        aCtx.strokeStyle = `rgba(159, 18, 57, ${grasp * 0.4})`;
+        aCtx.lineWidth = 1;
+        aCtx.setLineDash([3, 4]);
+        aCtx.stroke();
+        aCtx.setLineDash([]);
+      }
 
-      // Update & Render Flow Lines
-      for (let i = 0; i < streamLines.length; i++) {
-        const p = streamLines[i];
-        p.x += p.speed;
+      // Draw Central Basalt Stone
+      aCtx.beginPath();
+      aCtx.arc(focalX, focalY, 14, 0, Math.PI * 2);
+      aCtx.fillStyle = grasp > 0.4 ? '#7c2d12' : '#131a24';
+      aCtx.strokeStyle = '#334155';
+      aCtx.lineWidth = 2;
+      aCtx.stroke();
+      aCtx.fill();
 
-        // Hydrodynamic deflection around focal stone
-        const dx = p.x - focalX;
-        const dy = p.y - focalY;
-        const dist = Math.sqrt(dx * dx + dy * dy);
+      // Render Friction Sparks
+      for (let s = frictionSparks.length - 1; s >= 0; s--) {
+        const sp = frictionSparks[s];
+        sp.x += sp.vx;
+        sp.y += sp.vy;
+        sp.alpha -= 0.04;
+        aCtx.beginPath();
+        aCtx.arc(sp.x, sp.y, 1.8, 0, Math.PI * 2);
+        aCtx.fillStyle = `rgba(159, 18, 57, ${sp.alpha})`;
+        aCtx.fill();
+        if (sp.alpha <= 0) frictionSparks.splice(s, 1);
+      }
 
-        if (dist < 80) {
-          const force = (80 - dist) / 80;
-          if (grasp > 0.3) {
-            // High Grasp = Drag Turbulence
-            p.y += (Math.random() - 0.5) * 4 * grasp;
-            p.x -= force * 1.5 * grasp;
-          } else {
-            // Laminar Smooth Flow
-            p.y += (dy > 0 ? 1 : -1) * force * 1.5;
+      // Process Stream
+      for (let i = 0; i < riverPebbles.length; i++) {
+        const p = riverPebbles[i];
+
+        const dx = focalX - p.x;
+        const dy = focalY - p.y;
+        const dist = Math.hypot(dx, dy);
+
+        if (dist < graspRadius && grasp > 0.08) {
+          // Drag vortex pull & friction deceleration
+          p.vx += (dx / dist) * grasp * 0.35;
+          p.vy += (dy / dist) * grasp * 0.35;
+          p.vx *= 0.94;
+          p.vy *= 0.94;
+
+          if (Math.random() < grasp * 0.4) {
+            frictionSparks.push({
+              x: p.x,
+              y: p.y,
+              vx: (Math.random() - 0.5) * 3,
+              vy: (Math.random() - 0.5) * 3,
+              alpha: 0.9
+            });
           }
+        } else {
+          // Restore free forward stream
+          p.vx += 0.05;
+          if (p.vx > 3.2) p.vx = 3.2;
         }
 
-        ctx.fillStyle = grasp > 0.5 && dist < 70 ? '#9f1239' : '#0284c7';
-        ctx.fillRect(p.x, p.y, 4, 1.5);
+        p.x += p.vx;
+        p.y += p.vy;
 
-        if (p.x > rect.width) {
-          p.x = 0;
-          p.y = Math.random() * rect.height;
+        // Render Pebble
+        aCtx.beginPath();
+        aCtx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        aCtx.fillStyle = (dist < graspRadius && grasp > 0.4) ? '#9f1239' : p.color;
+        aCtx.fill();
+
+        // Recycle offscreen
+        if (p.x > w + 20) {
+          p.x = -15;
+          p.y = Math.random() * h;
+          p.vx = 1.8 + Math.random() * 1.5;
+          p.vy = (Math.random() - 0.5) * 0.3;
         }
       }
 
-      requestAnimationFrame(renderAttachSim);
+      requestAnimationFrame(renderAttachmentLoop);
     }
-    renderAttachSim();
+    requestAnimationFrame(renderAttachmentLoop);
 
-    /* --- Card Generator Layout Engine --- */
+    /* ==========================================================
+       4. SOCIAL CARD GENERATOR (ANTI-SPILL & MULTI-PLATFORM)
+    ========================================================== */
     const cardCanvas = document.getElementById('cardCanvas');
     const cCtx = cardCanvas.getContext('2d');
     const platformSelect = document.getElementById('platformSelect');
@@ -1083,6 +1388,7 @@
     const cardTextInput = document.getElementById('cardTextInput');
     const paletteSelect = document.getElementById('paletteSelect');
     const overflowCheckBadge = document.getElementById('overflowCheckBadge');
+    const btnDownload = document.getElementById('btnDownloadCard');
 
     const presets = [
       "Suffering is the thermodynamic friction of grasping that which is flowing. Let the visitor pass through without claiming ownership.",
@@ -1107,35 +1413,34 @@
 
     function getPlatformDims(platform) {
       switch (platform) {
-        case 'story': return { w: 1080, h: 1920 };
-        case 'portrait': return { w: 1080, h: 1350 };
-        case 'landscape': return { w: 1920, h: 1080 };
+        case 'story': return { w: 1080, h: 1920, title: 'Story / Reel' };
+        case 'portrait': return { w: 1080, h: 1350, title: 'Portrait Post' };
+        case 'landscape': return { w: 1920, h: 1080, title: 'Landscape Header' };
         case 'square':
-        default: return { w: 1080, h: 1080 };
+        default: return { w: 1080, h: 1080, title: 'Square Post' };
       }
     }
 
-    function wrapText(ctx, text, maxWidth) {
-      const words = text.split(' ');
+    function wrapCanvasText(ctx, text, maxWidth) {
+      const words = text.split(/\s+/);
       const lines = [];
-      let currentLine = words[0];
+      let currentLine = '';
 
-      for (let i = 1; i < words.length; i++) {
-        const word = words[i];
-        const width = ctx.measureText(currentLine + " " + word).width;
-        if (width < maxWidth) {
-          currentLine += " " + word;
-        } else {
+      for (let i = 0; i < words.length; i++) {
+        const testLine = currentLine ? currentLine + ' ' + words[i] : words[i];
+        if (ctx.measureText(testLine).width > maxWidth && currentLine) {
           lines.push(currentLine);
-          currentLine = word;
+          currentLine = words[i];
+        } else {
+          currentLine = testLine;
         }
       }
-      lines.push(currentLine);
+      if (currentLine) lines.push(currentLine);
       return lines;
     }
 
     function drawCard() {
-      const { w, h } = getPlatformDims(platformSelect.value);
+      const { w, h, title } = getPlatformDims(platformSelect.value);
       cardCanvas.width = w;
       cardCanvas.height = h;
 
@@ -1159,7 +1464,7 @@
       cCtx.fillStyle = bg;
       cCtx.fillRect(0, 0, w, h);
 
-      // Frame Border
+      // Frame Margin
       const margin = w * 0.08;
       cCtx.strokeStyle = borderCol;
       cCtx.lineWidth = 2;
@@ -1169,60 +1474,61 @@
       cCtx.fillStyle = accent;
       cCtx.font = `600 ${Math.round(w * 0.022)}px monospace`;
       cCtx.textAlign = 'center';
-      cCtx.fillText('THE COMMONS PROTOCOL • CONTEMPLATION', w / 2, margin + w * 0.06);
+      cCtx.fillText('THE COMMONS PROTOCOL • CONTEMPLATION', w / 2, margin + w * 0.065);
 
-      // Dynamic Font Scaling Engine
-      const maxTextWidth = w - margin * 3;
-      const maxTextHeight = h - margin * 3.5;
+      // Dynamic Font Scaling to Guarantee Zero Overflow
+      const maxTextW = w - margin * 3.2;
+      const maxTextH = h - margin * 3.8;
       let fontSize = Math.round(w * 0.046);
       let lines = [];
-      let totalTextHeight = 0;
+      let totalH = 0;
 
       while (fontSize > 16) {
         cCtx.font = `400 ${fontSize}px sans-serif`;
-        const lineHeight = fontSize * 1.5;
-        lines = wrapText(cCtx, cardTextInput.value, maxTextWidth);
-        totalTextHeight = lines.length * lineHeight;
-
-        if (totalTextHeight < maxTextHeight) {
-          break;
-        }
+        lines = wrapCanvasText(cCtx, `"${cardTextInput.value}"`, maxTextW);
+        totalH = lines.length * (fontSize * 1.55);
+        if (totalH <= maxTextH) break;
         fontSize -= 2;
       }
 
       // Render Text Lines
       cCtx.fillStyle = textCol;
       cCtx.textAlign = 'center';
-      const startY = (h - totalTextHeight) / 2 + fontSize * 0.5;
-      const finalLineHeight = fontSize * 1.5;
-
+      const startY = (h - totalH) / 2 + fontSize * 0.8;
       for (let i = 0; i < lines.length; i++) {
-        cCtx.fillText(lines[i], w / 2, startY + i * finalLineHeight);
+        cCtx.fillText(lines[i], w / 2, startY + i * (fontSize * 1.55));
       }
 
-      // Footer Notation
+      // Footer
       cCtx.fillStyle = '#64748b';
       cCtx.font = `400 ${Math.round(w * 0.018)}px monospace`;
       cCtx.fillText('NO LEADER • NO TITHE • VERIFY IN CONDUCT', w / 2, h - margin - w * 0.04);
 
-      overflowCheckBadge.innerText = `Layout Safe: ${w}x${h}px rendered with ${fontSize}px adaptive typography.`;
+      overflowCheckBadge.innerText = `Layout Safe: ${w}×${h}px (${title}) • Adaptive Scale: ${fontSize}px • Zero Overflow`;
     }
 
-    // Export Card as PNG
-    document.getElementById('btnDownloadCard').addEventListener('click', () => {
+    btnDownload.addEventListener('click', () => {
       const link = document.createElement('a');
       link.download = `commons-axiom-${platformSelect.value}.png`;
       link.href = cardCanvas.toDataURL('image/png');
       link.click();
+      showToast('High-resolution social card exported.');
     });
 
-    // Offline Preservation Utilities
+    drawCard();
+
+    /* ==========================================================
+       5. OFFLINE ARCHIVE DOWNLOAD & COPY UTILITIES
+    ========================================================== */
     document.getElementById('btnExportCode').addEventListener('click', () => {
-      const blob = new Blob([document.documentElement.outerHTML], { type: 'text/html' });
+      const fullSource = "<!DOCTYPE html>\n" + document.documentElement.outerHTML;
+      const blob = new Blob([fullSource], { type: 'text/html;charset=utf-8' });
       const a = document.createElement('a');
       a.href = URL.createObjectURL(blob);
       a.download = 'the-commons-protocol.html';
       a.click();
+      URL.revokeObjectURL(a.href);
+      showToast('Offline standalone archive saved.');
     });
 
     document.getElementById('btnCopyCodex').addEventListener('click', () => {
@@ -1236,13 +1542,15 @@ IV. The Conservation of Goodwill: Generosity expands the nervous system; cruelty
 V. Impermanence of Rigid Identity: Opinions are processes, not static monuments.
 VI. Grounded Presence: Close the screen and engage direct physical reality.
 VII. Decentralized Stewardship: Truth is uncapturable; mirror and share freely.`;
-      navigator.clipboard.writeText(codexText).then(() => {
-        alert("Codex copied to clipboard.");
-      });
-    });
 
-    // Initialize Card Preview on load
-    drawCard();
+      const tArea = document.createElement('textarea');
+      tArea.value = codexText;
+      document.body.appendChild(tArea);
+      tArea.select();
+      document.execCommand('copy');
+      document.body.removeChild(tArea);
+      showToast('Full plaintext codex copied to clipboard.');
+    });
   </script>
 </body>
 </html>

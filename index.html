@@ -2592,18 +2592,25 @@ COST:
     };
 
     /* Safe Execution Lifecycle */
+    function initFolioTabs() {
+      document.querySelectorAll('.book-tabs .tab-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.book-tabs .tab-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          renderFolios(btn.dataset.book);
+        });
+      });
+    }
+
     function bootSystem() {
-      initAllCanvases();
-      initCardEngine();
-      renderReactionSim();
-      renderEgoSim();
-      renderAttachSim();
-      renderAttractorSim();
-      renderEntropySim();
-      renderVagalSim();
-      renderVectorSim();
-      renderGossipSim();
-      renderDissolutionSim();
+      // Folios first, so a failing animation can never leave the codex empty.
+      renderFolios('all');
+      initFolioTabs();
+      [initAllCanvases, initCardEngine, renderReactionSim, renderEgoSim, renderAttachSim,
+       renderAttractorSim, renderEntropySim, renderVagalSim, renderVectorSim,
+       renderGossipSim, renderDissolutionSim].forEach(fn => {
+        try { fn(); } catch (err) { console.error(fn.name, err); }
+      });
     }
 
     if (document.readyState === 'complete' || document.readyState === 'interactive') {
